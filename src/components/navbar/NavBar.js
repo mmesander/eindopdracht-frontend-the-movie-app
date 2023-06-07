@@ -4,9 +4,11 @@ import './NavBar.css'
 // Assets
 import logo from '../../assets/tma-logo.png'
 
-//Functions
+// Functions
 import React, {useContext} from "react";
 import {NavLink} from "react-router-dom";
+
+// Context
 import {AuthContext} from "../../context/AuthContext";
 
 function NavBar() {
