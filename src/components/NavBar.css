@@ -29,3 +29,12 @@
     width: 50px;
     filter: invert(75%) sepia(41%) saturate(792%) hue-rotate(149deg) brightness(107%) contrast(93%);
 }
+
+.active-nav-link {
+    border-bottom: 1px solid white;
+}
+
+.default-nav-link {
+    border-bottom: 1px solid transparent;
+}
+
