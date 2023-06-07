@@ -52,3 +52,15 @@
     border-bottom: 1px solid #4EECF6;
 }
 
+.nav-logout-button {
+    padding: 5px;
+    background-color: #FF9090;
+    color: black;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.nav-logout-button:hover {
+    cursor: pointer;
+    background-color: #91C88C;
+}
