@@ -20,7 +20,7 @@ function NavBar() {
                 <li><NavLink to="/zoeken" className={({isActive})=> isActive ? 'active-nav-link' : 'default-nav-link'}>Zoeken</NavLink></li>
                 <li><NavLink to="/suggestie" className={({isActive})=> isActive ? 'active-nav-link' : 'default-nav-link'}>Suggestie</NavLink></li>
                 <li><NavLink to="/lijsten" className={({isActive})=> isActive ? 'active-nav-link' : 'default-nav-link'}>Lijsten</NavLink></li>
-                <li><button>Uitloggen</button></li>
+                <li><button type="button" className="nav-logout-button">Uitloggen</button></li>
             </ul>
         </nav>
     )

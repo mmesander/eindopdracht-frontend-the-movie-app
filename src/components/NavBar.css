@@ -30,6 +30,12 @@
     filter: invert(75%) sepia(41%) saturate(792%) hue-rotate(149deg) brightness(107%) contrast(93%);
 }
 
+.navbar-container a,
+.navbar-container a:visited {
+    text-decoration: none;
+    color: white;
+}
+
 .active-nav-link {
     border-bottom: 1px solid white;
 }
@@ -38,3 +44,23 @@
     border-bottom: 1px solid transparent;
 }
 
+.navbar-container a:hover {
+    color: #4EECF6;
+}
+
+.active-nav-link:hover {
+    border-bottom: 1px solid #4EECF6;
+}
+
+.nav-logout-button {
+    padding: 5px;
+    background-color: #FF9090;
+    color: black;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.nav-logout-button:hover {
+    cursor: pointer;
+    background-color: #91C88C;
+}
