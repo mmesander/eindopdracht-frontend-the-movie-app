@@ -11,7 +11,7 @@ import Suggestion from "./pages/suggestion/Suggestion";
 import Lists from "./pages/lists/Lists";
 
 // Components
-import NavBar from "./components/NavBar";
+import NavBar from "./components/navbar/NavBar";
 
 function App() {
     return (
