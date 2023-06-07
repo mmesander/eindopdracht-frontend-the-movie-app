@@ -1,0 +1,28 @@
+.signin-outer-container {
+    background-image: url("../../assets/background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.signin-inner-container{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(171, 171, 171, 0.6);
+    flex-basis: 400px;
+    width: 400px;
+    border-radius: 10px;
+}
+
+/*To Do volgende keer:
+Sign-in container aanvullen met gegevens
+Checken bij:
+-form validation
+-Banana security
+voor de opmaak*/
