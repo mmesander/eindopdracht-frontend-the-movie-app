@@ -2,7 +2,8 @@
 import './App.css';
 
 // Functions
-import {Routes, Route, Link} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
+import {useContext} from "react";
 
 // Pages
 import Home from "./pages/home/Home";
@@ -14,7 +15,13 @@ import Lists from "./pages/lists/Lists";
 import NavBar from "./components/navbar/NavBar";
 import SingIn from "./pages/singin/SingIn";
 
+// Context
+import {AuthContext} from "./context/AuthContext";
+
 function App() {
+    const {isAuth} = useContext(AuthContext);
+    console.log(isAuth)
+
     return (
         <>
             <NavBar/>
