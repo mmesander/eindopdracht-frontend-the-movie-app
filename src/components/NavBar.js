@@ -1,6 +1,7 @@
 import React from "react";
 import logo from '../assets/tma-logo.png'
 import './NavBar.css'
+import {NavLink} from "react-router-dom";
 
 function NavBar() {
     return (
@@ -13,10 +14,10 @@ function NavBar() {
             </span>
 
             <ul>
-                <li>Home</li>
-                <li>Zoeken</li>
-                <li>Suggestie</li>
-                <li>Lijsten</li>
+                <li><NavLink to="/" className={({isActive})=> isActive ? 'active-nav-link' : 'default-nav-link'}>Home</NavLink></li>
+                <li><NavLink to="/zoeken" className={({isActive})=> isActive ? 'active-nav-link' : 'default-nav-link'}>Zoeken</NavLink></li>
+                <li><NavLink to="/suggestie" className={({isActive})=> isActive ? 'active-nav-link' : 'default-nav-link'}>Suggestie</NavLink></li>
+                <li><NavLink to="/lijsten" className={({isActive})=> isActive ? 'active-nav-link' : 'default-nav-link'}>Lijsten</NavLink></li>
                 <li><button>Uitloggen</button></li>
             </ul>
         </nav>
