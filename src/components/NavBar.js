@@ -3,7 +3,7 @@ import logo from '../assets/tma-logo.png'
 
 function NavBar() {
     return (
-        <nav>
+        <nav className="navbar-container">
             <span className="logo-container">
                 <img src={logo} alt="the movie app logo"/>
                 <h3>
