@@ -2,7 +2,7 @@
 import './App.css';
 
 // Functions
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, Link} from 'react-router-dom';
 
 // Pages
 import Home from "./pages/home/Home";
@@ -15,7 +15,13 @@ import NavBar from "./components/NavBar";
 
 function App() {
     return (
-        <NavBar/>
+        <>
+            <NavBar/>
+            <Home/>
+            <Search/>
+            <Suggestion/>
+            <Lists/>
+        </>
     );
 }
 
