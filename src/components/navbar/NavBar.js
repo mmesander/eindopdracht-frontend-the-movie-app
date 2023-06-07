@@ -26,35 +26,37 @@ function NavBar() {
             <ul>
                 <li><NavLink
                     to="/"
-                    className={({isActive})=> isActive ? 'active-nav-link' : 'default-nav-link'}
+                    className={({isActive}) => isActive ? 'active-nav-link' : 'default-nav-link'}
                 >
                     Home
                 </NavLink></li>
                 <li><NavLink
                     to="/zoeken"
-                    className={({isActive})=> isActive ? 'active-nav-link' : 'default-nav-link'}
+                    className={({isActive}) => isActive ? 'active-nav-link' : 'default-nav-link'}
                 >
                     Zoeken
                 </NavLink></li>
                 <li><NavLink
                     to="/suggestie"
-                    className={({isActive})=> isActive ? 'active-nav-link' : 'default-nav-link'}
+                    className={({isActive}) => isActive ? 'active-nav-link' : 'default-nav-link'}
                 >
                     Suggestie
                 </NavLink></li>
                 <li><NavLink
                     to="/lijsten"
-                    className={({isActive})=> isActive ? 'active-nav-link' : 'default-nav-link'}
+                    className={({isActive}) => isActive ? 'active-nav-link' : 'default-nav-link'}
                 >
                     Lijsten
                 </NavLink></li>
-                <li><button
-                    type="button"
-                    className="nav-logout-button"
-                    onClick={logout}
-                >
-                    Uitloggen
-                </button></li>
+                <li>
+                    <button
+                        type="button"
+                        className="nav-logout-button"
+                        onClick={logout}
+                    >
+                        Uitloggen
+                    </button>
+                </li>
             </ul>
         </nav>
     )
