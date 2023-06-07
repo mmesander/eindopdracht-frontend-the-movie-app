@@ -19,6 +19,17 @@ function AuthContextProvider({children}) {
         navigate("/login")
     }
 
+    const data = {
+        isAuth: isAuth,
+        logout: logout,
+        login: login
+    }
+
+    return (
+        <AuthContext.Provider value={data}>
+            {children}
+        </AuthContext.Provider>
+    )
 }
 
 export default AuthContextProvider;
