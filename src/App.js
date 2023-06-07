@@ -12,6 +12,7 @@ import Lists from "./pages/lists/Lists";
 
 // Components
 import NavBar from "./components/navbar/NavBar";
+import SingIn from "./pages/singin/SingIn";
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                 <Route path="/zoeken" element={<Search/>}/>
                 <Route path="/suggestie" element={<Suggestion/>}/>
                 <Route path="/lijsten" element={<Lists/>}/>
+                <Route path="/login" element={<SingIn/>}/>
             </Routes>
         </>
     );
