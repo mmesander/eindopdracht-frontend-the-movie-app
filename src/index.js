@@ -8,6 +8,8 @@ import {BrowserRouter as Router} from "react-router-dom";
 
 // Pages
 import App from './App';
+
+// Components
 import AuthContextProvider from "./context/AuthContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
