@@ -6,12 +6,14 @@ import {NavLink} from "react-router-dom";
 function NavBar() {
     return (
         <nav className="navbar-container">
-            <span className="logo-container">
+            <NavLink to="/">
+                <span className="logo-container">
                 <img src={logo} alt="the movie app logo"/>
                 <h3>
                     The Movie App
                 </h3>
-            </span>
+                </span>
+            </NavLink>
 
             <ul>
                 <li><NavLink to="/" className={({isActive})=> isActive ? 'active-nav-link' : 'default-nav-link'}>Home</NavLink></li>
