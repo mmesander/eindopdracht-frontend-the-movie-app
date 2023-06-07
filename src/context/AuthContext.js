@@ -7,11 +7,11 @@ function AuthContextProvider({children}) {
     const [isAuth, setIsAuth] = useState(false);
     const navigate = useNavigate()
 
-    // useEffect(() => {
-    //     if (!isAuth) {
-    //         navigate("/login")
-    //     }
-    // }, []);
+    useEffect(() => {
+        if (!isAuth) {
+            navigate("/login")
+        }
+    }, []);
 
     function login() {
         setIsAuth(true);
