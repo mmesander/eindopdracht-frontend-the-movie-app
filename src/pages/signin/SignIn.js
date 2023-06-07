@@ -4,7 +4,7 @@ import React, {useContext} from "react";
 // Context
 import {AuthContext} from "../../context/AuthContext";
 
-function SingIn() {
+function SignIn() {
     const {login} = useContext(AuthContext);
 
     return (
@@ -20,4 +20,4 @@ function SingIn() {
     )
 }
 
-export default SingIn;
+export default SignIn;

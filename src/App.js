@@ -13,24 +13,23 @@ import Lists from "./pages/lists/Lists";
 
 // Components
 import NavBar from "./components/navbar/NavBar";
-import SingIn from "./pages/singin/SingIn";
+import SignIn from "./pages/signin/SignIn";
 
 // Context
 import {AuthContext} from "./context/AuthContext";
 
 function App() {
     const {isAuth} = useContext(AuthContext);
-    console.log(isAuth)
 
     return (
         <>
-            <NavBar/>
+            {isAuth && <NavBar/>}
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/zoeken" element={<Search/>}/>
                 <Route path="/suggestie" element={<Suggestion/>}/>
                 <Route path="/lijsten" element={<Lists/>}/>
-                <Route path="/login" element={<SingIn/>}/>
+                <Route path="/login" element={<SignIn/>}/>
             </Routes>
         </>
     );

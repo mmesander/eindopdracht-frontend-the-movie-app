@@ -1,11 +1,17 @@
-import React, {createContext, useState} from "react";
+import React, {createContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 
 export const AuthContext = createContext(null);
 
 function AuthContextProvider({children}) {
     const [isAuth, setIsAuth] = useState(false);
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+
+    // useEffect(() => {
+    //     if (!isAuth) {
+    //         navigate("/login")
+    //     }
+    // }, []);
 
     function login() {
         setIsAuth(true);
