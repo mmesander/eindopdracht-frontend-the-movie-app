@@ -1,6 +1,9 @@
 // Styles
 import './App.css';
 
+// Functions
+import {Routes, Route} from 'react-router-dom';
+
 // Pages
 import Home from "./pages/home/Home";
 import Search from "./pages/search/Search";
