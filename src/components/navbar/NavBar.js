@@ -53,7 +53,8 @@ function NavBar() {
                     className="nav-logout-button"
                     onClick={logout}
                 >
-                    Uitloggen</button></li>
+                    Uitloggen
+                </button></li>
             </ul>
         </nav>
     )
