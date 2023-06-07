@@ -1,5 +1,6 @@
 import React from "react";
 import logo from '../assets/tma-logo.png'
+import './NavBar.css'
 
 function NavBar() {
     return (
