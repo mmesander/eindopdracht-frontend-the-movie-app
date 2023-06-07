@@ -2,7 +2,7 @@
 import React, {useContext} from "react";
 
 // Context
-import authContext, {AuthContext} from "../../context/AuthContext";
+import {AuthContext} from "../../context/AuthContext";
 
 function SingIn() {
     const {login} = useContext(AuthContext);
