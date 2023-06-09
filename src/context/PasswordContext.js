@@ -29,3 +29,5 @@ function PasswordContextProvider({children}) {
         </PasswordContext.Provider>
     )
 }
+
+export default PasswordContextProvider;
