@@ -12,6 +12,7 @@ import App from './App';
 // Components
 import AuthContextProvider from "./context/AuthContext";
 import UsernameContextProvider from "./context/UsernameContext";
+import PasswordContextProvider from "./context/PasswordContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
