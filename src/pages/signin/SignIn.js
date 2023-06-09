@@ -2,13 +2,26 @@
 import './SignIn.css'
 
 // Functions
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 
 // Context
 import {AuthContext} from "../../context/AuthContext";
 
 function SignIn() {
     const {login} = useContext(AuthContext);
+    const [username, setUsername] = useState("");
+    const [usernameError, setUsernameError] = useState("");
+
+    function handleInputUsername(e) {
+        const input = e.target.value;
+        setUsername(input)
+
+        if (input.includes('@')){
+            setUsernameError("Gebruikersnaam mag geen @ bevatten");
+        } else {
+            setUsernameError("");
+        }
+    }
 
     return (
         <>
@@ -23,9 +36,11 @@ function SignIn() {
                                 name="username"
                                 id="username-field"
                                 placeholder="Gebruikersnaam"
+                                value={username}
+                                onChange={handleInputUsername}
                             />
                         </label>
-                        <p>Hier komt een error message</p>
+                        <p>{usernameError}</p>
                         <label htmlFor="password-field">
                             Wachtwoord
                             <input
