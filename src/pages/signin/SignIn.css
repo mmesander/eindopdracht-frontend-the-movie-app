@@ -77,3 +77,12 @@
     bottom: -25px;
     left: 5px;
 }
+
+.signin-inner-container a,
+.signin-inner-container a:visited {
+    color: white;
+}
+
+.signin-inner-container a:hover {
+    color: #4EECF6;
+}
