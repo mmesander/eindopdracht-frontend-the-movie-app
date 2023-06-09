@@ -10,10 +10,11 @@ import Home from "./pages/home/Home";
 import Search from "./pages/search/Search";
 import Suggestion from "./pages/suggestion/Suggestion";
 import Lists from "./pages/lists/Lists";
+import SignIn from "./pages/signin/SignIn";
+import SignUp from "./pages/signup/SignUp"
 
 // Components
 import NavBar from "./components/navbar/NavBar";
-import SignIn from "./pages/signin/SignIn";
 
 // Context
 import {AuthContext} from "./context/AuthContext";
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/suggestie" element={<Suggestion/>}/>
                 <Route path="/lijsten" element={<Lists/>}/>
                 <Route path="/login" element={<SignIn/>}/>
+                <Route path="/registratie" element={<SignUp/>}/>
             </Routes>
         </>
     );
