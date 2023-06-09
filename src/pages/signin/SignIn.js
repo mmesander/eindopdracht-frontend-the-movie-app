@@ -18,12 +18,32 @@ function SignIn() {
             <div className="signin-outer-container">
                 <div className="signin-inner-container">
                     <h1>Inloggen</h1>
-                    <button
-                        type="button"
-                        onClick={login}
-                    >
-                        Inloggen
-                    </button>
+                    <form id="signin-form">
+                        <label htmlFor="username-field">
+                            Gebruikersnaam
+                            <input
+                                type="text"
+                                name="username"
+                                id="username-field"
+                                placeholder="Gebruikersnaam"
+                            />
+                        </label>
+                        <label htmlFor="password-field">
+                            Wachtwoord
+                            <input
+                                type="password"
+                                name="password"
+                                id="password-field"
+                                placeholder="Wachtwoord"
+                            />
+                        </label>
+                        <button
+                            type="button"
+                            onClick={login}
+                        >
+                            Inloggen
+                        </button>
+                    </form>
                 </div>
             </div>
         </>
