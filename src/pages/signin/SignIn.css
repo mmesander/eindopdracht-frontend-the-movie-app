@@ -18,11 +18,54 @@
     flex-basis: 400px;
     width: 400px;
     border-radius: 10px;
+    padding: 40px;
+    align-items: center;
 }
 
-/*To Do volgende keer:
-Sign-in container aanvullen met gegevens
-Checken bij:
--form validation
--Banana security
-voor de opmaak*/
+.signin-inner-container h1 {
+    margin-bottom: 20px;
+    color: white;
+    font-size: 40px;
+}
+
+.signin-inner-container label {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.signin-inner-container input {
+    width: 100%;
+    border-radius: 5px;
+    padding: 8px 8px;
+    margin: 2px 0;
+    border: 1px solid transparent;
+}
+
+.signin-inner-container p {
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #750000;
+    min-height: 21px;
+}
+
+.signin-inner-container button {
+    background-color: #750000;
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    font-weight: bold;
+    color: white;
+}
+
+.signin-inner-container button:hover {
+    cursor: pointer;
+    background-color: #91C88C;
+    color: black;
+}
+
+.signin-inner-container input:focus {
+    outline: 1px solid #750000;
+}
