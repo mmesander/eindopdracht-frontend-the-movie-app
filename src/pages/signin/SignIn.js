@@ -17,7 +17,7 @@ function SignIn() {
         <>
             <div className="signin-outer-container">
                 <div className="signin-inner-container">
-                    <h1>This is the singin page</h1>
+                    <h1>Inloggen</h1>
                     <button
                         type="button"
                         onClick={login}
