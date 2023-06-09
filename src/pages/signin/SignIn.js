@@ -52,6 +52,7 @@ function SignIn() {
                         </button>
                     </form>
                 </div>
+                <h3>Nog geen account? Registreer je nu!</h3>
             </div>
         </>
     )
