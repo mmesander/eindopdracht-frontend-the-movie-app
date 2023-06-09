@@ -11,14 +11,17 @@ import App from './App';
 
 // Components
 import AuthContextProvider from "./context/AuthContext";
+import UsernameContextProvider from "./context/UsernameContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <Router>
-            <AuthContextProvider>
-                <App/>
-            </AuthContextProvider>
+            <UsernameContextProvider>
+                <AuthContextProvider>
+                    <App/>
+                </AuthContextProvider>
+            </UsernameContextProvider>
         </Router>
     </React.StrictMode>
 );

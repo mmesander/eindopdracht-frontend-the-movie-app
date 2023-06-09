@@ -2,26 +2,15 @@
 import './SignIn.css'
 
 // Functions
-import React, {useContext, useState} from "react";
+import React, {useContext} from "react";
 
 // Context
 import {AuthContext} from "../../context/AuthContext";
+import {UsernameContext} from "../../context/UsernameContext";
 
 function SignIn() {
     const {login} = useContext(AuthContext);
-    const [username, setUsername] = useState("");
-    const [usernameError, setUsernameError] = useState("");
-
-    function handleInputUsername(e) {
-        const input = e.target.value;
-        setUsername(input)
-
-        if (input.includes('@')){
-            setUsernameError("Gebruikersnaam mag geen @ bevatten");
-        } else {
-            setUsernameError("");
-        }
-    }
+    const {username, usernameError, handleInputUsername} = useContext(UsernameContext);
 
     return (
         <>
