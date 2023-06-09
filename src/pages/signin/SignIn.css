@@ -70,3 +70,10 @@
 .signin-inner-container input:focus {
     outline: 1px solid #750000;
 }
+
+.signin-inner-container h3 {
+    color: white;
+    position: absolute;
+    bottom: -25px;
+    left: 5px;
+}
