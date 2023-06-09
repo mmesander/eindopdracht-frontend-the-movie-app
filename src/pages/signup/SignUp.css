@@ -1,0 +1,71 @@
+.signup-outer-container {
+    background-image: url("../../assets/background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-inner-container {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(171, 171, 171, 0.6);
+    flex-basis: 400px;
+    width: 400px;
+    border-radius: 10px;
+    padding: 40px;
+    align-items: center;
+}
+
+.signup-inner-container h1 {
+    margin-bottom: 20px;
+    color: white;
+    font-size: 40px;
+}
+
+.signup-inner-container label {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.signup-inner-container input {
+    width: 100%;
+    border-radius: 5px;
+    padding: 8px 8px;
+    margin: 2px 0;
+    border: 1px solid transparent;
+}
+
+.signup-inner-container p {
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #750000;
+    min-height: 21px;
+}
+
+.signup-inner-container button {
+    background-color: #750000;
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    font-weight: bold;
+    color: white;
+}
+
+.signup-inner-container button:hover {
+    cursor: pointer;
+    background-color: #91C88C;
+    color: black;
+}
+
+.signup-inner-container input:focus {
+    outline: 1px solid #750000;
+}
