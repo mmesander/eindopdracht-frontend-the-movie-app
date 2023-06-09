@@ -8,7 +8,7 @@ function UsernameContextProvider({children}) {
 
     function handleInputUsername(e) {
         const input = e.target.value;
-        setUsername(input)
+        setUsername(input);
 
         if (input.includes('@')) {
             setUsernameError("Gebruikersnaam mag geen @ bevatten");
