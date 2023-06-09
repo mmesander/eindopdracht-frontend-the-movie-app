@@ -38,8 +38,15 @@
     width: 100%;
     border-radius: 5px;
     padding: 8px 8px;
-    margin: 2px 0 30px 0;
+    margin: 2px 0;
     border: 1px solid transparent;
+}
+
+.signin-inner-container p {
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #750000;
+    min-height: 15px;
 }
 
 .signin-inner-container button {
@@ -60,6 +67,5 @@
 }
 
 .signin-inner-container input:focus {
-    outline: 1px solid transparent;
-    background-color: #91C88C;
+    outline: 1px solid #750000;
 }
