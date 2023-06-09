@@ -1,4 +1,4 @@
-.signin-outer-container {
+.signup-outer-container {
     background-image: url("../../assets/background.jpg");
     background-size: cover;
     background-position: center;
@@ -11,7 +11,7 @@
     align-items: center;
 }
 
-.signin-inner-container{
+.signup-inner-container {
     display: flex;
     flex-direction: column;
     background-color: rgba(171, 171, 171, 0.6);
@@ -20,22 +20,21 @@
     border-radius: 10px;
     padding: 40px;
     align-items: center;
-    position: relative;
 }
 
-.signin-inner-container h1 {
+.signup-inner-container h1 {
     margin-bottom: 20px;
     color: white;
     font-size: 40px;
 }
 
-.signin-inner-container label {
+.signup-inner-container label {
     color: white;
     font-weight: bold;
     font-size: 20px;
 }
 
-.signin-inner-container input {
+.signup-inner-container input {
     width: 100%;
     border-radius: 5px;
     padding: 8px 8px;
@@ -43,14 +42,14 @@
     border: 1px solid transparent;
 }
 
-.signin-inner-container p {
+.signup-inner-container p {
     font-weight: bold;
     margin-bottom: 15px;
     color: #750000;
     min-height: 21px;
 }
 
-.signin-inner-container button {
+.signup-inner-container button {
     background-color: #750000;
     width: 100%;
     padding: 12px;
@@ -61,28 +60,12 @@
     color: white;
 }
 
-.signin-inner-container button:hover {
+.signup-inner-container button:hover {
     cursor: pointer;
     background-color: #91C88C;
     color: black;
 }
 
-.signin-inner-container input:focus {
+.signup-inner-container input:focus {
     outline: 1px solid #750000;
-}
-
-.signin-inner-container h3 {
-    color: white;
-    position: absolute;
-    bottom: -25px;
-    left: 5px;
-}
-
-.signin-inner-container a,
-.signin-inner-container a:visited {
-    color: white;
-}
-
-.signin-inner-container a:hover {
-    color: #4EECF6;
 }

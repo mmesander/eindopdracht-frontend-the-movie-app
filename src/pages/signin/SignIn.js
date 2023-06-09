@@ -3,6 +3,7 @@ import './SignIn.css'
 
 // Functions
 import React, {useContext} from "react";
+import { Link } from 'react-router-dom';
 
 // Context
 import {AuthContext} from "../../context/AuthContext";
@@ -51,6 +52,7 @@ function SignIn() {
                             Inloggen
                         </button>
                     </form>
+                    <h3>Nog geen account? <Link to="/registratie">Registreer je nu!</Link></h3>
                 </div>
             </div>
         </>
