@@ -28,6 +28,7 @@ function SignIn() {
                                 placeholder="Gebruikersnaam"
                             />
                         </label>
+                        <p>Hier komt een error message</p>
                         <label htmlFor="password-field">
                             Wachtwoord
                             <input
@@ -37,6 +38,7 @@ function SignIn() {
                                 placeholder="Wachtwoord"
                             />
                         </label>
+                        <p>Hier komt ook een error message</p>
                         <button
                             type="button"
                             onClick={login}
