@@ -7,10 +7,12 @@ import React, {useContext} from "react";
 // Context
 import {AuthContext} from "../../context/AuthContext";
 import {UsernameContext} from "../../context/UsernameContext";
+import {PasswordContext} from "../../context/PasswordContext";
 
 function SignIn() {
     const {login} = useContext(AuthContext);
     const {username, usernameError, handleInputUsername} = useContext(UsernameContext);
+    const {password, passwordError, handleInputPassword} = useContext(PasswordContext);
 
     return (
         <>
@@ -37,9 +39,11 @@ function SignIn() {
                                 name="password"
                                 id="password-field"
                                 placeholder="Wachtwoord"
+                                value={password}
+                                onChange={handleInputPassword}
                             />
                         </label>
-                        <p>Hier komt ook een error message</p>
+                        <p>{passwordError}</p>
                         <button
                             type="button"
                             onClick={login}
