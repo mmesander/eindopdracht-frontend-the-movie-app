@@ -1,9 +1,6 @@
 // Styles
 import './SignIn.css'
 
-// Assets
-import background from '../../assets/background.jpg'
-
 // Functions
 import React, {useContext} from "react";
 
