@@ -69,3 +69,9 @@
 .signup-inner-container input:focus {
     outline: 1px solid #750000;
 }
+
+.signup-inner-container button:disabled {
+    background-color: rgba(117, 0, 0, 60%);
+    cursor: not-allowed;
+    color: white;
+}

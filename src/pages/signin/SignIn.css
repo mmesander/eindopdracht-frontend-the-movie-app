@@ -63,7 +63,6 @@
 
 .signin-inner-container button:hover {
     cursor: pointer;
-    background-color: #91C88C;
     color: black;
 }
 
@@ -85,4 +84,10 @@
 
 .signin-inner-container a:hover {
     color: #4EECF6;
+}
+
+.signin-inner-container button:disabled {
+    background-color: rgba(117, 0, 0, 60%);
+    cursor: not-allowed;
+    color: white;
 }
