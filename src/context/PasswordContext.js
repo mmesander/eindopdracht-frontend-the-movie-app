@@ -13,7 +13,7 @@ function PasswordContextProvider({children}) {
         if (input === "" || input.length > 7) {
             setPasswordError("");
         } else {
-            setPasswordError("Wachtwoord is te kort, gebruik minimaal 8 tekens");
+            setPasswordError("Gebruik minimaal 8 tekens");
         }
     }
 
