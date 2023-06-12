@@ -4,7 +4,7 @@ import {PasswordContext} from "./PasswordContext";
 export const PasswordCheckContext = createContext("");
 
 function PasswordCheckContextProvider({children}) {
-    const [passwordCheck, setPasswordCheck] = useState(false);
+    const [passwordCheck, setPasswordCheck] = useState("");
     const [passwordCheckError, setPasswordCheckError] = useState("");
     const {password} = useContext(PasswordContext);
 
@@ -12,11 +12,13 @@ function PasswordCheckContextProvider({children}) {
         const input = e.target.value;
         setPasswordCheck(input);
 
-        if (input === password) {
-            setPasswordCheckError("")
-        } else {
+        if (input !== password && input.length > 0) {
             setPasswordCheckError("Wachtwoorden komen niet overeen")
+        } else {
+            setPasswordCheckError("")
         }
+
+
     }
 
     const data = {
@@ -25,7 +27,7 @@ function PasswordCheckContextProvider({children}) {
         handleInputPasswordCheck: handleInputPasswordCheck
     }
 
-    return(
+    return (
         <PasswordCheckContext.Provider value={data}>
             {children}
         </PasswordCheckContext.Provider>

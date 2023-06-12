@@ -8,10 +8,12 @@ import {useNavigate} from "react-router-dom";
 // Context
 import {UsernameContext} from "../../context/UsernameContext";
 import {PasswordContext} from "../../context/PasswordContext";
+import {PasswordCheckContext} from "../../context/PasswordCheckContext";
 
 function SignUp() {
     const {username, usernameError, handleInputUsername} = useContext(UsernameContext);
     const {password, passwordError, handleInputPassword} = useContext(PasswordContext);
+    const {passwordCheck, passwordCheckError, handleInputPasswordCheck} = useContext(PasswordCheckContext);
     const navigate = useNavigate();
 
     return (
@@ -62,15 +64,17 @@ function SignUp() {
                                 name="reg-password-check"
                                 id="reg-password-check-field"
                                 placeholder="Wachtwoord Controle"
-                                // value={passwordCheck}
-                                // onSubmit={handlePasswordCheck}
+                                value={passwordCheck}
+                                onChange={handleInputPasswordCheck}
                             />
                         </label>
-                        <p>Hier komt de passwordCheckError</p>
+                        <p>{passwordCheckError}</p>
 
                         <button
                             type="button"
-                            onClick={() => {navigate("/login")}}
+                            onClick={() => {
+                                navigate("/login")
+                            }}
                         >
                             Registreren
                         </button>
