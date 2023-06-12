@@ -1,5 +1,5 @@
 // Styles
-import 'Home.css'
+import './Home.css'
 
 // Functions
 import React from "react";
@@ -9,7 +9,7 @@ function Home() {
         <>
             <div className="home-outer-container">
                 <div className="home-inner-container">
-                    <h1>This is the home page</h1>
+                    <h1>This is the home page inner container</h1>
                 </div>
             </div>
         </>
