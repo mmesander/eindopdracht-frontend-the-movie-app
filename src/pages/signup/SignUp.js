@@ -72,9 +72,8 @@ function SignUp() {
 
                         <button
                             type="button"
-                            onClick={() => {
-                                navigate("/login")
-                            }}
+                            onClick={() => navigate("/login")}
+                            disabled={username.length < 0 || password.length < 8 || password !== passwordError}
                         >
                             Registreren
                         </button>
