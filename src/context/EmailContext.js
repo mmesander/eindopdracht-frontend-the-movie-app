@@ -6,9 +6,21 @@ function EmailContextProvider({children}) {
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState("");
 
+    function handleInputEmail(e) {
+        const input = e.target.value;
+        setEmail(input);
+
+        if (input.includes('@') === false) {
+            setEmailError("Voer een geldig emailadres in");
+        } else {
+            setEmailError("");
+        }
+    }
+
     const data = {
         email: email,
-        emailError: emailError
+        emailError: emailError,
+        handleInputEmail: handleInputEmail
     }
 
     return (
