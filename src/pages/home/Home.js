@@ -1,3 +1,7 @@
+// Styles
+import 'Home.css'
+
+// Functions
 import React from "react";
 
 function Home() {
