@@ -9,8 +9,10 @@ import {useNavigate} from "react-router-dom";
 import {UsernameContext} from "../../context/UsernameContext";
 import {PasswordContext} from "../../context/PasswordContext";
 import {PasswordCheckContext} from "../../context/PasswordCheckContext";
+import {EmailContext} from "../../context/EmailContext";
 
 function SignUp() {
+    const {email, emailError, handleInputEmail} = useContext(EmailContext);
     const {username, usernameError, handleInputUsername} = useContext(UsernameContext);
     const {password, passwordError, handleInputPassword} = useContext(PasswordContext);
     const {passwordCheck, passwordCheckError, handleInputPasswordCheck} = useContext(PasswordCheckContext);
@@ -29,11 +31,11 @@ function SignUp() {
                                 name="reg-email"
                                 id="reg-email-field"
                                 placeholder="jouw@email.com"
-                                // value={email}
-                                // onChange={handleInputEmail}
+                                value={email}
+                                onChange={handleInputEmail}
                             />
                         </label>
-                        <p>hier komt de emailError</p>
+                        <p>{emailError}</p>
                         <label htmlFor="reg-username-field">
                             Gebruikersnaam
                             <input
