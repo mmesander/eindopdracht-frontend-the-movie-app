@@ -3,9 +3,10 @@
     flex-direction: column;
     flex-grow: 1;
     flex-shrink: 0;
-    width: 175px;
+    width: 160px;
     height: 350px;
     max-width: 175px;
     max-height: 350px;
     background-color: white;
+    margin: 10px;
 }

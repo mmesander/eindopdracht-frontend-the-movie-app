@@ -13,6 +13,15 @@ function Home() {
             <div className="home-outer-container">
                 <div className="home-inner-container">
                     <MovieCard/>
+                    <MovieCard/>
+                    <MovieCard/>
+                    <MovieCard/>
+                    <MovieCard/>
+                    <MovieCard/>
+                    <MovieCard/>
+                    <MovieCard/>
+                    <MovieCard/>
+                    <MovieCard/>
                 </div>
             </div>
         </>
