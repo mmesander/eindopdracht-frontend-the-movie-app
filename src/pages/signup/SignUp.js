@@ -70,7 +70,7 @@ function SignUp() {
 
                         <button
                             type="button"
-                            // onClick={register}
+                            onClick={() => {navigate("/login")}}
                         >
                             Registreren
                         </button>
