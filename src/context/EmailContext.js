@@ -10,7 +10,9 @@ function EmailContextProvider({children}) {
         const input = e.target.value;
         setEmail(input);
 
-        if (input.includes('@') === false) {
+        // const lastIndex = input.substring(input.length - 1)
+
+        if (input.includes('@') === false || input.includes(',') || ((input.substring(input.length -1 )) === ".")) {
             setEmailError("Voer een geldig emailadres in");
         } else {
             setEmailError("");
