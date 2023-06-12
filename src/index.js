@@ -13,17 +13,20 @@ import App from './App';
 import AuthContextProvider from "./context/AuthContext";
 import UsernameContextProvider from "./context/UsernameContext";
 import PasswordContextProvider from "./context/PasswordContext";
+import PasswordCheckContextProvider from "./context/PasswordCheckContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <Router>
             <PasswordContextProvider>
-                <UsernameContextProvider>
-                    <AuthContextProvider>
-                        <App/>
-                    </AuthContextProvider>
-                </UsernameContextProvider>
+                <PasswordCheckContextProvider>
+                    <UsernameContextProvider>
+                        <AuthContextProvider>
+                            <App/>
+                        </AuthContextProvider>
+                    </UsernameContextProvider>
+                </PasswordCheckContextProvider>
             </PasswordContextProvider>
         </Router>
     </React.StrictMode>
