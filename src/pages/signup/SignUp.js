@@ -3,6 +3,7 @@ import './SignUp.css'
 
 // Functions
 import React, {useContext} from "react";
+import {useNavigate} from "react-router-dom";
 
 // Context
 import {UsernameContext} from "../../context/UsernameContext";
@@ -11,6 +12,7 @@ import {PasswordContext} from "../../context/PasswordContext";
 function SignUp() {
     const {username, usernameError, handleInputUsername} = useContext(UsernameContext);
     const {password, passwordError, handleInputPassword} = useContext(PasswordContext);
+    const navigate = useNavigate();
 
     return (
         <>
