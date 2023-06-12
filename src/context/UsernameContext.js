@@ -30,5 +30,5 @@ function UsernameContextProvider({children}) {
     )
 }
 
-export default UsernameContextProvider
+export default UsernameContextProvider;
 
