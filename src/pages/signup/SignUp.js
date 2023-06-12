@@ -3,7 +3,7 @@ import './SignUp.css'
 
 // Functions
 import React, {useContext} from "react";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 // Context
 import {UsernameContext} from "../../context/UsernameContext";
@@ -81,6 +81,7 @@ function SignUp() {
                             Registreren
                         </button>
                     </form>
+                    <h3>Terug naar de <Link to="/login">login</Link> pagina</h3>
                 </div>
             </div>
         </>
