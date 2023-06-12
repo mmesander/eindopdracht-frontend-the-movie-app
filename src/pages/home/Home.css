@@ -1,0 +1,18 @@
+.home-outer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-inner-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 1000px;
+    justify-content: center;
+    height: 800px;
+    width: 1000px;
+    background-color: green;
+    margin: 30px;
+    flex-wrap: wrap;
+
+}
