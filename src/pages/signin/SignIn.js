@@ -48,6 +48,7 @@ function SignIn() {
                         <button
                             type="button"
                             onClick={login}
+                            disabled={username.length < 0 || password.length < 8}
                         >
                             Inloggen
                         </button>
