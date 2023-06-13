@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import {AuthContext} from "../../context/AuthContext";
 import {UsernameContext} from "../../context/UsernameContext";
 import {PasswordContext} from "../../context/PasswordContext";
+import InputElement from "../../components/inputelement/InputElement";
 
 function SignIn() {
     const {login} = useContext(AuthContext);
@@ -26,30 +27,24 @@ function SignIn() {
                 <div className="signin-inner-container">
                     <h1>Inloggen</h1>
                     <form id="signin-form" onSubmit={handleSubmit}>
-                        <label htmlFor="username-field">
-                            Gebruikersnaam
-                            <input
-                                type="text"
-                                name="username"
-                                id="username-field"
-                                placeholder="Gebruikersnaam"
-                                value={username}
-                                onChange={handleInputUsername}
-                            />
-                        </label>
-                        <p>{usernameError}</p>
-                        <label htmlFor="password-field">
-                            Wachtwoord
-                            <input
-                                type="password"
-                                name="password"
-                                id="password-field"
-                                placeholder="Wachtwoord"
-                                value={password}
-                                onChange={handleInputPassword}
-                            />
-                        </label>
-                        <p>{passwordError}</p>
+                        <InputElement
+                            type="text"
+                            name="username"
+                            id="username-field"
+                            placeholder="Gebruikersnaam"
+                            value={username}
+                            onChange={handleInputUsername}
+                            errors={usernameError}
+                        />
+                        <InputElement
+                            type="password"
+                            name="password"
+                            id="password-field"
+                            placeholder="Wachtwoord"
+                            value={password}
+                            onChange={handleInputPassword}
+                            errors={passwordError}
+                        />
                         <button
                             type="submit"
                             disabled={username.length < 0 || password.length < 8}
