@@ -2,7 +2,7 @@
 import './SignUp.css'
 
 // Functions
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 
@@ -14,7 +14,6 @@ import {UsernameContext} from "../../context/UsernameContext";
 import {PasswordContext} from "../../context/PasswordContext";
 import {PasswordCheckContext} from "../../context/PasswordCheckContext";
 import {EmailContext} from "../../context/EmailContext";
-import {set} from "react-hook-form";
 
 function SignUp() {
     const {email, emailError, handleInputEmail} = useContext(EmailContext);
@@ -30,6 +29,7 @@ function SignUp() {
     async function handleRegister(e) {
         e.preventDefault();
         setLoading(true);
+        setErrorMessage("");
         try {
             const response = await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signup', {
                 username: username,
@@ -38,9 +38,8 @@ function SignUp() {
                 role: ["user"]
             });
 
-            if response.data {
+            if (response.data) {
                 setError(false);
-                setErrorMessage("");
             }
 
             if (response.data.message === "User registered successfully!") {
@@ -48,12 +47,13 @@ function SignUp() {
             }
         } catch (e) {
             console.error(e.response.data)
+            setError(true);
             if (e.response.data.message.includes("email")) {
-                setRegError("Registratie mislukt! Het emailadres is al in gebruik!")
+                setErrorMessage("Registratie mislukt! Het emailadres is al in gebruik!")
             } else if (e.response.data.message.includes("username")){
-                setRegError("Registratie mislukt! De gebruikersnaam is al in gebruik!")
+                setErrorMessage("Registratie mislukt! De gebruikersnaam is al in gebruik!")
             } else {
-                setRegError("Registratie mislukt!")
+                setErrorMessage("Registratie mislukt!")
             }
         }
         setLoading(false);
@@ -105,14 +105,13 @@ function SignUp() {
                             onChange={handleInputPasswordCheck}
                             errors={passwordCheckError}
                         />
-                        {error && <p>{errorMessage}</p>
+                        {loading ? <p className="loading">Aan het laden.. een moment geduld alstublieft</p> : <p>{errorMessage}</p>}
                         <button
                             type="submit"
                             disabled={username.length < 0 || username.length < 6|| password.length < 6 || password !== passwordCheck}
                         >
                             Registreren
                         </button>
-                        {loading && <p>Aan het laden.. een moment gedult alstublieft</p>}
                     </form>
                     <h3>Terug naar de <Link to="/login">login</Link> pagina</h3>
                 </div>
