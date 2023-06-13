@@ -13,6 +13,7 @@ import {UsernameContext} from "../../context/UsernameContext";
 import {PasswordContext} from "../../context/PasswordContext";
 import {PasswordCheckContext} from "../../context/PasswordCheckContext";
 import {EmailContext} from "../../context/EmailContext";
+import InputElement from "../../components/inputelement/InputElement";
 // import axios from "axios";
 
 function SignUp() {
@@ -41,18 +42,16 @@ function SignUp() {
                 <div className="signup-inner-container">
                     <h1>Registreren</h1>
                     <form id="signup-form" onSubmit={handleRegister}>
-                        <label htmlFor="reg-email-field">
-                            Email
-                            <input
-                                type="email"
-                                name="email"
-                                id="reg-email-field"
-                                placeholder="jouw@email.com"
-                                value={email}
-                                onChange={handleInputEmail}
-                            />
-                        </label>
-                        <p>{emailError}</p>
+                        <InputElement
+                            type="email"
+                            name="email"
+                            id="reg-email-field"
+                            label="Email"
+                            placeholder="jouw@email.com"
+                            value={email}
+                            onChange={handleInputEmail}
+                            errors={emailError}
+                        />
                         <label htmlFor="reg-username-field">
                             Gebruikersnaam
                             <input
