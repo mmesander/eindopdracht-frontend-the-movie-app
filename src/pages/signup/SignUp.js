@@ -56,6 +56,7 @@ function SignUp() {
                             type="text"
                             name="username"
                             id="reg-username-field"
+                            label="Gebruikersnaam"
                             placeholder="Gebruikersnaam"
                             value={username}
                             onChange={handleInputUsername}
@@ -65,6 +66,7 @@ function SignUp() {
                             type="password"
                             name="password"
                             id="reg-password-field"
+                            label="Wachtwoord"
                             placeholder="Wachtwoord"
                             value={password}
                             onChange={handleInputPassword}
@@ -74,6 +76,7 @@ function SignUp() {
                             type="password"
                             name="password-check"
                             id="password-check-field"
+                            label="Wachtwoord controle"
                             placeholder="Wachtwoord controle"
                             value={passwordCheck}
                             onChange={handleInputPassword}

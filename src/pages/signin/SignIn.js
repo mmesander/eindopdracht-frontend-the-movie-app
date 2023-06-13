@@ -31,6 +31,7 @@ function SignIn() {
                             type="text"
                             name="username"
                             id="username-field"
+                            label="Gebruikersnaam"
                             placeholder="Gebruikersnaam"
                             value={username}
                             onChange={handleInputUsername}
@@ -40,6 +41,7 @@ function SignIn() {
                             type="password"
                             name="password"
                             id="password-field"
+                            label="Wachtwoord"
                             placeholder="Wachtwoord"
                             value={password}
                             onChange={handleInputPassword}
