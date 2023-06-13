@@ -20,7 +20,7 @@ function SignUp() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        navigate("login")
+        navigate("/login")
     }
 
     return (
