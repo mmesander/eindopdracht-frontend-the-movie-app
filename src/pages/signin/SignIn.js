@@ -15,7 +15,7 @@ function SignIn() {
     const {username, usernameError, handleInputUsername} = useContext(UsernameContext);
     const {password, passwordError, handleInputPassword} = useContext(PasswordContext);
 
-    function handleSubmit(e){
+    function handleSubmit(e) {
         e.preventDefault();
         login();
     }

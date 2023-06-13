@@ -18,12 +18,17 @@ function SignUp() {
     const {passwordCheck, passwordCheckError, handleInputPasswordCheck} = useContext(PasswordCheckContext);
     const navigate = useNavigate();
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        navigate("login")
+    }
+
     return (
         <>
             <div className="signup-outer-container">
                 <div className="signup-inner-container">
                     <h1>Registreren</h1>
-                    <form id="signup-form">
+                    <form id="signup-form" onSubmit={handleSubmit}>
                         <label htmlFor="reg-email-field">
                             Email
                             <input
@@ -74,8 +79,7 @@ function SignUp() {
                         <p>{passwordCheckError}</p>
 
                         <button
-                            type="button"
-                            onClick={() => navigate("/login")}
+                            type="submit"
                             disabled={username.length < 0 || password.length < 8 || password !== passwordCheck}
                         >
                             Registreren
