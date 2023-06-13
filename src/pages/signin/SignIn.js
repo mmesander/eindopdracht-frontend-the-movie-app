@@ -10,15 +10,25 @@ import {AuthContext} from "../../context/AuthContext";
 import {UsernameContext} from "../../context/UsernameContext";
 import {PasswordContext} from "../../context/PasswordContext";
 import InputElement from "../../components/inputelement/InputElement";
+import axios from "axios";
 
 function SignIn() {
     const {login} = useContext(AuthContext);
     const {username, usernameError, handleInputUsername} = useContext(UsernameContext);
     const {password, passwordError, handleInputPassword} = useContext(PasswordContext);
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        login();
+        try {
+            const response = await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signin', {
+                username: username,
+                password: password
+            });
+            console.log(response)
+            login();
+        } catch (e) {
+            console.error("Onjuiste email en wachtwoord combinatie");
+        }
     }
 
     return (
