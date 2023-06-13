@@ -61,18 +61,15 @@ function SignUp() {
                             onChange={handleInputUsername}
                             errors={usernameError}
                         />
-                        <label htmlFor="reg-password-field">
-                            Wachtwoord
-                            <input
-                                type="password"
-                                name="password"
-                                id="reg-password-field"
-                                placeholder="Wachtwoord"
-                                value={password}
-                                onChange={handleInputPassword}
-                            />
-                        </label>
-                        <p>{passwordError}</p>
+                        <InputElement
+                            type="password"
+                            name="password"
+                            id="reg-password-field"
+                            placeholder="Wachtwoord"
+                            value={password}
+                            onChange={handleInputPassword}
+                            errors={passwordError}
+                        />
                         <label htmlFor="reg-password-check-field">
                             Wachtwoord Controle
                             <input
