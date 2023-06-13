@@ -52,18 +52,15 @@ function SignUp() {
                             onChange={handleInputEmail}
                             errors={emailError}
                         />
-                        <label htmlFor="reg-username-field">
-                            Gebruikersnaam
-                            <input
-                                type="text"
-                                name="username"
-                                id="reg-username-field"
-                                placeholder="Gebruikersnaam"
-                                value={username}
-                                onChange={handleInputUsername}
-                            />
-                        </label>
-                        <p>{usernameError}</p>
+                        <InputElement
+                            type="text"
+                            name="username"
+                            id="reg-username-field"
+                            placeholder="Gebruikersnaam"
+                            value={username}
+                            onChange={handleInputUsername}
+                            errors={usernameError}
+                        />
                         <label htmlFor="reg-password-field">
                             Wachtwoord
                             <input
