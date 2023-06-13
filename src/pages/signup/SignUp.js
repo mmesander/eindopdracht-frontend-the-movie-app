@@ -43,6 +43,7 @@ function SignUp() {
             }
 
             if (response.data.message === "User registered successfully!") {
+                console.log("Registratie gelukt!")
                 navigate("/login")
             }
         } catch (e) {
