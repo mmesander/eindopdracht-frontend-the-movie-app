@@ -99,7 +99,7 @@ function SignUp() {
                         <p>{regError}</p>
                         <button
                             type="submit"
-                            disabled={username.length < 0 || password.length < 8 || password !== passwordCheck}
+                            disabled={username.length < 0 || username.length < 6|| password.length < 6 || password !== passwordCheck}
                         >
                             Registreren
                         </button>
