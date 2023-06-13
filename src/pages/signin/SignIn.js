@@ -24,8 +24,7 @@ function SignIn() {
                 username: username,
                 password: password
             });
-            console.log(response)
-            login();
+            login(response.data.accessToken);
         } catch (e) {
             console.error("Onjuiste email en wachtwoord combinatie");
         }
