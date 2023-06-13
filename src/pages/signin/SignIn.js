@@ -2,7 +2,7 @@
 import './SignIn.css'
 
 // Functions
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import { Link } from 'react-router-dom';
 
 // Context
@@ -16,6 +16,8 @@ function SignIn() {
     const {login} = useContext(AuthContext);
     const {username, usernameError, handleInputUsername} = useContext(UsernameContext);
     const {password, passwordError, handleInputPassword} = useContext(PasswordContext);
+
+    const [logError, setLogError] = useState();
 
     async function handleSubmit(e) {
         e.preventDefault();

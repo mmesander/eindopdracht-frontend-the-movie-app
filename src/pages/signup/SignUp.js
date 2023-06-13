@@ -14,18 +14,22 @@ import {UsernameContext} from "../../context/UsernameContext";
 import {PasswordContext} from "../../context/PasswordContext";
 import {PasswordCheckContext} from "../../context/PasswordCheckContext";
 import {EmailContext} from "../../context/EmailContext";
+import {set} from "react-hook-form";
 
 function SignUp() {
-    const navigate = useNavigate();
-    const [regError, setRegError] = useState("");
-
     const {email, emailError, handleInputEmail} = useContext(EmailContext);
     const {username, usernameError, handleInputUsername} = useContext(UsernameContext);
     const {password, passwordError, handleInputPassword} = useContext(PasswordContext);
     const {passwordCheck, passwordCheckError, handleInputPasswordCheck} = useContext(PasswordCheckContext);
 
+    const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+
     async function handleRegister(e) {
         e.preventDefault();
+        setLoading(true);
         try {
             const response = await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signup', {
                 username: username,
@@ -33,8 +37,12 @@ function SignUp() {
                 password: password,
                 role: ["user"]
             });
-            console.log(response.AxiosError)
-            setRegError("");
+
+            if response.data {
+                setError(false);
+                setErrorMessage("");
+            }
+
             if (response.data.message === "User registered successfully!") {
                 navigate("/login")
             }
@@ -48,6 +56,7 @@ function SignUp() {
                 setRegError("Registratie mislukt!")
             }
         }
+        setLoading(false);
     }
 
     return (
@@ -96,13 +105,14 @@ function SignUp() {
                             onChange={handleInputPasswordCheck}
                             errors={passwordCheckError}
                         />
-                        <p>{regError}</p>
+                        {error && <p>{errorMessage}</p>
                         <button
                             type="submit"
                             disabled={username.length < 0 || username.length < 6|| password.length < 6 || password !== passwordCheck}
                         >
                             Registreren
                         </button>
+                        {loading && <p>Aan het laden.. een moment gedult alstublieft</p>}
                     </form>
                     <h3>Terug naar de <Link to="/login">login</Link> pagina</h3>
                 </div>
