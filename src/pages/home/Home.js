@@ -11,7 +11,7 @@ import MovieCard from "../../components/moviecard/MovieCard";
 
 function Home() {
     const moviesEndpoint = 'https://api.themoviedb.org/3/trending/movie/day';
-    // const seriesEndpoint = 'https://api.themoviedb.org/3/trending/tv/week'
+    const seriesEndpoint = 'https://api.themoviedb.org/3/trending/tv/day'
 
     const options = {
         method: 'GET',
@@ -25,6 +25,7 @@ function Home() {
     const [error, setError] = useState(false);
 
     const [movies, setMovies] = useState({});
+    const [series, setSeries] = useState({});
 
     useEffect(() => {
         async function fetchMovies() {
@@ -34,7 +35,22 @@ function Home() {
                 if (moviesResponse.data) {
                     setError(false);
                 }
-                setMovies(moviesResponse.data);
+                setMovies(moviesResponse.data.results);
+            } catch (e) {
+                setError(true);
+                console.error(e);
+            }
+            setLoading(false);
+        }
+
+        async function fetchSeries() {
+            setLoading(true);
+            try {
+                const seriesResponse = await axios.get(`${seriesEndpoint}`, options);
+                if (seriesResponse.data) {
+                    setError(false);
+                }
+                setSeries(seriesResponse.data.results);
             } catch (e) {
                 setError(true);
                 console.error(e);
@@ -43,15 +59,10 @@ function Home() {
         }
 
         void fetchMovies();
+        void fetchSeries();
         console.log(movies);
-        console.log(movies.results);
-        console.log(movies.results);
+        console.log(series)
 
-        // Oke zometeen even verder, voor nu wat aantekeningen:
-        // - Achterhalen waarom bij het mounten van de pagina hij ze neit direct vindt
-        // - De informatie die ik binnengehaald heb verwerken in de movieCard
-        // - Door de array mappen, max 5 resultaten binnen halen
-        // - Titel, foto en rating meegeven als key en die verwerken in de objects!
     }, []);
 
     return (
@@ -63,19 +74,15 @@ function Home() {
                 </div>
                 <h1 className="movies-title">Trending Movies</h1>
                 <div className="home-inner-container">
-                    <MovieCard/>
-                    <MovieCard/>
-                    <MovieCard/>
-                    <MovieCard/>
-                    <MovieCard/>
+                    {movies.slice(0, 5).map((movie) => {
+                        return <MovieCard key={movie.id} title={movie.title} image={movie.poster_path} rating={movie.vote_average}/>
+                    })}
                 </div>
                 <h1 className="series-title">Trending Series</h1>
                 <div className="home-inner-container">
-                    <MovieCard/>
-                    <MovieCard/>
-                    <MovieCard/>
-                    <MovieCard/>
-                    <MovieCard/>
+                    {series.slice(0, 5).map((tv) => {
+                        return <MovieCard key={tv.id} title={tv.name} image={tv.poster_path} rating={tv.vote_average}/>
+                    })}
                 </div>
             </div>
         </>
