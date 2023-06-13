@@ -58,7 +58,7 @@ function SignIn() {
                         />
                         <button
                             type="submit"
-                            disabled={username.length < 0 || password.length < 8}
+                            disabled={username.length < 6 || password.length < 6}
                         >
                             Inloggen
                         </button>
