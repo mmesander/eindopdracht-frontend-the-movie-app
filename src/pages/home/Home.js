@@ -2,13 +2,20 @@
 import './Home.css'
 
 // Functions
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 
 // Components
 import MovieCard from "../../components/moviecard/MovieCard";
 
 function Home() {
-    useEffect(() => {}, [])
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+
+    useEffect(() => {
+        async function fetchMovies() {
+
+        }
+    }, [])
 
     return (
         <>
