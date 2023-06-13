@@ -18,7 +18,7 @@ function SignUp() {
     const {passwordCheck, passwordCheckError, handleInputPasswordCheck} = useContext(PasswordCheckContext);
     const navigate = useNavigate();
 
-    function handleSubmit(e) {
+    async function handleRegister(e) {
         e.preventDefault();
         navigate("/login")
     }
@@ -28,7 +28,7 @@ function SignUp() {
             <div className="signup-outer-container">
                 <div className="signup-inner-container">
                     <h1>Registreren</h1>
-                    <form id="signup-form" onSubmit={handleSubmit}>
+                    <form id="signup-form" onSubmit={handleRegister}>
                         <label htmlFor="reg-email-field">
                             Email
                             <input
