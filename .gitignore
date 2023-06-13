@@ -1,6 +1,9 @@
 # personal
 /.idea
 
+# API
+.env
+
 # dependencies
 /node_modules
 /.pnp
