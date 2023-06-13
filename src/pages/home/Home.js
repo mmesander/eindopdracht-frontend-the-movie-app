@@ -17,7 +17,7 @@ function Home() {
         method: 'GET',
         headers: {
             accept: 'application/json',
-            Authorization: `Bearer `
+            Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
         }
     };
 
@@ -44,6 +44,14 @@ function Home() {
 
         void fetchMovies();
         console.log(movies);
+        console.log(movies.results);
+        console.log(movies.results);
+
+        // Oke zometeen even verder, voor nu wat aantekeningen:
+        // - Achterhalen waarom bij het mounten van de pagina hij ze neit direct vindt
+        // - De informatie die ik binnengehaald heb verwerken in de movieCard
+        // - Door de array mappen, max 5 resultaten binnen halen
+        // - Titel, foto en rating meegeven als key en die verwerken in de objects!
     }, []);
 
     return (
