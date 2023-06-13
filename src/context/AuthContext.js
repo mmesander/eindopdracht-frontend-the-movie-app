@@ -1,5 +1,6 @@
 import React, {createContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
 export const AuthContext = createContext(null);
 
@@ -16,13 +17,15 @@ function AuthContextProvider({children}) {
         }
     }, []);
 
-    function login() {
+    function login(jwt_token) {
+        const decodedToken = jwt_decode(jwt_token);
+        localStorage.setItem('token', jwt_token)
         setAuth({
             ...auth,
             isAuth: true,
             user: {
-                email: 'mark@novi.nl',
-                id: '1'
+                email: decodedToken.email,
+                id: decodedToken.sub
             }
         });
         console.log("Gebruiker is ingelogd")
@@ -30,6 +33,7 @@ function AuthContextProvider({children}) {
     }
 
     function logout() {
+        localStorage.removeItem('token');
         setAuth({
             ...auth,
             isAuth: false,
