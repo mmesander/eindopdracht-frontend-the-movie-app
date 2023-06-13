@@ -32,11 +32,13 @@ function SignUp() {
                 password: password,
                 role: ["user"]
             });
+            console.log(response)
             if (response.data.message === "User registered successfully!") {
                 navigate("/login")
             }
         } catch (e) {
             console.error(e)
+            console.error("Registratie mislukt")
         }
     }
 
