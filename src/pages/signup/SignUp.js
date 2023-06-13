@@ -10,6 +10,7 @@ import {UsernameContext} from "../../context/UsernameContext";
 import {PasswordContext} from "../../context/PasswordContext";
 import {PasswordCheckContext} from "../../context/PasswordCheckContext";
 import {EmailContext} from "../../context/EmailContext";
+import axios from "axios";
 
 function SignUp() {
     const {email, emailError, handleInputEmail} = useContext(EmailContext);
@@ -18,8 +19,14 @@ function SignUp() {
     const {passwordCheck, passwordCheckError, handleInputPasswordCheck} = useContext(PasswordCheckContext);
     const navigate = useNavigate();
 
-    function handleSubmit(e) {
+    async function handleRegister(e) {
         e.preventDefault();
+        try {
+            const response = await axios.get('https://frontend-educational-backend.herokuapp.com/api/test/all');
+
+        } catch (e) {
+            console.error(e)
+        }
         navigate("/login")
     }
 
@@ -28,7 +35,7 @@ function SignUp() {
             <div className="signup-outer-container">
                 <div className="signup-inner-container">
                     <h1>Registreren</h1>
-                    <form id="signup-form" onSubmit={handleSubmit}>
+                    <form id="signup-form" onSubmit={handleRegister}>
                         <label htmlFor="reg-email-field">
                             Email
                             <input
