@@ -37,31 +37,14 @@ function SignIn() {
                             errors={usernameError}
                         />
                         <InputElement
+                            type="password"
+                            name="password"
+                            id="password-field"
+                            placeholder="Wachtwoord"
+                            value={password}
+                            onChange={handleInputPassword}
+                            errors={passwordError}
                         />
-                        <label htmlFor="username-field">
-                            Gebruikersnaam
-                            <input
-                                type="text"
-                                name="username"
-                                id="username-field"
-                                placeholder="Gebruikersnaam"
-                                value={username}
-                                onChange={handleInputUsername}
-                            />
-                        </label>
-                        <p>{usernameError}</p>
-                        <label htmlFor="password-field">
-                            Wachtwoord
-                            <input
-                                type="password"
-                                name="password"
-                                id="password-field"
-                                placeholder="Wachtwoord"
-                                value={password}
-                                onChange={handleInputPassword}
-                            />
-                        </label>
-                        <p>{passwordError}</p>
                         <button
                             type="submit"
                             disabled={username.length < 0 || password.length < 8}
