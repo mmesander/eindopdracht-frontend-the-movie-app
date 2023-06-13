@@ -17,11 +17,11 @@ function SignIn() {
     const {username, usernameError, handleInputUsername} = useContext(UsernameContext);
     const {password, passwordError, handleInputPassword} = useContext(PasswordContext);
 
-    const [loading, setLoading] = useState();
-    const [error, setError] = useState();
-    const [errorMessage, setErrorMessage] = useState();
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
-    async function handleSubmit(e) {
+    async function handleLogin(e) {
         e.preventDefault();
         setLoading(true);
         setErrorMessage("");
@@ -31,9 +31,19 @@ function SignIn() {
                 password: password
             });
             login(response.data.accessToken);
+
+            if(response.data.accessToken) {
+                setError(false);
+            }
+
+
         } catch (e) {
-            console.error("Onjuiste email en wachtwoord combinatie");
+            setError(true);
+            console.log(error);
+            console.error(e);
+            setErrorMessage("Onjuiste email en wachtwoord combinatie")
         }
+        setLoading(false);
     }
 
     return (
@@ -41,7 +51,7 @@ function SignIn() {
             <div className="signin-outer-container">
                 <div className="signin-inner-container">
                     <h1>Inloggen</h1>
-                    <form id="signin-form" onSubmit={handleSubmit}>
+                    <form id="signin-form" onSubmit={handleLogin}>
                         <InputElement
                             type="text"
                             name="username"
@@ -62,6 +72,7 @@ function SignIn() {
                             onChange={handleInputPassword}
                             errors={passwordError}
                         />
+                        {loading ? <p>Aan het laden.. een moment geduld alstublieft</p> : <p>{errorMessage}</p>}
                         <button
                             type="submit"
                             disabled={username.length < 6 || password.length < 6}

@@ -2,7 +2,7 @@
 import './SignUp.css'
 
 // Functions
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 
@@ -49,6 +49,7 @@ function SignUp() {
         } catch (e) {
             console.error(e.response.data)
             setError(true);
+            console.log(error);
             if (e.response.data.message.includes("email")) {
                 setErrorMessage("Registratie mislukt! Het emailadres is al in gebruik!")
             } else if (e.response.data.message.includes("username")){
@@ -106,7 +107,7 @@ function SignUp() {
                             onChange={handleInputPasswordCheck}
                             errors={passwordCheckError}
                         />
-                        {loading ? <p className="loading">Aan het laden.. een moment geduld alstublieft</p> : <p>{errorMessage}</p>}
+                        {loading ? <p>Aan het laden.. een moment geduld alstublieft</p> : <p>{errorMessage}</p>}
                         <button
                             type="submit"
                             disabled={username.length < 0 || username.length < 6|| password.length < 6 || password !== passwordCheck}
