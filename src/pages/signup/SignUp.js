@@ -2,38 +2,63 @@
 import './SignUp.css'
 
 // Functions
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
+import axios from "axios";
 
 // Components
-import inputElement from "../../components/inputelement/InputElement";
+import InputElement from "../../components/inputelement/InputElement";
 
 // Context
 import {UsernameContext} from "../../context/UsernameContext";
 import {PasswordContext} from "../../context/PasswordContext";
 import {PasswordCheckContext} from "../../context/PasswordCheckContext";
 import {EmailContext} from "../../context/EmailContext";
-import InputElement from "../../components/inputelement/InputElement";
-// import axios from "axios";
 
 function SignUp() {
-    const navigate = useNavigate();
-
     const {email, emailError, handleInputEmail} = useContext(EmailContext);
     const {username, usernameError, handleInputUsername} = useContext(UsernameContext);
     const {password, passwordError, handleInputPassword} = useContext(PasswordContext);
     const {passwordCheck, passwordCheckError, handleInputPasswordCheck} = useContext(PasswordCheckContext);
 
+    const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+
     async function handleRegister(e) {
         e.preventDefault();
-        // try {
-        //     const response = await axios.get('https://frontend-educational-backend.herokuapp.com/api/test/all');
-        //
-        // } catch (e) {
-        //     console.error(e)
-        // }
-        console.log(e.data)
-        navigate("/login")
+        setLoading(true);
+        setErrorMessage("");
+        try {
+            const response = await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signup', {
+                username: username,
+                email: email,
+                password: password,
+                role: ["user"]
+            });
+
+            if (response.data) {
+                setError(false);
+            }
+
+            if (response.data.message === "User registered successfully!") {
+                console.log("Registratie gelukt!")
+                navigate("/login")
+            }
+        } catch (e) {
+            console.error(e.response.data)
+            setError(true);
+            console.log(error);
+            if (e.response.data.message.includes("email")) {
+                setErrorMessage("Registratie mislukt! Het emailadres is al in gebruik!")
+            } else if (e.response.data.message.includes("username")){
+                setErrorMessage("Registratie mislukt! De gebruikersnaam is al in gebruik!")
+            } else {
+                setErrorMessage("Registratie mislukt!")
+            }
+        }
+        setLoading(false);
     }
 
     return (
@@ -79,12 +104,13 @@ function SignUp() {
                             label="Wachtwoord controle"
                             placeholder="Wachtwoord controle"
                             value={passwordCheck}
-                            onChange={handleInputPassword}
+                            onChange={handleInputPasswordCheck}
                             errors={passwordCheckError}
                         />
+                        {loading ? <p>Aan het laden.. een moment geduld alstublieft</p> : <p>{errorMessage}</p>}
                         <button
                             type="submit"
-                            disabled={username.length < 0 || password.length < 8 || password !== passwordCheck}
+                            disabled={username.length < 0 || username.length < 6|| password.length < 6 || password !== passwordCheck}
                         >
                             Registreren
                         </button>

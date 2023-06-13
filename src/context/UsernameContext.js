@@ -12,8 +12,10 @@ function UsernameContextProvider({children}) {
 
         if (input.includes('@')) {
             setUsernameError("Gebruikersnaam mag geen @ bevatten");
-        } else {
+        } else if (input === "" || input.length > 5) {
             setUsernameError("");
+        } else {
+            setUsernameError("Gebruik minimaal 6 tekens");
         }
     }
 

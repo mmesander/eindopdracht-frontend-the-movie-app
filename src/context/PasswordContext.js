@@ -10,10 +10,10 @@ function PasswordContextProvider({children}) {
         const input = e.target.value;
         setPassword(input);
 
-        if (input === "" || input.length > 7) {
+        if (input === "" || input.length > 5) {
             setPasswordError("");
         } else {
-            setPasswordError("Gebruik minimaal 8 tekens");
+            setPasswordError("Gebruik minimaal 6 tekens");
         }
     }
 
