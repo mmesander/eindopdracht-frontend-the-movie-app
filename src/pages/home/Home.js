@@ -63,13 +63,6 @@ function Home() {
         console.log(movies);
         console.log(series)
 
-
-
-        // Oke zometeen even verder, voor nu wat aantekeningen:
-        // - Achterhalen waarom bij het mounten van de pagina hij ze neit direct vindt
-        // - De informatie die ik binnengehaald heb verwerken in de movieCard
-        // - Door de array mappen, max 5 resultaten binnen halen
-        // - Titel, foto en rating meegeven als key en die verwerken in de objects!
     }, []);
 
     return (
