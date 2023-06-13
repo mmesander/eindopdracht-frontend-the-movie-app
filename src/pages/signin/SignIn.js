@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import {AuthContext} from "../../context/AuthContext";
 import {UsernameContext} from "../../context/UsernameContext";
 import {PasswordContext} from "../../context/PasswordContext";
+import InputElement from "../../components/inputelement/InputElement";
 
 function SignIn() {
     const {login} = useContext(AuthContext);
@@ -26,6 +27,17 @@ function SignIn() {
                 <div className="signin-inner-container">
                     <h1>Inloggen</h1>
                     <form id="signin-form" onSubmit={handleSubmit}>
+                        <InputElement
+                            type="text"
+                            name="username"
+                            id="username-field"
+                            placeholder="Gebruikersnaam"
+                            value={username}
+                            onChange={handleInputUsername}
+                            errors={usernameError}
+                        />
+                        <InputElement
+                        />
                         <label htmlFor="username-field">
                             Gebruikersnaam
                             <input
