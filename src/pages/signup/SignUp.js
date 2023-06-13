@@ -4,17 +4,16 @@ import './SignUp.css'
 // Functions
 import React, {useContext} from "react";
 import {Link, useNavigate} from "react-router-dom";
+// import axios from "axios";
 
 // Components
-import inputElement from "../../components/inputelement/InputElement";
+import InputElement from "../../components/inputelement/InputElement";
 
 // Context
 import {UsernameContext} from "../../context/UsernameContext";
 import {PasswordContext} from "../../context/PasswordContext";
 import {PasswordCheckContext} from "../../context/PasswordCheckContext";
 import {EmailContext} from "../../context/EmailContext";
-import InputElement from "../../components/inputelement/InputElement";
-// import axios from "axios";
 
 function SignUp() {
     const navigate = useNavigate();
@@ -24,7 +23,7 @@ function SignUp() {
     const {password, passwordError, handleInputPassword} = useContext(PasswordContext);
     const {passwordCheck, passwordCheckError, handleInputPasswordCheck} = useContext(PasswordCheckContext);
 
-    async function handleRegister(e) {
+    function handleRegister(e) {
         e.preventDefault();
         // try {
         //     const response = await axios.get('https://frontend-educational-backend.herokuapp.com/api/test/all');
@@ -32,7 +31,6 @@ function SignUp() {
         // } catch (e) {
         //     console.error(e)
         // }
-        console.log(e.data)
         navigate("/login")
     }
 
@@ -79,7 +77,7 @@ function SignUp() {
                             label="Wachtwoord controle"
                             placeholder="Wachtwoord controle"
                             value={passwordCheck}
-                            onChange={handleInputPassword}
+                            onChange={handleInputPasswordCheck}
                             errors={passwordCheckError}
                         />
                         <button
