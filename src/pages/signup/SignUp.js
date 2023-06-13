@@ -22,7 +22,7 @@ function SignUp() {
     async function handleRegister(e) {
         e.preventDefault();
         try {
-            const response = await axios.get(https://frontend-educational-backend.herokuapp.com/api/test/all);
+            const response = await axios.get('https://frontend-educational-backend.herokuapp.com/api/test/all');
             console.log(response)
         } catch (e) {
             console.error(e)
