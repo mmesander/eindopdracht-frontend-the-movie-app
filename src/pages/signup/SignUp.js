@@ -4,30 +4,35 @@ import './SignUp.css'
 // Functions
 import React, {useContext} from "react";
 import {Link, useNavigate} from "react-router-dom";
+import {useForm} from "react-hook-form";
+
+// Components
+import inputElement from "../../components/inputelement/InputElement";
 
 // Context
 import {UsernameContext} from "../../context/UsernameContext";
 import {PasswordContext} from "../../context/PasswordContext";
 import {PasswordCheckContext} from "../../context/PasswordCheckContext";
 import {EmailContext} from "../../context/EmailContext";
-import axios from "axios";
+// import axios from "axios";
 
 function SignUp() {
+    const {register} = useForm();
+    const navigate = useNavigate();
+
     const {email, emailError, handleInputEmail} = useContext(EmailContext);
     const {username, usernameError, handleInputUsername} = useContext(UsernameContext);
     const {password, passwordError, handleInputPassword} = useContext(PasswordContext);
     const {passwordCheck, passwordCheckError, handleInputPasswordCheck} = useContext(PasswordCheckContext);
-    const navigate = useNavigate();
 
-    async function handleRegister(e) {
-        e.preventDefault();
+    async function handleRegister(data) {
         // try {
         //     const response = await axios.get('https://frontend-educational-backend.herokuapp.com/api/test/all');
         //
         // } catch (e) {
         //     console.error(e)
         // }
-        console.log(e.data)
+        console.log(data)
         navigate("/login")
     }
 
