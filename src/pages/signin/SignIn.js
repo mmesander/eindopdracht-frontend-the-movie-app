@@ -17,10 +17,14 @@ function SignIn() {
     const {username, usernameError, handleInputUsername} = useContext(UsernameContext);
     const {password, passwordError, handleInputPassword} = useContext(PasswordContext);
 
-    const [logError, setLogError] = useState();
+    const [loading, setLoading] = useState();
+    const [error, setError] = useState();
+    const [errorMessage, setErrorMessage] = useState();
 
     async function handleSubmit(e) {
         e.preventDefault();
+        setLoading(true);
+        setErrorMessage("");
         try {
             const response = await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signin', {
                 username: username,
