@@ -15,12 +15,17 @@ function SignIn() {
     const {username, usernameError, handleInputUsername} = useContext(UsernameContext);
     const {password, passwordError, handleInputPassword} = useContext(PasswordContext);
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        login();
+    }
+
     return (
         <>
             <div className="signin-outer-container">
                 <div className="signin-inner-container">
                     <h1>Inloggen</h1>
-                    <form id="signin-form">
+                    <form id="signin-form" onSubmit={handleSubmit}>
                         <label htmlFor="username-field">
                             Gebruikersnaam
                             <input
@@ -46,8 +51,7 @@ function SignIn() {
                         </label>
                         <p>{passwordError}</p>
                         <button
-                            type="button"
-                            onClick={login}
+                            type="submit"
                             disabled={username.length < 0 || password.length < 8}
                         >
                             Inloggen
