@@ -6,12 +6,15 @@ import React, {useContext} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
 
+// Components
+import inputElement from "../../components/inputelement/InputElement";
+
 // Context
 import {UsernameContext} from "../../context/UsernameContext";
 import {PasswordContext} from "../../context/PasswordContext";
 import {PasswordCheckContext} from "../../context/PasswordCheckContext";
 import {EmailContext} from "../../context/EmailContext";
-import axios from "axios";
+// import axios from "axios";
 
 function SignUp() {
     const {register} = useForm();
