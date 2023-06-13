@@ -21,12 +21,13 @@ function SignUp() {
 
     async function handleRegister(e) {
         e.preventDefault();
-        try {
-            const response = await axios.get('https://frontend-educational-backend.herokuapp.com/api/test/all');
-
-        } catch (e) {
-            console.error(e)
-        }
+        // try {
+        //     const response = await axios.get('https://frontend-educational-backend.herokuapp.com/api/test/all');
+        //
+        // } catch (e) {
+        //     console.error(e)
+        // }
+        console.log(e.data)
         navigate("/login")
     }
 
@@ -40,7 +41,7 @@ function SignUp() {
                             Email
                             <input
                                 type="email"
-                                name="reg-email"
+                                name="email"
                                 id="reg-email-field"
                                 placeholder="jouw@email.com"
                                 value={email}
@@ -52,7 +53,7 @@ function SignUp() {
                             Gebruikersnaam
                             <input
                                 type="text"
-                                name="reg-username"
+                                name="username"
                                 id="reg-username-fiel"
                                 placeholder="Gebruikersnaam"
                                 value={username}
@@ -64,7 +65,7 @@ function SignUp() {
                             Wachtwoord
                             <input
                                 type="password"
-                                name="reg-password"
+                                name="password"
                                 id="reg-password-field"
                                 placeholder="Wachtwoord"
                                 value={password}
