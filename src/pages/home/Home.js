@@ -8,12 +8,18 @@ import React, {useEffect, useState} from "react";
 import MovieCard from "../../components/moviecard/MovieCard";
 
 function Home() {
+    const moviesEndpoint = 'https://api.themoviedb.org/3/trending/movie/week';
+    const seriesEndpoint = 'https://api.themoviedb.org/3/trending/tv/week'
+
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
     useEffect(() => {
         async function fetchMovies() {
+            setLoading(true);
+            try {
 
+            }
         }
     }, [])
 
