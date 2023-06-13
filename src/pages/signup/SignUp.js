@@ -4,7 +4,7 @@ import './SignUp.css'
 // Functions
 import React, {useContext} from "react";
 import {Link, useNavigate} from "react-router-dom";
-// import axios from "axios";
+import axios from "axios";
 
 // Components
 import InputElement from "../../components/inputelement/InputElement";
@@ -23,15 +23,21 @@ function SignUp() {
     const {password, passwordError, handleInputPassword} = useContext(PasswordContext);
     const {passwordCheck, passwordCheckError, handleInputPasswordCheck} = useContext(PasswordCheckContext);
 
-    function handleRegister(e) {
+    async function handleRegister(e) {
         e.preventDefault();
-        // try {
-        //     const response = await axios.get('https://frontend-educational-backend.herokuapp.com/api/test/all');
-        //
-        // } catch (e) {
-        //     console.error(e)
-        // }
-        navigate("/login")
+        try {
+            const response = await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signup', {
+                username: username,
+                email: email,
+                password: password,
+                role: ["user"]
+            });
+            if (response.data.message === "User registered successfully!") {
+                navigate("/login")
+            }
+        } catch (e) {
+            console.error(e)
+        }
     }
 
     return (
