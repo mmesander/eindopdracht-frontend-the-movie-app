@@ -57,7 +57,7 @@ function SignUp() {
                             <input
                                 type="text"
                                 name="username"
-                                id="reg-username-fiel"
+                                id="reg-username-field"
                                 placeholder="Gebruikersnaam"
                                 value={username}
                                 onChange={handleInputUsername}

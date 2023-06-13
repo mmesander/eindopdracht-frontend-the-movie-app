@@ -1,19 +1,21 @@
 // Functions
 import React from "react";
 
-function InputElement({inputType, inputName, inputLabel, inputId, inputPlaceholder,     validationRules, register, errors}) {
+function InputElement({inputType, inputName, inputLabel, inputId, inputPlaceholder, inputValue, errors, inputChange}) {
     return (
         <>
             <label htmlFor={inputId}>
                 {inputLabel}
                 <input
                     type={inputType}
+                    name={inputName}
                     id={inputId}
                     placeholder={inputPlaceholder}
-                    {...register(inputName, validationRules)}
+                    value={inputValue}
+                    onChange={inputChange}
                 />
             </label>
-            {errors[inputName] && <p>{errors[inputName].message}</p>}
+            <p>{errors}</p>
         </>
     );
 }
