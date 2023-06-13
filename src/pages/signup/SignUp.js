@@ -23,14 +23,15 @@ function SignUp() {
     const {password, passwordError, handleInputPassword} = useContext(PasswordContext);
     const {passwordCheck, passwordCheckError, handleInputPasswordCheck} = useContext(PasswordCheckContext);
 
-    async function handleRegister(data) {
+    async function handleRegister(e) {
+        e.preventDefault();
         // try {
         //     const response = await axios.get('https://frontend-educational-backend.herokuapp.com/api/test/all');
         //
         // } catch (e) {
         //     console.error(e)
         // }
-        console.log(data)
+        console.log(e.data)
         navigate("/login")
     }
 
