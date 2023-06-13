@@ -2,7 +2,7 @@
 import './SignUp.css'
 
 // Functions
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 
@@ -17,6 +17,7 @@ import {EmailContext} from "../../context/EmailContext";
 
 function SignUp() {
     const navigate = useNavigate();
+    const [regError, setRegError] = useState("");
 
     const {email, emailError, handleInputEmail} = useContext(EmailContext);
     const {username, usernameError, handleInputUsername} = useContext(UsernameContext);
@@ -32,13 +33,20 @@ function SignUp() {
                 password: password,
                 role: ["user"]
             });
-            console.log(response)
+            console.log(response.AxiosError)
+            setRegError("");
             if (response.data.message === "User registered successfully!") {
                 navigate("/login")
             }
         } catch (e) {
-            console.error(e)
-            console.error("Registratie mislukt")
+            console.error(e.response.data)
+            if (e.response.data.message.includes("email")) {
+                setRegError("Registratie mislukt! Het emailadres is al in gebruik!")
+            } else if (e.response.data.message.includes("username")){
+                setRegError("Registratie mislukt! De gebruikersnaam is al in gebruik!")
+            } else {
+                setRegError("Registratie mislukt!")
+            }
         }
     }
 
@@ -88,6 +96,7 @@ function SignUp() {
                             onChange={handleInputPasswordCheck}
                             errors={passwordCheckError}
                         />
+                        <p>{regError}</p>
                         <button
                             type="submit"
                             disabled={username.length < 0 || password.length < 8 || password !== passwordCheck}
