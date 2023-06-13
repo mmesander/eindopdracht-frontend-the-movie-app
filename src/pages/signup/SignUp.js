@@ -4,7 +4,6 @@ import './SignUp.css'
 // Functions
 import React, {useContext} from "react";
 import {Link, useNavigate} from "react-router-dom";
-import {useForm} from "react-hook-form";
 
 // Components
 import inputElement from "../../components/inputelement/InputElement";
@@ -17,7 +16,6 @@ import {EmailContext} from "../../context/EmailContext";
 // import axios from "axios";
 
 function SignUp() {
-    const {register} = useForm();
     const navigate = useNavigate();
 
     const {email, emailError, handleInputEmail} = useContext(EmailContext);
