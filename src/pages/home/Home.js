@@ -2,12 +2,14 @@
 import './Home.css'
 
 // Functions
-import React from "react";
+import React, {useEffect} from "react";
 
 // Components
 import MovieCard from "../../components/moviecard/MovieCard";
 
 function Home() {
+    useEffect(() => {}, [])
+
     return (
         <>
             <div className="home-outer-container">
