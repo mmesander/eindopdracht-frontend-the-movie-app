@@ -58,18 +58,18 @@ function SignIn() {
                             register={register}
                             errors={errors.username && errors.username.message}
                             validationRules={{
-                                required: 'Username is required',
+                                required: 'Dit veld is verplicht',
                                 pattern: {
                                     value: /^[a-zA-Z0-9_]+$/,
-                                    message: 'Username must contain only letters, numbers, and underscores'
+                                    message: 'Gebruikersnaam mag alleen letters cijfers en underscores bevatten'
                                 },
                                 minLength: {
                                     value: 6,
-                                    message: 'Username must be at least 6 characters'
+                                    message: 'Gebruikersnaam moet minimaal 6 tekens bevatten'
                                 },
                                 maxLength: {
                                     value: 20,
-                                    message: 'Username must not exceed 20 characters'
+                                    message: 'Gebruikersnaam mag maximaal 20 tekens bevatten'
                                 },
                             }}
                         />
@@ -82,10 +82,10 @@ function SignIn() {
                             register={register}
                             errors={errors.password && errors.password.message}
                             validationRules={{
-                                required: 'Password is required',
+                                required: 'Dit veld is verplicht',
                                 minLength: {
                                     value: 6,
-                                    message: 'Password must be at least 6 characters'
+                                    message: 'Wachtwoord moet minimaal 6 tekens bevatten'
                                 }
                             }}
                         />
