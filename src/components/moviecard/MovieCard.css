@@ -24,10 +24,18 @@
 }
 
 .icons-container img {
-    background-color: white;
+    /*background-color: white;*/
 }
 
 .icons-container button {
     border: 1px solid white;
 }
 
+.icons-container button:hover {
+    cursor: pointer;
+}
+
+.default-icon {
+    background-color: white;
+
+}

@@ -16,7 +16,6 @@ function MovieCard({title, image, rating}) {
         watchlist: false,
         watched: false
     })
-    // const [watchList, setWatchList]
 
     return (
         <div className="moviecard-container">
@@ -31,7 +30,7 @@ function MovieCard({title, image, rating}) {
                     className={ listItem.favorite ? "active-favorite-icon" : "default-icon" }
                     onClick={() => setListItem({
                         ...listItem,
-                        favorite: true
+                        favorite: !favorite
                     })}
                 >
                     <img src={favorite} alt="favorite-icon"/>
@@ -41,7 +40,7 @@ function MovieCard({title, image, rating}) {
                     className={ listItem.watchlist ? "active-watchlist-icon" : "default-icon" }
                     onClick={() => setListItem({
                         ...listItem,
-                        watchlist: true
+                        watchlist: !watchlist
                     })}
                 >
                     <img src={watchlist} alt="watchlist-icon"/>
@@ -51,9 +50,8 @@ function MovieCard({title, image, rating}) {
                     className={ listItem.watched ? "active-watched-icon" : "default-icon" }
                     onClick={() => setListItem({
                         ...listItem,
-                        watched: true
+                        watched: !watched
                     })}
-                    // className={({isActive}) => isActive ? 'active-watched-icon' : 'default-icon'}
                 >
                     <img src={watched} alt="watched-icon"/>
                 </button>
