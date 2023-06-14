@@ -74,13 +74,13 @@ function Home() {
                 </div>
                 <h1 className="movies-title">Trending Movies</h1>
                 <div className="home-inner-container">
-                    {movies.slice(0, 5).map((movie) => {
+                    {Object.keys(movies).length > 0 && movies.slice(0, 5).map((movie) => {
                         return <MovieCard key={movie.id} title={movie.title} image={movie.poster_path} rating={movie.vote_average}/>
                     })}
                 </div>
                 <h1 className="series-title">Trending Series</h1>
                 <div className="home-inner-container">
-                    {series.slice(0, 5).map((tv) => {
+                    {Object.keys(series).length > 0 && series.slice(0, 5).map((tv) => {
                         return <MovieCard key={tv.id} title={tv.name} image={tv.poster_path} rating={tv.vote_average}/>
                     })}
                 </div>
