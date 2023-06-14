@@ -7,28 +7,25 @@ import { Link } from 'react-router-dom';
 
 // Context
 import {AuthContext} from "../../context/AuthContext";
-import {UsernameContext} from "../../context/UsernameContext";
-import {PasswordContext} from "../../context/PasswordContext";
-import InputElement from "../../components/inputelement/InputElement";
 import axios from "axios";
+import {useForm} from "react-hook-form";
+import InputElement from "../../components/inputelement/InputElement";
 
 function SignIn() {
     const {login} = useContext(AuthContext);
-    const {username, usernameError, handleInputUsername} = useContext(UsernameContext);
-    const {password, passwordError, handleInputPassword} = useContext(PasswordContext);
+    const {handleSubmit, register, formState: {errors, isValid}} = useForm({mode:"onChange"});
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
 
-    async function handleLogin(e) {
-        e.preventDefault();
+    async function handleLogin(data) {
         setLoading(true);
         setErrorMessage("");
         try {
             const response = await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signin', {
-                username: username,
-                password: password
+                username: data.username,
+                password: data.password
             });
             login(response.data.accessToken);
 
@@ -41,7 +38,7 @@ function SignIn() {
             setError(true);
             console.log(error);
             console.error(e);
-            setErrorMessage("Onjuiste email en wachtwoord combinatie")
+            setErrorMessage("Onjuiste gebruikersnaam en wachtwoord combinatie")
         }
         setLoading(false);
     }
@@ -51,31 +48,51 @@ function SignIn() {
             <div className="signin-outer-container">
                 <div className="signin-inner-container">
                     <h1>Inloggen</h1>
-                    <form id="signin-form" onSubmit={handleLogin}>
+                    <form id="signin-form" onSubmit={handleSubmit(handleLogin)}>
                         <InputElement
                             type="text"
                             name="username"
                             id="username-field"
                             label="Gebruikersnaam"
                             placeholder="Gebruikersnaam"
-                            value={username}
-                            onChange={handleInputUsername}
-                            errors={usernameError}
+                            register={register}
+                            errors={errors.username && errors.username.message}
+                            validationRules={{
+                                required: 'Dit veld is verplicht',
+                                pattern: {
+                                    value: /^[a-zA-Z0-9_]+$/,
+                                    message: 'Gebruikersnaam mag alleen letters cijfers en underscores bevatten'
+                                },
+                                minLength: {
+                                    value: 6,
+                                    message: 'Gebruikersnaam moet minimaal 6 tekens bevatten'
+                                },
+                                maxLength: {
+                                    value: 20,
+                                    message: 'Gebruikersnaam mag maximaal 20 tekens bevatten'
+                                },
+                            }}
                         />
                         <InputElement
                             type="password"
                             name="password"
-                            id="password-field"
+                            id="reg-password-field"
                             label="Wachtwoord"
                             placeholder="Wachtwoord"
-                            value={password}
-                            onChange={handleInputPassword}
-                            errors={passwordError}
+                            register={register}
+                            errors={errors.password && errors.password.message}
+                            validationRules={{
+                                required: 'Dit veld is verplicht',
+                                minLength: {
+                                    value: 6,
+                                    message: 'Wachtwoord moet minimaal 6 tekens bevatten'
+                                }
+                            }}
                         />
                         {loading ? <p>Aan het laden.. een moment geduld alstublieft</p> : <p>{errorMessage}</p>}
                         <button
                             type="submit"
-                            disabled={username.length < 6 || password.length < 6}
+                            disabled={!isValid}
                         >
                             Inloggen
                         </button>

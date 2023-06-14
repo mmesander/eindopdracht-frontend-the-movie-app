@@ -1,18 +1,16 @@
 // Functions
 import React from "react";
 
-function InputElement({type, name, label, id, placeholder, value, errors, onChange}) {
+function InputElement({type, name, label, id, placeholder, errors, register, validationRules}) {
     return (
         <>
             <label htmlFor={id}>
                 {label}
                 <input
                     type={type}
-                    name={name}
                     id={id}
                     placeholder={placeholder}
-                    value={value}
-                    onChange={onChange}
+                    {...register(name, validationRules)}
                 />
             </label>
             <p>{errors}</p>
