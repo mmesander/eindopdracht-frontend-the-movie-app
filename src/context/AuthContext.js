@@ -28,7 +28,6 @@ function AuthContextProvider({children}) {
                 id: decodedToken.sub
             }
         });
-        console.log(`${auth.user.id} is ingelogd`)
         navigate("/")
     }
 
@@ -39,7 +38,6 @@ function AuthContextProvider({children}) {
             isAuth: false,
             user: null,
         });
-        console.log(`${auth.user.id} is uitgelogd`)
         navigate("/login")
     }
 

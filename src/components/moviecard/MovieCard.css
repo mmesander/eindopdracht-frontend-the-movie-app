@@ -23,9 +23,9 @@
     gap: 2px
 }
 
-/*.icons-container img {*/
-/*    !*background-color: white;*!*/
-/*}*/
+.icons-container img {
+    background-color: white;
+}
 
 .icons-container button {
     border: 1px solid white;

@@ -1,16 +1,22 @@
 // Styling
-import './MovieCard.css'
+import './MovieCard.css';
 
 // Assets
-import favorite from '../../assets/heart-straight-fill.svg'
-import watchlist from '../../assets/eye-fill.svg'
-import watched from '../../assets/check-fat-fill.svg'
+import favorite from '../../assets/heart-straight-fill.svg';
+import watchlist from '../../assets/eye-fill.svg';
+import watched from '../../assets/check-fat-fill.svg';
 
 // Functions
-import React from "react";
+import React, {useState} from "react";
 
 function MovieCard({title, image, rating}) {
-    const roundedRating = Math.round(rating * 10) / 10
+    const roundedRating = Math.round(rating * 10) / 10;
+    const [listItem, setListItem] = useState({
+        favorite: false,
+        watchlist: false,
+        watched: false
+    })
+    // const [watchList, setWatchList]
 
     return (
         <div className="moviecard-container">
@@ -22,18 +28,31 @@ function MovieCard({title, image, rating}) {
             <div className="icons-container">
                 <button
                     type="button"
-                    // className={({isActive}) => isActive ? 'active-favourite-icon' : 'default-icon'}
+                    className={ listItem.favorite ? "active-favorite-icon" : "default-icon" }
+                    onClick={() => setListItem({
+                        ...listItem,
+                        favorite: true
+                    })}
                 >
                     <img src={favorite} alt="favorite-icon"/>
                 </button>
                 <button
                     type="button"
-                    // className={({isActive}) => isActive ? 'active-watchlist-icon' : 'default-icon'}
+                    className={ listItem.watchlist ? "active-watchlist-icon" : "default-icon" }
+                    onClick={() => setListItem({
+                        ...listItem,
+                        watchlist: true
+                    })}
                 >
                     <img src={watchlist} alt="watchlist-icon"/>
                 </button>
                 <button
                     type="button"
+                    className={ listItem.watched ? "active-watched-icon" : "default-icon" }
+                    onClick={() => setListItem({
+                        ...listItem,
+                        watched: true
+                    })}
                     // className={({isActive}) => isActive ? 'active-watched-icon' : 'default-icon'}
                 >
                     <img src={watched} alt="watched-icon"/>
