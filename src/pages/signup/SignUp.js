@@ -118,7 +118,7 @@ function SignUp() {
                                 },
                                 pattern: {
                                     value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/,
-                                    message: 'Wachtwoord moet minimaal een hoofdletter bevatten, een kleine letter en twee getallen'
+                                    message: 'Wachtwoord moet minimaal een hoofdletter bevatten, een kleine letter en een getal'
                                 }
                             }}
                         />
