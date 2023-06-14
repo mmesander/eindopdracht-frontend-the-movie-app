@@ -4,9 +4,30 @@
     flex-grow: 1;
     flex-shrink: 0;
     width: 160px;
-    height: 350px;
+    height: auto;
     max-width: 175px;
-    max-height: 350px;
+    justify-content: space-between;
     background-color: white;
     margin: 5px 10px;
 }
+
+.moviecard-header-section img {
+    width: 100%;
+}
+
+.icons-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: right;
+    gap: 2px
+}
+
+/*.icons-container img {*/
+/*    !*background-color: white;*!*/
+/*}*/
+
+.icons-container button {
+    border: 1px solid white;
+}
+
