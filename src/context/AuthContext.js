@@ -63,14 +63,14 @@ function AuthContextProvider({children}) {
                     Authorization: `Bearer ${token}`,
                 }
             })
-            console.log(response.data)
 
             setAuth({
                 ...auth,
                 isAuth: true,
                 user: {
-                    email: decodedToken.email,
-                    id: decodedToken.sub
+                    id: response.data.id,
+                    email: response.data.email,
+                    username: response.data.username,
                 },
                 status: 'done',
             });
