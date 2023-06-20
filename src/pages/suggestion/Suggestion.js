@@ -105,10 +105,14 @@ function Suggestion() {
                         <Button
                             buttonType="button"
                             children="Vorige"
+                            clickHandler={() => setPage(page - 1)}
+                            disabled={page === 1}
                         />
                         <Button
                             buttonType="button"
                             children="Volgende"
+                            clickHandler={() => setPage(page + 1)}
+                            disabled={page === 10}
                         />
                     </div>
                     <div className="suggestion-inner-container">
