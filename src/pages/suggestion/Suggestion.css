@@ -37,7 +37,7 @@
     text-decoration: underline;
 }
 
-.suggestion-outer-container button:hover {
+.button-to-overview:hover {
     cursor: pointer;
     color: #750000;
 }
