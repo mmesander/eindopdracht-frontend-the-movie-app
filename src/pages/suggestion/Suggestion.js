@@ -15,7 +15,11 @@ function Suggestion() {
     return (
         <>
             <h1>This is the Suggestion page</h1>
-
+            <MoodContainer
+                mood="test"
+                image={comedy}
+                imageDescription="comedy-test"
+            />
         </>
     )
 }
