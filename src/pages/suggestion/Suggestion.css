@@ -5,7 +5,7 @@
     align-items: center;
 }
 
-.suggestion-inner-container {
+.suggestion-switch-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
