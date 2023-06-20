@@ -16,9 +16,16 @@ function AuthContextProvider({children}) {
     useEffect(() => {
         const token = localStorage.getItem('token');
 
-        if ()
-
-        if (!auth.isAuth) {
+        if (token) {
+            const decodedToken = jwt_decode(token);
+            fetchUserData(decodedToken.sub, token)
+        } else {
+            setAuth({
+                ...auth,
+                isAuth: false,
+                user: null,
+                status: 'done',
+            });
             navigate("/login")
         }
     }, []);
