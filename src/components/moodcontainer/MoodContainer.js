@@ -9,7 +9,7 @@ function MoodContainer({mood, image, imageDescription}) {
         <>
             <div className="mood-outer-container">
                 <img src={image} alt={imageDescription}/>
-                <p className="mood-description">{mood}</p>
+                <h4 className="mood-description">{mood}</h4>
             </div>
         </>
     )
