@@ -20,6 +20,7 @@ function Suggestion() {
     const [active, setActive] = useState(false);
     const [movies, setMovies] = useState({});
     const [title, setTitle] = useState("");
+    const [page, setPage] = useState(1);
 
     const options = {
         method: 'GET',
@@ -31,8 +32,8 @@ function Suggestion() {
 
     async function fetchSpecificMovies(endpoint, text) {
         try {
-            const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${endpoint}`, options);
-            console.log(response.data.results)
+            const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${endpoint}`, options);
+            console.log(response.data)
             setMovies(response.data.results)
             setTitle(text)
             setActive(true);
