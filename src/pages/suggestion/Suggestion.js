@@ -1,5 +1,5 @@
 // Functions
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 // Styles
 import './Suggestion.css'
@@ -20,8 +20,9 @@ import Button from "../../components/button/Button";
 function Suggestion() {
     const [active, setActive] = useState(false);
     const [movies, setMovies] = useState({});
-    const [title, setTitle] = useState("");
     const [page, setPage] = useState(1);
+    const [endpoint, setEndpoint] = useState("");
+    const [title, setTitle] = useState("");
 
     const options = {
         method: 'GET',
@@ -31,6 +32,14 @@ function Suggestion() {
         }
     };
 
+    useEffect(() => {
+        if (page < 1) {
+            setPage(1);
+        } else {
+            fetchSpecificMovies(endpoint, title, page);
+        }
+    }, [page]);
+
     async function fetchSpecificMovies(endpoint, text) {
         try {
             const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${endpoint}`, options);
@@ -38,6 +47,10 @@ function Suggestion() {
             setMovies(response.data.results)
             setTitle(text)
             setActive(true);
+
+            setEndpoint(endpoint);
+
+
         } catch (e) {
             console.error(e)
         }
@@ -55,7 +68,7 @@ function Suggestion() {
                             image={comedy}
                             imageDescription="mood image for comedy movies"
                             onClick={() => {
-                                fetchSpecificMovies(35, "van de bank te rollen van het lachen")
+                                fetchSpecificMovies("35", "van de bank te rollen van het lachen")
                             }}
                         />
                         <MoodContainer
@@ -112,7 +125,7 @@ function Suggestion() {
                             buttonType="button"
                             children="Volgende"
                             clickHandler={() => setPage(page + 1)}
-                            disabled={page === 10}
+                            // disabled={page === 10}
                         />
                     </div>
                     <div className="suggestion-inner-container">
