@@ -2,9 +2,9 @@
 import './MovieCard.css';
 
 // Assets
-import favorite from '../../assets/heart-straight-fill.svg';
-import watchlist from '../../assets/eye-fill.svg';
-import watched from '../../assets/check-fat-fill.svg';
+import favorite from '../../assets/icons/heart-straight-fill.svg';
+import watchlist from '../../assets/icons/eye-fill.svg';
+import watched from '../../assets/icons/check-fat-fill.svg';
 
 // Functions
 import React, {useState} from "react";

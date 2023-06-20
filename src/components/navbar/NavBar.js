@@ -2,7 +2,7 @@
 import './NavBar.css'
 
 // Assets
-import logo from '../../assets/tma-logo.png'
+import logo from '../../assets/icons/tma-logo.png'
 
 // Functions
 import React, {useContext} from "react";
