@@ -1,6 +1,9 @@
 // Functions
 import React from "react";
 
+// Styles
+import './Suggestion.css'
+
 // Assets
 import comedy from '../../assets/images/mood-laugh.jpg'
 import adventure from '../../assets/images/mood-adventurous.jpg'
