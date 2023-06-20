@@ -23,6 +23,7 @@ function Suggestion() {
     const [page, setPage] = useState(1);
     const [endpoint, setEndpoint] = useState("");
     const [title, setTitle] = useState("");
+    const [totalPages, setTotalPages] = useState(0);
 
     const options = {
         method: 'GET',
@@ -44,11 +45,11 @@ function Suggestion() {
     async function fetchSpecificMovies(endpoint, text) {
         try {
             const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${endpoint}`, options);
-            console.log(response.data)
             setMovies(response.data.results)
             setTitle(text)
             setActive(true);
             setEndpoint(endpoint);
+            setTotalPages(response.data.total_pages);
 
         } catch (e) {
             console.error(e)
@@ -123,7 +124,7 @@ function Suggestion() {
                             buttonType="button"
                             children="Volgende"
                             clickHandler={() => setPage(page + 1)}
-                            // disabled={page === 10}
+                            disabled={page === totalPages}
                         />
                     </div>
                     <div className="suggestion-inner-container">
