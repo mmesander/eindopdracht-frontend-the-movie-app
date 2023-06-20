@@ -56,28 +56,28 @@ function Suggestion() {
                             onClick={() => {fetchSpecificMovies(35, "van de bank te rollen van het lachen")}}
                         />
                         <MoodContainer
-                            mood="op het puntje van de bank te zitten"
+                            mood="op het puntje van je stoel te zitten"
                             image={adventure}
                             imageDescription="mood image for adventure movies"
-                            onClick={() => {fetchSpecificMovies('28%7C12%7C80', "op het puntje van de bank te zitten")}}
+                            onClick={() => {fetchSpecificMovies('80%7C28%7C53', "op het puntje van je stoel te zitten")}}
                         />
                         <MoodContainer
                             mood="je af en toe te moeten verstoppen achter een dekentje"
                             image={horror}
                             imageDescription="mood image for horror movies"
-                            onClick={() => {fetchSpecificMovies('27%7C53', "je af en toe te moeten verstoppen achter een dekentje")}}
+                            onClick={() => {fetchSpecificMovies(27, "je af en toe te moeten verstoppen achter een dekentje")}}
                         />
                         <MoodContainer
                             mood="in een andere wereld te belanden"
                             image={otherworldly}
                             imageDescription="mood image for otherworldly movies"
-                            onClick={() => {fetchSpecificMovies('14%7C878', "in een andere wereld te belanden")}}
+                            onClick={() => {fetchSpecificMovies('14%7C878&without_genres=27', "in een andere wereld te belanden")}}
                         />
                         <MoodContainer
                             mood="met een doos tissues op de bank te zitten"
                             image={drama}
                             imageDescription="mood image for sad movies"
-                            onClick={() => {fetchSpecificMovies('18%7C10749', "met een doos tissues op de bank te zitten")}}
+                            onClick={() => {fetchSpecificMovies('18%7C10749&without_genres=28', "met een doos tissues op de bank te zitten")}}
                         />
                     </div>
                 </section>}
