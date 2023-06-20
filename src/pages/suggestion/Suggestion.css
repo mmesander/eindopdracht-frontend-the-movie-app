@@ -1,0 +1,21 @@
+.suggestion-outer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.suggestion-inner-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 1200px;
+    justify-content: center;
+    height: auto;
+    flex-wrap: wrap;
+    margin-inline: 30px;
+}
+
+.suggestion-outer-container h1 {
+    color: white;
+    margin: 20px 0 5px 0;
+}

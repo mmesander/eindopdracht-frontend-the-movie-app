@@ -1,10 +1,13 @@
 // Functions
 import React from "react";
 
+// Styles
+import './Suggestion.css'
+
 // Assets
 import comedy from '../../assets/images/mood-laugh.jpg'
 import adventure from '../../assets/images/mood-adventurous.jpg'
-import otherwordly from '../../assets/images/mood-otherworldly.jpg'
+import otherworldly from '../../assets/images/mood-otherworldly.jpg'
 import horror from '../../assets/images/mood-scary.jpg'
 import drama from '../../assets/images/mood-sad.jpg'
 
@@ -14,12 +17,36 @@ import MoodContainer from "../../components/moodcontainer/MoodContainer";
 function Suggestion() {
     return (
         <>
-            <h1>This is the Suggestion page</h1>
-            <MoodContainer
-                mood="test"
-                image={comedy}
-                imageDescription="comedy-test"
-            />
+            <div className="suggestion-outer-container">
+                <h1 className="suggestion-title">Heb jij zin om: </h1>
+                <div className="suggestion-inner-container">
+                    <MoodContainer
+                        mood="van de bank te rollen van het lachen"
+                        image={comedy}
+                        imageDescription="mood image for comedy movies"
+                    />
+                    <MoodContainer
+                        mood="op het puntje van de bank te zitten"
+                        image={adventure}
+                        imageDescription="mood image for adventure movies"
+                    />
+                    <MoodContainer
+                        mood="je af en toe te moeten verstoppen achter een dekentje"
+                        image={horror}
+                        imageDescription="mood image for horror movies"
+                    />
+                    <MoodContainer
+                        mood="in een andere wereld te belanden"
+                        image={otherworldly}
+                        imageDescription="mood image for otherworldly movies"
+                    />
+                    <MoodContainer
+                        mood="met een doos tissues op de bank te zitten"
+                        image={drama}
+                        imageDescription="mood image for sad movies"
+                    />
+                </div>
+            </div>
         </>
     )
 }
