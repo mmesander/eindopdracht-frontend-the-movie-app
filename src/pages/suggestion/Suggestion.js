@@ -17,7 +17,12 @@ import MoodContainer from "../../components/moodcontainer/MoodContainer";
 function Suggestion() {
     return (
         <>
+            <div className="suggestion-outer-container">
+                <h1 className="suggestion-title">Heb jij zin om: </h1>
+                <div className="suggestion-inner-container">
 
+                </div>
+            </div>
         </>
     )
 }
