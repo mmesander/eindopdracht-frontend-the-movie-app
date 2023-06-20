@@ -32,9 +32,10 @@
     margin-inline: 30px;
 }
 
-.suggestion-outer-container h1 {
+.suggestion-outer-container h1,
+.suggestion-outer-container h2 {
     color: white;
-    margin: 20px 0 5px 0;
+    margin: 20px 30px 5px 30px;
 }
 
 .button-to-overview {

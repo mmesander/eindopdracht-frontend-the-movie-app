@@ -98,7 +98,7 @@ function Suggestion() {
                     >
                         Terug naar overzicht
                     </button>
-                    <h1 className="suggestion-title">{`Je hebt gekozen om ${title}`}</h1>
+                    <h2 className="suggestion-title">{`Je hebt gekozen om ${title}`}</h2>
                     <div className="suggestion-inner-container">
                         {Object.keys(movies).length > 0 && movies.map((movie) => {
                             return <MovieCard key={movie.id} title={movie.name} image={movie.poster_path}
