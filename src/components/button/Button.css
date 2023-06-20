@@ -1,0 +1,20 @@
+.button-set-page-section button {
+    padding: 5px;
+    color: white;
+    background-color: #750000;
+    border-radius: 4px;
+    border: 2px solid black;
+}
+
+.button-set-page-section button + button {
+    margin-left: 10px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.button-set-page-section button:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}

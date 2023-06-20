@@ -1,5 +1,6 @@
 // Functions
 import React, {useEffect, useState} from "react";
+import axios from "axios";
 
 // Styles
 import './Suggestion.css'
@@ -13,7 +14,6 @@ import drama from '../../assets/images/mood-sad.jpg'
 
 // Components
 import MoodContainer from "../../components/moodcontainer/MoodContainer";
-import axios from "axios";
 import MovieCard from "../../components/moviecard/MovieCard";
 import Button from "../../components/button/Button";
 
@@ -40,6 +40,7 @@ function Suggestion() {
         }
     }, [page]);
 
+
     async function fetchSpecificMovies(endpoint, text) {
         try {
             const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${endpoint}`, options);
@@ -47,15 +48,12 @@ function Suggestion() {
             setMovies(response.data.results)
             setTitle(text)
             setActive(true);
-
             setEndpoint(endpoint);
-
 
         } catch (e) {
             console.error(e)
         }
     }
-
 
     return (
         <>
@@ -76,7 +74,7 @@ function Suggestion() {
                             image={adventure}
                             imageDescription="mood image for adventure movies"
                             onClick={() => {
-                                fetchSpecificMovies('80%7C28%7C53', "op het puntje van je stoel te zitten")
+                                fetchSpecificMovies("80%7C28%7C53", "op het puntje van je stoel te zitten")
                             }}
                         />
                         <MoodContainer
@@ -84,7 +82,7 @@ function Suggestion() {
                             image={horror}
                             imageDescription="mood image for horror movies"
                             onClick={() => {
-                                fetchSpecificMovies(27, "je af en toe te moeten verstoppen achter een dekentje")
+                                fetchSpecificMovies("27", "je af en toe te moeten verstoppen achter een dekentje")
                             }}
                         />
                         <MoodContainer
@@ -92,7 +90,7 @@ function Suggestion() {
                             image={otherworldly}
                             imageDescription="mood image for otherworldly movies"
                             onClick={() => {
-                                fetchSpecificMovies('14%7C878&without_genres=27', "in een andere wereld te belanden")
+                                fetchSpecificMovies("14%7C878&without_genres=27", "in een andere wereld te belanden")
                             }}
                         />
                         <MoodContainer
@@ -100,7 +98,7 @@ function Suggestion() {
                             image={drama}
                             imageDescription="mood image for sad movies"
                             onClick={() => {
-                                fetchSpecificMovies('18%7C10749&without_genres=28', "met een doos tissues op de bank te zitten")
+                                fetchSpecificMovies("18%7C10749&without_genres=28", "met een doos tissues op de bank te zitten")
                             }}
                         />
                     </div>
