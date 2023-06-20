@@ -14,3 +14,8 @@
     flex-wrap: wrap;
     margin-inline: 30px;
 }
+
+.suggestion-outer-container h1 {
+    color: white;
+    margin: 20px 0 5px 0;
+}
