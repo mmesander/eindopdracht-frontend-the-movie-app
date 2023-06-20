@@ -15,6 +15,7 @@ import drama from '../../assets/images/mood-sad.jpg'
 import MoodContainer from "../../components/moodcontainer/MoodContainer";
 import axios from "axios";
 import MovieCard from "../../components/moviecard/MovieCard";
+import Button from "../../components/button/Button";
 
 function Suggestion() {
     const [active, setActive] = useState(false);
@@ -100,6 +101,16 @@ function Suggestion() {
                         Terug naar overzicht
                     </button>
                     <h2 className="suggestion-title">{`Je hebt gekozen om ${title}`}</h2>
+                    <div className="button-set-page-section">
+                        <Button
+                            buttonType="button"
+                            children="Vorige"
+                        />
+                        <Button
+                            buttonType="button"
+                            children="Volgende"
+                        />
+                    </div>
                     <div className="suggestion-inner-container">
                         {Object.keys(movies).length > 0 && movies.map((movie) => {
                             return <MovieCard key={movie.id} title={movie.name} image={movie.poster_path}
