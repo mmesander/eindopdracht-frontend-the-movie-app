@@ -4,10 +4,11 @@
     flex-grow: 1;
     flex-shrink: 0;
     width: 200px;
-    height: auto;
+    height: 350px;
+    min-height: 350px;
     max-width: 200px;
     background-color: white;
-    margin: 5px 10px;
+    /*margin: 5px 10px;*/
 }
 
 .mood-outer-container img {
@@ -16,4 +17,15 @@
 
 .mood-outer-container h4 {
     margin: 0 5px 5px 5px;
+}
+
+.mood-link {
+    text-decoration: none;
+    color: black;
+    margin: 5px 10px;
+    border: 2px solid transparent;
+}
+
+.mood-link:hover {
+    border: 2px solid #750000;
 }
