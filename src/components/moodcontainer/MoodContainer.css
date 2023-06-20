@@ -4,16 +4,31 @@
     flex-grow: 1;
     flex-shrink: 0;
     width: 200px;
-    height: auto;
+    height: 350px;
+    min-height: 350px;
     max-width: 200px;
     background-color: white;
-    margin: 5px 10px;
 }
 
 .mood-outer-container img {
     height: 80%;
+    margin-bottom: 5px;
 }
 
 .mood-outer-container h4 {
     margin: 0 5px 5px 5px;
+}
+
+.mood-button {
+    border: 2px solid #282828;
+    margin: 5px 10px;
+    font-size: 16px;
+    text-align: left;
+    font-weight: bolder;
+
+}
+
+.mood-button:hover {
+    border: 2px solid #750000;
+    cursor: pointer;
 }

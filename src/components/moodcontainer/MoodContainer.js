@@ -3,14 +3,23 @@ import './MoodContainer.css'
 
 // Functions
 import React from "react";
+// import {Link} from 'react-router-dom';
 
-function MoodContainer({mood, image, imageDescription}) {
+function MoodContainer({mood, image, imageDescription, onClick}) {
+
+
     return (
         <>
-            <div className="mood-outer-container">
-                <img src={image} alt={imageDescription}/>
-                <h4 className="mood-description">{mood}</h4>
-            </div>
+            <button
+                type="radio"
+                className="mood-button"
+                onClick={onClick}
+            >
+                <div className="mood-outer-container">
+                    <img src={image} alt={imageDescription}/>
+                    <h4 className="mood-description">{mood}</h4>
+                </div>
+            </button>
         </>
     )
 }
