@@ -1,0 +1,16 @@
+.suggestion-outer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.suggestion-inner-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 1200px;
+    justify-content: center;
+    height: auto;
+    flex-wrap: wrap;
+    margin-inline: 30px;
+}
