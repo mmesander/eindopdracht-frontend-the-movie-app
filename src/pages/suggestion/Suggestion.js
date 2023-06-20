@@ -14,6 +14,7 @@ import drama from '../../assets/images/mood-sad.jpg'
 // Components
 import MoodContainer from "../../components/moodcontainer/MoodContainer";
 import axios from "axios";
+import MovieCard from "../../components/moviecard/MovieCard";
 
 function Suggestion() {
     const [active, setActive] = useState(false);
@@ -27,10 +28,11 @@ function Suggestion() {
         }
     };
 
-    async function fetchSpecificMovies() {
+    async function fetchSpecificMovies(endpoint) {
         try {
-            const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=35`, options);
-            console.log(response.data)
+            const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${endpoint}`, options);
+            console.log(response.data.results)
+            setMovies(response.data.results)
             setActive(true);
         } catch (e) {
             console.error(e)
@@ -49,7 +51,7 @@ function Suggestion() {
                             mood="van de bank te rollen van het lachen"
                             image={comedy}
                             imageDescription="mood image for comedy movies"
-                            onClick={fetchSpecificMovies}
+                            onClick={() => {fetchSpecificMovies(35)}}
                         />
                         <MoodContainer
                             mood="op het puntje van de bank te zitten"
@@ -87,7 +89,9 @@ function Suggestion() {
                     </button>
                     <h1 className="suggestion-title">Je hebt gekozen voor iets. </h1>
                     <div className="suggestion-inner-container">
-
+                        {Object.keys(movies).length > 0 && movies.map((movie) => {
+                            return <MovieCard key={movie.id} title={movie.name} image={movie.poster_path} rating={movie.vote_average}/>
+                        })}
                     </div>
                 </section>}
             </div>
