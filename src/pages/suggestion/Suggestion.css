@@ -7,6 +7,13 @@
 
 .suggestion-inner-container {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.suggestion-mood-container {
+    display: flex;
     flex-direction: row;
     max-width: 1200px;
     justify-content: center;
@@ -18,4 +25,19 @@
 .suggestion-outer-container h1 {
     color: white;
     margin: 20px 0 5px 0;
+}
+
+.button-to-overview {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-weight: bolder;
+    font-size: 24px;
+    margin: 20px 0 5px 0;
+    text-decoration: underline;
+}
+
+.suggestion-outer-container button:hover {
+    cursor: pointer;
+    color: #750000;
 }

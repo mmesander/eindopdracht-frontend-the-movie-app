@@ -10,13 +10,11 @@ function MoodContainer({mood, image, imageDescription, onClick}) {
 
     return (
         <>
-            {/*<Link to="/" className="mood-link">*/}
-            {/*    <div className="mood-outer-container">*/}
-            {/*        <img src={image} alt={imageDescription}/>*/}
-            {/*        <h4 className="mood-description">{mood}</h4>*/}
-            {/*    </div>*/}
-            {/*</Link>*/}
-            <button type="radio" className="mood-button">
+            <button
+                type="radio"
+                className="mood-button"
+                onClick={onClick}
+            >
                 <div className="mood-outer-container">
                     <img src={image} alt={imageDescription}/>
                     <h4 className="mood-description">{mood}</h4>

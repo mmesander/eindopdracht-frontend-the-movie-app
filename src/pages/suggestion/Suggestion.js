@@ -1,5 +1,5 @@
 // Functions
-import React from "react";
+import React, {useState} from "react";
 
 // Styles
 import './Suggestion.css'
@@ -15,37 +15,56 @@ import drama from '../../assets/images/mood-sad.jpg'
 import MoodContainer from "../../components/moodcontainer/MoodContainer";
 
 function Suggestion() {
+    const [active, setActive] = useState(false);
+    console.log(active)
+
     return (
         <>
             <div className="suggestion-outer-container">
-                <h1 className="suggestion-title">Heb jij zin om: </h1>
-                <div className="suggestion-inner-container">
-                    <MoodContainer
-                        mood="van de bank te rollen van het lachen"
-                        image={comedy}
-                        imageDescription="mood image for comedy movies"
-                    />
-                    <MoodContainer
-                        mood="op het puntje van de bank te zitten"
-                        image={adventure}
-                        imageDescription="mood image for adventure movies"
-                    />
-                    <MoodContainer
-                        mood="je af en toe te moeten verstoppen achter een dekentje"
-                        image={horror}
-                        imageDescription="mood image for horror movies"
-                    />
-                    <MoodContainer
-                        mood="in een andere wereld te belanden"
-                        image={otherworldly}
-                        imageDescription="mood image for otherworldly movies"
-                    />
-                    <MoodContainer
-                        mood="met een doos tissues op de bank te zitten"
-                        image={drama}
-                        imageDescription="mood image for sad movies"
-                    />
-                </div>
+                {!active && <section className="suggestion-inner-container">
+                    <h1 className="suggestion-title">Heb jij zin om: </h1>
+                    <div className="suggestion-mood-container">
+                        <MoodContainer
+                            mood="van de bank te rollen van het lachen"
+                            image={comedy}
+                            imageDescription="mood image for comedy movies"
+                            onClick={() => setActive(true)}
+                        />
+                        <MoodContainer
+                            mood="op het puntje van de bank te zitten"
+                            image={adventure}
+                            imageDescription="mood image for adventure movies"
+                            onClick={() => setActive(true)}
+                        />
+                        <MoodContainer
+                            mood="je af en toe te moeten verstoppen achter een dekentje"
+                            image={horror}
+                            imageDescription="mood image for horror movies"
+                            onClick={() => setActive(true)}
+                        />
+                        <MoodContainer
+                            mood="in een andere wereld te belanden"
+                            image={otherworldly}
+                            imageDescription="mood image for otherworldly movies"
+                            onClick={() => setActive(true)}
+                        />
+                        <MoodContainer
+                            mood="met een doos tissues op de bank te zitten"
+                            image={drama}
+                            imageDescription="mood image for sad movies"
+                            onClick={() => setActive(true)}
+                        />
+                    </div>
+                </section>}
+                {active && <section>
+                    <button
+                        className="button-to-overview"
+                        type="button"
+                        onClick={() => setActive(false)}
+                    >
+                        Terug naar overzicht
+                    </button>
+                </section>}
             </div>
         </>
     )

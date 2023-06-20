@@ -12,30 +12,20 @@
 
 .mood-outer-container img {
     height: 80%;
+    margin-bottom: 5px;
 }
 
 .mood-outer-container h4 {
     margin: 0 5px 5px 5px;
 }
 
-/*.mood-link {*/
-/*    text-decoration: none;*/
-/*    color: black;*/
-/*    margin: 5px 10px;*/
-/*    border: 2px solid transparent;*/
-/*}*/
-
-/*.mood-link:hover {*/
-/*    border: 2px solid #750000;*/
-/*}*/
-
-
 .mood-button {
-    border: 2px solid transparent;
+    border: 2px solid #282828;
     margin: 5px 10px;
     font-size: 16px;
     text-align: left;
     font-weight: bolder;
+
 }
 
 .mood-button:hover {
