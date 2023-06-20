@@ -9,7 +9,7 @@ import horror from '../../assets/images/mood-scary.jpg'
 import drama from '../../assets/images/mood-sad.jpg'
 
 // Components
-
+import MoodContainer from "../../components/moodcontainer/MoodContainer";
 
 function Suggestion() {
     return (
