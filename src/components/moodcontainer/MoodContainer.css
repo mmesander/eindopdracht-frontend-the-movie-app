@@ -8,7 +8,6 @@
     min-height: 350px;
     max-width: 200px;
     background-color: white;
-    /*margin: 5px 10px;*/
 }
 
 .mood-outer-container img {
@@ -19,13 +18,27 @@
     margin: 0 5px 5px 5px;
 }
 
-.mood-link {
-    text-decoration: none;
-    color: black;
-    margin: 5px 10px;
+/*.mood-link {*/
+/*    text-decoration: none;*/
+/*    color: black;*/
+/*    margin: 5px 10px;*/
+/*    border: 2px solid transparent;*/
+/*}*/
+
+/*.mood-link:hover {*/
+/*    border: 2px solid #750000;*/
+/*}*/
+
+
+.mood-button {
     border: 2px solid transparent;
+    margin: 5px 10px;
+    font-size: 16px;
+    text-align: left;
+    font-weight: bolder;
 }
 
-.mood-link:hover {
+.mood-button:hover {
     border: 2px solid #750000;
+    cursor: pointer;
 }
