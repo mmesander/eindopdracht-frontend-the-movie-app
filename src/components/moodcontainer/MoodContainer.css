@@ -1,0 +1,15 @@
+.mood-outer-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 0;
+    width: 200px;
+    height: auto;
+    max-width: 200px;
+    background-color: white;
+    margin: 5px 10px;
+}
+
+.mood-outer-container img {
+    width: 100%;
+}
