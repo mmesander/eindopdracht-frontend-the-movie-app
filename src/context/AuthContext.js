@@ -1,4 +1,4 @@
-
+// Functions
 import React, {createContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import jwt_decode from "jwt-decode";
@@ -7,7 +7,7 @@ import axios from "axios";
 export const AuthContext = createContext(null);
 
 function AuthContextProvider({children}) {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [auth, setAuth] = useState({
         isAuth: false,
         user: null,
@@ -19,7 +19,7 @@ function AuthContextProvider({children}) {
 
         if (token) {
             const decodedToken = jwt_decode(token);
-            fetchUserData(decodedToken.sub, token)
+            fetchUserData(decodedToken.sub, token);
         } else {
             setAuth({
                 ...auth,
@@ -27,12 +27,12 @@ function AuthContextProvider({children}) {
                 user: null,
                 status: 'done',
             });
-            navigate("/login")
+            navigate("/login");
         }
     }, []);
 
     function login(jwt_token) {
-        localStorage.setItem('token', jwt_token)
+        localStorage.setItem('token', jwt_token);
         const decodedToken = jwt_decode(jwt_token);
         void fetchUserData(decodedToken.sub, jwt_token, "/");
     }
@@ -40,13 +40,14 @@ function AuthContextProvider({children}) {
     function logout() {
         localStorage.removeItem('token');
         // localStorage.clear();
+        // Deze gaat gebruikt worden indien items aan de lijst worden toegevoegd!
         setAuth({
             ...auth,
             isAuth: false,
             user: null,
             status: 'done',
         });
-        navigate("/login")
+        navigate("/login");
     }
 
     const data = {
