@@ -4,15 +4,30 @@
     flex-grow: 1;
     flex-shrink: 0;
     width: 160px;
-    height: auto;
+    height: 350px;
     max-width: 175px;
     justify-content: space-between;
     background-color: white;
-    margin: 5px 10px;
 }
 
 .moviecard-header-section img {
     width: 100%;
+}
+
+.details-button {
+    margin: 5px 10px;
+    border: 2px solid #282828;
+    text-align: left;
+}
+
+.details-button h3,
+.details-button h4 {
+    margin: 5px;
+}
+
+.details-button:hover {
+    border: 2px solid #750000;
+    cursor: pointer;
 }
 
 .icons-container {
