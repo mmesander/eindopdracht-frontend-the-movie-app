@@ -1,6 +1,3 @@
-// Styles
-import './SignUp.css';
-
 // Functions
 import React, {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
@@ -10,6 +7,8 @@ import axios from "axios";
 // Components
 import InputElement from "../../components/inputelement/InputElement";
 
+// Styles
+import './SignUp.css';
 
 function SignUp() {
     const navigate = useNavigate();
@@ -20,7 +19,6 @@ function SignUp() {
     const [errorMessage, setErrorMessage] = useState("");
 
     async function handleRegister(data) {
-        console.log(data)
         setLoading(true);
         setErrorMessage("");
         try {
@@ -31,16 +29,15 @@ function SignUp() {
                 role: ["user"]
             });
 
-            console.log(response)
-
             if (response.data) {
                 setError(false);
             }
 
             if (response.data.message === "User registered successfully!") {
-                console.log("Registratie gelukt!")
-                navigate("/login")
+                console.log("Registratie gelukt!");
+                navigate("/login");
             }
+
         } catch (e) {
             console.error(e)
             setError(true);
@@ -50,7 +47,7 @@ function SignUp() {
             } else if (e.response.data.message.includes("username")) {
                 setErrorMessage("Registratie mislukt! De gebruikersnaam is al in gebruik!")
             } else {
-                setErrorMessage("Registratie mislukt!")
+                setErrorMessage("Registratie mislukt!");
             }
         }
         setLoading(false);
@@ -135,7 +132,6 @@ function SignUp() {
                         {loading ? <p>Aan het laden.. een moment geduld alstublieft</p> : <p>{errorMessage}</p>}
                         <button
                             type="submit"
-                            // disabled={username.length < 0 || username.length < 6|| password.length < 6 || password !== passwordCheck}
                             disabled={!isValid}
                         >
                             Registreren

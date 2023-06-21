@@ -1,7 +1,10 @@
+// Functions
 import React, {useEffect, useState} from "react";
-import './MovieDetails.css'
 import {Link, useParams} from "react-router-dom";
 import axios from "axios";
+
+// Styles
+import './MovieDetails.css'
 
 function MovieDetails() {
     const {movieId} = useParams();
@@ -30,16 +33,15 @@ function MovieDetails() {
 
     }, [])
 
-
     return (
         <>
             <div className="details-outer-container">
                 {Object.keys(details).length > 0 &&
                     <section>
-                    <h1>{details.title}</h1>
-                    <p>DETAAAAAAAAAILS</p>
-                    <p><Link to="/">Terug naar Home</Link></p>
-                </section>}
+                        <h1>{details.title}</h1>
+                        <p>DETAAAAAAAAAILS</p>
+                        <p><Link to="/">Terug naar Home</Link></p>
+                    </section>}
                 }
             </div>
         </>

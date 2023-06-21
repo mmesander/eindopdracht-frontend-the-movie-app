@@ -1,4 +1,11 @@
-// Styling
+// Functions
+import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
+
+// Helpers
+import roundRating from "../../helpers/roundRating";
+
+// Styles
 import './MovieCard.css';
 
 // Assets
@@ -6,13 +13,9 @@ import favorite from '../../assets/icons/heart-straight-fill.svg';
 import watchlist from '../../assets/icons/eye-fill.svg';
 import watched from '../../assets/icons/check-fat-fill.svg';
 
-// Functions
-import React, {useState} from "react";
-import {useNavigate} from "react-router-dom";
-
 function MovieCard({title, image, rating, id}) {
     const navigate = useNavigate();
-    const roundedRating = Math.round(rating * 10) / 10;
+    const roundedRating = roundRating(rating);
 
     const [listItem, setListItem] = useState({
         favorite: false,
@@ -20,10 +23,9 @@ function MovieCard({title, image, rating, id}) {
         watched: false
     })
 
-
     function clickHandler() {
         if (id) {
-            navigate(`/details/${id}`)
+            navigate(`/details/${id}`);
         }
     }
 

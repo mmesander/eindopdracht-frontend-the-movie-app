@@ -2,20 +2,20 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 
-// Styles
-import './Suggestion.css'
-
-// Assets
-import comedy from '../../assets/images/mood-laugh.jpg'
-import adventure from '../../assets/images/mood-adventurous.jpg'
-import otherworldly from '../../assets/images/mood-otherworldly.jpg'
-import horror from '../../assets/images/mood-scary.jpg'
-import drama from '../../assets/images/mood-sad.jpg'
-
 // Components
 import MoodContainer from "../../components/moodcontainer/MoodContainer";
 import MovieCard from "../../components/moviecard/MovieCard";
 import Button from "../../components/button/Button";
+
+// Styles
+import './Suggestion.css';
+
+// Assets
+import comedy from '../../assets/images/mood-laugh.jpg';
+import adventure from '../../assets/images/mood-adventurous.jpg';
+import otherworldly from '../../assets/images/mood-otherworldly.jpg';
+import horror from '../../assets/images/mood-scary.jpg';
+import drama from '../../assets/images/mood-sad.jpg';
 
 function Suggestion() {
     const [active, setActive] = useState(false);
@@ -41,20 +41,19 @@ function Suggestion() {
 
     function clickHandler(endpoint, text) {
         setPage(1);
-        void fetchSpecificMovies(endpoint, text)
+        void fetchSpecificMovies(endpoint, text);
     }
-
 
     async function fetchSpecificMovies(endpoint, text) {
         try {
             const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${endpoint}`, options);
-            setMovies(response.data.results)
-            setTitle(text)
+            setMovies(response.data.results);
+            setTitle(text);
             setActive(true);
             setEndpoint(endpoint);
             setTotalPages(response.data.total_pages);
         } catch (e) {
-            console.error(e)
+            console.error(e);
         }
     }
 
