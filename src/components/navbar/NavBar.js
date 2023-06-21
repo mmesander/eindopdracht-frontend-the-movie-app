@@ -1,15 +1,15 @@
-// Styles
-import './NavBar.css'
-
-// Assets
-import logo from '../../assets/icons/tma-logo.png'
-
 // Functions
 import React, {useContext} from "react";
 import {NavLink} from "react-router-dom";
 
 // Context
 import {AuthContext} from "../../context/AuthContext";
+
+// Styles
+import './NavBar.css';
+
+// Assets
+import logo from '../../assets/icons/tma-logo.png';
 
 function NavBar() {
     const {logout} = useContext(AuthContext);
