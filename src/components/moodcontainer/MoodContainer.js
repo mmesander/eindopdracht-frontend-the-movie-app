@@ -3,7 +3,6 @@ import './MoodContainer.css'
 
 // Functions
 import React from "react";
-// import {Link} from 'react-router-dom';
 
 function MoodContainer({mood, image, imageDescription, onClick}) {
 
