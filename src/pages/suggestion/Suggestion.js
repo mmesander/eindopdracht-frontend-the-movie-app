@@ -53,7 +53,6 @@ function Suggestion() {
             setActive(true);
             setEndpoint(endpoint);
             setTotalPages(response.data.total_pages);
-
         } catch (e) {
             console.error(e)
         }
@@ -69,9 +68,6 @@ function Suggestion() {
                             mood="van de bank te rollen van het lachen"
                             image={comedy}
                             imageDescription="mood image for comedy movies"
-                            // onClick={() => {
-                            //     fetchSpecificMovies("35", "van de bank te rollen van het lachen")
-                            // }}
                             onClick={() => clickHandler( "35", "van de bank te rollen van het lachen")}
                         />
                         <MoodContainer
