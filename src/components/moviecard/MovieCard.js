@@ -22,7 +22,6 @@ function MovieCard({title, image, rating, id}) {
 
 
     function clickHandler() {
-        console.log(id)
         if (id) {
             navigate(`/details/${id}`)
         }
@@ -49,7 +48,7 @@ function MovieCard({title, image, rating, id}) {
                             favorite: !favorite
                         })}
                     >
-                        <img src={favorite} alt="favorite-icon"/>
+                        <img src={favorite} alt="favorite-icon" className={listItem.favorite ? "active-favorite-icon" : "default-icon"}/>
                     </button>
                     <button
                         type="button"

@@ -5,7 +5,7 @@ import axios from "axios";
 
 function MovieDetails() {
     const {movieId} = useParams();
-    const [details, setDetails] = useState();
+    const [details, setDetails] = useState({});
 
     const options = {
         method: 'GET',
@@ -36,10 +36,11 @@ function MovieDetails() {
             <div className="details-outer-container">
                 {Object.keys(details).length > 0 &&
                     <section>
-                        <h1>{details.title}</h1>
-                        <p>DETAAAAAAAAAILS</p>
-                        <p><Link to="/">Terug naar Home</Link></p>
-                    </section>}
+                    <h1>{details.title}</h1>
+                    <p>DETAAAAAAAAAILS</p>
+                    <p><Link to="/">Terug naar Home</Link></p>
+                </section>}
+                }
             </div>
         </>
     )

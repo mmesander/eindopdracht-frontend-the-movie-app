@@ -39,7 +39,9 @@
 }
 
 .icons-container img {
-    /*background-color: white;*/
+    color: black;
+    /*filter: invert(15%) sepia(37%) saturate(3144%) hue-rotate(337deg) brightness(103%) contrast(133%);*/
+
 }
 
 .icons-container button {
@@ -52,5 +54,4 @@
 
 .default-icon {
     background-color: white;
-
 }

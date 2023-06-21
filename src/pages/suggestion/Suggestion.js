@@ -34,12 +34,15 @@ function Suggestion() {
     };
 
     useEffect(() => {
-        if (page < 1) {
-            setPage(1);
-        } else {
-            fetchSpecificMovies(endpoint, title, page);
+        if (page >= 1 && active) {
+            void fetchSpecificMovies(endpoint, title);
         }
     }, [page]);
+
+    function clickHandler(endpoint, text) {
+        setPage(1);
+        void fetchSpecificMovies(endpoint, text)
+    }
 
 
     async function fetchSpecificMovies(endpoint, text) {
@@ -66,16 +69,17 @@ function Suggestion() {
                             mood="van de bank te rollen van het lachen"
                             image={comedy}
                             imageDescription="mood image for comedy movies"
-                            onClick={() => {
-                                fetchSpecificMovies("35", "van de bank te rollen van het lachen")
-                            }}
+                            // onClick={() => {
+                            //     fetchSpecificMovies("35", "van de bank te rollen van het lachen")
+                            // }}
+                            onClick={() => clickHandler( "35", "van de bank te rollen van het lachen")}
                         />
                         <MoodContainer
                             mood="op het puntje van je stoel te zitten"
                             image={adventure}
                             imageDescription="mood image for adventure movies"
                             onClick={() => {
-                                fetchSpecificMovies("80%7C28%7C53", "op het puntje van je stoel te zitten")
+                                clickHandler("80%7C28%7C53", "op het puntje van je stoel te zitten")
                             }}
                         />
                         <MoodContainer
@@ -83,7 +87,7 @@ function Suggestion() {
                             image={horror}
                             imageDescription="mood image for horror movies"
                             onClick={() => {
-                                fetchSpecificMovies("27", "je af en toe te moeten verstoppen achter een dekentje")
+                                clickHandler("27", "je af en toe te moeten verstoppen achter een dekentje")
                             }}
                         />
                         <MoodContainer
@@ -91,7 +95,7 @@ function Suggestion() {
                             image={otherworldly}
                             imageDescription="mood image for otherworldly movies"
                             onClick={() => {
-                                fetchSpecificMovies("14%7C878&without_genres=27", "in een andere wereld te belanden")
+                                clickHandler("14%7C878&without_genres=27", "in een andere wereld te belanden")
                             }}
                         />
                         <MoodContainer
@@ -99,7 +103,7 @@ function Suggestion() {
                             image={drama}
                             imageDescription="mood image for sad movies"
                             onClick={() => {
-                                fetchSpecificMovies("18%7C10749&without_genres=28", "met een doos tissues op de bank te zitten")
+                                clickHandler("18%7C10749&without_genres=28", "met een doos tissues op de bank te zitten")
                             }}
                         />
                     </div>
@@ -130,7 +134,7 @@ function Suggestion() {
                     <div className="suggestion-inner-container">
                         {Object.keys(movies).length > 0 && movies.map((movie) => {
                             return <MovieCard key={movie.id} title={movie.name} image={movie.poster_path}
-                                              rating={movie.vote_average}/>
+                                              rating={movie.vote_average} id={movie.id}/>
                         })}
                     </div>
                 </section>}
