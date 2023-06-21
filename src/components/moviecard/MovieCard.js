@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
 // Helpers
-
+import roundRating from "../../helpers/roundRating";
 
 // Styles
 import './MovieCard.css';
@@ -12,11 +12,10 @@ import './MovieCard.css';
 import favorite from '../../assets/icons/heart-straight-fill.svg';
 import watchlist from '../../assets/icons/eye-fill.svg';
 import watched from '../../assets/icons/check-fat-fill.svg';
-import useClickHandlerDetails from "../../helpers/clickHandlerDetails";
 
 function MovieCard({title, image, rating, id}) {
     const navigate = useNavigate();
-    const roundedRating = Math.round(rating * 10) / 10;
+    const roundedRating = roundRating(rating)
 
     const [listItem, setListItem] = useState({
         favorite: false,
@@ -24,19 +23,17 @@ function MovieCard({title, image, rating, id}) {
         watched: false
     })
 
-    const handleClick = useClickHandlerDetails(id);
-
-    // function clickHandler() {
-    //     if (id) {
-    //         navigate(`/details/${id}`)
-    //     }
-    // }
+    function clickHandler() {
+        if (id) {
+            navigate(`/details/${id}`)
+        }
+    }
 
     return (
         <button
             type="radio"
             className="details-button"
-            onClick={handleClick}
+            onClick={clickHandler}
         >
             <div className="moviecard-container">
                 <section className="moviecard-header-section">
