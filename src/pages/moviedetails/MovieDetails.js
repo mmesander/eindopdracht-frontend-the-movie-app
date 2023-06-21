@@ -1,6 +1,6 @@
 import React from "react";
 import './MovieDetails.css'
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 
 function MovieDetails() {
     const {movieId} = useParams();
@@ -8,6 +8,8 @@ function MovieDetails() {
     return (
         <div>
             <h1>Hier komen de details onder</h1>
+            <p>DETAAAAAAAAAILS</p>
+            <p><Link to="/">Terug naar Home</Link></p>
         </div>
     )
 }
