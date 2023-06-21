@@ -1,15 +1,17 @@
-// Styles
-import './SignIn.css'
-
 // Functions
 import React, {useContext, useState} from "react";
 import { Link } from 'react-router-dom';
+import axios from "axios";
+import {useForm} from "react-hook-form";
 
 // Context
 import {AuthContext} from "../../context/AuthContext";
-import axios from "axios";
-import {useForm} from "react-hook-form";
+
+// Components
 import InputElement from "../../components/inputelement/InputElement";
+
+// Styles
+import './SignIn.css';
 
 function SignIn() {
     const {login} = useContext(AuthContext);
@@ -38,7 +40,7 @@ function SignIn() {
             setError(true);
             console.log(error);
             console.error(e);
-            setErrorMessage("Onjuiste gebruikersnaam en wachtwoord combinatie")
+            setErrorMessage("Onjuiste gebruikersnaam en wachtwoord combinatie");
         }
         setLoading(false);
     }
