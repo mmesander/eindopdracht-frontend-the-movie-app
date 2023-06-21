@@ -1,9 +1,31 @@
-import React from "react";
+import React, {useState} from "react";
 import './MovieDetails.css'
 import {Link, useParams} from "react-router-dom";
 
 function MovieDetails() {
     const {movieId} = useParams();
+    const [details, setDetails] = useState();
+
+    const options = {
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
+        }
+    };
+
+
+
+
+    async function fetchMovieDetails(id) {
+        try {
+            const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?language=nl-NL`, options)
+            setDetails(response.data);
+            console.log(details);
+        } catch (e) {
+            console.error(e)
+        }
+    }
 
     return (
         <div>
