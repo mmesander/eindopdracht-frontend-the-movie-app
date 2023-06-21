@@ -2,7 +2,7 @@
 import React from "react";
 
 function roundRating(rating) {
-    return Math.round((rating * 10) / 10)
+    return Number(rating.toFixed(1));
 }
 
 export default roundRating;
