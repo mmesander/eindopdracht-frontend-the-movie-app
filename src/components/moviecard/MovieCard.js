@@ -2,6 +2,9 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
+// Helpers
+
+
 // Styles
 import './MovieCard.css';
 
@@ -9,6 +12,7 @@ import './MovieCard.css';
 import favorite from '../../assets/icons/heart-straight-fill.svg';
 import watchlist from '../../assets/icons/eye-fill.svg';
 import watched from '../../assets/icons/check-fat-fill.svg';
+import useClickHandlerDetails from "../../helpers/clickHandlerDetails";
 
 function MovieCard({title, image, rating, id}) {
     const navigate = useNavigate();
@@ -20,17 +24,19 @@ function MovieCard({title, image, rating, id}) {
         watched: false
     })
 
-    function clickHandler() {
-        if (id) {
-            navigate(`/details/${id}`)
-        }
-    }
+    const handleClick = useClickHandlerDetails(id);
+
+    // function clickHandler() {
+    //     if (id) {
+    //         navigate(`/details/${id}`)
+    //     }
+    // }
 
     return (
         <button
             type="radio"
             className="details-button"
-            onClick={clickHandler}
+            onClick={handleClick}
         >
             <div className="moviecard-container">
                 <section className="moviecard-header-section">
