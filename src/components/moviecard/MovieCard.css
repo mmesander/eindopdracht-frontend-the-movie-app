@@ -41,7 +41,7 @@
 .icons-container img {
     color: black;
     /*filter: invert(15%) sepia(37%) saturate(3144%) hue-rotate(337deg) brightness(103%) contrast(133%);*/
-
+    /*Hier komt de aangepast kleur*/
 }
 
 .icons-container button {

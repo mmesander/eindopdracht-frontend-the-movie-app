@@ -1,14 +1,14 @@
-// Styling
+// Functions
+import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
+
+// Styles
 import './MovieCard.css';
 
 // Assets
 import favorite from '../../assets/icons/heart-straight-fill.svg';
 import watchlist from '../../assets/icons/eye-fill.svg';
 import watched from '../../assets/icons/check-fat-fill.svg';
-
-// Functions
-import React, {useState} from "react";
-import {useNavigate} from "react-router-dom";
 
 function MovieCard({title, image, rating, id}) {
     const navigate = useNavigate();
@@ -19,7 +19,6 @@ function MovieCard({title, image, rating, id}) {
         watchlist: false,
         watched: false
     })
-
 
     function clickHandler() {
         if (id) {
