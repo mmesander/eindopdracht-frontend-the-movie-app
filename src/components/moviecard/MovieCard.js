@@ -9,40 +9,21 @@ import watched from '../../assets/icons/check-fat-fill.svg';
 // Functions
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import axios from "axios";
 
 function MovieCard({title, image, rating, id}) {
     const navigate = useNavigate();
     const roundedRating = Math.round(rating * 10) / 10;
-    const [details, setDetails] = useState();
 
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
-        }
-    };
     const [listItem, setListItem] = useState({
         favorite: false,
         watchlist: false,
         watched: false
     })
 
-    async function fetchMovieDetails() {
-        try {
-            const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?language=nl-NL`, options)
-            setDetails(response.data);
-            console.log(details);
-        } catch (e) {
-            console.error(e)
-        }
-    }
 
     function clickHandler() {
-        void fetchMovieDetails(id)
-
-        if (details) {
+        console.log(id)
+        if (id) {
             navigate(`/details/${id}`)
         }
     }

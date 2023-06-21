@@ -60,8 +60,8 @@ function Home() {
 
         void fetchMovies();
         void fetchSeries();
-        console.log(movies);
-        console.log(series)
+        // console.log(movies);
+        // console.log(series)
 
     }, []);
 
