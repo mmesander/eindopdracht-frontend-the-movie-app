@@ -1,9 +1,13 @@
-// Styles
-import './App.css';
-
 // Functions
 import {Routes, Route} from 'react-router-dom';
 import {useContext} from "react";
+
+// Context
+import {AuthContext} from "./context/AuthContext";
+import MovieDetails from "./pages/moviedetails/MovieDetails";
+
+// Components
+import NavBar from "./components/navbar/NavBar";
 
 // Pages
 import Home from "./pages/home/Home";
@@ -13,12 +17,8 @@ import Lists from "./pages/lists/Lists";
 import SignIn from "./pages/signin/SignIn";
 import SignUp from "./pages/signup/SignUp"
 
-// Components
-import NavBar from "./components/navbar/NavBar";
-
-// Context
-import {AuthContext} from "./context/AuthContext";
-import MovieDetails from "./pages/moviedetails/MovieDetails";
+// Styles
+import './App.css';
 
 function App() {
     const {isAuth} = useContext(AuthContext);
