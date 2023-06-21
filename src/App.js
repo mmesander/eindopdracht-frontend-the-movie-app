@@ -18,6 +18,7 @@ import NavBar from "./components/navbar/NavBar";
 
 // Context
 import {AuthContext} from "./context/AuthContext";
+import MovieDetails from "./pages/moviedetails/MovieDetails";
 
 function App() {
     const {isAuth} = useContext(AuthContext);
@@ -32,6 +33,7 @@ function App() {
                 <Route path="/lijsten" element={<Lists/>}/>
                 <Route path="/login" element={<SignIn/>}/>
                 <Route path="/registratie" element={<SignUp/>}/>
+                <Route path="/details/:movieId" element={<MovieDetails/>}></Route>
             </Routes>
         </>
     );
