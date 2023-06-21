@@ -60,8 +60,8 @@ function Home() {
 
         void fetchMovies();
         void fetchSeries();
-        console.log(movies);
-        console.log(series)
+        // console.log(movies);
+        // console.log(series)
 
     }, []);
 
@@ -75,13 +75,13 @@ function Home() {
                 <h1 className="movies-title">Trending Movies</h1>
                 <div className="home-inner-container">
                     {Object.keys(movies).length > 0 && movies.slice(0, 5).map((movie) => {
-                        return <MovieCard key={movie.id} title={movie.title} image={movie.poster_path} rating={movie.vote_average}/>
+                        return <MovieCard key={movie.id} title={movie.title} image={movie.poster_path} rating={movie.vote_average} id={movie.id}/>
                     })}
                 </div>
                 <h1 className="series-title">Trending Series</h1>
                 <div className="home-inner-container">
                     {Object.keys(series).length > 0 && series.slice(0, 5).map((tv) => {
-                        return <MovieCard key={tv.id} title={tv.name} image={tv.poster_path} rating={tv.vote_average}/>
+                        return <MovieCard key={tv.id} title={tv.name} image={tv.poster_path} rating={tv.vote_average} id={tv.id}/>
                     })}
                 </div>
             </div>

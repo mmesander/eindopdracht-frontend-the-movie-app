@@ -8,55 +8,71 @@ import watched from '../../assets/icons/check-fat-fill.svg';
 
 // Functions
 import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
-function MovieCard({title, image, rating}) {
+function MovieCard({title, image, rating, id}) {
+    const navigate = useNavigate();
     const roundedRating = Math.round(rating * 10) / 10;
+
     const [listItem, setListItem] = useState({
         favorite: false,
         watchlist: false,
         watched: false
     })
 
+
+    function clickHandler() {
+        if (id) {
+            navigate(`/details/${id}`)
+        }
+    }
+
     return (
-        <div className="moviecard-container">
-            <section className="moviecard-header-section">
-                <img src={`https://image.tmdb.org/t/p/w500${image}`} alt={title}/>
-                <h3>{title}</h3>
-                <h4>Rating: {roundedRating}</h4>
-            </section>
-            <div className="icons-container">
-                <button
-                    type="button"
-                    className={ listItem.favorite ? "active-favorite-icon" : "default-icon" }
-                    onClick={() => setListItem({
-                        ...listItem,
-                        favorite: !favorite
-                    })}
-                >
-                    <img src={favorite} alt="favorite-icon"/>
-                </button>
-                <button
-                    type="button"
-                    className={ listItem.watchlist ? "active-watchlist-icon" : "default-icon" }
-                    onClick={() => setListItem({
-                        ...listItem,
-                        watchlist: !watchlist
-                    })}
-                >
-                    <img src={watchlist} alt="watchlist-icon"/>
-                </button>
-                <button
-                    type="button"
-                    className={ listItem.watched ? "active-watched-icon" : "default-icon" }
-                    onClick={() => setListItem({
-                        ...listItem,
-                        watched: !watched
-                    })}
-                >
-                    <img src={watched} alt="watched-icon"/>
-                </button>
+        <button
+            type="radio"
+            className="details-button"
+            onClick={clickHandler}
+        >
+            <div className="moviecard-container">
+                <section className="moviecard-header-section">
+                    <img src={`https://image.tmdb.org/t/p/w500${image}`} alt={title}/>
+                    <h3>{title}</h3>
+                    <h4>Rating: {roundedRating}</h4>
+                </section>
+                <div className="icons-container">
+                    <button
+                        type="button"
+                        className={listItem.favorite ? "active-favorite-icon" : "default-icon"}
+                        onClick={() => setListItem({
+                            ...listItem,
+                            favorite: !favorite
+                        })}
+                    >
+                        <img src={favorite} alt="favorite-icon" className={listItem.favorite ? "active-favorite-icon" : "default-icon"}/>
+                    </button>
+                    <button
+                        type="button"
+                        className={listItem.watchlist ? "active-watchlist-icon" : "default-icon"}
+                        onClick={() => setListItem({
+                            ...listItem,
+                            watchlist: !watchlist
+                        })}
+                    >
+                        <img src={watchlist} alt="watchlist-icon"/>
+                    </button>
+                    <button
+                        type="button"
+                        className={listItem.watched ? "active-watched-icon" : "default-icon"}
+                        onClick={() => setListItem({
+                            ...listItem,
+                            watched: !watched
+                        })}
+                    >
+                        <img src={watched} alt="watched-icon"/>
+                    </button>
+                </div>
             </div>
-        </div>
+        </button>
     )
 }
 
