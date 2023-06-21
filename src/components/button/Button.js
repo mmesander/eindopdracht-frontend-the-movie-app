@@ -1,4 +1,7 @@
+// Functions
 import React from "react";
+
+// Styles
 import './Button.css'
 
 function Button({buttonType, name, clickHandler, children, disabled}){
