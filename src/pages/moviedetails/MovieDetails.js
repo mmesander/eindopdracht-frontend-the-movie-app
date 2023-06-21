@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './MovieDetails.css'
 import {Link, useParams} from "react-router-dom";
 
@@ -14,18 +14,19 @@ function MovieDetails() {
         }
     };
 
-
-
-
-    async function fetchMovieDetails(id) {
-        try {
-            const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?language=nl-NL`, options)
-            setDetails(response.data);
-            console.log(details);
-        } catch (e) {
-            console.error(e)
+    useEffect(() => {
+        async function fetchMovieDetails(id) {
+            try {
+                const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?language=nl-NL`, options)
+                setDetails(response.data);
+                console.log(details);
+            } catch (e) {
+                console.error(e)
+            }
         }
-    }
+
+        void fetchMovieDetails();
+    }, [])
 
     return (
         <div>
