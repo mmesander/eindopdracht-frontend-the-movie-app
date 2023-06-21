@@ -15,7 +15,7 @@ import watched from '../../assets/icons/check-fat-fill.svg';
 
 function MovieCard({title, image, rating, id}) {
     const navigate = useNavigate();
-    const roundedRating = roundRating(rating)
+    const roundedRating = roundRating(rating);
 
     const [listItem, setListItem] = useState({
         favorite: false,
@@ -25,7 +25,7 @@ function MovieCard({title, image, rating, id}) {
 
     function clickHandler() {
         if (id) {
-            navigate(`/details/${id}`)
+            navigate(`/details/${id}`);
         }
     }
 
