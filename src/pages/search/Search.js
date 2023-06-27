@@ -105,18 +105,20 @@ function Search() {
                     {loading && <h3 className="loading-message">Loading... </h3>}
                     {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
                 </div>
-                <Button
-                    buttonType="button"
-                    children="Vorige"
-                    clickHandler={() => setPage(page - 1)}
-                    disabled={page === 1}
-                />
-                <Button
-                    buttonType="button"
-                    children="Volgende"
-                    clickHandler={() => setPage(page + 1)}
-                    disabled={page === totalPages}
-                />
+                <div className="button-set-page-section">
+                    <Button
+                        buttonType="button"
+                        children="Vorige"
+                        clickHandler={() => setPage(page - 1)}
+                        disabled={page === 1}
+                    />
+                    <Button
+                        buttonType="button"
+                        children="Volgende"
+                        clickHandler={() => setPage(page + 1)}
+                        disabled={page === totalPages}
+                    />
+                </div>
                 <div className="specific-search-results-container">
                     {Object.keys(movies).length > 0 && console.log(movies)}
                     {/*{Object.keys(movies).length > 0 && movies.map((movie) => {*/}
