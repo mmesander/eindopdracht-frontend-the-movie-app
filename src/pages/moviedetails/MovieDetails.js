@@ -75,33 +75,33 @@ function MovieDetails() {
                                 <div className="details-icons-container">
                                     <button
                                         type="button"
-                                        className={listItem.favorite ? "active-favorite-icon" : "default-icon"}
+                                        className={listItem.favorite ? "active-favorite-button" : "inactive-favorite-button"}
                                         onClick={() => setListItem({
                                             ...listItem,
                                             favorite: !favorite
                                         })}
                                     >
-                                        <img src={favoriteIcon} alt="favorite-icon" className={listItem.favorite ? "active-favorite-icon" : "default-icon"}/>
+                                        <img src={favoriteIcon} alt="favorite-icon" className={listItem.favorite ? "active-favorite-icon" : "inactive-default-icon"}/>
                                     </button>
                                     <button
                                         type="button"
-                                        className={listItem.watchlist ? "active-watchlist-icon" : "default-icon"}
+                                        className={listItem.watchlist ? "active-watchlist-button" : "inactive-watchlist-button"}
                                         onClick={() => setListItem({
                                             ...listItem,
                                             watchlist: !watchlist
                                         })}
                                     >
-                                        <img src={watchlistIcon} alt="watchlist-icon"/>
+                                        <img src={watchlistIcon} alt="watchlist-icon" className={listItem.watchlist ? "active-watchlist-icon" : "inactive-default-icon"}/>
                                     </button>
                                     <button
                                         type="button"
-                                        className={listItem.watched ? "active-watched-icon" : "default-icon"}
+                                        className={listItem.watched ? "active-watched-button" : "inactive-watched-button"}
                                         onClick={() => setListItem({
                                             ...listItem,
                                             watched: !watched
                                         })}
                                     >
-                                        <img src={watchedIcon} alt="watched-icon"/>
+                                        <img src={watchedIcon} alt="watched-icon" className={listItem.watched ? "active-watched-icon" : "inactive-default-icon"}/>
                                     </button>
                                 </div>
                                 <h3>Omschrijving:</h3>

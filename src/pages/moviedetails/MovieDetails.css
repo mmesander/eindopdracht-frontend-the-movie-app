@@ -66,3 +66,62 @@
 .details-movie-information a:hover {
     color: #750000;
 }
+
+.details-icons-container {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 100%;
+    gap: 25px;
+}
+
+.details-icons-container img {
+    background-color: #EFE7E7;
+    color: blue;
+}
+
+.inactive-favorite-button,
+.inactive-watchlist-button,
+.inactive-watched-button {
+    border: 1px solid #EFE7E7;
+    background-color: #EFE7E7;
+    position: relative;
+}
+
+.inactive-favorite-button:hover::before {
+    content: "Voeg toe aan je favorieten";
+    position: absolute;
+    top: 36px;
+    left: 0;
+    background-color: #750000;
+    padding: 4px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: white;
+    width: 200px;
+}
+
+.inactive-watchlist-button:hover::before {
+    content: "Voeg toe aan je watchlist";
+    position: absolute;
+    top: 36px;
+    left: -60px;
+    background-color: #750000;
+    padding: 4px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: white;
+    width: 200px;
+}
+
+.inactive-watched-button:hover::before {
+    content: "Voeg toe aan al gezien";
+    position: absolute;
+    top: 36px;
+    left: -120px;
+    background-color: #750000;
+    padding: 4px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: white;
+    width: 200px;
+}

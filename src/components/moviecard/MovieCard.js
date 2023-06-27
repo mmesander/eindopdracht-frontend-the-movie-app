@@ -20,12 +20,6 @@ function MovieCard({title, image, rating, id}) {
 
     const {favorite, watchlist, watched, listItem, setListItem} = useContext(ListsContext);
 
-    // const [listItem, setListItem] = useState({
-    //     favorite: false,
-    //     watchlist: false,
-    //     watched: false
-    // })
-
     function clickHandler() {
         if (id) {
             navigate(`/details/${id}`);
