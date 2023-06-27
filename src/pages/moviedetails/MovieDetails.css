@@ -31,5 +31,8 @@
 
 .movie-information h1 {
     font-size: 40px;
+}
+
+.release-date {
     margin-bottom: 20px;
 }
