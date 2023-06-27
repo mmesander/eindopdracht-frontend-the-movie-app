@@ -1,7 +1,7 @@
 // Functions
 import React from "react";
 
-function InputElement({type, name, label, id, placeholder, errors, register, validationRules}) {
+function InputElement({type, name, label, id, placeholder, onChange}) {
     return (
         <>
             <label htmlFor={id}>
@@ -10,10 +10,10 @@ function InputElement({type, name, label, id, placeholder, errors, register, val
                     type={type}
                     id={id}
                     placeholder={placeholder}
-                    {...register(name, validationRules)}
+                    name={name}
+                    onChange={onChange}
                 />
             </label>
-            <p>{errors}</p>
         </>
     );
 }

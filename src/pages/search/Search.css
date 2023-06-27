@@ -1,0 +1,115 @@
+/*General Styling*/
+
+.searchpage-outer-container {
+    display: flex;
+    flex-direction: row;
+    min-height: calc(100vh - 110px);
+    flex-basis: 100vw;
+    padding-block: 40px;
+}
+
+/*Menu Styling*/
+
+.search-menu-container {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    flex-basis: auto;
+    flex-grow: 1;
+    flex-shrink: 0;
+    gap: 1px;
+}
+
+.search-menu {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(117, 0, 0, 40%);
+    width: 100%;
+    height: auto;
+    flex-basis: auto;
+    max-width: 250px;
+    border-radius: 0 10px 10px 0;
+    padding: 20px 10px;
+}
+
+.search-menu p {
+    color: white;
+}
+
+#search-specific-field {
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 5px 0 0 5px;
+    box-shadow: none;
+    border: none;
+    outline: white;
+    width: 80%;
+}
+
+#search-specific-field:focus {
+    outline: 1px solid #750000;
+}
+
+#search-specific-button {
+    width: 20%;
+    padding: 5px;
+    border-radius: 0 5px 5px 0;
+    border: none;
+    color: white;
+    background-color: #282828;
+    font-weight: bold;
+}
+
+/*Specific Search Styling*/
+
+.specific-search-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.specific-search-results-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    max-width: 1000px;
+    height: auto;
+    flex-wrap: wrap;
+    margin: 0 30px 50px 30px;
+}
+
+.specific-search-container h1,
+.specific-search-container h2 {
+    color: white;
+    margin: 20px 30px 5px 30px;
+}
+
+.button-to-overview {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-weight: bolder;
+    font-size: 24px;
+    margin: 20px 0 5px 0;
+    text-decoration: underline;
+}
+
+/*Filter Search Styling*/
+
+.filter-search-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-search-results-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 1000px;
+    background-color: green;
+}
+

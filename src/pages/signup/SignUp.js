@@ -5,7 +5,7 @@ import {useForm} from 'react-hook-form'
 import axios from "axios";
 
 // Components
-import InputElement from "../../components/inputelement/InputElement";
+import InputHookForm from "../../components/inputelements/InputHookForm";
 
 // Styles
 import './SignUp.css';
@@ -59,7 +59,7 @@ function SignUp() {
                 <div className="signup-inner-container">
                     <h1>Registreren</h1>
                     <form id="signup-form" onSubmit={handleSubmit(handleRegister)}>
-                        <InputElement
+                        <InputHookForm
                             type="email"
                             name="email"
                             id="reg-email-field"
@@ -75,7 +75,7 @@ function SignUp() {
                                 }
                             }}
                         />
-                        <InputElement
+                        <InputHookForm
                             type="text"
                             name="username"
                             id="reg-username-field"
@@ -99,7 +99,7 @@ function SignUp() {
                                 },
                             }}
                         />
-                        <InputElement
+                        <InputHookForm
                             type="password"
                             name="password"
                             id="reg-password-field"
@@ -119,7 +119,7 @@ function SignUp() {
                                 }
                             }}
                         />
-                        <InputElement
+                        <InputHookForm
                             type="password"
                             name="passwordCheck"
                             id="password-check-field"
