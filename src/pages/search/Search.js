@@ -12,6 +12,10 @@ import axios from "axios";
 function Search() {
     const [specificSearch, setSpecificSearch] = useState("");
     const [active, setActive] = useState(false);
+    const [movies, setMovies] = useState({});
+    // const [endpoint, setEndpoint] = useState("");
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
@@ -26,6 +30,7 @@ function Search() {
 
     function clickHandler(e) {
         e.preventDefault();
+        setPage(1);
         void fetchSpecificMovies();
     }
 
@@ -38,6 +43,9 @@ function Search() {
                 setActive(true);
                 setError(false);
             }
+            setMovies(response.data.results);
+            setTotalPages(response.data.total_pages)
+
         } catch (e) {
             setError(true);
             console.error(e)
@@ -48,7 +56,7 @@ function Search() {
 
     return (
         <div className={active ? "page-outer-container" : "searchpage-outer-container"}>
-            {!active && <section className="search-inactive-container">
+            {!active && <section className="filter-search-container">
                 <div className="search-menu-container">
                     <div className="search-menu search-specific">
                         <p>Zoek hier naar een specifieke film of serie</p>
@@ -72,9 +80,9 @@ function Search() {
                     <div className="search-menu rating"></div>
                     <div className="search-menu genres"></div>
                 </div>
-                <div className="search-results-container"></div>
+                <div className="filter-search-results-container"></div>
             </section>}
-            {active && <section className="search-active-container">
+            {active && <section className="specific-search-container">
                 <button
                     className="button-to-overview"
                     type="button"
@@ -86,6 +94,9 @@ function Search() {
                 <div className="loading-error-section">
                     {loading && <h3 className="loading-message">Loading... </h3>}
                     {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
+                </div>
+                <div className="specific-search-results-container">
+
                 </div>
             </section>}
         </div>
