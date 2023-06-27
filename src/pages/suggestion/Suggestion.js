@@ -125,9 +125,9 @@ function Suggestion() {
                         Terug naar overzicht
                     </button>
                     <h2 className="suggestion-title">{`Je hebt gekozen om ${title}`}</h2>
-                    <div className="loading-section">
-                        {loading && <h2>Loading... </h2>}
-                        {error && <h2>Error: Could not fetch data!</h2>}
+                    <div className="loading-section-suggestion">
+                        {loading && <h3 className="loading-message-suggestion">Loading... </h3>}
+                        {error && <h3 className="error-message-suggestion">Error: Could not fetch data!</h3>}
                     </div>
                     <div className="button-set-page-section">
                         <Button
