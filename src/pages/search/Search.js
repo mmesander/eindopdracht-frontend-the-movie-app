@@ -11,7 +11,7 @@ import axios from "axios";
 
 function Search() {
     const [specificSearch, setSpecificSearch] = useState("");
-    const [specificActive, setSpecificActive] = useState(false);
+    const [active, setActive] = useState(false);
 
     const options = {
         method: 'GET',
@@ -31,19 +31,18 @@ function Search() {
             const response = await axios.get(`https://api.themoviedb.org/3/search/multi?query=${specificSearch}&include_adult=false&language=en-US&page=1`, options)
             console.log(response.data)
             if (response.data) {
-                setSpecificActive(true);
+                setActive(true);
             }
         } catch (e) {
             console.error(e)
             console.log("er is geen data gevonden");
-            setSpecificActive(false);
+            setActive(false);
         }
-        setSpecificSearch("");
     }
 
     return (
-        <div className="searchpage-outer-container">
-            <div className="search-menu-container">
+        <div className={active ? "page-outer-container" : "searchpage-outer-container"}>
+            {!active && <div className="search-menu-container">
                 <div className="search-menu search-specific">
                     <p>Zoek hier naar een specifieke film of serie</p>
                     <form onSubmit={clickHandler}>
@@ -65,8 +64,22 @@ function Search() {
                 <div className="search-menu search-filter-movies-series"></div>
                 <div className="search-menu rating"></div>
                 <div className="search-menu genres"></div>
+            </div>}
+            {/*<div className="search-results-container">*/}
+                {/*deze moet hij dus niet laden wanneer die ander actief is*/}
+                {active && <section className="search-switch-container">
+                    <button
+                        className="button-to-overview"
+                        type="button"
+                        onClick={() => setActive(false)}
+                    >
+                        Terug naar overzicht
+                    </button>
+                    <h2 className="suggestion-title">{`Dit zijn de zoekresultaten voor ${specificSearch}`}</h2>
+
+                </section>}
+
             </div>
-            <div className="search-results-container"></div>
         </div>
     )
 }
