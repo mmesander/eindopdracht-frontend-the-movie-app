@@ -42,44 +42,42 @@ function Search() {
 
     return (
         <div className={active ? "page-outer-container" : "searchpage-outer-container"}>
-            {!active && <div className="search-menu-container">
-                <div className="search-menu search-specific">
-                    <p>Zoek hier naar een specifieke film of serie</p>
-                    <form onSubmit={clickHandler}>
-                        <Input
-                            type="text"
-                            id="search-specific-field"
-                            name="search-specific"
-                            value={specificSearch}
-                            placeholder="Typ hier je zoekopdracht"
-                            onChange={(e) => setSpecificSearch(e.target.value)}
-                        />
-                        <Button
-                            buttonType="submit"
-                            children="Zoek"
-                            id="search-specific-button"
-                        />
-                    </form>
+            {!active && <section className="search-inactive-container">
+                <div className="search-menu-container">
+                    <div className="search-menu search-specific">
+                        <p>Zoek hier naar een specifieke film of serie</p>
+                        <form onSubmit={clickHandler}>
+                            <Input
+                                type="text"
+                                id="search-specific-field"
+                                name="search-specific"
+                                value={specificSearch}
+                                placeholder="Typ hier je zoekopdracht"
+                                onChange={(e) => setSpecificSearch(e.target.value)}
+                            />
+                            <Button
+                                buttonType="submit"
+                                children="Zoek"
+                                id="search-specific-button"
+                            />
+                        </form>
+                    </div>
+                    <div className="search-menu search-filter-movies-series"></div>
+                    <div className="search-menu rating"></div>
+                    <div className="search-menu genres"></div>
                 </div>
-                <div className="search-menu search-filter-movies-series"></div>
-                <div className="search-menu rating"></div>
-                <div className="search-menu genres"></div>
-            </div>}
-            {/*<div className="search-results-container">*/}
-                {/*deze moet hij dus niet laden wanneer die ander actief is*/}
-                {active && <section className="search-switch-container">
-                    <button
-                        className="button-to-overview"
-                        type="button"
-                        onClick={() => setActive(false)}
-                    >
-                        Terug naar overzicht
-                    </button>
-                    <h2 className="suggestion-title">{`Dit zijn de zoekresultaten voor ${specificSearch}`}</h2>
-
-                </section>}
-
-            </div>
+                <div className="search-results-container"></div>
+            </section>}
+            {active && <section className="search-active-container">
+                <button
+                    className="button-to-overview"
+                    type="button"
+                    onClick={() => setActive(false)}
+                >
+                    Terug naar overzicht
+                </button>
+                <h2 className="suggestion-title">{`Dit zijn de zoekresultaten voor ${specificSearch}`}</h2>
+            </section>}
         </div>
     )
 }
