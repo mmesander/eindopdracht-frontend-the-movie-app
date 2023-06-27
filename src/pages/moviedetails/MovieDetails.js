@@ -46,7 +46,7 @@ function MovieDetails() {
                             <p>DETAAAAAAAAAILS</p>
                             <p><Link to="/">Terug naar Home</Link></p>
                         </section>
-                    </div>}
+                    </div>
                 }
             </div>
         </>

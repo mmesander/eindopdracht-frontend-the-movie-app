@@ -1,0 +1,23 @@
+.details-outer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.details-inner-container {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    width: 900px;
+    height: 675px;
+    background-color: green;
+}
+
+.details-image-container {
+    width: 450px;
+}
+
+.details-image-container img {
+    width: 100%;
+}
