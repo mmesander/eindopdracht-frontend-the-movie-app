@@ -11,6 +11,14 @@ import './Search.css'
 function Search() {
     const [specificSearch, setSpecificSearch] = useState("");
 
+
+
+    async function fetchSpecificMovies() {
+
+    }
+
+
+
     return (
         <div className="searchpage-outer-container">
             <div className="search-menu-container">
@@ -21,12 +29,13 @@ function Search() {
                             type="text"
                             id="search-specific-field"
                             name="search-specific"
+                            value={specificSearch}
                             placeholder="Typ hier je zoekopdracht"
                             onChange={(e) => setSpecificSearch(e.target.value)}
                         />
                         <Button
                             buttonType="submit"
-                            clickHandler={() => console.log(specificSearch)}
+                            clickHandler={clickHandlerSpecificSearch}
                             children="Zoek"
                             id="search-specific-button"
                         />
