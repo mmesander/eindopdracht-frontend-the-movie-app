@@ -46,11 +46,19 @@ function MovieDetails() {
                             <img src={`https://image.tmdb.org/t/p/w500${details.poster_path}`} alt={details.title}/>
                         </section>
                         <article className="details-movie-information">
-                            <h1>{details.title}</h1>
-                            <p className="details-release-date">{formatDate(details.release_date)}</p>
-                            <h4 className="details-tagline">{details.tagline}</h4>
-                            <h2>Rating: <span>{roundRating(details.vote_average)}</span></h2>
-                            <p><Link to="/">Terug naar Home</Link></p>
+                            <section>
+                                <h1>{details.title}</h1>
+
+                                <p className="details-release-date">{formatDate(details.release_date)}</p>
+                                <h4 className="details-tagline">{details.tagline}</h4>
+                                <h2>Rating: <span>{roundRating(details.vote_average)}</span></h2>
+                                <div>
+                                    <p>hier komen de buttons</p>
+                                </div>
+                                <h3>Omschrijving:</h3>
+                                <p>{details.overview}</p>
+                            </section>
+                            <h4 className="details-link"><Link to="/">Terug naar Home</Link></h4>
                         </article>
                     </div>
                 }
