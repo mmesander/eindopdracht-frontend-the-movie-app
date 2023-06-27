@@ -1,5 +1,6 @@
 // Functions
 import React, {useEffect, useState} from "react";
+import axios from "axios";
 
 // Components
 import Input from "../../components/inputelements/Input";
@@ -7,8 +8,7 @@ import Button from "../../components/button/Button";
 import MovieCard from "../../components/moviecard/MovieCard";
 
 // Styles
-import './Search.css'
-import axios from "axios";
+import './Search.css';
 
 function Search() {
     const [specificSearch, setSpecificSearch] = useState("");
