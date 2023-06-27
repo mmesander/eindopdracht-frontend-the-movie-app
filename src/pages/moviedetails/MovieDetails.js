@@ -45,9 +45,10 @@ function MovieDetails() {
                         <section className="details-image-container">
                             <img src={`https://image.tmdb.org/t/p/w500${details.poster_path}`} alt={details.title}/>
                         </section>
-                        <article className="movie-information">
+                        <article className="details-movie-information">
                             <h1>{details.title}</h1>
-                            <p className="release-date">{formatDate(details.release_date)}</p>
+                            <p className="details-release-date">{formatDate(details.release_date)}</p>
+                            <h4 className="details-tagline">{details.tagline}</h4>
                             <h2>Rating: <span>{roundRating(details.vote_average)}</span></h2>
                             <p><Link to="/">Terug naar Home</Link></p>
                         </article>

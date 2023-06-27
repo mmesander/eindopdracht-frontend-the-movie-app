@@ -22,22 +22,28 @@
     border-radius: 10px 0 0 10px;
 }
 
-.movie-information {
+.details-movie-information {
     padding: 30px;
     background-color: #EFE7E7;
     width: 100%;
     border-radius: 0 10px 10px 0;
 }
 
-.movie-information h1 {
+.details-movie-information h1 {
     font-size: 40px;
 }
 
-.release-date {
-    margin-bottom: 20px;
+.details-release-date {
     font-size: 18px;
 }
 
-.movie-information span {
+.details-movie-information span {
     color: #750000;
+}
+
+.details-tagline {
+    margin-block: 20px;
+    font-weight: normal;
+    font-size: 20px;
+    font-style: italic;
 }
