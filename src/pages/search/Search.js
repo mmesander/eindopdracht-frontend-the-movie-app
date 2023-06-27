@@ -37,23 +37,23 @@ function Search() {
     function clickHandler(e) {
         e.preventDefault();
         setPage(1);
+        console.log(specificSearch);
         if (specificSearch) {
             void fetchSpecificMovies(specificSearch);
         }
-        console.log(specificSearch);
-        console.log(totalPages);
     }
 
     async function fetchSpecificMovies(specificSearch) {
         setLoading(true);
         try {
-            const response = await axios.get(`https://api.themoviedb.org/3/search/multi?query=${specificSearch}&include_adult=false&language=en-US&page=1`, options)
+            const response = await axios.get(`https://api.themoviedb.org/3/search/multi?query=${specificSearch}&include_adult=false&language=en-US&page=${page}`, options)
             if (response.data) {
                 setActive(true);
                 setError(false);
             }
             setMovies(response.data.results);
             setTotalPages(response.data.total_pages);
+            console.log(response.data);
 
         } catch (e) {
             setError(true);
@@ -61,7 +61,9 @@ function Search() {
             setActive(false);
         }
         setLoading(false);
-        // console.log(movies)
+        console.log(movies)
+        console.log(totalPages)
+        console.log(page)
     }
 
     return (
@@ -120,7 +122,7 @@ function Search() {
                     />
                 </div>
                 <div className="specific-search-results-container">
-                    {Object.keys(movies).length > 0 && console.log(movies)}
+                    {/*{Object.keys(movies).length > 0 && console.log(movies)}*/}
                     {/*{Object.keys(movies).length > 0 && movies.map((movie) => {*/}
                     {/*    return <MovieCard key={movie.id} title={movie.title} image={movie.poster_path}*/}
                     {/*                      rating={movie.vote_average} id={movie.id}/>*/}
