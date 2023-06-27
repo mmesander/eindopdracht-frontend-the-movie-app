@@ -11,7 +11,6 @@
     flex-direction: row;
     width: 900px;
     height: 675px;
-    background-color: lightgrey;
 }
 
 .details-image-container {
@@ -20,10 +19,14 @@
 
 .details-image-container img {
     height: 100%;
+    border-radius: 10px 0 0 10px;
 }
 
 .movie-information {
     padding: 30px;
+    background-color: #EFE7E7;
+    width: 100%;
+    border-radius: 0 10px 10px 0;
 }
 
 .movie-information h1 {
