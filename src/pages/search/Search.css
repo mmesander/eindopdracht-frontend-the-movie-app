@@ -1,0 +1,30 @@
+.searchpage-outer-container {
+    display: flex;
+    flex-direction: row;
+    min-height: calc(100vh - 110px);
+    flex-basis: 100vw;
+}
+
+.search-menu-container {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    max-width: 250px;
+}
+
+.search-menu {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(117, 0, 0, 60%);
+    margin-block: 20px;
+    width: 100%;
+    flex-basis: auto;
+    max-width: 250px;
+    border-radius: 0 10px 10px 0;
+}
+
+.search-results {
+    background-color: green;
+    width: 80%;
+    margin: 20px;
+}
