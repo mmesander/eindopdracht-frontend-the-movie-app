@@ -37,11 +37,16 @@ function MovieDetails() {
         <>
             <div className="details-outer-container">
                 {Object.keys(details).length > 0 &&
-                    <section>
-                        <h1>{details.title}</h1>
-                        <p>DETAAAAAAAAAILS</p>
-                        <p><Link to="/">Terug naar Home</Link></p>
-                    </section>}
+                    <div className="details-inner-container">
+                        <section className="details-image-container">
+
+                        </section>
+                        <section>
+                            <h1>{details.title}</h1>
+                            <p>DETAAAAAAAAAILS</p>
+                            <p><Link to="/">Terug naar Home</Link></p>
+                        </section>
+                    </div>}
                 }
             </div>
         </>
