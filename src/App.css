@@ -49,3 +49,11 @@
 .loading-error-section .error-message {
     color: red;
 }
+
+.page-outer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
