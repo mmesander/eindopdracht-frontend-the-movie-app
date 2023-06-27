@@ -8,7 +8,7 @@ import {useForm} from "react-hook-form";
 import {AuthContext} from "../../context/AuthContext";
 
 // Components
-import InputElement from "../../components/inputelement/InputElement";
+import InputHookForm from "../../components/inputelements/InputHookForm";
 
 // Styles
 import './SignIn.css';
@@ -51,7 +51,7 @@ function SignIn() {
                 <div className="signin-inner-container">
                     <h1>Inloggen</h1>
                     <form id="signin-form" onSubmit={handleSubmit(handleLogin)}>
-                        <InputElement
+                        <InputHookForm
                             type="text"
                             name="username"
                             id="username-field"
@@ -75,7 +75,7 @@ function SignIn() {
                                 },
                             }}
                         />
-                        <InputElement
+                        <InputHookForm
                             type="password"
                             name="password"
                             id="reg-password-field"
