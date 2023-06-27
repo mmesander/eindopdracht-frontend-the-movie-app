@@ -35,4 +35,9 @@
 
 .release-date {
     margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.movie-information span {
+    color: #750000;
 }

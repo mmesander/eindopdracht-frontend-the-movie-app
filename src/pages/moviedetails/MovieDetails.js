@@ -8,6 +8,7 @@ import formatDate from "../../helpers/formatDate";
 
 // Styles
 import './MovieDetails.css'
+import roundRating from "../../helpers/roundRating";
 
 function MovieDetails() {
     const {movieId} = useParams();
@@ -47,7 +48,7 @@ function MovieDetails() {
                         <article className="movie-information">
                             <h1>{details.title}</h1>
                             <p className="release-date">{formatDate(details.release_date)}</p>
-                            <p>DETAAAAAAAAAILS</p>
+                            <h2>Rating: <span>{roundRating(details.vote_average)}</span></h2>
                             <p><Link to="/">Terug naar Home</Link></p>
                         </article>
                     </div>
