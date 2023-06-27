@@ -4,17 +4,17 @@ import React, {createContext, useState} from "react";
 export const ListsContext = createContext(null);
 
 function ListsContextProvider({children}) {
-    const [favorite, setFavorite] = useState(false);
-    const [watchlist, setWatchlist] = useState(false);
-    const [watched, setWatched] = useState(false);
+    const [listItem, setListItem] = useState({
+        favorite: false,
+        watchlist: false,
+        watched: false
+    })
 
     const data = {
-        favorite: favorite,
-        setFavorite: setFavorite,
-        watchlist: watchlist,
-        setWatchlist: setWatchlist,
-        watched: watched,
-        setWatched: setWatched,
+        favorite: listItem.favorite,
+        watchlist: listItem.watchlist,
+        watched: listItem.watched,
+        setListItem: setListItem,
     }
 
     return (
