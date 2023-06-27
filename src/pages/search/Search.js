@@ -15,7 +15,7 @@ function Search() {
                 <div className="search-menu rating"></div>
                 <div className="search-menu genres"></div>
             </div>
-            <div className="search-results"></div>
+            <div className="search-results-container"></div>
         </div>
     )
 }
