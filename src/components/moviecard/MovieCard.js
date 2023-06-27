@@ -39,9 +39,15 @@ function MovieCard({title, image, rating, id}) {
                     <h4>Rating: {roundedRating}</h4>
                 </section>
                 <div className="icons-container">
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                    <div className={listItem.favorite ? "active-favorite-icon" : "default-icon"}>
+
+                    </div>
+                    <div className={listItem.watchlist ? "active-watchlist-icon" : "default-icon"}>
+
+                    </div>
+                    <div className={listItem.watched ? "active-watched-icon" : "default-icon"}>
+
+                    </div>
                     <button
                         type="button"
                         className={listItem.favorite ? "active-favorite-icon" : "default-icon"}
