@@ -1,7 +1,10 @@
 // Functions
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
 import axios from "axios";
+
+// Context
+import {ListsContext} from "../../context/ListsContext";
 
 // Helpers
 import formatDate from "../../helpers/formatDate";
@@ -10,10 +13,15 @@ import roundRating from "../../helpers/roundRating";
 // Styles
 import './MovieDetails.css'
 
+// Assets
+import favoriteIcon from "../../assets/icons/heart-straight-fill.svg";
+import watchlistIcon from "../../assets/icons/eye-fill.svg";
+import watchedIcon from "../../assets/icons/check-fat-fill.svg";
+
 function MovieDetails() {
     const {movieId} = useParams();
+    const {favorite, watchlist, watched, listItem, setListItem} = useContext(ListsContext);
     const [details, setDetails] = useState({});
-
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
@@ -64,8 +72,37 @@ function MovieDetails() {
                                 <p className="details-release-date">{formatDate(details.release_date)}</p>
                                 <h4 className="details-tagline">{details.tagline}</h4>
                                 <h2>Rating: <span>{roundRating(details.vote_average)}</span></h2>
-                                <div>
-                                    <p>hier komen de buttons</p>
+                                <div className="details-icons-container">
+                                    <button
+                                        type="button"
+                                        className={listItem.favorite ? "active-favorite-button" : "inactive-favorite-button"}
+                                        onClick={() => setListItem({
+                                            ...listItem,
+                                            favorite: !favorite
+                                        })}
+                                    >
+                                        <img src={favoriteIcon} alt="favorite-icon"/>
+                                    </button>
+                                    <button
+                                        type="button"
+                                        className={listItem.watchlist ? "active-watchlist-button" : "inactive-watchlist-button"}
+                                        onClick={() => setListItem({
+                                            ...listItem,
+                                            watchlist: !watchlist
+                                        })}
+                                    >
+                                        <img src={watchlistIcon} alt="watchlist-icon"/>
+                                    </button>
+                                    <button
+                                        type="button"
+                                        className={listItem.watched ? "active-watched-button" : "inactive-watched-button"}
+                                        onClick={() => setListItem({
+                                            ...listItem,
+                                            watched: !watched
+                                        })}
+                                    >
+                                        <img src={watchedIcon} alt="watched-icon"/>
+                                    </button>
                                 </div>
                                 <h3>Omschrijving:</h3>
                                 <p>{details.overview}</p>

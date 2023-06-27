@@ -9,7 +9,7 @@ import {BrowserRouter as Router} from "react-router-dom";
 // Pages
 import App from './App';
 
-// Components
+// Context
 import AuthContextProvider from "./context/AuthContext";
 import ListsContextProvider from "./context/ListsContext";
 
@@ -18,9 +18,9 @@ root.render(
     <React.StrictMode>
         <Router>
             <AuthContextProvider>
-                {/*<ListsContextProvider>*/}
+                <ListsContextProvider>
                     <App/>
-                {/*</ListsContextProvider>*/}
+                </ListsContextProvider>
             </AuthContextProvider>
         </Router>
     </React.StrictMode>
