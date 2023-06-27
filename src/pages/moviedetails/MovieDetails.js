@@ -43,6 +43,7 @@ function MovieDetails() {
                         </section>
                         <article className="movie-information">
                             <h1>{details.title}</h1>
+                            <p className="release-date">{details.release_date}</p>
                             <p>DETAAAAAAAAAILS</p>
                             <p><Link to="/">Terug naar Home</Link></p>
                         </article>
