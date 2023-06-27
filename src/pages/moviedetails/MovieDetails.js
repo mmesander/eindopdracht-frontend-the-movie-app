@@ -3,6 +3,9 @@ import React, {useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
 import axios from "axios";
 
+// Helpers
+import formatDate from "../../helpers/formatDate";
+
 // Styles
 import './MovieDetails.css'
 
@@ -43,7 +46,7 @@ function MovieDetails() {
                         </section>
                         <article className="movie-information">
                             <h1>{details.title}</h1>
-                            <p className="release-date">{details.release_date}</p>
+                            <p className="release-date">{formatDate(details.release_date)}</p>
                             <p>DETAAAAAAAAAILS</p>
                             <p><Link to="/">Terug naar Home</Link></p>
                         </article>
