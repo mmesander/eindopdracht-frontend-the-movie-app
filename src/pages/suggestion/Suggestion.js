@@ -128,7 +128,7 @@ function Suggestion() {
                     </div>
                     <div className="suggestion-inner-container">
                         {Object.keys(movies).length > 0 && movies.map((movie) => {
-                            return <MovieCard key={movie.id} title={movie.name} image={movie.poster_path}
+                            return <MovieCard key={movie.id} title={movie.title} image={movie.poster_path}
                                               rating={movie.vote_average} id={movie.id}/>
                         })}
                     </div>
