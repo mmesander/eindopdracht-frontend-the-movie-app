@@ -1,9 +1,10 @@
 // Functions
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 // Components
 import Input from "../../components/inputelements/Input";
 import Button from "../../components/button/Button";
+import MovieCard from "../../components/moviecard/MovieCard";
 
 // Styles
 import './Search.css'
@@ -13,7 +14,6 @@ function Search() {
     const [specificSearch, setSpecificSearch] = useState("");
     const [active, setActive] = useState(false);
     const [movies, setMovies] = useState({});
-    // const [endpoint, setEndpoint] = useState("");
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
 
@@ -28,23 +28,32 @@ function Search() {
         }
     };
 
+    useEffect(() => {
+        if (page >= 1 && active) {
+            void fetchSpecificMovies(specificSearch);
+        }
+    }, [page])
+
     function clickHandler(e) {
         e.preventDefault();
         setPage(1);
-        void fetchSpecificMovies();
+        if (specificSearch) {
+            void fetchSpecificMovies(specificSearch);
+        }
+        console.log(specificSearch);
+        console.log(totalPages);
     }
 
-    async function fetchSpecificMovies() {
+    async function fetchSpecificMovies(specificSearch) {
         setLoading(true);
         try {
             const response = await axios.get(`https://api.themoviedb.org/3/search/multi?query=${specificSearch}&include_adult=false&language=en-US&page=1`, options)
-            console.log(response.data)
             if (response.data) {
                 setActive(true);
                 setError(false);
             }
             setMovies(response.data.results);
-            setTotalPages(response.data.total_pages)
+            setTotalPages(response.data.total_pages);
 
         } catch (e) {
             setError(true);
@@ -52,6 +61,7 @@ function Search() {
             setActive(false);
         }
         setLoading(false);
+        // console.log(movies)
     }
 
     return (
@@ -95,8 +105,24 @@ function Search() {
                     {loading && <h3 className="loading-message">Loading... </h3>}
                     {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
                 </div>
+                <Button
+                    buttonType="button"
+                    children="Vorige"
+                    clickHandler={() => setPage(page - 1)}
+                    disabled={page === 1}
+                />
+                <Button
+                    buttonType="button"
+                    children="Volgende"
+                    clickHandler={() => setPage(page + 1)}
+                    disabled={page === totalPages}
+                />
                 <div className="specific-search-results-container">
-
+                    {Object.keys(movies).length > 0 && console.log(movies)}
+                    {/*{Object.keys(movies).length > 0 && movies.map((movie) => {*/}
+                    {/*    return <MovieCard key={movie.id} title={movie.title} image={movie.poster_path}*/}
+                    {/*                      rating={movie.vote_average} id={movie.id}/>*/}
+                    {/*})}*/}
                 </div>
             </section>}
         </div>
