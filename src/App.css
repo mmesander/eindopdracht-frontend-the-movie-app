@@ -36,3 +36,16 @@
         transform: rotate(360deg);
     }
 }
+
+.loading-error-section {
+    min-height: 30px;
+    margin-bottom: 10px;
+}
+
+.loading-error-section .loading-message {
+    color: white;
+}
+
+.loading-error-section .error-message {
+    color: red;
+}

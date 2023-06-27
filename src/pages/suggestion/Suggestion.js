@@ -71,9 +71,9 @@ function Suggestion() {
             <div className="suggestion-outer-container">
                 {!active && <section className="suggestion-switch-container">
                     <h1 className="suggestion-title">Heb jij zin om: </h1>
-                    <div className="loading-section-suggestion">
-                        {loading && <h3 className="loading-message-suggestion">Loading... </h3>}
-                        {error && <h3 className="error-message-suggestion">Error: Could not fetch data!</h3>}
+                    <div className="loading-error-section">
+                        {loading && <h3 className="loading-message">Loading... </h3>}
+                        {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
                     </div>
                     <div className="suggestion-mood-container">
                         <MoodContainer
@@ -125,9 +125,9 @@ function Suggestion() {
                         Terug naar overzicht
                     </button>
                     <h2 className="suggestion-title">{`Je hebt gekozen om ${title}`}</h2>
-                    <div className="loading-section-suggestion">
-                        {loading && <h3 className="loading-message-suggestion">Loading... </h3>}
-                        {error && <h3 className="error-message-suggestion">Error: Could not fetch data!</h3>}
+                    <div className="loading-error-section">
+                        {loading && <h3 className="loading-message">Loading... </h3>}
+                        {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
                     </div>
                     <div className="button-set-page-section">
                         <Button

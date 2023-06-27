@@ -5,14 +5,17 @@ import axios from "axios";
 
 // Helpers
 import formatDate from "../../helpers/formatDate";
+import roundRating from "../../helpers/roundRating";
 
 // Styles
 import './MovieDetails.css'
-import roundRating from "../../helpers/roundRating";
 
 function MovieDetails() {
     const {movieId} = useParams();
     const [details, setDetails] = useState({});
+
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
 
     const options = {
         method: 'GET',
@@ -25,12 +28,17 @@ function MovieDetails() {
     useEffect(() => {
         async function fetchMovieDetails(id) {
             try {
+                setLoading(true);
                 const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?language=nl-NL`, options)
+                if (response.data) {
+                    setError(false);
+                }
                 setDetails(response.data);
-                console.log(response.data)
             } catch (e) {
+                setError(true);
                 console.error(e)
             }
+            setLoading(false);
         }
 
         void fetchMovieDetails(movieId);
@@ -40,6 +48,10 @@ function MovieDetails() {
     return (
         <>
             <div className="details-outer-container">
+                <div className="loading-error-section">
+                    {loading && <h3 className="loading-message">Loading... </h3>}
+                    {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
+                </div>
                 {Object.keys(details).length > 0 &&
                     <div className="details-inner-container">
                         <section className="details-image-container">

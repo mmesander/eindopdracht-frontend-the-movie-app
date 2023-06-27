@@ -53,16 +53,3 @@
     color: #750000;
 }
 
-.loading-section-suggestion {
-    min-height: 30px;
-    margin-bottom: 10px;
-}
-
-.loading-message-suggestion {
-    color: white;
-}
-
-.error-message-suggestion {
-    color: red;
-}
-
