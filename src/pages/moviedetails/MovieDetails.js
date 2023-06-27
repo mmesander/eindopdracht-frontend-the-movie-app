@@ -58,7 +58,7 @@ function MovieDetails() {
                                 <h3>Omschrijving:</h3>
                                 <p>{details.overview}</p>
                             </section>
-                            <h4 className="details-link"><Link to="/">Terug naar Home</Link></h4>
+                            <h4><Link to="/">Terug naar Home</Link></h4>
                         </article>
                     </div>
                 }

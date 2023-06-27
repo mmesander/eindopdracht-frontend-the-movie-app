@@ -58,3 +58,12 @@
 .details-movie-information h3 {
     margin-block: 20px;
 }
+
+.details-movie-information a,
+.details-movie-information a:visited {
+    color: black;
+}
+
+.details-movie-information a:hover {
+    color: #750000;
+}
