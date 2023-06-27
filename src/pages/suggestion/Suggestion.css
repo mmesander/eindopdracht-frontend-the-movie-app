@@ -54,6 +54,15 @@
 }
 
 .loading-section-suggestion {
-    height: 20px;
+    min-height: 30px;
+    margin-bottom: 10px;
+}
+
+.loading-message-suggestion {
+    color: white;
+}
+
+.error-message-suggestion {
+    color: red;
 }
 

@@ -72,8 +72,8 @@ function Suggestion() {
                 {!active && <section className="suggestion-switch-container">
                     <h1 className="suggestion-title">Heb jij zin om: </h1>
                     <div className="loading-section-suggestion">
-                        {loading && <h3 className="loading-message">Loading... </h3>}
-                        {error && <h3 className="error message">Error: Could not fetch data!</h3>}
+                        {loading && <h3 className="loading-message-suggestion">Loading... </h3>}
+                        {error && <h3 className="error-message-suggestion">Error: Could not fetch data!</h3>}
                     </div>
                     <div className="suggestion-mood-container">
                         <MoodContainer
