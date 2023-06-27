@@ -42,6 +42,7 @@ function MovieDetails() {
                     setError(false);
                 }
                 setDetails(response.data);
+                console.log(response.data)
             } catch (e) {
                 setError(true);
                 console.error(e)

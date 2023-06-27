@@ -4,10 +4,17 @@
     flex-grow: 1;
     flex-shrink: 0;
     width: 160px;
-    height: 365px;
+    height: 375px;
     max-width: 175px;
     justify-content: space-between;
     background-color: white;
+}
+
+.moviecard-header-section {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    justify-content: space-between;
 }
 
 .moviecard-header-section img {

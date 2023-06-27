@@ -36,11 +36,16 @@ function MovieCard({title, image, rating, id}) {
         >
             <div className="moviecard-container">
                 <section className="moviecard-header-section">
-                    <img src={`https://image.tmdb.org/t/p/w500${image}`} alt={title}/>
-                    <h3>{title}</h3>
-                    <h4>Rating: {roundedRating}</h4>
+                    <div>
+                        <img src={`https://image.tmdb.org/t/p/w500${image}`} alt={title}/>
+                        {title.length < 40 && <h3>{title}</h3>}
+                        {title.length > 40 && !title.length < 40 && <h4>{title}</h4>}
+                    </div>
+                    <div>
+                        <h4>Rating: {roundedRating}</h4>
+                    </div>
                 </section>
-                <div className="icons-container">
+                <section className="icons-container">
                     <div className={listItem.favorite ? "active-favorite-icon" : "default-icon"}>
                         <img src={favoriteIcon} alt="favorite-icon"/>
                     </div>
@@ -50,7 +55,7 @@ function MovieCard({title, image, rating, id}) {
                     <div className={listItem.watched ? "active-watched-icon" : "default-icon"}>
                         <img src={watchedIcon} alt="watched-icon"/>
                     </div>
-                </div>
+                </section>
             </div>
         </button>
     )
