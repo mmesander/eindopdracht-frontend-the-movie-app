@@ -13,6 +13,9 @@ function Search() {
     const [specificSearch, setSpecificSearch] = useState("");
     const [active, setActive] = useState(false);
 
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+
     const options = {
         method: 'GET',
         headers: {
@@ -27,17 +30,20 @@ function Search() {
     }
 
     async function fetchSpecificMovies() {
+        setLoading(true);
         try {
             const response = await axios.get(`https://api.themoviedb.org/3/search/multi?query=${specificSearch}&include_adult=false&language=en-US&page=1`, options)
             console.log(response.data)
             if (response.data) {
                 setActive(true);
+                setError(false);
             }
         } catch (e) {
+            setError(true);
             console.error(e)
-            console.log("er is geen data gevonden");
             setActive(false);
         }
+        setLoading(false);
     }
 
     return (
@@ -77,6 +83,10 @@ function Search() {
                     Terug naar overzicht
                 </button>
                 <h2 className="suggestion-title">{`Dit zijn de zoekresultaten voor ${specificSearch}`}</h2>
+                <div className="loading-error-section">
+                    {loading && <h3 className="loading-message">Loading... </h3>}
+                    {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
+                </div>
             </section>}
         </div>
     )
