@@ -40,44 +40,44 @@ function MovieCard({title, image, rating, id}) {
                 </section>
                 <div className="icons-container">
                     <div className={listItem.favorite ? "active-favorite-icon" : "default-icon"}>
-
+                        <img src={favoriteIcon} alt="favorite-icon"/>
                     </div>
                     <div className={listItem.watchlist ? "active-watchlist-icon" : "default-icon"}>
-
+                        <img src={watchlistIcon} alt="watchlist-icon"/>
                     </div>
                     <div className={listItem.watched ? "active-watched-icon" : "default-icon"}>
-
-                    </div>
-                    <button
-                        type="button"
-                        className={listItem.favorite ? "active-favorite-icon" : "default-icon"}
-                        onClick={() => setListItem({
-                            ...listItem,
-                            favorite: !favorite
-                        })}
-                    >
-                        <img src={favoriteIcon} alt="favorite-icon"/>
-                    </button>
-                    <button
-                        type="button"
-                        className={listItem.watchlist ? "active-watchlist-icon" : "default-icon"}
-                        onClick={() => setListItem({
-                            ...listItem,
-                            watchlist: !watchlist
-                        })}
-                    >
-                        <img src={watchlistIcon} alt="watchlist-icon"/>
-                    </button>
-                    <button
-                        type="button"
-                        className={listItem.watched ? "active-watched-icon" : "default-icon"}
-                        onClick={() => setListItem({
-                            ...listItem,
-                            watched: !watched
-                        })}
-                    >
                         <img src={watchedIcon} alt="watched-icon"/>
-                    </button>
+                    </div>
+                    {/*<button*/}
+                    {/*    type="button"*/}
+                    {/*    className={listItem.favorite ? "active-favorite-icon" : "default-icon"}*/}
+                    {/*    onClick={() => setListItem({*/}
+                    {/*        ...listItem,*/}
+                    {/*        favorite: !favorite*/}
+                    {/*    })}*/}
+                    {/*>*/}
+                    {/*    <img src={favoriteIcon} alt="favorite-icon"/>*/}
+                    {/*</button>*/}
+                    {/*<button*/}
+                    {/*    type="button"*/}
+                    {/*    className={listItem.watchlist ? "active-watchlist-icon" : "default-icon"}*/}
+                    {/*    onClick={() => setListItem({*/}
+                    {/*        ...listItem,*/}
+                    {/*        watchlist: !watchlist*/}
+                    {/*    })}*/}
+                    {/*>*/}
+                    {/*    <img src={watchlistIcon} alt="watchlist-icon"/>*/}
+                    {/*</button>*/}
+                    {/*<button*/}
+                    {/*    type="button"*/}
+                    {/*    className={listItem.watched ? "active-watched-icon" : "default-icon"}*/}
+                    {/*    onClick={() => setListItem({*/}
+                    {/*        ...listItem,*/}
+                    {/*        watched: !watched*/}
+                    {/*    })}*/}
+                    {/*>*/}
+                    {/*    <img src={watchedIcon} alt="watched-icon"/>*/}
+                    {/*</button>*/}
                 </div>
             </div>
         </button>
