@@ -7,17 +7,27 @@ import Button from "../../components/button/Button";
 
 // Styles
 import './Search.css'
+import axios from "axios";
 
 function Search() {
     const [specificSearch, setSpecificSearch] = useState("");
 
-
+    const options = {
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
+        }
+    };
 
     async function fetchSpecificMovies() {
-
+        try {
+            const response = await axios.get(`https://api.themoviedb.org/3/search/multi?query=${specificSearch}&include_adult=false&language=en-US&page=1`, options)
+            console.log(response.data)
+        } catch (e) {
+            console.error(e)
+        }
     }
-
-
 
     return (
         <div className="searchpage-outer-container">
@@ -35,7 +45,7 @@ function Search() {
                         />
                         <Button
                             buttonType="submit"
-                            clickHandler={clickHandlerSpecificSearch}
+                            clickHandler={fetchSpecificMovies}
                             children="Zoek"
                             id="search-specific-button"
                         />
