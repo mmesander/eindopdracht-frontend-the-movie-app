@@ -47,7 +47,7 @@ function MovieCard({title, image, rating, id}) {
                             favorite: !favorite
                         })}
                     >
-                        <img src={favoriteIcon} alt="favorite-icon" className={listItem.favorite ? "active-favorite-icon" : "default-icon"}/>
+                        <img src={favoriteIcon} alt="favorite-icon"/>
                     </button>
                     <button
                         type="button"

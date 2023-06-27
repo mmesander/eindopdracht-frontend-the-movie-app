@@ -38,19 +38,28 @@
     gap: 2px
 }
 
-.icons-container img {
-    color: black;
-    /*filter: invert(15%) sepia(37%) saturate(3144%) hue-rotate(337deg) brightness(103%) contrast(133%);*/
-    /*Hier komt de aangepast kleur*/
+.active-favorite-icon,
+.active-watchlist-icon,
+.active-watched-icon {
+    background-color: white;
+}
+
+.active-favorite-icon img {
+    filter: invert(33%) sepia(48%) saturate(3863%) hue-rotate(223deg) brightness(103%) contrast(90%);
+}
+
+.active-watchlist-icon img {
+    filter: invert(48%) sepia(50%) saturate(7135%) hue-rotate(340deg) brightness(100%) contrast(94%);
+}
+
+.active-watched-icon img {
+    filter: invert(50%) sepia(57%) saturate(1456%) hue-rotate(86deg) brightness(103%) contrast(103%);
 }
 
 .icons-container button {
     border: 1px solid white;
 }
 
-.icons-container button:hover {
-    cursor: pointer;
-}
 
 .default-icon {
     background-color: white;

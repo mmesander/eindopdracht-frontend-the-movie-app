@@ -81,7 +81,7 @@ function MovieDetails() {
                                             favorite: !favorite
                                         })}
                                     >
-                                        <img src={favoriteIcon} alt="favorite-icon" className={listItem.favorite ? "active-favorite-icon" : "inactive-default-icon"}/>
+                                        <img src={favoriteIcon} alt="favorite-icon"/>
                                     </button>
                                     <button
                                         type="button"
@@ -91,7 +91,7 @@ function MovieDetails() {
                                             watchlist: !watchlist
                                         })}
                                     >
-                                        <img src={watchlistIcon} alt="watchlist-icon" className={listItem.watchlist ? "active-watchlist-icon" : "inactive-default-icon"}/>
+                                        <img src={watchlistIcon} alt="watchlist-icon"/>
                                     </button>
                                     <button
                                         type="button"
@@ -101,7 +101,7 @@ function MovieDetails() {
                                             watched: !watched
                                         })}
                                     >
-                                        <img src={watchedIcon} alt="watched-icon" className={listItem.watched ? "active-watched-icon" : "inactive-default-icon"}/>
+                                        <img src={watchedIcon} alt="watched-icon"/>
                                     </button>
                                 </div>
                                 <h3>Omschrijving:</h3>

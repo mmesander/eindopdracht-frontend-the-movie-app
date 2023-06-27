@@ -74,11 +74,6 @@
     gap: 25px;
 }
 
-.details-icons-container img {
-    background-color: #EFE7E7;
-    color: blue;
-}
-
 .inactive-favorite-button,
 .inactive-watchlist-button,
 .inactive-watched-button {
@@ -124,4 +119,23 @@
     font-size: 14px;
     color: white;
     width: 200px;
+}
+
+.active-favorite-button,
+.active-watchlist-button,
+.active-watched-button {
+    border: 1px solid #EFE7E7;
+    background-color: #EFE7E7;
+}
+
+.active-favorite-button img {
+    filter: invert(33%) sepia(48%) saturate(3863%) hue-rotate(223deg) brightness(103%) contrast(90%);
+}
+
+.active-watchlist-button img {
+    filter: invert(48%) sepia(50%) saturate(7135%) hue-rotate(340deg) brightness(100%) contrast(94%);
+}
+
+.active-watched-button img {
+    filter: invert(50%) sepia(57%) saturate(1456%) hue-rotate(86deg) brightness(103%) contrast(103%);
 }
