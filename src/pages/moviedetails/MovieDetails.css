@@ -6,7 +6,6 @@
 }
 
 .details-inner-container {
-    margin-top: 50px;
     display: flex;
     flex-direction: row;
     width: 900px;
@@ -66,4 +65,8 @@
 
 .details-movie-information a:hover {
     color: #750000;
+}
+
+.details-outer-container .loading-error-section {
+    margin-top: 50px;
 }
