@@ -1,10 +1,3 @@
-.suggestion-outer-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 .suggestion-switch-container {
     display: flex;
     flex-direction: column;
@@ -32,8 +25,8 @@
     margin-inline: 30px;
 }
 
-.suggestion-outer-container h1,
-.suggestion-outer-container h2 {
+.suggestion-switch-container h1,
+.suggestion-switch-container h2 {
     color: white;
     margin: 20px 30px 5px 30px;
 }
