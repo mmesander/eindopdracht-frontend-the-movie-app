@@ -2,6 +2,9 @@
 import React, {useContext} from "react";
 import {useNavigate} from "react-router-dom";
 
+// Context
+import {ListsContext} from "../../context/ListsContext";
+
 // Helpers
 import roundRating from "../../helpers/roundRating";
 
@@ -12,7 +15,6 @@ import './MovieCard.css';
 import favoriteIcon from '../../assets/icons/heart-straight-fill.svg';
 import watchlistIcon from '../../assets/icons/eye-fill.svg';
 import watchedIcon from '../../assets/icons/check-fat-fill.svg';
-import {ListsContext} from "../../context/ListsContext";
 
 function MovieCard({title, image, rating, id}) {
     const navigate = useNavigate();
