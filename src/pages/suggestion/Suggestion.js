@@ -25,6 +25,9 @@ function Suggestion() {
     const [title, setTitle] = useState("");
     const [totalPages, setTotalPages] = useState(0);
 
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+
     const options = {
         method: 'GET',
         headers: {
