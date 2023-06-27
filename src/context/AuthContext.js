@@ -3,6 +3,7 @@ import React, {createContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
+import checkTokenValidity from "../helpers/checkTokenValidity";
 
 export const AuthContext = createContext(null);
 
@@ -17,7 +18,7 @@ function AuthContextProvider({children}) {
     useEffect(() => {
         const storedToken = localStorage.getItem('token');
 
-        if (storedToken) {
+        if (storedToken && checkTokenValidity(storedToken)) {
             const decodedToken = jwt_decode(storedToken);
             void fetchUserData(decodedToken.sub, storedToken);
         } else {
