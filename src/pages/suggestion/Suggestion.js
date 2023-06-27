@@ -48,22 +48,32 @@ function Suggestion() {
     }
 
     async function fetchSpecificMovies(endpoint, text) {
+        setLoading(true);
         try {
             const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${endpoint}`, options);
+            if (response.data) {
+                setError(false);
+            }
             setMovies(response.data.results);
             setTitle(text);
             setActive(true);
             setEndpoint(endpoint);
             setTotalPages(response.data.total_pages);
         } catch (e) {
+            setError(true);
             console.error(e);
         }
+        setLoading(false);
     }
 
     return (
         <>
             <div className="suggestion-outer-container">
                 {!active && <section className="suggestion-switch-container">
+                    <div className="loading-section">
+                        {loading && <h4>Loading... </h4>}
+                        {error && <h4>Error: Could not fetch data!</h4>}
+                    </div>
                     <h1 className="suggestion-title">Heb jij zin om: </h1>
                     <div className="suggestion-mood-container">
                         <MoodContainer
@@ -115,6 +125,10 @@ function Suggestion() {
                         Terug naar overzicht
                     </button>
                     <h2 className="suggestion-title">{`Je hebt gekozen om ${title}`}</h2>
+                    <div className="loading-section">
+                        {loading && <h2>Loading... </h2>}
+                        {error && <h2>Error: Could not fetch data!</h2>}
+                    </div>
                     <div className="button-set-page-section">
                         <Button
                             buttonType="button"
