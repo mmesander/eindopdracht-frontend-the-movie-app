@@ -11,6 +11,7 @@ import axios from "axios";
 
 function Search() {
     const [specificSearch, setSpecificSearch] = useState("");
+    const [specificActive, setSpecificActive] = useState(false);
 
     const options = {
         method: 'GET',
@@ -20,13 +21,24 @@ function Search() {
         }
     };
 
+    function clickHandler(e) {
+        e.preventDefault();
+        void fetchSpecificMovies();
+    }
+
     async function fetchSpecificMovies() {
         try {
             const response = await axios.get(`https://api.themoviedb.org/3/search/multi?query=${specificSearch}&include_adult=false&language=en-US&page=1`, options)
             console.log(response.data)
+            if (response.data) {
+                setSpecificActive(true);
+            }
         } catch (e) {
             console.error(e)
+            console.log("er is geen data gevonden");
+            setSpecificActive(false);
         }
+        setSpecificSearch("");
     }
 
     return (
@@ -34,7 +46,7 @@ function Search() {
             <div className="search-menu-container">
                 <div className="search-menu search-specific">
                     <p>Zoek hier naar een specifieke film of serie</p>
-                    <form>
+                    <form onSubmit={clickHandler}>
                         <Input
                             type="text"
                             id="search-specific-field"
@@ -45,7 +57,6 @@ function Search() {
                         />
                         <Button
                             buttonType="submit"
-                            clickHandler={fetchSpecificMovies}
                             children="Zoek"
                             id="search-specific-button"
                         />
