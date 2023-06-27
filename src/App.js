@@ -36,7 +36,7 @@ function App() {
                 <Route path="/registratie" element={<SignUp/>}/>
                 <Route path="/details/:movieId" element={<MovieDetails/>}></Route>
             </Routes>
-            <Footer/>
+            {isAuth && <Footer/>}
         </>
     );
 }
