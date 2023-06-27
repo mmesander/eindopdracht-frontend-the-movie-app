@@ -39,13 +39,13 @@ function MovieDetails() {
                 {Object.keys(details).length > 0 &&
                     <div className="details-inner-container">
                         <section className="details-image-container">
-
+                            <img src={`https://image.tmdb.org/t/p/w500${details.poster_path}`} alt={details.title}/>
                         </section>
-                        <section>
+                        <article className="movie-information">
                             <h1>{details.title}</h1>
                             <p>DETAAAAAAAAAILS</p>
                             <p><Link to="/">Terug naar Home</Link></p>
-                        </section>
+                        </article>
                     </div>
                 }
             </div>
