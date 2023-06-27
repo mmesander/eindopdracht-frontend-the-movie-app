@@ -22,7 +22,7 @@
     max-width: 1000px;
     height: auto;
     flex-wrap: wrap;
-    margin-inline: 30px;
+    margin: 0 30px 50px 30px;
 }
 
 .suggestion-switch-container h1,
@@ -46,3 +46,6 @@
     color: #750000;
 }
 
+.suggestion-title {
+    font-size: 40px;
+}
