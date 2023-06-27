@@ -18,9 +18,9 @@ root.render(
     <React.StrictMode>
         <Router>
             <AuthContextProvider>
-                <ListsContextProvider>
+                {/*<ListsContextProvider>*/}
                     <App/>
-                </ListsContextProvider>
+                {/*</ListsContextProvider>*/}
             </AuthContextProvider>
         </Router>
     </React.StrictMode>
