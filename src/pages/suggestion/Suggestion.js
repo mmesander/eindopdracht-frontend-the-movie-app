@@ -70,11 +70,11 @@ function Suggestion() {
         <>
             <div className="suggestion-outer-container">
                 {!active && <section className="suggestion-switch-container">
-                    <div className="loading-section">
-                        {loading && <h4>Loading... </h4>}
-                        {error && <h4>Error: Could not fetch data!</h4>}
-                    </div>
                     <h1 className="suggestion-title">Heb jij zin om: </h1>
+                    <div className="loading-section-suggestion">
+                        {loading && <h3 className="loading-message">Loading... </h3>}
+                        {error && <h3 className="error message">Error: Could not fetch data!</h3>}
+                    </div>
                     <div className="suggestion-mood-container">
                         <MoodContainer
                             mood="van de bank te rollen van het lachen"
