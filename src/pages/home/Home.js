@@ -68,12 +68,12 @@ function Home() {
 
     return (
         <>
-            <div className="home-outer-container">
+            <div className="page-outer-container">
                 <div className="loading-section">
                     {loading && <h2>Loading... </h2>}
                     {error && <h2>Error: Could not fetch data!</h2>}
                 </div>
-                <h1 className="movies-title">Trending Movies</h1>
+                <h1 className="home-titles">Trending Movies</h1>
                 <div className="home-inner-container">
                     {loading && <h2>Loading... </h2>}
                     {error && <h2>Error: Could not fetch data!</h2>}
@@ -81,7 +81,7 @@ function Home() {
                         return <MovieCard key={movie.id} title={movie.title} image={movie.poster_path} rating={movie.vote_average} id={movie.id}/>
                     })}
                 </div>
-                <h1 className="series-title">Trending Series</h1>
+                <h1 className="home-titles">Trending Series</h1>
                 <div className="home-inner-container">
                     {loading && <h2>Loading... </h2>}
                     {error && <h2>Error: Could not fetch data!</h2>}

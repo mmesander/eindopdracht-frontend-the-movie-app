@@ -3,7 +3,9 @@ import React from "react";
 
 function Search() {
     return (
-        <h1>This is the search page</h1>
+        <div className="page-outer-container">
+            <h1>This is the search page</h1>
+        </div>
     )
 }
 

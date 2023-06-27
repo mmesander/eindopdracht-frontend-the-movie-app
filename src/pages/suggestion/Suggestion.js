@@ -68,7 +68,7 @@ function Suggestion() {
 
     return (
         <>
-            <div className="suggestion-outer-container">
+            <div className="page-outer-container">
                 {!active && <section className="suggestion-switch-container">
                     <h1 className="suggestion-title">Heb jij zin om: </h1>
                     <div className="loading-error-section">

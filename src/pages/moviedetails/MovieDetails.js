@@ -47,7 +47,7 @@ function MovieDetails() {
 
     return (
         <>
-            <div className="details-outer-container">
+            <div className="page-outer-container">
                 <div className="loading-error-section">
                     {loading && <h3 className="loading-message">Loading... </h3>}
                     {error && <h3 className="error-message">Error: Could not fetch data!</h3>}

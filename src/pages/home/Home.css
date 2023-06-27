@@ -1,10 +1,3 @@
-.home-outer-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 .home-inner-container {
     display: flex;
     flex-direction: row;
@@ -16,21 +9,22 @@
     margin-inline: 30px
 }
 
-.moviecards-container {
-    display: flex;
-    flex-direction: row;
-}
-
-.home-outer-container h1 {
+.home-titles {
     margin-top: 20px;
     color: white;
 }
 
-.title-container {
-    display: flex;
-    flex-direction: row;
-    text-align: left;
-    align-items: flex-end;
-    width: 100%;
-    margin-left: 50px;
-}
+/*.moviecards-container {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*}*/
+
+
+/*.title-container {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    text-align: left;*/
+/*    align-items: flex-end;*/
+/*    width: 100%;*/
+/*    margin-left: 50px;*/
+/*}*/
