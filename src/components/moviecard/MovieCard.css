@@ -4,28 +4,35 @@
     flex-grow: 1;
     flex-shrink: 0;
     width: 160px;
-    height: 365px;
+    height: 375px;
     max-width: 175px;
     justify-content: space-between;
     background-color: white;
+}
+
+.moviecard-header-section {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    justify-content: space-between;
 }
 
 .moviecard-header-section img {
     width: 100%;
 }
 
-.details-button {
+.moviecard-container-button {
     margin: 5px 10px;
     border: 2px solid #282828;
     text-align: left;
 }
 
-.details-button h3,
-.details-button h4 {
+.moviecard-container-button h3,
+.moviecard-container-button h4 {
     margin: 5px;
 }
 
-.details-button:hover {
+.moviecard-container-button:hover {
     border: 2px solid #750000;
     cursor: pointer;
 }
@@ -35,7 +42,8 @@
     flex-direction: row;
     align-items: flex-end;
     justify-content: right;
-    gap: 2px
+    gap: 2px;
+    padding: 0 5px 2px 0;
 }
 
 .active-favorite-icon,
@@ -54,13 +62,4 @@
 
 .active-watched-icon img {
     filter: invert(50%) sepia(57%) saturate(1456%) hue-rotate(86deg) brightness(103%) contrast(103%);
-}
-
-.icons-container button {
-    border: 1px solid white;
-}
-
-
-.default-icon {
-    background-color: white;
 }
