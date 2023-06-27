@@ -51,9 +51,9 @@ function Search() {
                 setActive(true);
                 setError(false);
             }
+            console.log(response.data);
             setMovies(response.data.results);
             setTotalPages(response.data.total_pages);
-            console.log(response.data);
 
         } catch (e) {
             setError(true);
@@ -61,9 +61,11 @@ function Search() {
             setActive(false);
         }
         setLoading(false);
-        console.log(movies)
-        console.log(totalPages)
-        console.log(page)
+        // testing and troubleshooting
+        console.log(movies);
+        console.log(totalPages);
+        console.log(page);
+        console.log(active);
     }
 
     return (
