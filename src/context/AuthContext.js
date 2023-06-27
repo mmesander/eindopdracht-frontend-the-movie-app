@@ -15,11 +15,11 @@ function AuthContextProvider({children}) {
     });
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
+        const storedToken = localStorage.getItem('token');
 
-        if (token) {
-            const decodedToken = jwt_decode(token);
-            fetchUserData(decodedToken.sub, token);
+        if (storedToken) {
+            const decodedToken = jwt_decode(storedToken);
+            void fetchUserData(decodedToken.sub, storedToken);
         } else {
             setAuth({
                 ...auth,
