@@ -25,6 +25,9 @@ function Suggestion() {
     const [title, setTitle] = useState("");
     const [totalPages, setTotalPages] = useState(0);
 
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+
     const options = {
         method: 'GET',
         headers: {
@@ -45,16 +48,22 @@ function Suggestion() {
     }
 
     async function fetchSpecificMovies(endpoint, text) {
+        setLoading(true);
         try {
             const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${endpoint}`, options);
+            if (response.data) {
+                setError(false);
+            }
             setMovies(response.data.results);
             setTitle(text);
             setActive(true);
             setEndpoint(endpoint);
             setTotalPages(response.data.total_pages);
         } catch (e) {
+            setError(true);
             console.error(e);
         }
+        setLoading(false);
     }
 
     return (
@@ -62,6 +71,10 @@ function Suggestion() {
             <div className="suggestion-outer-container">
                 {!active && <section className="suggestion-switch-container">
                     <h1 className="suggestion-title">Heb jij zin om: </h1>
+                    <div className="loading-section-suggestion">
+                        {loading && <h3 className="loading-message-suggestion">Loading... </h3>}
+                        {error && <h3 className="error-message-suggestion">Error: Could not fetch data!</h3>}
+                    </div>
                     <div className="suggestion-mood-container">
                         <MoodContainer
                             mood="van de bank te rollen van het lachen"
@@ -112,6 +125,10 @@ function Suggestion() {
                         Terug naar overzicht
                     </button>
                     <h2 className="suggestion-title">{`Je hebt gekozen om ${title}`}</h2>
+                    <div className="loading-section-suggestion">
+                        {loading && <h3 className="loading-message-suggestion">Loading... </h3>}
+                        {error && <h3 className="error-message-suggestion">Error: Could not fetch data!</h3>}
+                    </div>
                     <div className="button-set-page-section">
                         <Button
                             buttonType="button"
