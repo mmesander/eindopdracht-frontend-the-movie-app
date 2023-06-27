@@ -1,5 +1,5 @@
 // Functions
-import React, {useContext, useState} from "react";
+import React from "react";
 import {useNavigate} from "react-router-dom";
 
 // Helpers
@@ -12,13 +12,10 @@ import './MovieCard.css';
 import favoriteIcon from '../../assets/icons/heart-straight-fill.svg';
 import watchlistIcon from '../../assets/icons/eye-fill.svg';
 import watchedIcon from '../../assets/icons/check-fat-fill.svg';
-import {ListsContext} from "../../context/ListsContext";
 
 function MovieCard({title, image, rating, id}) {
     const navigate = useNavigate();
     const roundedRating = roundRating(rating);
-
-    const {favorite, watchlist, watched, listItem, setListItem} = useContext(ListsContext);
 
     function clickHandler() {
         if (id) {
