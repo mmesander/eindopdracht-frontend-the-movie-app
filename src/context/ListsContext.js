@@ -14,6 +14,7 @@ function ListsContextProvider({children}) {
         favorite: listItem.favorite,
         watchlist: listItem.watchlist,
         watched: listItem.watched,
+        listItem: listItem,
         setListItem: setListItem,
     }
 

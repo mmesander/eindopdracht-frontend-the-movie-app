@@ -1,5 +1,5 @@
 // Functions
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {useNavigate} from "react-router-dom";
 
 // Helpers
@@ -9,19 +9,22 @@ import roundRating from "../../helpers/roundRating";
 import './MovieCard.css';
 
 // Assets
-import favorite from '../../assets/icons/heart-straight-fill.svg';
-import watchlist from '../../assets/icons/eye-fill.svg';
-import watched from '../../assets/icons/check-fat-fill.svg';
+import favoriteIcon from '../../assets/icons/heart-straight-fill.svg';
+import watchlistIcon from '../../assets/icons/eye-fill.svg';
+import watchedIcon from '../../assets/icons/check-fat-fill.svg';
+import {ListsContext} from "../../context/ListsContext";
 
 function MovieCard({title, image, rating, id}) {
     const navigate = useNavigate();
     const roundedRating = roundRating(rating);
 
-    const [listItem, setListItem] = useState({
-        favorite: false,
-        watchlist: false,
-        watched: false
-    })
+    const {favorite, watchlist, watched, listItem, setListItem} = useContext(ListsContext);
+
+    // const [listItem, setListItem] = useState({
+    //     favorite: false,
+    //     watchlist: false,
+    //     watched: false
+    // })
 
     function clickHandler() {
         if (id) {
@@ -42,7 +45,6 @@ function MovieCard({title, image, rating, id}) {
                     <h4>Rating: {roundedRating}</h4>
                 </section>
                 <div className="icons-container">
-
                     <button
                         type="button"
                         className={listItem.favorite ? "active-favorite-icon" : "default-icon"}
@@ -51,7 +53,7 @@ function MovieCard({title, image, rating, id}) {
                             favorite: !favorite
                         })}
                     >
-                        <img src={favorite} alt="favorite-icon" className={listItem.favorite ? "active-favorite-icon" : "default-icon"}/>
+                        <img src={favoriteIcon} alt="favorite-icon" className={listItem.favorite ? "active-favorite-icon" : "default-icon"}/>
                     </button>
                     <button
                         type="button"
@@ -61,7 +63,7 @@ function MovieCard({title, image, rating, id}) {
                             watchlist: !watchlist
                         })}
                     >
-                        <img src={watchlist} alt="watchlist-icon"/>
+                        <img src={watchlistIcon} alt="watchlist-icon"/>
                     </button>
                     <button
                         type="button"
@@ -71,7 +73,7 @@ function MovieCard({title, image, rating, id}) {
                             watched: !watched
                         })}
                     >
-                        <img src={watched} alt="watched-icon"/>
+                        <img src={watchedIcon} alt="watched-icon"/>
                     </button>
                 </div>
             </div>
