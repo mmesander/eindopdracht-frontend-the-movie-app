@@ -23,5 +23,5 @@ root.render(
                 </ListsContextProvider>
             </AuthContextProvider>
         </Router>
-    </React.StrictMode>
+    // </React.StrictMode>
 );

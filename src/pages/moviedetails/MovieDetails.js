@@ -1,7 +1,7 @@
 // Functions
 import React, {useContext, useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
-import axios from "axios";
+import axios, {all} from "axios";
 
 // Context
 import {ListsContext} from "../../context/ListsContext";
@@ -20,10 +20,12 @@ import watchedIcon from "../../assets/icons/check-fat-fill.svg";
 
 function MovieDetails() {
     const {movieId} = useParams();
-    const {favorite, watchlist, watched, listItem, setListItem} = useContext(ListsContext);
+    const {listItem, setListItem} = useContext(ListsContext);
     const [details, setDetails] = useState({});
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+
+    const favoriteActive = listItem.favorite.includes(movieId)
 
     const options = {
         method: 'GET',
@@ -54,6 +56,48 @@ function MovieDetails() {
 
     }, [])
 
+    function newFavorite(){
+        console.log(listItem)
+
+        const checkMovieID = listItem.favorite.find((movie) => {
+            return movieId === movie;
+        });
+
+        if(checkMovieID) {
+            // als waarde, dan stond íe er al in en moet íe er weer uit
+
+            // maak een referentieloze kopie van de originele array
+            const favoritesArray = [...listItem.favorite];
+            // zoek het indexNummer van het item waarop deze film zou moeten staan
+            const indexNumberOf = favoritesArray.indexOf(movieId);
+            // verwijder het item met dit indexnummer
+            favoritesArray.splice(indexNumberOf, 1);
+
+            // gebruik de oude listItem met alle andere list items en stop die weer terug,
+            // maar overschrijf de favorites-array, want daar hebben we nu een nieuwe aan toegevoegd
+            setListItem({
+                ...listItem,
+                favorite: favoritesArray,
+            });
+
+        } else {
+            // als undefined dan stond ie er nog niet in, en moet hij erbij
+
+            // maak een referentieloze kopie van de originele array
+            const favoritesArray = [...listItem.favorite];
+            // push daar de nieuwe movie in
+            favoritesArray.push(movieId);
+
+            // gebruik de oude listItem met alle andere list items en stop die weer terug,
+            // maar overschrijf de favorites-array, want daar hebben we nu een nieuwe aan toegevoegd
+            setListItem({
+                ...listItem,
+                favorite:  favoritesArray,
+            });
+        }
+    }
+
+
     return (
         <>
             <div className="page-outer-container">
@@ -76,34 +120,31 @@ function MovieDetails() {
                                 <div className="details-icons-container">
                                     <button
                                         type="button"
-                                        className={listItem.favorite ? "active-favorite-button" : "inactive-favorite-button"}
-                                        onClick={() => setListItem({
-                                            ...listItem,
-                                            favorite: !favorite
-                                        })}
+                                        className={favoriteActive ? "active-favorite-button" : "inactive-favorite-button"}
+                                        onClick={newFavorite}
                                     >
                                         <img src={favoriteIcon} alt="favorite-icon"/>
                                     </button>
-                                    <button
-                                        type="button"
-                                        className={listItem.watchlist ? "active-watchlist-button" : "inactive-watchlist-button"}
-                                        onClick={() => setListItem({
-                                            ...listItem,
-                                            watchlist: !watchlist
-                                        })}
-                                    >
-                                        <img src={watchlistIcon} alt="watchlist-icon"/>
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className={listItem.watched ? "active-watched-button" : "inactive-watched-button"}
-                                        onClick={() => setListItem({
-                                            ...listItem,
-                                            watched: !watched
-                                        })}
-                                    >
-                                        <img src={watchedIcon} alt="watched-icon"/>
-                                    </button>
+                                    {/*<button*/}
+                                    {/*    type="button"*/}
+                                    {/*    className={listItem.watchlist ? "active-watchlist-button" : "inactive-watchlist-button"}*/}
+                                    {/*    onClick={() => setListItem({*/}
+                                    {/*        ...listItem,*/}
+                                    {/*        watchlist: !watchlist*/}
+                                    {/*    })}*/}
+                                    {/*>*/}
+                                    {/*    <img src={watchlistIcon} alt="watchlist-icon"/>*/}
+                                    {/*</button>*/}
+                                    {/*<button*/}
+                                    {/*    type="button"*/}
+                                    {/*    className={listItem.watched ? "active-watched-button" : "inactive-watched-button"}*/}
+                                    {/*    onClick={() => setListItem({*/}
+                                    {/*        ...listItem,*/}
+                                    {/*        watched: !watched*/}
+                                    {/*    })}*/}
+                                    {/*>*/}
+                                    {/*    <img src={watchedIcon} alt="watched-icon"/>*/}
+                                    {/*</button>*/}
                                 </div>
                                 <h3>Omschrijving:</h3>
                                 <p>{details.overview}</p>

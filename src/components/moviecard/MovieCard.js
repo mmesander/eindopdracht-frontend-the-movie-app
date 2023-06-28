@@ -18,9 +18,10 @@ import watchedIcon from '../../assets/icons/check-fat-fill.svg';
 
 function MovieCard({title, image, rating, id}) {
     const navigate = useNavigate();
+    const {listItem} = useContext(ListsContext);
     const roundedRating = roundRating(rating);
 
-    const {listItem,} = useContext(ListsContext);
+    const favoriteActive = listItem.favorite.includes(JSON.stringify(id));
 
     function clickHandler() {
         if (id) {
@@ -46,7 +47,7 @@ function MovieCard({title, image, rating, id}) {
                     </div>
                 </section>
                 <section className="icons-container">
-                    <div className={listItem.favorite ? "active-favorite-icon" : "default-icon"}>
+                    <div className={favoriteActive ? "active-favorite-icon" : "default-icon"}>
                         <img src={favoriteIcon} alt="favorite-icon"/>
                     </div>
                     <div className={listItem.watchlist ? "active-watchlist-icon" : "default-icon"}>

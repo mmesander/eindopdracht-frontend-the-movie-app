@@ -50,7 +50,6 @@ function Search() {
                 setActive(true);
                 setError(false);
             }
-            console.log(response.data);
             setMovies(response.data.results);
             setTotalPages(response.data.total_pages);
 
@@ -60,11 +59,6 @@ function Search() {
             setActive(false);
         }
         setLoading(false);
-        // testing and troubleshooting
-        console.log(movies);
-        console.log(totalPages);
-        console.log(page);
-        console.log(active);
     }
 
     return (
@@ -130,13 +124,12 @@ function Search() {
                     />
                 </div>
                 <div className="specific-search-results-container">
-                    {Object.keys(movies).length > 0 && movies.map((movie) => {
-                        return <MovieCard key={movie.id} title={movie.title}/>
+                    {movies && movies.map((movie) => {
+                        if (movie.title && movie.poster_path && movie.vote_average) {
+                            return <MovieCard key={movie.id} title={movie.title} image={movie.poster_path}
+                                              rating={movie.vote_average} id={movie.id}/>
+                        }
                     })}
-                    {/*{Object.keys(movies).length > 0 && movies.map((movie) => {*/}
-                    {/*    return <MovieCard key={movie.id} title={movie.title} image={movie.poster_path}*/}
-                    {/*                      rating={movie.vote_average} id={movie.id}/>*/}
-                    {/*})}*/}
                 </div>
             </section>}
         </div>
