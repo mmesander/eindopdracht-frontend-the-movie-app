@@ -55,5 +55,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 110px);
+    /*min-height: calc(100vh - 110px);*/
+    min-height: 100vh;
 }

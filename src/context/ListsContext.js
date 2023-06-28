@@ -1,19 +1,22 @@
 // Functions
-import React, {createContext, useState} from "react";
+import React, {createContext, useEffect, useState} from "react";
 
 export const ListsContext = createContext(null);
 
 function ListsContextProvider({children}) {
     const [listItem, setListItem] = useState({
-        favorite: false,
-        watchlist: false,
-        watched: false
-    })
+        favorite: [],
+        watchlist: [],
+        watched: [],
+    });
+
+    useEffect(() => {
+        if (!localStorage.getItem("movies")) {
+            localStorage.setItem('movies', JSON.stringify(listItem))
+        }
+    }, []);
 
     const data = {
-        favorite: listItem.favorite,
-        watchlist: listItem.watchlist,
-        watched: listItem.watched,
         listItem: listItem,
         setListItem: setListItem,
     }

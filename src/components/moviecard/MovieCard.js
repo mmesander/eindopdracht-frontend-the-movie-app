@@ -18,9 +18,12 @@ import watchedIcon from '../../assets/icons/check-fat-fill.svg';
 
 function MovieCard({title, image, rating, id}) {
     const navigate = useNavigate();
+    const {listItem} = useContext(ListsContext);
     const roundedRating = roundRating(rating);
 
-    const {listItem,} = useContext(ListsContext);
+    const favoriteActive = listItem.favorite.includes(JSON.stringify(id));
+    const watchlistActive = listItem.watchlist.includes(JSON.stringify(id));
+    const watchedActive = listItem.watched.includes(JSON.stringify(id));
 
     function clickHandler() {
         if (id) {
@@ -46,13 +49,13 @@ function MovieCard({title, image, rating, id}) {
                     </div>
                 </section>
                 <section className="icons-container">
-                    <div className={listItem.favorite ? "active-favorite-icon" : "default-icon"}>
+                    <div className={favoriteActive ? "active-favorite-icon" : "default-icon"}>
                         <img src={favoriteIcon} alt="favorite-icon"/>
                     </div>
-                    <div className={listItem.watchlist ? "active-watchlist-icon" : "default-icon"}>
+                    <div className={watchlistActive ? "active-watchlist-icon" : "default-icon"}>
                         <img src={watchlistIcon} alt="watchlist-icon"/>
                     </div>
-                    <div className={listItem.watched ? "active-watched-icon" : "default-icon"}>
+                    <div className={watchedActive ? "active-watched-icon" : "default-icon"}>
                         <img src={watchedIcon} alt="watched-icon"/>
                     </div>
                 </section>

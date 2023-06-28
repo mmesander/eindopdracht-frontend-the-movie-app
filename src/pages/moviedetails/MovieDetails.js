@@ -1,7 +1,7 @@
 // Functions
 import React, {useContext, useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
-import axios from "axios";
+import axios, {all} from "axios";
 
 // Context
 import {ListsContext} from "../../context/ListsContext";
@@ -20,10 +20,14 @@ import watchedIcon from "../../assets/icons/check-fat-fill.svg";
 
 function MovieDetails() {
     const {movieId} = useParams();
-    const {favorite, watchlist, watched, listItem, setListItem} = useContext(ListsContext);
+    const {listItem, setListItem} = useContext(ListsContext);
     const [details, setDetails] = useState({});
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+
+    const favoriteActive = listItem.favorite.includes(movieId)
+    const watchlistActive = listItem.watchlist.includes(movieId)
+    const watchedActive = listItem.watched.includes(movieId)
 
     const options = {
         method: 'GET',
@@ -54,6 +58,100 @@ function MovieDetails() {
 
     }, [])
 
+    function setFavorite() {
+
+        const checkMovieID = listItem.favorite.find((movie) => {
+            return movieId === movie;
+        });
+
+        if (checkMovieID) {
+            // als waarde, dan stond íe er al in en moet íe er weer uit
+
+            // maak een referentieloze kopie van de originele array
+            const favoritesArray = [...listItem.favorite];
+            // zoek het indexNummer van het item waarop deze film zou moeten staan
+            const indexNumberOf = favoritesArray.indexOf(movieId);
+            // verwijder het item met dit indexnummer
+            favoritesArray.splice(indexNumberOf, 1);
+
+            // gebruik de oude listItem met alle andere list items en stop die weer terug,
+            // maar overschrijf de favorites-array, want daar hebben we nu een nieuwe aan toegevoegd
+            setListItem({
+                ...listItem,
+                favorite: favoritesArray,
+            });
+
+        } else {
+            // als undefined dan stond ie er nog niet in, en moet hij erbij
+
+            // maak een referentieloze kopie van de originele array
+            const favoritesArray = [...listItem.favorite];
+            // push daar de nieuwe movie in
+            favoritesArray.push(movieId);
+
+            // gebruik de oude listItem met alle andere list items en stop die weer terug,
+            // maar overschrijf de favorites-array, want daar hebben we nu een nieuwe aan toegevoegd
+            setListItem({
+                ...listItem,
+                favorite: favoritesArray,
+            });
+        }
+    }
+
+    function setWatchlist() {
+        const checkMovieID = listItem.watchlist.find((movie) => {
+            return movieId === movie;
+        });
+
+        if (checkMovieID) {
+            const watchlistArray = [...listItem.watchlist];
+            const indexNumberOf = watchlistArray.indexOf(movieId);
+
+            watchlistArray.splice(indexNumberOf, 1);
+
+            setListItem({
+                ...listItem,
+                watchlist: watchlistArray,
+            });
+        } else {
+            const watchlistArray = [...listItem.watchlist];
+
+            watchlistArray.push(movieId);
+
+            setListItem({
+                ...listItem,
+                watchlist: watchlistArray,
+            });
+        }
+    }
+
+    function setWatched() {
+        const checkMovieID = listItem.watched.find((movie) => {
+            return movieId === movie;
+        });
+
+        if (checkMovieID) {
+            const watchedArray = [...listItem.watched];
+            const indexNumberOf = watchedArray.indexOf(movieId);
+
+            watchedArray.splice(indexNumberOf, 1);
+
+            setListItem({
+                ...listItem,
+                watched: watchedArray,
+            });
+        } else {
+            const watchedArray = [...listItem.watched];
+
+            watchedArray.push(movieId);
+
+            setListItem({
+                ...listItem,
+                watched: watchedArray,
+            });
+        }
+    }
+
     return (
         <>
             <div className="page-outer-container">
@@ -64,7 +162,8 @@ function MovieDetails() {
                 {Object.keys(details).length > 0 &&
                     <div className="details-inner-container">
                         <section className="details-image-container">
-                            <img src={`https://image.tmdb.org/t/p/w500${details.poster_path}`} alt={details.title}/>
+                            <img src={`https://image.tmdb.org/t/p/w500${details.poster_path}`}
+                                 alt={details.title}/>
                         </section>
                         <article className="details-movie-information">
                             <section>
@@ -76,31 +175,22 @@ function MovieDetails() {
                                 <div className="details-icons-container">
                                     <button
                                         type="button"
-                                        className={listItem.favorite ? "active-favorite-button" : "inactive-favorite-button"}
-                                        onClick={() => setListItem({
-                                            ...listItem,
-                                            favorite: !favorite
-                                        })}
+                                        className={favoriteActive ? "active-favorite-button" : "inactive-favorite-button"}
+                                        onClick={setFavorite}
                                     >
                                         <img src={favoriteIcon} alt="favorite-icon"/>
                                     </button>
                                     <button
                                         type="button"
-                                        className={listItem.watchlist ? "active-watchlist-button" : "inactive-watchlist-button"}
-                                        onClick={() => setListItem({
-                                            ...listItem,
-                                            watchlist: !watchlist
-                                        })}
+                                        className={watchlistActive ? "active-watchlist-button" : "inactive-watchlist-button"}
+                                        onClick={setWatchlist}
                                     >
                                         <img src={watchlistIcon} alt="watchlist-icon"/>
                                     </button>
                                     <button
                                         type="button"
-                                        className={listItem.watched ? "active-watched-button" : "inactive-watched-button"}
-                                        onClick={() => setListItem({
-                                            ...listItem,
-                                            watched: !watched
-                                        })}
+                                        className={watchedActive ? "active-watched-button" : "inactive-watched-button"}
+                                        onClick={setWatched}
                                     >
                                         <img src={watchedIcon} alt="watched-icon"/>
                                     </button>
