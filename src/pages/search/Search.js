@@ -125,10 +125,10 @@ function Search() {
                 </div>
                 <div className="specific-search-results-container">
                     {/*{Object.keys(movies).length > 0 && console.log(movies)}*/}
-                    {/*{Object.keys(movies).length > 0 && movies.map((movie) => {*/}
-                    {/*    return <MovieCard key={movie.id} title={movie.title} image={movie.poster_path}*/}
-                    {/*                      rating={movie.vote_average} id={movie.id}/>*/}
-                    {/*})}*/}
+                    {Object.keys(movies).length > 0 && movies && movies.map((movie) => {
+                        return <MovieCard key={movie.id} title={movie.title} image={movie.poster_path}
+                                          rating={movie.vote_average} id={movie.id}/>
+                    })}
                 </div>
             </section>}
         </div>
