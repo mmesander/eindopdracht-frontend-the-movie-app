@@ -26,6 +26,8 @@ function MovieDetails() {
     const [error, setError] = useState(false);
 
     const favoriteActive = listItem.favorite.includes(movieId)
+    const watchlistActive = listItem.watchlist.includes(movieId)
+    const watchedActive = listItem.watched.includes(movieId)
 
     const options = {
         method: 'GET',
@@ -56,14 +58,13 @@ function MovieDetails() {
 
     }, [])
 
-    function newFavorite(){
-        console.log(listItem)
+    function setFavorite() {
 
         const checkMovieID = listItem.favorite.find((movie) => {
             return movieId === movie;
         });
 
-        if(checkMovieID) {
+        if (checkMovieID) {
             // als waarde, dan stond íe er al in en moet íe er weer uit
 
             // maak een referentieloze kopie van de originele array
@@ -92,7 +93,34 @@ function MovieDetails() {
             // maar overschrijf de favorites-array, want daar hebben we nu een nieuwe aan toegevoegd
             setListItem({
                 ...listItem,
-                favorite:  favoritesArray,
+                favorite: favoritesArray,
+            });
+        }
+    }
+
+    function setWatchlist() {
+        const checkMovieID = listItem.watchlist.find((movie) => {
+            return movieId === movie;
+        });
+
+        if (checkMovieID) {
+            const watchlistArray = [...listItem.watchlist];
+            const indexNumberOf = watchlistArray.indexOf(movieId);
+
+            watchlistArray.splice(indexNumberOf, 1);
+
+            setListItem({
+                ...listItem,
+                watchlist: watchlistArray,
+            });
+        } else {
+            const watchlistArray = [...listItem.watchlist];
+
+            watchlistArray.push(movieId);
+
+            setListItem({
+                ...listItem,
+                watchlist: watchlistArray,
             });
         }
     }
@@ -108,7 +136,8 @@ function MovieDetails() {
                 {Object.keys(details).length > 0 &&
                     <div className="details-inner-container">
                         <section className="details-image-container">
-                            <img src={`https://image.tmdb.org/t/p/w500${details.poster_path}`} alt={details.title}/>
+                            <img src={`https://image.tmdb.org/t/p/w500${details.poster_path}`}
+                                 alt={details.title}/>
                         </section>
                         <article className="details-movie-information">
                             <section>
@@ -121,20 +150,17 @@ function MovieDetails() {
                                     <button
                                         type="button"
                                         className={favoriteActive ? "active-favorite-button" : "inactive-favorite-button"}
-                                        onClick={newFavorite}
+                                        onClick={setFavorite}
                                     >
                                         <img src={favoriteIcon} alt="favorite-icon"/>
                                     </button>
-                                    {/*<button*/}
-                                    {/*    type="button"*/}
-                                    {/*    className={listItem.watchlist ? "active-watchlist-button" : "inactive-watchlist-button"}*/}
-                                    {/*    onClick={() => setListItem({*/}
-                                    {/*        ...listItem,*/}
-                                    {/*        watchlist: !watchlist*/}
-                                    {/*    })}*/}
-                                    {/*>*/}
-                                    {/*    <img src={watchlistIcon} alt="watchlist-icon"/>*/}
-                                    {/*</button>*/}
+                                    <button
+                                        type="button"
+                                        className={watchlistActive ? "active-watchlist-button" : "inactive-watchlist-button"}
+                                        onClick={setWatchlist}
+                                    >
+                                        <img src={watchlistIcon} alt="watchlist-icon"/>
+                                    </button>
                                     {/*<button*/}
                                     {/*    type="button"*/}
                                     {/*    className={listItem.watched ? "active-watched-button" : "inactive-watched-button"}*/}
