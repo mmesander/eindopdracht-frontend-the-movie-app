@@ -32,12 +32,11 @@ function Search() {
         if (page >= 1 && active) {
             void fetchSpecificMovies(specificSearch);
         }
-    }, [page])
+    }, [page]);
 
     function clickHandler(e) {
         e.preventDefault();
         setPage(1);
-        console.log(specificSearch);
         if (specificSearch) {
             void fetchSpecificMovies(specificSearch);
         }
@@ -90,7 +89,14 @@ function Search() {
                             />
                         </form>
                     </div>
-                    <div className="search-menu search-filter-movies-series"></div>
+                    <div className="search-menu search-filter-movies-series">
+                        <p></p>
+                        <Button
+                            buttonType="radio"
+                            children="zoek"
+                        />
+                        <Button/>
+                    </div>
                     <div className="search-menu rating"></div>
                     <div className="search-menu genres"></div>
                 </div>
@@ -124,7 +130,9 @@ function Search() {
                     />
                 </div>
                 <div className="specific-search-results-container">
-                    {/*{Object.keys(movies).length > 0 && console.log(movies)}*/}
+                    {Object.keys(movies).length > 0 && movies.map((movie) => {
+                        return <MovieCard key={movie.id} title={movie.title}/>
+                    })}
                     {/*{Object.keys(movies).length > 0 && movies.map((movie) => {*/}
                     {/*    return <MovieCard key={movie.id} title={movie.title} image={movie.poster_path}*/}
                     {/*                      rating={movie.vote_average} id={movie.id}/>*/}
