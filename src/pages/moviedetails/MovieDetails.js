@@ -125,6 +125,32 @@ function MovieDetails() {
         }
     }
 
+    function setWatched() {
+        const checkMovieID = listItem.watched.find((movie) => {
+            return movieId === movie;
+        });
+
+        if (checkMovieID) {
+            const watchedArray = [...listItem.watched];
+            const indexNumberOf = watchedArray.indexOf(movieId);
+
+            watchedArray.splice(indexNumberOf, 1);
+
+            setListItem({
+                ...listItem,
+                watched: watchedArray,
+            });
+        } else {
+            const watchedArray = [...listItem.watched];
+
+            watchedArray.push(movieId);
+
+            setListItem({
+                ...listItem,
+                watched: watchedArray,
+            });
+        }
+    }
 
     return (
         <>
@@ -161,16 +187,13 @@ function MovieDetails() {
                                     >
                                         <img src={watchlistIcon} alt="watchlist-icon"/>
                                     </button>
-                                    {/*<button*/}
-                                    {/*    type="button"*/}
-                                    {/*    className={listItem.watched ? "active-watched-button" : "inactive-watched-button"}*/}
-                                    {/*    onClick={() => setListItem({*/}
-                                    {/*        ...listItem,*/}
-                                    {/*        watched: !watched*/}
-                                    {/*    })}*/}
-                                    {/*>*/}
-                                    {/*    <img src={watchedIcon} alt="watched-icon"/>*/}
-                                    {/*</button>*/}
+                                    <button
+                                        type="button"
+                                        className={watchedActive ? "active-watched-button" : "inactive-watched-button"}
+                                        onClick={setWatched}
+                                    >
+                                        <img src={watchedIcon} alt="watched-icon"/>
+                                    </button>
                                 </div>
                                 <h3>Omschrijving:</h3>
                                 <p>{details.overview}</p>
