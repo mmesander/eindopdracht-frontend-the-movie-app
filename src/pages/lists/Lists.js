@@ -38,10 +38,27 @@ function Lists() {
                     console.error(e)
                 }
             }
+
             void fetchFavorites();
         });
 
-    }, [listItem.favorite])
+        listItem.watchlist.map((watchlist) => {
+            async function fetchWatchlist() {
+                try {
+                    const response = await axios.get(`https://api.themoviedb.org/3/movie/${watchlist}?language=nl-NL`, options);
+                    setWatchlistArray((addWatchlist) => [
+                        ...addWatchlist,
+                            response.data,
+                    ]);
+                } catch (e) {
+                    console.error(e)
+                }
+            }
+
+            void fetchWatchlist();
+        })
+
+    }, [listItem.favorite, listItem.watchlist])
 
 
     return (
