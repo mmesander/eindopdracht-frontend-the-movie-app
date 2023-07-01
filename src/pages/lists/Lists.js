@@ -9,10 +9,11 @@ import {ListsContext} from "../../context/ListsContext";
 import MovieCard from "../../components/moviecard/MovieCard";
 
 // Styles
-import './Lists.css'
+import './Lists.css';
 
 function Lists() {
     const {listItem} = useContext(ListsContext);
+
     const [favoritesArray, setFavoritesArray] = useState([]);
     const [watchlistArray, setWatchlistArray] = useState([]);
     const [watchedArray, setWatchedArray] = useState([]);
@@ -43,7 +44,7 @@ function Lists() {
                     ]);
                 } catch (e) {
                     setError(true);
-                    console.error(e)
+                    console.error(e);
                 }
                 setLoading(false);
             }
@@ -95,7 +96,7 @@ function Lists() {
             void fetchWatched();
         });
 
-    }, [listItem])
+    }, [listItem]);
 
 
     return (
