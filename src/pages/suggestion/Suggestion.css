@@ -22,7 +22,7 @@
     max-width: 1000px;
     height: auto;
     flex-wrap: wrap;
-    margin: 0 30px 50px 30px;
+    margin-inline: 30px
 }
 
 .suggestion-switch-container h1,
