@@ -15,7 +15,7 @@ function Lists() {
     const {listItem} = useContext(ListsContext);
     const [favoritesArray, setFavoritesArray] = useState([]);
     const [watchlistArray, setWatchlistArray] = useState([]);
-    const [watchtedArray, setWatchedArray] = useState([]);
+    const [watchedArray, setWatchedArray] = useState([]);
 
     const options = {
         method: 'GET',
@@ -56,9 +56,25 @@ function Lists() {
             }
 
             void fetchWatchlist();
-        })
+        });
 
-    }, [listItem.favorite, listItem.watchlist])
+        listItem.watched.map((watched) => {
+            async function fetchWatched() {
+                try {
+                    const response = await axios.get(`https://api.themoviedb.org/3/movie/${watched}?language=nl-NL`, options);
+                    setWatchedArray((addWatched) => [
+                        ...addWatched,
+                        response.data,
+                    ]);
+                } catch (e) {
+                    console.error(e)
+                }
+            }
+
+            void fetchWatched();
+        });
+
+    }, [listItem])
 
 
     return (
@@ -88,6 +104,19 @@ function Lists() {
                     />
                 })}
                 {watchlistArray.length === 0 && <p>Geen watchlist gevonden!</p>}
+            </div>
+            <h1 className="lists-titles">Watched</h1>
+            <div className="lists-section-container">
+                {watchedArray.length > 0 && watchedArray.map((watched) => {
+                    return <MovieCard
+                        key={watched.id}
+                        title={watched.title}
+                        image={watched.poster_path}
+                        rating={watched.vote_average}
+                        id={watched.id}
+                    />
+                })}
+                {watchlistArray.length === 0 && <p>Geen watched gevonden!</p>}
             </div>
         </div>
     )
