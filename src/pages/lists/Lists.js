@@ -66,9 +66,28 @@ function Lists() {
             <h1 className="lists-titles">Favorieten</h1>
             <div className="lists-section-container">
                 {favoritesArray.length > 0 && favoritesArray.map((favorite) => {
-                    return <MovieCard key={favorite.id} title={favorite.title} image={favorite.poster_path} rating={favorite.vote_average} id={favorite.id}/>
+                    return <MovieCard
+                        key={favorite.id}
+                        title={favorite.title}
+                        image={favorite.poster_path}
+                        rating={favorite.vote_average}
+                        id={favorite.id}
+                    />
                 })}
                 {favoritesArray.length === 0 && <p>Geen favorieten gevonden!</p>}
+            </div>
+            <h1 className="lists-titles">Watchlist</h1>
+            <div className="lists-section-container">
+                {watchlistArray.length > 0 && watchlistArray.map((watchlist) => {
+                    return <MovieCard
+                        key={watchlist.id}
+                        title={watchlist.title}
+                        image={watchlist.poster_path}
+                        rating={watchlist.vote_average}
+                        id={watchlist.id}
+                    />
+                })}
+                {watchlistArray.length === 0 && <p>Geen watchlist gevonden!</p>}
             </div>
         </div>
     )
