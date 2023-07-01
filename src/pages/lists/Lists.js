@@ -51,7 +51,7 @@ function Lists() {
     return (
         <div className="page-outer-container">
             <h1 className="lists-titles">Favorieten</h1>
-            <div className="lists-outer-container">
+            <div className="lists-section-container">
 
             </div>
         </div>

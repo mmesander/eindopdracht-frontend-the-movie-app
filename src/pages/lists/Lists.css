@@ -1,0 +1,16 @@
+.lists-section-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 1200px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-inline: 30px;
+    min-height: 350px;
+    background-color: green;
+    width: 1000px;
+}
+
+.lists-titles {
+    margin-top: 20px;
+    color: white;
+}
