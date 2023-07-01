@@ -14,6 +14,8 @@ import './Lists.css'
 function Lists() {
     const {listItem} = useContext(ListsContext);
     const [favoritesArray, setFavoritesArray] = useState([]);
+    const [watchlistArray, setWatchlistArray] = useState([]);
+    const [watchtedArray, setWatchedArray] = useState([]);
 
     const options = {
         method: 'GET',
