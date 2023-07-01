@@ -8,8 +8,9 @@
 .details-inner-container {
     display: flex;
     flex-direction: row;
-    width: 900px;
-    height: 675px;
+    min-width: 900px;
+    max-width: 1000px;
+    height: 700px;
 }
 
 .details-image-container {
