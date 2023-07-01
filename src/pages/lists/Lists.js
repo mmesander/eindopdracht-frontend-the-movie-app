@@ -23,8 +23,6 @@ function Lists() {
         }
     };
 
-
-
     useEffect(() => {
         listItem.favorite.map((favorite) => {
             async function fetchFavorites() {
@@ -51,6 +49,7 @@ function Lists() {
                 {favoritesArray.length > 0 && favoritesArray.map((favorite) => {
                     return <MovieCard key={favorite.id} title={favorite.title} image={favorite.poster_path} rating={favorite.vote_average} id={favorite.id}/>
                 })}
+                {favoritesArray.length === 0 && <p>Geen favorieten gevonden!</p>}
             </div>
         </div>
     )

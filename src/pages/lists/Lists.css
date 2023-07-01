@@ -5,8 +5,7 @@
     justify-content: center;
     flex-wrap: wrap;
     margin-inline: 30px;
-    min-height: 350px;
-    background-color: green;
+    min-height: 375px;
 }
 
 .lists-titles {
