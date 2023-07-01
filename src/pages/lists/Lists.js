@@ -53,15 +53,20 @@ function Lists() {
 
         listItem.watchlist.map((watchlist) => {
             async function fetchWatchlist() {
+                setLoading(true);
                 try {
                     const response = await axios.get(`https://api.themoviedb.org/3/movie/${watchlist}?language=nl-NL`, options);
+                    if (response.data) {
+                        setError(false);
+                    }
                     setWatchlistArray((addWatchlist) => [
                         ...addWatchlist,
-                            response.data,
+                        response.data,
                     ]);
                 } catch (e) {
                     console.error(e)
                 }
+                setLoading(false);
             }
 
             void fetchWatchlist();
