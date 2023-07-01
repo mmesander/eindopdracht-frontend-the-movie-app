@@ -26,7 +26,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 30px 30px 60px 30px;
+    padding: 30px 30px 30px 30px;
     background-color: #EFE7E7;
     width: 100%;
     border-radius: 0 10px 10px 0;
@@ -59,12 +59,19 @@
     margin-block: 20px;
 }
 
-.details-movie-information a,
-.details-movie-information a:visited {
+.back-to-previous-page {
+    background-color: transparent;
+    border: none;
     color: black;
+    font-weight: bolder;
+    font-size: 17px;
+    width: 230px;
+    text-decoration: underline;
+    margin-left: -15px;
 }
 
-.details-movie-information a:hover {
+.back-to-previous-page:hover {
+    cursor: pointer;
     color: #750000;
 }
 

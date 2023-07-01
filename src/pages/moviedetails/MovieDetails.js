@@ -202,11 +202,11 @@ function MovieDetails() {
                                 <p>{details.overview}</p>
                             </section>
                             <Button
-                            buttonType="button"
-                            clickHandler={() => navigate(-1)}
-                            children="Terug naar de vorige pagina"
+                                buttonType="button"
+                                name="back-to-previous-page"
+                                clickHandler={() => navigate(-1)}
+                                children="Terug naar vorige pagina"
                             />
-
                         </article>
                     </div>
                 }
