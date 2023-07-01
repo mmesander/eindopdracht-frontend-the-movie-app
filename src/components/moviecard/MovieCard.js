@@ -16,7 +16,7 @@ import favoriteIcon from '../../assets/icons/heart-straight-fill.svg';
 import watchlistIcon from '../../assets/icons/eye-fill.svg';
 import watchedIcon from '../../assets/icons/check-fat-fill.svg';
 
-function MovieCard({title, image, rating, id}) {
+function MovieCard({title, image, rating, id, name}) {
     const navigate = useNavigate();
     const {listItem} = useContext(ListsContext);
     const roundedRating = roundRating(rating);
@@ -39,11 +39,16 @@ function MovieCard({title, image, rating, id}) {
         >
             <div className="moviecard-container">
                 <section className="moviecard-header-section">
-                    <div>
+                    {title && !name && <div>
                         <img src={`https://image.tmdb.org/t/p/w500${image}`} alt={title}/>
                         {title.length < 40 && <h3>{title}</h3>}
                         {title.length > 40 && !title.length < 40 && <h4>{title}</h4>}
-                    </div>
+                    </div>}
+                    {name && !title && <div>
+                        <img src={`https://image.tmdb.org/t/p/w500${image}`} alt={name}/>
+                        {name.length < 40 && <h3>{name}</h3>}
+                        {name.length > 40 && !name.length < 40 && <h4>{name}</h4>}
+                    </div>}
                     <div>
                         <h4>Rating: {roundedRating}</h4>
                     </div>
