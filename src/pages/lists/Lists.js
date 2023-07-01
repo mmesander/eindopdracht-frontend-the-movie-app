@@ -31,15 +31,21 @@ function Lists() {
     useEffect(() => {
         listItem.favorite.map((favorite) => {
             async function fetchFavorites() {
+                setLoading(true);
                 try {
                     const response = await axios.get(`https://api.themoviedb.org/3/movie/${favorite}?language=nl-NL`, options);
+                    if (response.data) {
+                        setError(false);
+                    }
                     setFavoritesArray((addFavorites) => [
                         ...addFavorites,
                         response.data,
                     ]);
                 } catch (e) {
+                    setError(true);
                     console.error(e)
                 }
+                setLoading(false);
             }
 
             void fetchFavorites();
