@@ -17,6 +17,9 @@ function Lists() {
     const [watchlistArray, setWatchlistArray] = useState([]);
     const [watchedArray, setWatchedArray] = useState([]);
 
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+
     const options = {
         method: 'GET',
         headers: {
