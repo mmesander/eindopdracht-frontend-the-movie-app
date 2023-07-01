@@ -44,10 +44,12 @@
 
 .loading-error-section .loading-message {
     color: white;
+    font-style: normal;
 }
 
 .loading-error-section .error-message {
     color: red;
+    font-style: normal;
 }
 
 .page-outer-container {
@@ -55,6 +57,5 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /*min-height: calc(100vh - 110px);*/
-    min-height: 100vh;
+    min-height: calc(100vh - 110px);
 }
