@@ -10,6 +10,7 @@ import MovieCard from "../../components/moviecard/MovieCard";
 
 // Styles
 import './Lists.css'
+import {set} from "react-hook-form";
 
 function Lists() {
     const {listItem} = useContext(ListsContext);
@@ -64,7 +65,8 @@ function Lists() {
                         response.data,
                     ]);
                 } catch (e) {
-                    console.error(e)
+                    setError(true);
+                    console.error(e);
                 }
                 setLoading(false);
             }
@@ -74,15 +76,21 @@ function Lists() {
 
         listItem.watched.map((watched) => {
             async function fetchWatched() {
+                setLoading(true);
                 try {
                     const response = await axios.get(`https://api.themoviedb.org/3/movie/${watched}?language=nl-NL`, options);
+                    if (response.data) {
+                        setError(false);
+                    }
                     setWatchedArray((addWatched) => [
                         ...addWatched,
                         response.data,
                     ]);
                 } catch (e) {
-                    console.error(e)
+                    setError(true);
+                    console.error(e);
                 }
+                setLoading(false);
             }
 
             void fetchWatched();
