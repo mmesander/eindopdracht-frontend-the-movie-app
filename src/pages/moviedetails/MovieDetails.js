@@ -41,7 +41,7 @@ function MovieDetails() {
         async function fetchMovieDetails(id) {
             try {
                 setLoading(true);
-                const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?language=nl-NL`, options)
+                const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}`, options)
                 if (response.data) {
                     setError(false);
                 }
