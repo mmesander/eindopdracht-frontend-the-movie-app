@@ -1,11 +1,16 @@
 // Functions
-import React, {useEffect} from "react";
+import React, {useContext, useEffect} from "react";
+import axios from "axios";
+
+// Context
+import {ListsContext} from "../../context/ListsContext";
 
 // Styles
 import './Lists.css'
-import axios from "axios";
 
 function Lists() {
+    const {listItem} = useContext(ListsContext);
+
     const options = {
         method: 'GET',
         headers: {
@@ -15,17 +20,24 @@ function Lists() {
     };
 
     useEffect(() => {
-        const id = localStorage.getItem('favorite')
-        async function fetchFavorites() {
-            try {
-                const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?language=nl-NL`, options)
-                console.log(response)
-            } catch (e) {
-                console.error(e)
-            }
-        }
-        void fetchFavorites();
-    }, []);
+        listItem.favorite.map((id) => {
+            console.log(id)
+        })
+    }, [])
+
+
+// useEffect(() => {
+//     const id = localStorage.getItem('favorite')
+//     async function fetchFavorites() {
+//         try {
+//             const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?language=nl-NL`, options)
+//             console.log(response)
+//         } catch (e) {
+//             console.error(e)
+//         }
+//     }
+//     void fetchFavorites();
+// }, []);
 
     return (
         <div className="page-outer-container">
