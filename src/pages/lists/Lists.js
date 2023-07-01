@@ -40,7 +40,7 @@ function Lists() {
                 }
             }
             void fetchFavorites();
-        })
+        });
 
 
         console.log(favoritesArray)
@@ -50,7 +50,10 @@ function Lists() {
 
     return (
         <div className="page-outer-container">
+            <h1 className="lists-titles">Favorieten</h1>
+            <div className="lists-outer-container">
 
+            </div>
         </div>
     )
 }
