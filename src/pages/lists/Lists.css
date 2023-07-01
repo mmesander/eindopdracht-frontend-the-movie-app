@@ -6,6 +6,12 @@
     flex-wrap: wrap;
     margin-inline: 30px;
     min-height: 375px;
+    align-items: center;
+}
+
+.lists-section-container h3 {
+    color: white;
+    font-style: italic;
 }
 
 .lists-titles {

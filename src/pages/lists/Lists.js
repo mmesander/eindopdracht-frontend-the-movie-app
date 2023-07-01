@@ -90,7 +90,7 @@ function Lists() {
                         id={favorite.id}
                     />
                 })}
-                {favoritesArray.length === 0 && <p>Geen favorieten gevonden!</p>}
+                {favoritesArray.length === 0 && <h3>Je hebt nog geen items aan je favorieten toegevoegd!</h3>}
             </div>
             <h1 className="lists-titles">Watchlist</h1>
             <div className="lists-section-container">
@@ -103,7 +103,7 @@ function Lists() {
                         id={watchlist.id}
                     />
                 })}
-                {watchlistArray.length === 0 && <p>Geen watchlist gevonden!</p>}
+                {watchlistArray.length === 0 && <h3>Je hebt nog geen items aan je watchlist toegevoegd</h3>}
             </div>
             <h1 className="lists-titles">Watched</h1>
             <div className="lists-section-container">
@@ -116,7 +116,7 @@ function Lists() {
                         id={watched.id}
                     />
                 })}
-                {watchlistArray.length === 0 && <p>Geen watched gevonden!</p>}
+                {watchedArray.length === 0 && <h3>Je hebt nog geen items aan al gezien toegevoegd!</h3>}
             </div>
         </div>
     )
