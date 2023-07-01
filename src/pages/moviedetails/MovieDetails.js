@@ -1,7 +1,7 @@
 // Functions
 import React, {useContext, useEffect, useState} from "react";
-import {Link, useParams} from "react-router-dom";
-import axios, {all} from "axios";
+import {Link, useNavigate, useParams} from "react-router-dom";
+import axios from "axios";
 
 // Context
 import {ListsContext} from "../../context/ListsContext";
@@ -17,10 +17,13 @@ import './MovieDetails.css'
 import favoriteIcon from "../../assets/icons/heart-straight-fill.svg";
 import watchlistIcon from "../../assets/icons/eye-fill.svg";
 import watchedIcon from "../../assets/icons/check-fat-fill.svg";
+import Button from "../../components/button/Button";
 
 function MovieDetails() {
+    const navigate = useNavigate();
     const {movieId} = useParams();
     const {listItem, setListItem} = useContext(ListsContext);
+
     const [details, setDetails] = useState({});
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
@@ -198,7 +201,12 @@ function MovieDetails() {
                                 <h3>Omschrijving:</h3>
                                 <p>{details.overview}</p>
                             </section>
-                            <h4><Link to="/">Terug naar Home</Link></h4>
+                            <Button
+                            buttonType="button"
+                            clickHandler={() => navigate(-1)}
+                            children="Terug naar de vorige pagina"
+                            />
+
                         </article>
                     </div>
                 }
