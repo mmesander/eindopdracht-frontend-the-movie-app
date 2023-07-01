@@ -44,10 +44,12 @@
 
 .loading-error-section .loading-message {
     color: white;
+    font-style: normal;
 }
 
 .loading-error-section .error-message {
     color: red;
+    font-style: normal;
 }
 
 .page-outer-container {

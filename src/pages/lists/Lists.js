@@ -10,7 +10,6 @@ import MovieCard from "../../components/moviecard/MovieCard";
 
 // Styles
 import './Lists.css'
-import {set} from "react-hook-form";
 
 function Lists() {
     const {listItem} = useContext(ListsContext);
@@ -112,7 +111,10 @@ function Lists() {
                         id={favorite.id}
                     />
                 })}
-                {favoritesArray.length === 0 && <h3>Je hebt nog geen items aan je favorieten toegevoegd!</h3>}
+                {!loading && !error && favoritesArray.length === 0 &&
+                    <h3>Je hebt nog geen items aan je favorieten toegevoegd!</h3>}
+                {loading && <h3 className="loading-message">Je lijst wordt opgehaald... </h3>}
+                {error && <h3 className="error-message">Foutmelding: Er kan geen data opgehaald worden</h3>}
             </div>
             <h1 className="lists-titles">Watchlist</h1>
             <div className="lists-section-container">
@@ -125,7 +127,10 @@ function Lists() {
                         id={watchlist.id}
                     />
                 })}
-                {watchlistArray.length === 0 && <h3>Je hebt nog geen items aan je watchlist toegevoegd</h3>}
+                {!loading && !error && watchlistArray.length === 0 &&
+                    <h3>Je hebt nog geen items aan je watchlist toegevoegd</h3>}
+                {loading && <h3 className="loading-message">Je lijst wordt opgehaald... </h3>}
+                {error && <h3 className="error-message">Foutmelding: Er kan geen data opgehaald worden</h3>}
             </div>
             <h1 className="lists-titles">Watched</h1>
             <div className="lists-section-container">
@@ -138,7 +143,10 @@ function Lists() {
                         id={watched.id}
                     />
                 })}
-                {watchedArray.length === 0 && <h3>Je hebt nog geen items aan al gezien toegevoegd!</h3>}
+                {!loading && !error && watchedArray.length === 0 &&
+                    <h3>Je hebt nog geen items aan al gezien toegevoegd!</h3>}
+                {loading && <h3 className="loading-message">Je lijst wordt opgehaald... </h3>}
+                {error && <h3 className="error-message">Foutmelding: Er kan geen data opgehaald worden</h3>}
             </div>
         </div>
     )
