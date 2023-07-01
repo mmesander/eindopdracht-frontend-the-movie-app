@@ -10,6 +10,7 @@ import './Lists.css'
 
 function Lists() {
     const {listItem} = useContext(ListsContext);
+    let favoritesArray = [];
 
     const options = {
         method: 'GET',
@@ -33,13 +34,16 @@ function Lists() {
             async function fetchFavorites() {
                 try {
                     const response = await axios.get(`https://api.themoviedb.org/3/movie/${favorite}?language=nl-NL`, options);
-                    console.log(response.data)
+                    favoritesArray.push(response.data)
                 } catch (e) {
                     console.error(e)
                 }
             }
             void fetchFavorites();
         })
+
+
+        console.log(favoritesArray)
 
     }, [])
 
