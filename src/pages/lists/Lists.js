@@ -14,9 +14,9 @@ import './Lists.css';
 function Lists() {
     const {listItem} = useContext(ListsContext);
 
-    const [favoritesArray, setFavoritesArray] = useState([]);
-    const [watchlistArray, setWatchlistArray] = useState([]);
-    const [watchedArray, setWatchedArray] = useState([]);
+    const [favoriteMoviesArray, setFavoriteMoviesArray] = useState([]);
+    const [watchlistMoviesArray, setWatchlistMoviesArray] = useState([]);
+    const [watchedMoviesArray, setWatchedMoviesArray] = useState([]);
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
@@ -38,7 +38,7 @@ function Lists() {
                     if (response.data) {
                         setError(false);
                     }
-                    setFavoritesArray((addFavorites) => [
+                    setFavoriteMoviesArray((addFavorites) => [
                         ...addFavorites,
                         response.data,
                     ]);
@@ -60,7 +60,7 @@ function Lists() {
                     if (response.data) {
                         setError(false);
                     }
-                    setWatchlistArray((addWatchlist) => [
+                    setWatchlistMoviesArray((addWatchlist) => [
                         ...addWatchlist,
                         response.data,
                     ]);
@@ -82,7 +82,7 @@ function Lists() {
                     if (response.data) {
                         setError(false);
                     }
-                    setWatchedArray((addWatched) => [
+                    setWatchedMoviesArray((addWatched) => [
                         ...addWatched,
                         response.data,
                     ]);
@@ -125,7 +125,7 @@ function Lists() {
         <div className="page-outer-container">
             <h1 className="lists-titles">Favorieten</h1>
             <div className="lists-section-container">
-                {favoritesArray.length > 0 && favoritesArray.map((favorite) => {
+                {favoriteMoviesArray.length > 0 && favoriteMoviesArray.map((favorite) => {
                     console.log(favorite.title)
                     return <MovieCard
                         key={favorite.id}
@@ -135,14 +135,14 @@ function Lists() {
                         id={favorite.id}
                     />
                 })}
-                {!loading && !error && favoritesArray.length === 0 &&
+                {!loading && !error && favoriteMoviesArray.length === 0 &&
                     <h3 className="no-items-message">Je hebt nog geen items aan je favorieten toegevoegd!</h3>}
                 {loading && <h3 className="loading-message">Je lijst wordt opgehaald... </h3>}
                 {error && <h3 className="error-message">Foutmelding: Er kan geen data opgehaald worden</h3>}
             </div>
             <h1 className="lists-titles">Watchlist</h1>
             <div className="lists-section-container">
-                {watchlistArray.length > 0 && watchlistArray.map((watchlist) => {
+                {watchlistMoviesArray.length > 0 && watchlistMoviesArray.map((watchlist) => {
                     return <MovieCard
                         key={watchlist.id}
                         title={watchlist.title}
@@ -151,14 +151,14 @@ function Lists() {
                         id={watchlist.id}
                     />
                 })}
-                {!loading && !error && watchlistArray.length === 0 &&
+                {!loading && !error && watchlistMoviesArray.length === 0 &&
                     <h3>Je hebt nog geen items aan je watchlist toegevoegd</h3>}
                 {loading && <h3 className="loading-message">Je lijst wordt opgehaald... </h3>}
                 {error && <h3 className="error-message">Foutmelding: Er kan geen data opgehaald worden</h3>}
             </div>
             <h1 className="lists-titles">Watched</h1>
             <div className="lists-section-container">
-                {watchedArray.length > 0 && watchedArray.map((watched) => {
+                {watchedMoviesArray.length > 0 && watchedMoviesArray.map((watched) => {
                     return <MovieCard
                         key={watched.id}
                         title={watched.title}
@@ -167,7 +167,7 @@ function Lists() {
                         id={watched.id}
                     />
                 })}
-                {!loading && !error && watchedArray.length === 0 &&
+                {!loading && !error && watchedMoviesArray.length === 0 &&
                     <h3>Je hebt nog geen items aan al gezien toegevoegd!</h3>}
                 {loading && <h3 className="loading-message">Je lijst wordt opgehaald... </h3>}
                 {error && <h3 className="error-message">Foutmelding: Er kan geen data opgehaald worden</h3>}
