@@ -2,6 +2,8 @@
 import React, {useEffect, useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import axios from "axios";
+
+// Components
 import Button from "../../components/button/Button";
 import MovieCard from "../../components/moviecard/MovieCard";
 
