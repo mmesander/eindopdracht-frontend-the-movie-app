@@ -19,7 +19,7 @@ import drama from '../../assets/images/mood-sad.jpg';
 function Suggestion() {
     const navigate = useNavigate();
 
-    function testClickHandler(endpoint, text, link) {
+    function clickHandler(endpoint, text, link) {
         const url = `/suggestie/${link}/1?endpoint=${encodeURIComponent(endpoint)}&text=${encodeURIComponent(text)}`
         navigate(`${url}`);
     }
@@ -38,14 +38,14 @@ function Suggestion() {
                             mood="van de bank te rollen van het lachen"
                             image={comedy}
                             imageDescription="mood image for comedy movies"
-                            onClick={() => testClickHandler( "35", "van de bank te rollen van het lachen", "1")}
+                            onClick={() => clickHandler( "35", "van de bank te rollen van het lachen", "1")}
                         />
                         <MoodContainer
                             mood="op het puntje van je stoel te zitten"
                             image={adventure}
                             imageDescription="mood image for adventure movies"
                             onClick={() => {
-                                testClickHandler("80%7C28%7C53", "op het puntje van je stoel te zitten", "2")
+                                clickHandler("80%7C28%7C53", "op het puntje van je stoel te zitten", "2")
                             }}
                         />
                         <MoodContainer
@@ -53,7 +53,7 @@ function Suggestion() {
                             image={horror}
                             imageDescription="mood image for horror movies"
                             onClick={() => {
-                                testClickHandler("27", "je af en toe te moeten verstoppen achter een dekentje", "3")
+                                clickHandler("27", "je af en toe te moeten verstoppen achter een dekentje", "3")
                             }}
                         />
                         <MoodContainer
@@ -61,7 +61,7 @@ function Suggestion() {
                             image={otherworldly}
                             imageDescription="mood image for otherworldly movies"
                             onClick={() => {
-                                testClickHandler("14%7C878&without_genres=27", "in een andere wereld te belanden", "4")
+                                clickHandler("14%7C878&without_genres=27", "in een andere wereld te belanden", "4")
                             }}
                         />
                         <MoodContainer
@@ -69,7 +69,7 @@ function Suggestion() {
                             image={drama}
                             imageDescription="mood image for sad movies"
                             onClick={() => {
-                                testClickHandler("18%7C10749&without_genres=28", "met een doos tissues op de bank te zitten", "5")
+                                clickHandler("18%7C10749&without_genres=28", "met een doos tissues op de bank te zitten", "5")
                             }}
                         />
                     </div>
