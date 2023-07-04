@@ -1,10 +1,13 @@
 // Functions
 import React, {useContext, useEffect, useState} from "react";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 
 // Context
 import {ListsContext} from "../../context/ListsContext";
+
+// Components
+import Button from "../../components/button/Button";
 
 // Helpers
 import formatDate from "../../helpers/formatDate";
@@ -17,7 +20,6 @@ import './Details.css'
 import favoriteIcon from "../../assets/icons/heart-straight-fill.svg";
 import watchlistIcon from "../../assets/icons/eye-fill.svg";
 import watchedIcon from "../../assets/icons/check-fat-fill.svg";
-import Button from "../../components/button/Button";
 
 function MovieDetails() {
     const navigate = useNavigate();
@@ -168,7 +170,7 @@ function MovieDetails() {
                             <img src={`https://image.tmdb.org/t/p/w500${details.poster_path}`}
                                  alt={details.title}/>
                         </section>
-                        <article className="details-movie-information">
+                        <article className="details-information">
                             <section>
                                 <h1>{details.title}</h1>
 

@@ -22,7 +22,7 @@
     border-radius: 10px 0 0 10px;
 }
 
-.details-movie-information {
+.details-information {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
