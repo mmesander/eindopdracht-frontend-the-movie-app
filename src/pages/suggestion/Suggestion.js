@@ -28,10 +28,6 @@ function Suggestion() {
         <>
             <div className="page-outer-container">
                 <h1 className="suggestion-title">Heb jij zin om: </h1>
-                {/*<div className="loading-error-section">*/}
-                {/*    {loading && <h3 className="loading-message">Loading... </h3>}*/}
-                {/*    {error && <h3 className="error-message">Error: Could not fetch data!</h3>}*/}
-                {/*</div>*/}
                 <div className="suggestion-mood-container">
                     <MoodContainer
                         mood="van de bank te rollen van het lachen"
