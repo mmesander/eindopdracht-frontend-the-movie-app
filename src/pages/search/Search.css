@@ -1,6 +1,6 @@
 /*General Styling*/
 
-.searchpage-outer-container {
+.search-page-outer-container {
     display: flex;
     flex-direction: row;
     min-height: calc(100vh - 110px);
@@ -13,11 +13,11 @@
 .search-menu-container {
     display: flex;
     flex-direction: column;
-    width: 250px;
+    /*width: 250px;*/
     flex-basis: auto;
     flex-grow: 1;
     flex-shrink: 0;
-    gap: 1px;
+    gap: 5px;
 }
 
 .search-menu {
@@ -25,15 +25,15 @@
     flex-direction: column;
     background-color: rgba(117, 0, 0, 40%);
     width: 100%;
-    height: auto;
     flex-basis: auto;
     max-width: 250px;
     border-radius: 0 10px 10px 0;
-    padding: 20px 10px;
+    padding: 20px 15px;
 }
 
 .search-menu p {
     color: white;
+    font-weight: bold;
 }
 
 #search-specific-field {
@@ -102,6 +102,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    flex-basis: 100vw;
 }
 
 .filter-search-results-container {
@@ -109,7 +110,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 1000px;
+    max-width: 80%;
+    height: auto;
+    flex-wrap: wrap;
+    margin-inline: 30px;
     background-color: green;
 }
 

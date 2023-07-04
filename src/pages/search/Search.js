@@ -62,7 +62,7 @@ function Search() {
     }
 
     return (
-        <div className={active ? "page-outer-container" : "searchpage-outer-container"}>
+        <div className={active ? "page-outer-container" : "search-page-outer-container"}>
             {!active && <section className="filter-search-container">
                 <div className="search-menu-container">
                     <div className="search-menu search-specific">
@@ -84,12 +84,8 @@ function Search() {
                         </form>
                     </div>
                     <div className="search-menu search-filter-movies-series">
-                        <p></p>
-                        <Button
-                            buttonType="radio"
-                            children="zoek"
-                        />
-                        <Button/>
+                        <p>Filter hier je zoekopties</p>
+
                     </div>
                     <div className="search-menu rating"></div>
                     <div className="search-menu genres"></div>
