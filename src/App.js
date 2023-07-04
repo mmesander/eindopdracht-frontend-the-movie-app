@@ -4,7 +4,7 @@ import {useContext} from "react";
 
 // Context
 import {AuthContext} from "./context/AuthContext";
-import MovieDetails from "./pages/moviedetails/MovieDetails";
+import MovieDetails from "./pages/details/MovieDetails";
 
 // Components
 import NavBar from "./components/navbar/NavBar";

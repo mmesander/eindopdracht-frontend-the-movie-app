@@ -11,7 +11,7 @@ import formatDate from "../../helpers/formatDate";
 import roundRating from "../../helpers/roundRating";
 
 // Styles
-import './MovieDetails.css'
+import './Details.css'
 
 // Assets
 import favoriteIcon from "../../assets/icons/heart-straight-fill.svg";
