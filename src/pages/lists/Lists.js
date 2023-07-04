@@ -34,7 +34,7 @@ function Lists() {
             async function fetchFavoriteMovies() {
                 setLoading(true);
                 try {
-                    const response = await axios.get(`https://api.themoviedb.org/3/movie/${favorite}?language=nl-NL`, options);
+                    const response = await axios.get(`https://api.themoviedb.org/3/movie/${favorite}`, options);
                     if (response.data) {
                         setError(false);
                     }
@@ -56,7 +56,7 @@ function Lists() {
             async function fetchWatchlistMovies() {
                 setLoading(true);
                 try {
-                    const response = await axios.get(`https://api.themoviedb.org/3/movie/${watchlist}?language=nl-NL`, options);
+                    const response = await axios.get(`https://api.themoviedb.org/3/movie/${watchlist}`, options);
                     if (response.data) {
                         setError(false);
                     }
@@ -78,7 +78,7 @@ function Lists() {
             async function fetchWatchedMovies() {
                 setLoading(true);
                 try {
-                    const response = await axios.get(`https://api.themoviedb.org/3/movie/${watched}?language=nl-NL`, options);
+                    const response = await axios.get(`https://api.themoviedb.org/3/movie/${watched}`, options);
                     if (response.data) {
                         setError(false);
                     }
@@ -104,6 +104,7 @@ function Lists() {
             <h1 className="lists-titles">Favorieten</h1>
             <div className="lists-section-container">
                 {favoritesArray.length > 0 && favoritesArray.map((favorite) => {
+                    console.log(favorite.title)
                     return <MovieCard
                         key={favorite.id}
                         title={favorite.title}
@@ -113,7 +114,7 @@ function Lists() {
                     />
                 })}
                 {!loading && !error && favoritesArray.length === 0 &&
-                    <h3>Je hebt nog geen items aan je favorieten toegevoegd!</h3>}
+                    <h3 className="no-items-message">Je hebt nog geen items aan je favorieten toegevoegd!</h3>}
                 {loading && <h3 className="loading-message">Je lijst wordt opgehaald... </h3>}
                 {error && <h3 className="error-message">Foutmelding: Er kan geen data opgehaald worden</h3>}
             </div>
