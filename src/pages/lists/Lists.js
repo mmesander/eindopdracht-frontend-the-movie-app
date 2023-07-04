@@ -18,6 +18,10 @@ function Lists() {
     const [watchlistMoviesArray, setWatchlistMoviesArray] = useState([]);
     const [watchedMoviesArray, setWatchedMoviesArray] = useState([]);
 
+    const [favoriteSeriesArray, setFavoriteSeriesArray] = useState([]);
+    const [watchlistSeriesArray, setWatchlistSeriesArray] = useState([]);
+    const [watchedSeriesArray, setWatchedSeriesArray] = useState([]);
+
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
