@@ -34,7 +34,8 @@ function App() {
                 <Route path="/lijsten" element={<Lists/>}/>
                 <Route path="/login" element={<SignIn/>}/>
                 <Route path="/registratie" element={<SignUp/>}/>
-                <Route path="/details/:movieId" element={<MovieDetails/>}></Route>
+                <Route path="/film-details/:movieId" element={<MovieDetails/>}></Route>
+                {/*<Route path="/serie-details/:serieId" element={<MovieDetails/>}></Route>*/}
             </Routes>
             {isAuth && <Footer/>}
         </>

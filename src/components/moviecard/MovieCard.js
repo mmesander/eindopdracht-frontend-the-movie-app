@@ -26,8 +26,8 @@ function MovieCard({title, image, rating, id, name}) {
     const watchedActive = listItem.watched.includes(JSON.stringify(id));
 
     function clickHandler() {
-        if (id) {
-            navigate(`/details/${id}`);
+        if (id && title) {
+            navigate(`/film-details/${id}`);
         }
     }
 
