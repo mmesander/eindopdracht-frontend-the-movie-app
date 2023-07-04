@@ -108,7 +108,7 @@ function Lists() {
                     if (response.data) {
                         setError(false);
                     }
-                    setFavoritesArray((addFavorites) => [
+                    setFavoriteSeriesArray((addFavorites) => [
                         ...addFavorites,
                         response.data,
                     ]);
