@@ -183,6 +183,7 @@ function Lists() {
                         tv={false}
                     />
                 })}
+
                 {favoriteSeriesArray.length > 0 && favoriteSeriesArray.map((favorite) => {
                     return <MovieCard
                         key={favorite.id}
@@ -193,6 +194,7 @@ function Lists() {
                         tv={true}
                     />
                 })}
+
                 {!loading && !error && favoriteMoviesArray.length === 0 && favoriteSeriesArray.length === 0 &&
                     <h3 className="no-items-message">Je hebt nog geen items aan je favorieten toegevoegd!</h3>}
                 {loading && <h3 className="loading-message">Je lijst wordt opgehaald... </h3>}
@@ -210,6 +212,7 @@ function Lists() {
                         tv={false}
                     />
                 })}
+
                 {watchlistSeriesArray.length > 0 && watchlistSeriesArray.map((watchlist) => {
                     return <MovieCard
                         key={watchlist.id}
@@ -220,6 +223,7 @@ function Lists() {
                         tv={true}
                     />
                 })}
+
                 {!loading && !error && watchlistMoviesArray.length === 0 && watchlistSeriesArray.length === 0 &&
                     <h3>Je hebt nog geen items aan je watchlist toegevoegd</h3>}
                 {loading && <h3 className="loading-message">Je lijst wordt opgehaald... </h3>}
@@ -237,6 +241,7 @@ function Lists() {
                         tv={false}
                     />
                 })}
+
                 {watchedSeriesArray.length > 0 && watchedSeriesArray.map((watched) => {
                     return <MovieCard
                         key={watched.id}
@@ -247,6 +252,7 @@ function Lists() {
                         tv={true}
                     />
                 })}
+
                 {!loading && !error && watchedMoviesArray.length === 0 && watchedSeriesArray.length === 0 &&
                     <h3>Je hebt nog geen items aan al gezien toegevoegd!</h3>}
                 {loading && <h3 className="loading-message">Je lijst wordt opgehaald... </h3>}
