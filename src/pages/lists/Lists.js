@@ -30,8 +30,8 @@ function Lists() {
     };
 
     useEffect(() => {
-        listItem.favorite.map((favorite) => {
-            async function fetchFavorites() {
+        listItem.favoriteMovies.map((favorite) => {
+            async function fetchFavoriteMovies() {
                 setLoading(true);
                 try {
                     const response = await axios.get(`https://api.themoviedb.org/3/movie/${favorite}?language=nl-NL`, options);
@@ -49,11 +49,11 @@ function Lists() {
                 setLoading(false);
             }
 
-            void fetchFavorites();
+            void fetchFavoriteMovies();
         });
 
-        listItem.watchlist.map((watchlist) => {
-            async function fetchWatchlist() {
+        listItem.watchlistMovies.map((watchlist) => {
+            async function fetchWatchlistMovies() {
                 setLoading(true);
                 try {
                     const response = await axios.get(`https://api.themoviedb.org/3/movie/${watchlist}?language=nl-NL`, options);
@@ -71,11 +71,11 @@ function Lists() {
                 setLoading(false);
             }
 
-            void fetchWatchlist();
+            void fetchWatchlistMovies();
         });
 
-        listItem.watched.map((watched) => {
-            async function fetchWatched() {
+        listItem.watchedMovies.map((watched) => {
+            async function fetchWatchedMovies() {
                 setLoading(true);
                 try {
                     const response = await axios.get(`https://api.themoviedb.org/3/movie/${watched}?language=nl-NL`, options);
@@ -93,7 +93,7 @@ function Lists() {
                 setLoading(false);
             }
 
-            void fetchWatched();
+            void fetchWatchedMovies();
         });
 
     }, [listItem]);
