@@ -30,9 +30,9 @@ function MovieDetails() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
-    const favoriteActive = listItem.favorite.includes(movieId);
-    const watchlistActive = listItem.watchlist.includes(movieId);
-    const watchedActive = listItem.watched.includes(movieId);
+    const favoriteActive = listItem.favoriteMovies.includes(movieId);
+    const watchlistActive = listItem.watchlistMovies.includes(movieId);
+    const watchedActive = listItem.watchedMovies.includes(movieId);
 
     const options = {
         method: 'GET',
@@ -65,7 +65,7 @@ function MovieDetails() {
 
     function setFavorite() {
 
-        const checkMovieID = listItem.favorite.find((movie) => {
+        const checkMovieID = listItem.favoriteMovies.find((movie) => {
             return movieId === movie;
         });
 
@@ -73,7 +73,7 @@ function MovieDetails() {
             // als waarde, dan stond íe er al in en moet íe er weer uit
 
             // maak een referentieloze kopie van de originele array
-            const favoritesArray = [...listItem.favorite];
+            const favoritesArray = [...listItem.favoriteMovies];
             // zoek het indexNummer van het item waarop deze film zou moeten staan
             const indexNumberOf = favoritesArray.indexOf(movieId);
             // verwijder het item met dit indexnummer
@@ -83,14 +83,14 @@ function MovieDetails() {
             // maar overschrijf de favorites-array, want daar hebben we nu een nieuwe aan toegevoegd
             setListItem({
                 ...listItem,
-                favorite: favoritesArray,
+                favoriteMovies: favoritesArray,
             });
 
         } else {
             // als undefined dan stond ie er nog niet in, en moet hij erbij
 
             // maak een referentieloze kopie van de originele array
-            const favoritesArray = [...listItem.favorite];
+            const favoritesArray = [...listItem.favoriteMovies];
             // push daar de nieuwe movie in
             favoritesArray.push(movieId);
 
@@ -98,61 +98,61 @@ function MovieDetails() {
             // maar overschrijf de favorites-array, want daar hebben we nu een nieuwe aan toegevoegd
             setListItem({
                 ...listItem,
-                favorite: favoritesArray,
+                favoriteMovies: favoritesArray,
             });
         }
     }
 
     function setWatchlist() {
-        const checkMovieID = listItem.watchlist.find((movie) => {
+        const checkMovieID = listItem.watchlistMovies.find((movie) => {
             return movieId === movie;
         });
 
         if (checkMovieID) {
-            const watchlistArray = [...listItem.watchlist];
+            const watchlistArray = [...listItem.watchlistMovies];
             const indexNumberOf = watchlistArray.indexOf(movieId);
 
             watchlistArray.splice(indexNumberOf, 1);
 
             setListItem({
                 ...listItem,
-                watchlist: watchlistArray,
+                watchlistMovies: watchlistArray,
             });
         } else {
-            const watchlistArray = [...listItem.watchlist];
+            const watchlistArray = [...listItem.watchlistMovies];
 
             watchlistArray.push(movieId);
 
             setListItem({
                 ...listItem,
-                watchlist: watchlistArray,
+                watchlistMovies: watchlistArray,
             });
         }
     }
 
     function setWatched() {
-        const checkMovieID = listItem.watched.find((movie) => {
+        const checkMovieID = listItem.watchedMovies.find((movie) => {
             return movieId === movie;
         });
 
         if (checkMovieID) {
-            const watchedArray = [...listItem.watched];
+            const watchedArray = [...listItem.watchedMovies];
             const indexNumberOf = watchedArray.indexOf(movieId);
 
             watchedArray.splice(indexNumberOf, 1);
 
             setListItem({
                 ...listItem,
-                watched: watchedArray,
+                watchedMovies: watchedArray,
             });
         } else {
-            const watchedArray = [...listItem.watched];
+            const watchedArray = [...listItem.watchedMovies];
 
             watchedArray.push(movieId);
 
             setListItem({
                 ...listItem,
-                watched: watchedArray,
+                watchedMovies: watchedArray,
             });
         }
     }
