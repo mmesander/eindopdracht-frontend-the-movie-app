@@ -23,7 +23,7 @@ function SignUp() {
         if (regSuccess) {
             const timer = setTimeout(() => {
                 navigate("/login");
-            }, 5000);
+            }, 3000);
 
             return () => clearTimeout(timer);
         }
@@ -147,7 +147,7 @@ function SignUp() {
                         >
                             Registreren
                         </button>
-                        <h4 className="success-message">Registratie is gelukt, je wordt teruggeleid naar de login pagina</h4>
+                        {regSuccess && <h4 className="success-message">Registratie is gelukt, je wordt teruggeleid naar de login pagina</h4>}
                     </form>
                     <h3>Terug naar de <Link to="/login">login</Link> pagina</h3>
                 </div>
