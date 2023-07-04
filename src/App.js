@@ -34,7 +34,7 @@ function App() {
                 <Route path="/" element={<Home/>}/>
                 <Route path="/zoeken" element={<Search/>}/>
                 <Route path="/suggestie" element={<Suggestion/>}/>
-                <Route path="/suggestie/:mood/:page" element={<SuggestionSpecific/>}/>
+                <Route path="/suggestie/:mood/:pageId" element={<SuggestionSpecific/>}/>
                 <Route path="/lijsten" element={<Lists/>}/>
                 <Route path="/login" element={<SignIn/>}/>
                 <Route path="/registratie" element={<SignUp/>}/>

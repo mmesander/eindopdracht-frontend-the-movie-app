@@ -1,6 +1,6 @@
 // Functions
 import React, {useEffect, useState} from "react";
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation, useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 
 // Components
@@ -10,13 +10,13 @@ import MovieCard from "../../components/moviecard/MovieCard";
 // Styles
 import './SuggestionSpecific.css';
 
-
 function SuggestionSpecific() {
     const navigate = useNavigate();
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const endpoint = searchParams.get('endpoint');
     const text = searchParams.get('text');
+    const link = searchParams.get('link');
 
     const [movies, setMovies] = useState({});
     const [page, setPage] = useState(1);
