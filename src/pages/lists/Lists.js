@@ -52,28 +52,6 @@ function Lists() {
             void fetchFavoriteMovies();
         });
 
-        listItem.favoriteSeries.map((favorite) => {
-            async function fetchFavoriteSeries() {
-                setLoading(true);
-                try {
-                    const response = await axios.get(`https://api.themoviedb.org/3/tv/${favorite}`, options);
-                    if (response.data) {
-                        setError(false);
-                    }
-                    setFavoritesArray((addFavorites) => [
-                        ...addFavorites,
-                        response.data,
-                    ]);
-                } catch (e) {
-                    setError(true);
-                    console.error(e);
-                }
-                setLoading(false);
-            }
-
-            void fetchFavoriteSeries();
-        });
-
         listItem.watchlistMovies.map((watchlist) => {
             async function fetchWatchlistMovies() {
                 setLoading(true);
@@ -116,6 +94,28 @@ function Lists() {
             }
 
             void fetchWatchedMovies();
+        });
+
+        listItem.favoriteSeries.map((favorite) => {
+            async function fetchFavoriteSeries() {
+                setLoading(true);
+                try {
+                    const response = await axios.get(`https://api.themoviedb.org/3/tv/${favorite}`, options);
+                    if (response.data) {
+                        setError(false);
+                    }
+                    setFavoritesArray((addFavorites) => [
+                        ...addFavorites,
+                        response.data,
+                    ]);
+                } catch (e) {
+                    setError(true);
+                    console.error(e);
+                }
+                setLoading(false);
+            }
+
+            void fetchFavoriteSeries();
         });
 
     }, [listItem]);
