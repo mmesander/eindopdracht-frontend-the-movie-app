@@ -1,6 +1,7 @@
 // Functions
-import React, {useEffect, useState} from "react";
-import axios from "axios";
+import React, {useState} from "react";
+
+import {useNavigate} from "react-router-dom";
 
 // Components
 import MoodContainer from "../../components/moodcontainer/MoodContainer";
@@ -18,6 +19,9 @@ import horror from '../../assets/images/mood-scary.jpg';
 import drama from '../../assets/images/mood-sad.jpg';
 
 function Suggestion() {
+    const navigate = useNavigate();
+
+
     const [active, setActive] = useState(false);
     const [movies, setMovies] = useState({});
     const [page, setPage] = useState(1);
@@ -25,69 +29,74 @@ function Suggestion() {
     const [title, setTitle] = useState("");
     const [totalPages, setTotalPages] = useState(0);
 
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
+    // const [loading, setLoading] = useState(false);
+    // const [error, setError] = useState(false);
 
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
-        }
-    };
+    // const options = {
+    //     method: 'GET',
+    //     headers: {
+    //         accept: 'application/json',
+    //         Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
+    //     }
+    // };
 
-    useEffect(() => {
-        if (page >= 1 && active) {
-            void fetchSpecificMovies(endpoint, title);
-        }
-    }, [page]);
+    // useEffect(() => {
+    //     if (page >= 1 && active) {
+    //         void fetchSpecificMovies(endpoint, title);
+    //     }
+    // }, [page]);
 
-    function clickHandler(endpoint, text) {
-        setPage(1);
-        void fetchSpecificMovies(endpoint, text);
+    function testClickHandler(endpoint, text, link) {
+        const url = `/suggestie/${link}/1?endpoint=${encodeURIComponent(endpoint)}&text=${encodeURIComponent(text)}`
+        navigate(`${url}`);
     }
 
-    async function fetchSpecificMovies(endpoint, text) {
-        setLoading(true);
-        try {
-            const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${endpoint}`, options);
-            if (response.data) {
-                setError(false);
-            }
-            setMovies(response.data.results);
-            setTitle(text);
-            setActive(true);
-            setEndpoint(endpoint);
-            setTotalPages(response.data.total_pages);
-        } catch (e) {
-            setError(true);
-            console.error(e);
-        }
-        setLoading(false);
-    }
+    // function clickHandler(endpoint, text) {
+    //     setPage(1);
+    //     void fetchSpecificMovies(endpoint, text);
+    // }
+
+    // async function fetchSpecificMovies(endpoint, text) {
+    //     setLoading(true);
+    //     try {
+    //         const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${endpoint}`, options);
+    //         if (response.data) {
+    //             setError(false);
+    //         }
+    //         setMovies(response.data.results);
+    //         setTitle(text);
+    //         setActive(true);
+    //         setEndpoint(endpoint);
+    //         setTotalPages(response.data.total_pages);
+    //     } catch (e) {
+    //         setError(true);
+    //         console.error(e);
+    //     }
+    //     setLoading(false);
+    // }
 
     return (
         <>
             <div className="page-outer-container">
                 {!active && <section className="suggestion-switch-container">
                     <h1 className="suggestion-title">Heb jij zin om: </h1>
-                    <div className="loading-error-section">
-                        {loading && <h3 className="loading-message">Loading... </h3>}
-                        {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
-                    </div>
+                    {/*<div className="loading-error-section">*/}
+                    {/*    {loading && <h3 className="loading-message">Loading... </h3>}*/}
+                    {/*    {error && <h3 className="error-message">Error: Could not fetch data!</h3>}*/}
+                    {/*</div>*/}
                     <div className="suggestion-mood-container">
                         <MoodContainer
                             mood="van de bank te rollen van het lachen"
                             image={comedy}
                             imageDescription="mood image for comedy movies"
-                            onClick={() => clickHandler( "35", "van de bank te rollen van het lachen")}
+                            onClick={() => testClickHandler( "35", "van de bank te rollen van het lachen", "1")}
                         />
                         <MoodContainer
                             mood="op het puntje van je stoel te zitten"
                             image={adventure}
                             imageDescription="mood image for adventure movies"
                             onClick={() => {
-                                clickHandler("80%7C28%7C53", "op het puntje van je stoel te zitten")
+                                testClickHandler("80%7C28%7C53", "op het puntje van je stoel te zitten", "2")
                             }}
                         />
                         <MoodContainer
@@ -95,7 +104,7 @@ function Suggestion() {
                             image={horror}
                             imageDescription="mood image for horror movies"
                             onClick={() => {
-                                clickHandler("27", "je af en toe te moeten verstoppen achter een dekentje")
+                                testClickHandler("27", "je af en toe te moeten verstoppen achter een dekentje", "3")
                             }}
                         />
                         <MoodContainer
@@ -103,7 +112,7 @@ function Suggestion() {
                             image={otherworldly}
                             imageDescription="mood image for otherworldly movies"
                             onClick={() => {
-                                clickHandler("14%7C878&without_genres=27", "in een andere wereld te belanden")
+                                testClickHandler("14%7C878&without_genres=27", "in een andere wereld te belanden", "4")
                             }}
                         />
                         <MoodContainer
@@ -111,45 +120,45 @@ function Suggestion() {
                             image={drama}
                             imageDescription="mood image for sad movies"
                             onClick={() => {
-                                clickHandler("18%7C10749&without_genres=28", "met een doos tissues op de bank te zitten")
+                                testClickHandler("18%7C10749&without_genres=28", "met een doos tissues op de bank te zitten", "5")
                             }}
                         />
                     </div>
                 </section>}
-                {active && <section className="suggestion-switch-container">
-                    <button
-                        className="button-to-overview"
-                        type="button"
-                        onClick={() => setActive(false)}
-                    >
-                        Terug naar overzicht
-                    </button>
-                    <h2 className="suggestion-title">{`Je hebt gekozen om ${title}`}</h2>
-                    <div className="loading-error-section">
-                        {loading && <h3 className="loading-message">Loading... </h3>}
-                        {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
-                    </div>
-                    <div className="button-set-page-section">
-                        <Button
-                            buttonType="button"
-                            children="Vorige"
-                            clickHandler={() => setPage(page - 1)}
-                            disabled={page === 1}
-                        />
-                        <Button
-                            buttonType="button"
-                            children="Volgende"
-                            clickHandler={() => setPage(page + 1)}
-                            disabled={page === totalPages}
-                        />
-                    </div>
-                    <div className="suggestion-inner-container">
-                        {Object.keys(movies).length > 0 && movies.map((movie) => {
-                            return <MovieCard key={movie.id} title={movie.title} image={movie.poster_path}
-                                              rating={movie.vote_average} id={movie.id}/>
-                        })}
-                    </div>
-                </section>}
+                {/*{active && <section className="suggestion-switch-container">*/}
+                {/*    <button*/}
+                {/*        className="button-to-overview"*/}
+                {/*        type="button"*/}
+                {/*        onClick={() => setActive(false)}*/}
+                {/*    >*/}
+                {/*        Terug naar overzicht*/}
+                {/*    </button>*/}
+                {/*    <h2 className="suggestion-title">{`Je hebt gekozen om ${title}`}</h2>*/}
+                {/*    <div className="loading-error-section">*/}
+                {/*        {loading && <h3 className="loading-message">Loading... </h3>}*/}
+                {/*        {error && <h3 className="error-message">Error: Could not fetch data!</h3>}*/}
+                {/*    </div>*/}
+                {/*    <div className="button-set-page-section">*/}
+                {/*        <Button*/}
+                {/*            buttonType="button"*/}
+                {/*            children="Vorige"*/}
+                {/*            clickHandler={() => setPage(page - 1)}*/}
+                {/*            disabled={page === 1}*/}
+                {/*        />*/}
+                {/*        <Button*/}
+                {/*            buttonType="button"*/}
+                {/*            children="Volgende"*/}
+                {/*            clickHandler={() => setPage(page + 1)}*/}
+                {/*            disabled={page === totalPages}*/}
+                {/*        />*/}
+                {/*    </div>*/}
+                {/*    <div className="suggestion-inner-container">*/}
+                {/*        {Object.keys(movies).length > 0 && movies.map((movie) => {*/}
+                {/*            return <MovieCard key={movie.id} title={movie.title} image={movie.poster_path}*/}
+                {/*                              rating={movie.vote_average} id={movie.id}/>*/}
+                {/*        })}*/}
+                {/*    </div>*/}
+                {/*</section>}*/}
             </div>
         </>
     )

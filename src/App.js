@@ -13,6 +13,7 @@ import Footer from "./components/footer/Footer";
 import Home from "./pages/home/Home";
 import Search from "./pages/search/Search";
 import Suggestion from "./pages/suggestion/Suggestion";
+import SuggestionSpecific from "./pages/suggestionspecific/SuggestionSpecific";
 import Lists from "./pages/lists/Lists";
 import SignIn from "./pages/signin/SignIn";
 import SignUp from "./pages/signup/SignUp";
@@ -33,6 +34,7 @@ function App() {
                 <Route path="/" element={<Home/>}/>
                 <Route path="/zoeken" element={<Search/>}/>
                 <Route path="/suggestie" element={<Suggestion/>}/>
+                <Route path="/suggestie/:mood/:page" element={<SuggestionSpecific/>}/>
                 <Route path="/lijsten" element={<Lists/>}/>
                 <Route path="/login" element={<SignIn/>}/>
                 <Route path="/registratie" element={<SignUp/>}/>
