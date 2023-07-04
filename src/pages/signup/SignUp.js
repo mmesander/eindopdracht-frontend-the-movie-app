@@ -1,5 +1,5 @@
 // Functions
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {useForm} from 'react-hook-form'
 import axios from "axios";
@@ -14,9 +14,20 @@ function SignUp() {
     const navigate = useNavigate();
     const {handleSubmit, register, watch, formState: {errors, isValid}} = useForm({mode:"onChange"});
 
+    const [regSuccess, setRegSuccess] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+
+    useEffect(() => {
+        if (regSuccess) {
+            const timer = setTimeout(() => {
+                navigate("/login");
+            }, 3000);
+
+            return () => clearTimeout(timer);
+        }
+    }, [regSuccess, navigate])
 
     async function handleRegister(data) {
         setLoading(true);
@@ -35,7 +46,7 @@ function SignUp() {
 
             if (response.data.message === "User registered successfully!") {
                 console.log("Registratie gelukt!");
-                navigate("/login");
+                setRegSuccess(true);
             }
 
         } catch (e) {
@@ -136,6 +147,7 @@ function SignUp() {
                         >
                             Registreren
                         </button>
+                        {regSuccess && <h4 className="success-message">Registratie is gelukt, je wordt teruggeleid naar de login pagina</h4>}
                     </form>
                     <h3>Terug naar de <Link to="/login">login</Link> pagina</h3>
                 </div>

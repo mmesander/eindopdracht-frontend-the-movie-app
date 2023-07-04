@@ -91,3 +91,7 @@
 .signup-inner-container a:hover {
     color: #4EECF6;
 }
+
+.success-message {
+    color: darkgreen;
+}
