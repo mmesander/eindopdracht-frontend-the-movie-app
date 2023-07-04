@@ -30,9 +30,9 @@ function MovieDetails() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
-    const favoriteActive = listItem.favorite.includes(movieId)
-    const watchlistActive = listItem.watchlist.includes(movieId)
-    const watchedActive = listItem.watched.includes(movieId)
+    const favoriteActive = listItem.favorite.includes(movieId);
+    const watchlistActive = listItem.watchlist.includes(movieId);
+    const watchedActive = listItem.watched.includes(movieId);
 
     const options = {
         method: 'GET',

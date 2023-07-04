@@ -4,7 +4,6 @@ import {useContext} from "react";
 
 // Context
 import {AuthContext} from "./context/AuthContext";
-import MovieDetails from "./pages/details/MovieDetails";
 
 // Components
 import NavBar from "./components/navbar/NavBar";
@@ -16,10 +15,13 @@ import Search from "./pages/search/Search";
 import Suggestion from "./pages/suggestion/Suggestion";
 import Lists from "./pages/lists/Lists";
 import SignIn from "./pages/signin/SignIn";
+import SignUp from "./pages/signup/SignUp";
+import MovieDetails from "./pages/details/MovieDetails";
+import SerieDetails from "./pages/details/SerieDetails";
 
-import SignUp from "./pages/signup/SignUp"
 // Styles
 import './App.css';
+
 
 function App() {
     const {isAuth} = useContext(AuthContext);
@@ -35,7 +37,7 @@ function App() {
                 <Route path="/login" element={<SignIn/>}/>
                 <Route path="/registratie" element={<SignUp/>}/>
                 <Route path="/film-details/:movieId" element={<MovieDetails/>}></Route>
-                {/*<Route path="/serie-details/:serieId" element={<MovieDetails/>}></Route>*/}
+                <Route path="/serie-details/:serieId" element={<SerieDetails/>}></Route>
             </Routes>
             {isAuth && <Footer/>}
         </>
