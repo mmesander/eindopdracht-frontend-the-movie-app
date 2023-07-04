@@ -30,9 +30,9 @@ function SerieDetails() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
-    const favoriteActive = listItem.favorite.includes(serieId);
-    const watchlistActive = listItem.watchlist.includes(serieId);
-    const watchedActive = listItem.watched.includes(serieId);
+    const favoriteActive = listItem.favoriteSeries.includes(serieId);
+    const watchlistActive = listItem.watchlistSeries.includes(serieId);
+    const watchedActive = listItem.watchedSeries.includes(serieId);
 
     const options = {
         method: 'GET',
@@ -64,82 +64,82 @@ function SerieDetails() {
     }, [])
 
     function setFavorite() {
-        const checkSerieID = listItem.favorite.find((serie) => {
+        const checkSerieID = listItem.favoriteSeries.find((serie) => {
             return serieId === serie;
         });
 
         if (checkSerieID) {
-            const favoritesArray = [...listItem.favorite];
+            const favoritesArray = [...listItem.favoriteSeries];
             const indexNumberOf = favoritesArray.indexOf(serieId);
 
             favoritesArray.splice(indexNumberOf, 1);
 
             setListItem({
                 ...listItem,
-                favorite: favoritesArray,
+                favoriteSeries: favoritesArray,
             });
         } else {
-            const favoritesArray = [...listItem.favorite];
+            const favoritesArray = [...listItem.favoriteSeries];
 
             favoritesArray.push(serieId);
 
             setListItem({
                 ...listItem,
-                favorite: favoritesArray,
+                favoriteSeries: favoritesArray,
             });
         }
     }
 
     function setWatchlist() {
-        const checkSerieID = listItem.watchlist.find((serie) => {
+        const checkSerieID = listItem.watchlistSeries.find((serie) => {
             return serieId === serie;
         });
 
         if (checkSerieID) {
-            const watchlistArray = [...listItem.watchlist];
+            const watchlistArray = [...listItem.watchlistSeries];
             const indexNumberOf = watchlistArray.indexOf(serieId);
 
             watchlistArray.splice(indexNumberOf, 1);
 
             setListItem({
                 ...listItem,
-                watchlist: watchlistArray,
+                watchlistSeries: watchlistArray,
             });
         } else {
-            const watchlistArray = [...listItem.watchlist];
+            const watchlistArray = [...listItem.watchlistSeries];
 
             watchlistArray.push(serieId);
 
             setListItem({
                 ...listItem,
-                watchlist: watchlistArray,
+                watchlistSeries: watchlistArray,
             });
         }
     }
 
     function setWatched() {
-        const checkSerieID = listItem.watched.find((serie) => {
+        const checkSerieID = listItem.watchedSeries.find((serie) => {
             return serieId === serie;
         });
 
         if (checkSerieID) {
-            const watchedArray = [...listItem.watched];
+            const watchedArray = [...listItem.watchedSeries];
             const indexNumberOf = watchedArray.indexOf(serieId);
 
             watchedArray.splice(indexNumberOf, 1);
 
             setListItem({
                 ...listItem,
-                watched: watchedArray,
+                watchedSeries: watchedArray,
             });
         } else {
-            const watchedArray = [...listItem.watched];
+            const watchedArray = [...listItem.watchedSeries];
 
             watchedArray.push(serieId);
 
             setListItem({
                 ...listItem,
-                watched: watchedArray,
+                watchedSeries: watchedArray,
             });
         }
     }
