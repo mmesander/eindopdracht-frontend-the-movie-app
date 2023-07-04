@@ -7,6 +7,9 @@ import axios from "axios";
 import Button from "../../components/button/Button";
 import MovieCard from "../../components/moviecard/MovieCard";
 
+// Styles
+import './SuggestionSpecific.css';
+
 
 function SuggestionSpecific() {
     const navigate = useNavigate();
@@ -55,41 +58,39 @@ function SuggestionSpecific() {
     };
 
     return (
-        <div>
-            <section className="suggestion-switch-container">
-                <button
-                    className="button-to-overview"
-                    type="button"
-                    onClick={() => navigate(-1)}
-                >
-                    Terug naar overzicht
-                </button>
-                <h2 className="suggestion-title">{`Je hebt gekozen om ${title}`}</h2>
-                <div className="loading-error-section">
-                    {loading && <h3 className="loading-message">Loading... </h3>}
-                    {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
-                </div>
-                <div className="button-set-page-section">
-                    <Button
-                        buttonType="button"
-                        children="Vorige"
-                        clickHandler={() => setPage(page - 1)}
-                        disabled={page === 1}
-                    />
-                    <Button
-                        buttonType="button"
-                        children="Volgende"
-                        clickHandler={() => setPage(page + 1)}
-                        disabled={page === totalPages}
-                    />
-                </div>
-                <div className="suggestion-inner-container">
-                    {Object.keys(movies).length > 0 && movies.map((movie) => {
-                        return <MovieCard key={movie.id} title={movie.title} image={movie.poster_path}
-                                          rating={movie.vote_average} id={movie.id}/>
-                    })}
-                </div>
-            </section>
+        <div className="page-outer-container">
+            <button
+                className="button-to-overview"
+                type="button"
+                onClick={() => navigate(-1)}
+            >
+                Terug naar overzicht
+            </button>
+            <h2 className="suggestion-title">{`Je hebt gekozen om ${title}`}</h2>
+            <div className="loading-error-section">
+                {loading && <h3 className="loading-message">Loading... </h3>}
+                {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
+            </div>
+            <div className="button-set-page-section">
+                <Button
+                    buttonType="button"
+                    children="Vorige"
+                    clickHandler={() => setPage(page - 1)}
+                    disabled={page === 1}
+                />
+                <Button
+                    buttonType="button"
+                    children="Volgende"
+                    clickHandler={() => setPage(page + 1)}
+                    disabled={page === totalPages}
+                />
+            </div>
+            <div className="suggestion-inner-container">
+                {Object.keys(movies).length > 0 && movies.map((movie) => {
+                    return <MovieCard key={movie.id} title={movie.title} image={movie.poster_path}
+                                      rating={movie.vote_average} id={movie.id}/>
+                })}
+            </div>
         </div>
     )
 }

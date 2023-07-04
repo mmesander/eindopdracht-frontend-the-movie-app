@@ -1,8 +1,7 @@
-.suggestion-switch-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.suggestion-title {
+    color: white;
+    margin: 20px 30px 5px 30px;]
+    font-size: 40px
 }
 
 .suggestion-mood-container {
@@ -13,39 +12,4 @@
     height: auto;
     flex-wrap: wrap;
     margin-inline: 30px;
-}
-
-.suggestion-inner-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    max-width: 1000px;
-    height: auto;
-    flex-wrap: wrap;
-    margin-inline: 30px
-}
-
-.suggestion-switch-container h1,
-.suggestion-switch-container h2 {
-    color: white;
-    margin: 20px 30px 5px 30px;
-}
-
-.button-to-overview {
-    background-color: transparent;
-    border: none;
-    color: white;
-    font-weight: bolder;
-    font-size: 24px;
-    margin: 20px 0 5px 0;
-    text-decoration: underline;
-}
-
-.button-to-overview:hover {
-    cursor: pointer;
-    color: #750000;
-}
-
-.suggestion-title {
-    font-size: 40px;
 }
