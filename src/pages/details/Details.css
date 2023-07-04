@@ -32,11 +32,11 @@
     border-radius: 0 10px 10px 0;
 }
 
-.details-movie-information h1 {
+.details-information h1 {
     font-size: 40px;
 }
 
-.details-movie-information h2 {
+.details-information h2 {
     margin-bottom: 20px;
 }
 
@@ -44,7 +44,7 @@
     font-size: 18px;
 }
 
-.details-movie-information span {
+.details-information span {
     color: #750000;
 }
 
@@ -55,7 +55,7 @@
     font-style: italic;
 }
 
-.details-movie-information h3 {
+.details-information h3 {
     margin-block: 20px;
 }
 
