@@ -1,5 +1,5 @@
 // Functions
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {useForm} from 'react-hook-form'
 import axios from "axios";
@@ -18,6 +18,16 @@ function SignUp() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+
+    useEffect(() => {
+        if (regSuccess) {
+            const timer = setTimeout(() => {
+                navigate("/login");
+            }, 5000);
+
+            return () => clearTimeout(timer);
+        }
+    }, [regSuccess, navigate])
 
     async function handleRegister(data) {
         setLoading(true);
