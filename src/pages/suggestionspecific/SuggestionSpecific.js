@@ -16,7 +16,7 @@ function SuggestionSpecific() {
     const searchParams = new URLSearchParams(location.search);
     const endpoint = searchParams.get('endpoint');
     const text = searchParams.get('text');
-    const link = searchParams.get('link');
+    const link = useParams().moodId;
 
     const [movies, setMovies] = useState({});
     const [page, setPage] = useState(1);
@@ -34,10 +34,9 @@ function SuggestionSpecific() {
     }, [page]);
 
     function updateUrl() {
-        const newUrl = `/suggestie/${link}/${page}?endpoint=${endpoint}&link=${link}&text=${text}`
+        const newUrl = `/suggestie/${link}/${page}?endpoint=${endpoint}&text=${text}`
         navigate(newUrl, {replace: true});
     }
-
 
     async function fetchSpecificMovies(endpoint, text) {
         setLoading(true);
