@@ -13,14 +13,14 @@ function ListsContextProvider({children}) {
         watchedSeries: [],
     });
 
-    // useEffect(() => {
-    //     if (!localStorage.getItem("movies")) {
-    //         localStorage.setItem('movies', JSON.stringify(listItem))
-    //     }
-    //     if (!localStorage.getItem("series")) {
-    //         localStorage.setItem('series', JSON.stringify(listItem))
-    //     }
-    // }, []);
+    useEffect(() => {
+        if (!localStorage.getItem("movies")) {
+            localStorage.setItem('movies', JSON.stringify(listItem))
+        }
+        if (!localStorage.getItem("series")) {
+            localStorage.setItem('series', JSON.stringify(listItem))
+        }
+    }, []);
 
     const data = {
         listItem: listItem,

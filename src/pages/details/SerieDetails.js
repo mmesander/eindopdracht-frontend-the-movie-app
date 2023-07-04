@@ -118,7 +118,7 @@ function SerieDetails() {
     }
 
     function setWatched() {
-        const checkSerieID = listItem.watchlist.find((serie) => {
+        const checkSerieID = listItem.watched.find((serie) => {
             return serieId === serie;
         });
 
