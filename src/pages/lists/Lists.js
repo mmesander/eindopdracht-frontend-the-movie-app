@@ -174,16 +174,26 @@ function Lists() {
             <h1 className="lists-titles">Favorieten</h1>
             <div className="lists-section-container">
                 {favoriteMoviesArray.length > 0 && favoriteMoviesArray.map((favorite) => {
-                    console.log(favorite.title)
                     return <MovieCard
                         key={favorite.id}
                         title={favorite.title}
                         image={favorite.poster_path}
                         rating={favorite.vote_average}
                         id={favorite.id}
+                        tv={false}
                     />
                 })}
-                {!loading && !error && favoriteMoviesArray.length === 0 &&
+                {favoriteSeriesArray.length > 0 && favoriteSeriesArray.map((favorite) => {
+                    return <MovieCard
+                        key={favorite.id}
+                        name={favorite.name}
+                        image={favorite.poster_path}
+                        rating={favorite.vote_average}
+                        id={favorite.id}
+                        tv={true}
+                    />
+                })}
+                {!loading && !error && favoriteMoviesArray.length === 0 && favoriteSeriesArray.length === 0 &&
                     <h3 className="no-items-message">Je hebt nog geen items aan je favorieten toegevoegd!</h3>}
                 {loading && <h3 className="loading-message">Je lijst wordt opgehaald... </h3>}
                 {error && <h3 className="error-message">Foutmelding: Er kan geen data opgehaald worden</h3>}
@@ -197,9 +207,20 @@ function Lists() {
                         image={watchlist.poster_path}
                         rating={watchlist.vote_average}
                         id={watchlist.id}
+                        tv={false}
                     />
                 })}
-                {!loading && !error && watchlistMoviesArray.length === 0 &&
+                {watchlistSeriesArray.length > 0 && watchlistSeriesArray.map((watchlist) => {
+                    return <MovieCard
+                        key={watchlist.id}
+                        name={watchlist.name}
+                        image={watchlist.poster_path}
+                        rating={watchlist.vote_average}
+                        id={watchlist.id}
+                        tv={true}
+                    />
+                })}
+                {!loading && !error && watchlistMoviesArray.length === 0 && watchlistSeriesArray.length === 0 &&
                     <h3>Je hebt nog geen items aan je watchlist toegevoegd</h3>}
                 {loading && <h3 className="loading-message">Je lijst wordt opgehaald... </h3>}
                 {error && <h3 className="error-message">Foutmelding: Er kan geen data opgehaald worden</h3>}
@@ -213,9 +234,20 @@ function Lists() {
                         image={watched.poster_path}
                         rating={watched.vote_average}
                         id={watched.id}
+                        tv={false}
                     />
                 })}
-                {!loading && !error && watchedMoviesArray.length === 0 &&
+                {watchedSeriesArray.length > 0 && watchedSeriesArray.map((watched) => {
+                    return <MovieCard
+                        key={watched.id}
+                        name={watched.name}
+                        image={watched.poster_path}
+                        rating={watched.vote_average}
+                        id={watched.id}
+                        tv={true}
+                    />
+                })}
+                {!loading && !error && watchedMoviesArray.length === 0 && watchedSeriesArray.length === 0 &&
                     <h3>Je hebt nog geen items aan al gezien toegevoegd!</h3>}
                 {loading && <h3 className="loading-message">Je lijst wordt opgehaald... </h3>}
                 {error && <h3 className="error-message">Foutmelding: Er kan geen data opgehaald worden</h3>}
