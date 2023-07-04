@@ -29,8 +29,15 @@ function SuggestionSpecific() {
     useEffect(() => {
         if (page >= 1) {
             void fetchSpecificMovies(endpoint, text);
+            updateUrl();
         }
     }, [page]);
+
+    function updateUrl() {
+        const newUrl = `/suggestie/${link}/${page}?endpoint=${endpoint}&link=${link}&text=${text}`
+        navigate(newUrl, {replace: true});
+    }
+
 
     async function fetchSpecificMovies(endpoint, text) {
         setLoading(true);
