@@ -1,12 +1,10 @@
 // Functions
-import React, {useState} from "react";
+import React from "react";
 
 import {useNavigate} from "react-router-dom";
 
 // Components
 import MoodContainer from "../../components/moodcontainer/MoodContainer";
-import MovieCard from "../../components/moviecard/MovieCard";
-import Button from "../../components/button/Button";
 
 // Styles
 import './Suggestion.css';
@@ -21,64 +19,15 @@ import drama from '../../assets/images/mood-sad.jpg';
 function Suggestion() {
     const navigate = useNavigate();
 
-
-    const [active, setActive] = useState(false);
-    const [movies, setMovies] = useState({});
-    const [page, setPage] = useState(1);
-    const [endpoint, setEndpoint] = useState("");
-    const [title, setTitle] = useState("");
-    const [totalPages, setTotalPages] = useState(0);
-
-    // const [loading, setLoading] = useState(false);
-    // const [error, setError] = useState(false);
-
-    // const options = {
-    //     method: 'GET',
-    //     headers: {
-    //         accept: 'application/json',
-    //         Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     if (page >= 1 && active) {
-    //         void fetchSpecificMovies(endpoint, title);
-    //     }
-    // }, [page]);
-
     function testClickHandler(endpoint, text, link) {
         const url = `/suggestie/${link}/1?endpoint=${encodeURIComponent(endpoint)}&text=${encodeURIComponent(text)}`
         navigate(`${url}`);
     }
 
-    // function clickHandler(endpoint, text) {
-    //     setPage(1);
-    //     void fetchSpecificMovies(endpoint, text);
-    // }
-
-    // async function fetchSpecificMovies(endpoint, text) {
-    //     setLoading(true);
-    //     try {
-    //         const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${endpoint}`, options);
-    //         if (response.data) {
-    //             setError(false);
-    //         }
-    //         setMovies(response.data.results);
-    //         setTitle(text);
-    //         setActive(true);
-    //         setEndpoint(endpoint);
-    //         setTotalPages(response.data.total_pages);
-    //     } catch (e) {
-    //         setError(true);
-    //         console.error(e);
-    //     }
-    //     setLoading(false);
-    // }
-
     return (
         <>
             <div className="page-outer-container">
-                {!active && <section className="suggestion-switch-container">
+                <section className="suggestion-switch-container">
                     <h1 className="suggestion-title">Heb jij zin om: </h1>
                     {/*<div className="loading-error-section">*/}
                     {/*    {loading && <h3 className="loading-message">Loading... </h3>}*/}
@@ -124,41 +73,7 @@ function Suggestion() {
                             }}
                         />
                     </div>
-                </section>}
-                {/*{active && <section className="suggestion-switch-container">*/}
-                {/*    <button*/}
-                {/*        className="button-to-overview"*/}
-                {/*        type="button"*/}
-                {/*        onClick={() => setActive(false)}*/}
-                {/*    >*/}
-                {/*        Terug naar overzicht*/}
-                {/*    </button>*/}
-                {/*    <h2 className="suggestion-title">{`Je hebt gekozen om ${title}`}</h2>*/}
-                {/*    <div className="loading-error-section">*/}
-                {/*        {loading && <h3 className="loading-message">Loading... </h3>}*/}
-                {/*        {error && <h3 className="error-message">Error: Could not fetch data!</h3>}*/}
-                {/*    </div>*/}
-                {/*    <div className="button-set-page-section">*/}
-                {/*        <Button*/}
-                {/*            buttonType="button"*/}
-                {/*            children="Vorige"*/}
-                {/*            clickHandler={() => setPage(page - 1)}*/}
-                {/*            disabled={page === 1}*/}
-                {/*        />*/}
-                {/*        <Button*/}
-                {/*            buttonType="button"*/}
-                {/*            children="Volgende"*/}
-                {/*            clickHandler={() => setPage(page + 1)}*/}
-                {/*            disabled={page === totalPages}*/}
-                {/*        />*/}
-                {/*    </div>*/}
-                {/*    <div className="suggestion-inner-container">*/}
-                {/*        {Object.keys(movies).length > 0 && movies.map((movie) => {*/}
-                {/*            return <MovieCard key={movie.id} title={movie.title} image={movie.poster_path}*/}
-                {/*                              rating={movie.vote_average} id={movie.id}/>*/}
-                {/*        })}*/}
-                {/*    </div>*/}
-                {/*</section>}*/}
+                </section>
             </div>
         </>
     )
