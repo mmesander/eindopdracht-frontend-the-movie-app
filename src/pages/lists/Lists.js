@@ -144,6 +144,28 @@ function Lists() {
             void fetchWatchlistSeries();
         });
 
+        listItem.watchedSeries.map((watched) => {
+            async function fetchWatchedSeries() {
+                setLoading(true);
+                try {
+                    const response = await axios.get(`https://api.themoviedb.org/3/tv/${watched}`, options);
+                    if (response.data) {
+                        setError(false);
+                    }
+                    setWatchedSeriesArray((addWatched) => [
+                        ...addWatched,
+                        response.data,
+                    ]);
+                } catch (e) {
+                    setError(true);
+                    console.error(e);
+                }
+                setLoading(false);
+            }
+
+            void fetchWatchedSeries();
+        });
+
     }, [listItem]);
 
 
