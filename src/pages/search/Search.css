@@ -102,6 +102,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    flex-basis: 100vw;
 }
 
 .filter-search-results-container {
@@ -109,7 +110,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 1000px;
+    max-width: 80%;
+    height: auto;
+    flex-wrap: wrap;
+    margin-inline: 30px;
     background-color: green;
 }
 
