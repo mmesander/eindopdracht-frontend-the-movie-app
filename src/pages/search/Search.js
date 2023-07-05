@@ -13,7 +13,7 @@ import './Search.css';
 function Search() {
     const [specificSearch, setSpecificSearch] = useState("");
     const [active, setActive] = useState(false);
-    const [movies, setMovies] = useState({});
+    const [search, setSearch] = useState({});
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
 
@@ -50,7 +50,7 @@ function Search() {
                 setActive(true);
                 setError(false);
             }
-            setMovies(response.data.results);
+            setSearch(response.data.results);
             setTotalPages(response.data.total_pages);
 
         } catch (e) {
@@ -120,14 +120,24 @@ function Search() {
                     />
                 </div>
                 <div className="specific-search-results-container">
-                    {movies && movies.map((movie) => {
-                        if (movie.title && movie.poster_path && movie.vote_average) {
-                            return <MovieCard key={movie.id}
-                                              title={movie.title}
-                                              image={movie.poster_path}
-                                              rating={movie.vote_average}
-                                              id={movie.id}
-                                              tv={false}
+                    {search && search.map((search) => {
+                        if (search.name && search.poster_path && search.vote_average) {
+                            return <MovieCard
+                                key={search.id}
+                                name={search.name}
+                                image={search.poster_path}
+                                rating={search.vote_average}
+                                id={search.id}
+                                tv={true}
+                            />
+                        } else if (search.title && search.poster_path && search.vote_average) {
+                            return <MovieCard
+                                key={search.id}
+                                title={search.title}
+                                image={search.poster_path}
+                                rating={search.vote_average}
+                                id={search.id}
+                                tv={false}
                             />
                         }
                     })}
