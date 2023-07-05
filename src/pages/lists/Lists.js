@@ -225,11 +225,11 @@ function Lists() {
                 })}
 
                 {!loading && !error && watchlistMoviesArray.length === 0 && watchlistSeriesArray.length === 0 &&
-                    <h3>Je hebt nog geen items aan je watchlist toegevoegd</h3>}
+                    <h3 className="no-items-message">Je hebt nog geen items aan je watchlist toegevoegd</h3>}
                 {loading && <h3 className="loading-message">Je lijst wordt opgehaald... </h3>}
                 {error && <h3 className="error-message">Foutmelding: Er kan geen data opgehaald worden</h3>}
             </div>
-            <h1 className="lists-titles">Watched</h1>
+            <h1 className="lists-titles">Al gezien</h1>
             <div className="lists-section-container">
                 {watchedMoviesArray.length > 0 && watchedMoviesArray.map((watched) => {
                     return <MovieCard
@@ -254,7 +254,7 @@ function Lists() {
                 })}
 
                 {!loading && !error && watchedMoviesArray.length === 0 && watchedSeriesArray.length === 0 &&
-                    <h3>Je hebt nog geen items aan al gezien toegevoegd!</h3>}
+                    <h3 className="no-items-message">Je hebt nog geen items aan al gezien toegevoegd!</h3>}
                 {loading && <h3 className="loading-message">Je lijst wordt opgehaald... </h3>}
                 {error && <h3 className="error-message">Foutmelding: Er kan geen data opgehaald worden</h3>}
             </div>
