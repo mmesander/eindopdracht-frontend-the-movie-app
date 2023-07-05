@@ -32,8 +32,8 @@ function MovieCard({title, image, rating, id, name, tv}) {
     function clickHandler() {
         if (id && !tv) {
             navigate(`/film-details/${id}`);
-        } else {
-            navigate(`/serie-details/${id}`)
+        } else if (id && tv) {
+            navigate(`/serie-details/${id}`);
         }
     }
 
@@ -60,13 +60,16 @@ function MovieCard({title, image, rating, id, name, tv}) {
                     </div>
                 </section>
                 <section className="icons-container">
-                    <div className={(favoriteMovieActive || favoriteSeriesActive) ? "active-favorite-icon" : "default-icon"}>
+                    <div
+                        className={(favoriteMovieActive || favoriteSeriesActive) ? "active-favorite-icon" : "default-icon"}>
                         <img src={favoriteIcon} alt="favorite-icon"/>
                     </div>
-                    <div className={(watchlistMovieActive || watchlistSeriesActive) ? "active-watchlist-icon" : "default-icon"}>
+                    <div
+                        className={(watchlistMovieActive || watchlistSeriesActive) ? "active-watchlist-icon" : "default-icon"}>
                         <img src={watchlistIcon} alt="watchlist-icon"/>
                     </div>
-                    <div className={(watchedMovieActive || watchedSeriesActive) ? "active-watched-icon" : "default-icon"}>
+                    <div
+                        className={(watchedMovieActive || watchedSeriesActive) ? "active-watched-icon" : "default-icon"}>
                         <img src={watchedIcon} alt="watched-icon"/>
                     </div>
                 </section>

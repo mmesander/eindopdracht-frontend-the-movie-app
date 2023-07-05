@@ -64,38 +64,26 @@ function MovieDetails() {
     }, [])
 
     function setFavorite() {
-
         const checkMovieID = listItem.favoriteMovies.find((movie) => {
             return movieId === movie;
         });
 
         if (checkMovieID) {
-            // als waarde, dan stond íe er al in en moet íe er weer uit
-
-            // maak een referentieloze kopie van de originele array
             const favoritesArray = [...listItem.favoriteMovies];
-            // zoek het indexNummer van het item waarop deze film zou moeten staan
             const indexNumberOf = favoritesArray.indexOf(movieId);
-            // verwijder het item met dit indexnummer
+
             favoritesArray.splice(indexNumberOf, 1);
 
-            // gebruik de oude listItem met alle andere list items en stop die weer terug,
-            // maar overschrijf de favorites-array, want daar hebben we nu een nieuwe aan toegevoegd
             setListItem({
                 ...listItem,
                 favoriteMovies: favoritesArray,
             });
 
         } else {
-            // als undefined dan stond ie er nog niet in, en moet hij erbij
-
-            // maak een referentieloze kopie van de originele array
             const favoritesArray = [...listItem.favoriteMovies];
-            // push daar de nieuwe movie in
+
             favoritesArray.push(movieId);
 
-            // gebruik de oude listItem met alle andere list items en stop die weer terug,
-            // maar overschrijf de favorites-array, want daar hebben we nu een nieuwe aan toegevoegd
             setListItem({
                 ...listItem,
                 favoriteMovies: favoritesArray,
