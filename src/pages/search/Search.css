@@ -13,7 +13,6 @@
 .search-menu-container {
     display: flex;
     flex-direction: column;
-    /*width: 250px;*/
     flex-basis: auto;
     flex-grow: 1;
     flex-shrink: 0;

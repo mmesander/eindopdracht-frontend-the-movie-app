@@ -95,8 +95,12 @@ function SuggestionSpecific() {
             </div>
             <div className="suggestion-inner-container">
                 {Object.keys(movies).length > 0 && movies.map((movie) => {
-                    return <MovieCard key={movie.id} title={movie.title} image={movie.poster_path}
-                                      rating={movie.vote_average} id={movie.id} tv={false}/>
+                    return <MovieCard key={movie.id}
+                                      title={movie.title}
+                                      image={movie.poster_path}
+                                      rating={movie.vote_average}
+                                      id={movie.id}
+                                      tv={false}/>
                 })}
             </div>
         </div>
