@@ -122,8 +122,13 @@ function Search() {
                 <div className="specific-search-results-container">
                     {movies && movies.map((movie) => {
                         if (movie.title && movie.poster_path && movie.vote_average) {
-                            return <MovieCard key={movie.id} title={movie.title} image={movie.poster_path}
-                                              rating={movie.vote_average} id={movie.id}/>
+                            return <MovieCard key={movie.id}
+                                              title={movie.title}
+                                              image={movie.poster_path}
+                                              rating={movie.vote_average}
+                                              id={movie.id}
+                                              tv={false}
+                            />
                         }
                     })}
                 </div>
