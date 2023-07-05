@@ -33,7 +33,7 @@ function Suggestion() {
                         mood="van de bank te rollen van het lachen"
                         image={comedy}
                         imageDescription="mood image for comedy movies"
-                        onClick={() => clickHandler("35", "van de bank te rollen van het lachen", "comedy")}
+                        onClick={() => clickHandler("35", "van de bank te rollen van het lachen", "1")}
                     />
                     <MoodContainer
                         mood="op het puntje van je stoel te zitten"

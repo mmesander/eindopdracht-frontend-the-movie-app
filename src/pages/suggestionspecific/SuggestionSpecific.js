@@ -13,13 +13,15 @@ import './SuggestionSpecific.css';
 function SuggestionSpecific() {
     const navigate = useNavigate();
     const location = useLocation();
+
     const searchParams = new URLSearchParams(location.search);
     const endpoint = searchParams.get('endpoint');
     const text = searchParams.get('text');
     const link = useParams().moodId;
+    const pageNumber = useParams().pageId;
 
     const [movies, setMovies] = useState({});
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState(parseInt(pageNumber) || 1);
     const [title, setTitle] = useState("");
     const [totalPages, setTotalPages] = useState(0);
 
@@ -94,7 +96,7 @@ function SuggestionSpecific() {
             <div className="suggestion-inner-container">
                 {Object.keys(movies).length > 0 && movies.map((movie) => {
                     return <MovieCard key={movie.id} title={movie.title} image={movie.poster_path}
-                                      rating={movie.vote_average} id={movie.id}/>
+                                      rating={movie.vote_average} id={movie.id} tv={false}/>
                 })}
             </div>
         </div>
