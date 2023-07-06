@@ -26,7 +26,7 @@
 
 .logo-container img {
     width: 50px;
-    filter: var(--main-theme-color-gold-filter);
+    filter: var(--icon-filter-color-gold);
 }
 
 .navbar-container a,
@@ -53,7 +53,7 @@
 
 .nav-logout-button {
     padding: 5px;
-    background-color: var(--main-button-color-red);
+    background-color: var(--button-color-red);
     color: black;
     font-weight: bold;
     border-radius: 4px;
@@ -61,5 +61,5 @@
 
 .nav-logout-button:hover {
     cursor: pointer;
-    background-color: var(--main-button-color-green);
+    background-color: var(--button-color-green);
 }

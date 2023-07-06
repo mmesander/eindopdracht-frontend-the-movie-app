@@ -7,7 +7,8 @@
     height: 375px;
     max-width: 175px;
     justify-content: space-between;
-    background-color: white;
+    background-color: var(--main-theme-color-white);
+    border-radius: 10px 10px 5px 5px;
 }
 
 .moviecard-header-section {
@@ -19,12 +20,14 @@
 
 .moviecard-header-section img {
     width: 100%;
+    border-radius: 5px 5px 0 0;
 }
 
 .moviecard-container-button {
     margin: 5px 10px;
-    border: 2px solid #282828;
+    border: 3px solid var(--main-bg-color);
     text-align: left;
+    border-radius: 10px 10px 5px 5px;
 }
 
 .moviecard-container-button h3,
@@ -33,7 +36,7 @@
 }
 
 .moviecard-container-button:hover {
-    border: 2px solid #750000;
+    border: 3px solid var(--main-theme-color-red);
     cursor: pointer;
 }
 
@@ -49,17 +52,17 @@
 .active-favorite-icon,
 .active-watchlist-icon,
 .active-watched-icon {
-    background-color: white;
+    background-color: var(--main-theme-color-white);
 }
 
 .active-favorite-icon img {
-    filter: invert(33%) sepia(48%) saturate(3863%) hue-rotate(223deg) brightness(103%) contrast(90%);
+    filter: var(--icon-filter-color-blue);
 }
 
 .active-watchlist-icon img {
-    filter: invert(48%) sepia(50%) saturate(7135%) hue-rotate(340deg) brightness(100%) contrast(94%);
+    filter: var(--icon-filter-color-red);
 }
 
 .active-watched-icon img {
-    filter: invert(50%) sepia(57%) saturate(1456%) hue-rotate(86deg) brightness(103%) contrast(103%);
+    filter: var(--icon-filter-color-green);
 }

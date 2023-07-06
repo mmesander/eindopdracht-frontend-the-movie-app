@@ -26,8 +26,11 @@ code {
   --main-theme-color-white: white;
   --main-theme-color-black: black;
   --main-theme-color-grey: grey;
-  --main-button-color-green: #98FF98;
-  --main-button-color-red: #FFC0CB;
   --main-bg-color: #282828;
-  --main-theme-color-gold-filter: invert(70%) sepia(100%) saturate(701%) hue-rotate(0deg) brightness(104%) contrast(106%);
+  --button-color-green: #98FF98;
+  --button-color-red: #FFC0CB;
+  --icon-filter-color-gold: invert(70%) sepia(100%) saturate(701%) hue-rotate(0deg) brightness(104%) contrast(106%);
+  --icon-filter-color-blue: invert(33%) sepia(48%) saturate(3863%) hue-rotate(223deg) brightness(103%) contrast(90%);
+  --icon-filter-color-red: invert(48%) sepia(50%) saturate(7135%) hue-rotate(340deg) brightness(100%) contrast(94%);
+  --icon-filter-color-green: invert(50%) sepia(57%) saturate(1456%) hue-rotate(86deg) brightness(103%) contrast(103%);
 }
