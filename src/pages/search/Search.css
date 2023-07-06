@@ -16,7 +16,7 @@
     flex-basis: auto;
     flex-grow: 1;
     flex-shrink: 0;
-    gap: 5px;
+    gap: 1px;
 }
 
 .search-menu {
@@ -30,9 +30,14 @@
     padding: 20px 15px;
 }
 
-.search-menu p {
+.search-menu p,
+.search-menu h2 {
     color: white;
     font-weight: bold;
+}
+
+.search-specific {
+    margin-bottom: 10px;
 }
 
 #search-specific-field {

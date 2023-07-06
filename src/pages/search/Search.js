@@ -83,8 +83,10 @@ function Search() {
                             />
                         </form>
                     </div>
+                    <div className="search-menu filter-search-header">
+                        <h2>Filters</h2>
+                    </div>
                     <div className="search-menu search-filter-movies-series">
-                        <p>Filter hier je zoekopties</p>
 
                     </div>
                     <div className="search-menu rating"></div>
