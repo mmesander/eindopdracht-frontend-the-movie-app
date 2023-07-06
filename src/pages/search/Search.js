@@ -108,6 +108,33 @@ function Search() {
         }
     }
 
+    function setSeriesGenres(id) {
+        const checkGenreID = genresList.seriesGenres.find((genre) => {
+            return id === genre;
+        });
+
+        if (checkGenreID) {
+            const seriesGenresArray = [...genresList.seriesGenres];
+            const indexNumberOf = seriesGenresArray.indexOf(id);
+
+            seriesGenresArray.splice(indexNumberOf, 1);
+
+            setGenresList({
+                ...genresList,
+                seriesGenres: seriesGenresArray,
+            });
+        } else {
+            const seriesGenresArray = [...genresList.seriesGenres];
+
+            seriesGenresArray.push(id);
+
+            setGenresList({
+                ...genresList,
+                seriesGenres: seriesGenresArray,
+            })
+        }
+    }
+
 
 
 
@@ -181,29 +208,220 @@ function Search() {
                         </div>
                     </div>
                     <div className="search-menu genres">
-                        <p>Genres</p>
+                        <p>Genres:</p>
                         {!series && <section>
                             <Button
                                 buttonType="button"
-                                children="actie"
+                                children="Actie"
                                 name={genresList.movieGenres.includes(28) ? "active-genre-button" : "inactive-genre-button"}
                                 clickHandler={() => setMovieGenres(28)}
                             />
                             <Button
                                 buttonType="button"
-                                children="animatie"
+                                children="Animatie"
                                 name={genresList.movieGenres.includes(16) ? "active-genre-button" : "inactive-genre-button"}
                                 clickHandler={() => setMovieGenres(16)}
                             />
                             <Button
                                 buttonType="button"
-                                children="avontuur"
+                                children="Avontuur"
                                 name={genresList.movieGenres.includes(12) ? "active-genre-button" : "inactive-genre-button"}
                                 clickHandler={() => setMovieGenres(12)}
                             />
+                            <Button
+                                buttonType="button"
+                                children="Documentaire"
+                                name={genresList.movieGenres.includes(99) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setMovieGenres(99)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Drama"
+                                name={genresList.movieGenres.includes(18) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setMovieGenres(18)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Familie"
+                                name={genresList.movieGenres.includes(10751) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setMovieGenres(10751)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Fantasie"
+                                name={genresList.movieGenres.includes(14) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setMovieGenres(14)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Historisch"
+                                name={genresList.movieGenres.includes(36) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setMovieGenres(36)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Horror"
+                                name={genresList.movieGenres.includes(27) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setMovieGenres(27)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Komedie"
+                                name={genresList.movieGenres.includes(35) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setMovieGenres(35)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Misdaad"
+                                name={genresList.movieGenres.includes(80) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setMovieGenres(80)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Muziek"
+                                name={genresList.movieGenres.includes(10402) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setMovieGenres(10402)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Mysterie"
+                                name={genresList.movieGenres.includes(9648) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setMovieGenres(9648)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Oorlog"
+                                name={genresList.movieGenres.includes(10752) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setMovieGenres(10752)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Romantiek"
+                                name={genresList.movieGenres.includes(10749) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setMovieGenres(10749)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Sciencefiction"
+                                name={genresList.movieGenres.includes(878) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setMovieGenres(878)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="TV Film"
+                                name={genresList.movieGenres.includes(10770) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setMovieGenres(10770)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Thriller"
+                                name={genresList.movieGenres.includes(53) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setMovieGenres(53)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Western"
+                                name={genresList.movieGenres.includes(37) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setMovieGenres(37)}
+                            />
                         </section>}
                         {series && <section>
-
+                            <Button
+                                buttonType="button"
+                                children="Actie & Avontuur"
+                                name={genresList.seriesGenres.includes(10759) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setSeriesGenres(10759)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Animatie"
+                                name={genresList.seriesGenres.includes(16) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setSeriesGenres(16)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Documentaire"
+                                name={genresList.seriesGenres.includes(99) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setSeriesGenres(99)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Drama"
+                                name={genresList.seriesGenres.includes(18) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setSeriesGenres(18)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Familie"
+                                name={genresList.seriesGenres.includes(10751) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setSeriesGenres(10751)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Kids"
+                                name={genresList.seriesGenres.includes(10762) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setSeriesGenres(10762)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Komedie"
+                                name={genresList.seriesGenres.includes(35) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setSeriesGenres(35)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Misdaad"
+                                name={genresList.seriesGenres.includes(80) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setSeriesGenres(80)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Mysterie"
+                                name={genresList.seriesGenres.includes(9648) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setSeriesGenres(9648)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="News"
+                                name={genresList.seriesGenres.includes(10763) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setSeriesGenres(10763)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Reality"
+                                name={genresList.seriesGenres.includes(10764) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setSeriesGenres(10764)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Sci-Fi & Fantasy"
+                                name={genresList.seriesGenres.includes(10765) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setSeriesGenres(10765)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Soap"
+                                name={genresList.seriesGenres.includes(10766) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setSeriesGenres(10766)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Talk"
+                                name={genresList.seriesGenres.includes(10767) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setSeriesGenres(10767)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="War & Politics"
+                                name={genresList.seriesGenres.includes(10768) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setSeriesGenres(10768)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="Western"
+                                name={genresList.seriesGenres.includes(37) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setSeriesGenres(37)}
+                            />
                         </section>}
                     </div>
                 </div>

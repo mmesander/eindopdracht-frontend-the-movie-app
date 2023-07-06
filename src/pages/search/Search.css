@@ -16,7 +16,7 @@
     flex-basis: auto;
     flex-grow: 1;
     flex-shrink: 0;
-    gap: 1px;
+    gap: 2px;
 }
 
 .search-menu {
@@ -93,9 +93,10 @@
 
 .inactive-genre-button,
 .active-genre-button {
-    padding: 8px 12px;
-    border-radius: 20px;
+    padding: 6px 12px;
+    border-radius: 14px;
     font-weight: bold;
+    font-size: 14px;
     margin: 5px 5px 1px 0;
     background-color: var(--main-bg-color);
 }
