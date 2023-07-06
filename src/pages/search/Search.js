@@ -25,20 +25,20 @@ function Search() {
     const [searchResults, setSearchResults] = useState({});
 
     // Filter Search
-    const [endpoint, setEndpoint] = useState("https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=en-US&page=1&sort_by=popularity.desc");
+    const [isMovie, setIsMovie] = useState(false);
+    const [endpoint, setEndpoint] = useState('https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=en-US&page=');
     const [minRating, setMinRating] = useState(0);
     const [maxRating, setMaxRating] = useState(10);
-    const [series, setSeries] = useState(false);
+    const [filterSearchResults, setFilterSearchResults] = useState({});
+    const [movieRatingString, setMovieRatingString] = useState("");
+    const [movieGenreString, setMovieGenreString] = useState("");
+    const [seriesRatingString, setSeriesRatingString] = useState("");
+    const [seriesGenreString, setSeriesGenreString] = useState("");
+    const [sortText, setSortText] = useState("");
     const [genresList, setGenresList] = useState({
         movieGenres: [],
         seriesGenres: [],
     });
-
-
-    let movieRatingString = ""
-
-
-    let seriesRatingString = ""
 
 
     // General
@@ -52,7 +52,7 @@ function Search() {
 
     useEffect(() => {
         if (page >= 1 && active) {
-            void fetchSpecificMovies(specificSearch);
+            void fetchSpecificSearch(specificSearch);
         }
     }, [page]);
 
@@ -62,11 +62,11 @@ function Search() {
         e.preventDefault();
         setPage(1);
         if (specificSearch) {
-            void fetchSpecificMovies(specificSearch);
+            void fetchSpecificSearch(specificSearch);
         }
     }
 
-    async function fetchSpecificMovies(specificSearch) {
+    async function fetchSpecificSearch(specificSearch) {
         setLoading(true);
         try {
             const response = await axios.get(`https://api.themoviedb.org/3/search/multi?query=${specificSearch}&include_adult=false&language=en-US&page=${page}`, options)
@@ -88,8 +88,8 @@ function Search() {
 
     // Filter Search
     function handleMovieButton() {
-        setEndpoint("https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=en-US&page=1&sort_by=popularity.desc")
-        setSeries(false);
+        setEndpoint('https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=en-US&page=')
+        setIsMovie(true);
         setGenresList({
             ...genresList,
             seriesGenres: [],
@@ -97,8 +97,8 @@ function Search() {
     }
 
     function handleSeriesButton() {
-        setEndpoint("https://api.themoviedb.org/3/discover/tv?include_adult=true&language=en-US&page=1&sort_by=popularity.desc")
-        setSeries(true);
+        setEndpoint('https://api.themoviedb.org/3/discover/tv?include_adult=true&language=en-US&page=')
+        setIsMovie(false);
         setGenresList({
             ...genresList,
             movieGenres: [],
@@ -159,44 +159,66 @@ function Search() {
         }
     }
 
-    function handleFilterSearch() {
-        const genresText = "&with_genres=";
-        let movieGenreString = "";
-        let seriesGenreString = "";
+    async function fetchMoviesFilterSearch({endpoint, page, sortText, movieRatingString, movieGenreString}) {
+        try {
 
+            const response = await axios.get(`${endpoint}+${page}${sortText}${movieRatingString}${movieGenreString}`, options);
+            setFilterSearchResults(response.data)
+            console.log(response.data)
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    async function fetchSeriesFilterSearch({endpoint, page, sortText, seriesRatingString, seriesGenreString}) {
+        try {
+
+            const response = await axios.get(`${endpoint}+${page}${sortText}${seriesRatingString}${seriesGenreString}`, options);
+            setFilterSearchResults(response.data)
+            console.log(response.data)
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+
+
+    function handleFilterSearch() {
+        setSortText("&sort_by=popularity.desc")
+        const genresText = "&with_genres=";
         const minRatingText = "&vote_average.gte=";
         const maxRatingText = "&vote_average.lte=";
-        let movieRatingString = "";
-        let seriesRatingString = "";
 
-        if (!series && endpoint && genresList.movieGenres) {
-
+        if (isMovie && endpoint && genresList.movieGenres.length > 0 ) {
             if (genresList.movieGenres.length === 1) {
-                movieGenreString = genresText + genresList.movieGenres[0];
+                setMovieGenreString(genresText + genresList.movieGenres[0]);
             } else {
                 const numbersToSTring = genresList.movieGenres.map((id) => id.toString());
                 const joinedNumbers = numbersToSTring.join('%2C');
-                movieGenreString = genresText + joinedNumbers;
+                setMovieGenreString(genresText + joinedNumbers);
             }
 
-            movieRatingString = minRatingText + minRating + maxRatingText + maxRating;
+            setMovieRatingString(minRatingText + minRating + maxRatingText + maxRating);
 
-            console.log(endpoint + movieRatingString + movieGenreString)
-
+            if (Object.keys(movieRatingString).length > 0 && Object.keys(movieGenreString).length > 0 && Object.keys(sortText).length > 0) {
+                void fetchMoviesFilterSearch({endpoint, page, sortText, movieRatingString, movieGenreString});
+            }
         }
-        if (series && endpoint && genresList.seriesGenres) {
+
+        if (!isMovie && endpoint && genresList.seriesGenres) {
             if (genresList.seriesGenres.length === 1) {
-                seriesGenreString = genresText + genresList.seriesGenres[0];
+                setSeriesGenreString(genresText + genresList.seriesGenres[0]);
             } else {
                 const numbersToString = genresList.seriesGenres.map((id) => id.toString());
                 const joinedNumbers = numbersToString.join('%2C');
-                seriesGenreString = genresText + joinedNumbers;
+                setSeriesGenreString(genresText + joinedNumbers);
             }
 
-            seriesRatingString = minRatingText + minRating + maxRatingText + maxRating;
+            setSeriesRatingString(minRatingText + minRating + maxRatingText + maxRating);
 
-
-            console.log(endpoint + seriesRatingString + seriesGenreString)
+            if (Object.keys(seriesRatingString).length > 0 && Object.keys(seriesGenreString).length > 0 && Object.keys(sortText).length > 0) {
+                void fetchSeriesFilterSearch({endpoint, page, sortText, seriesRatingString, seriesGenreString});
+            }
         }
     }
 
@@ -232,14 +254,14 @@ function Search() {
                             id="search-filter-movies"
                             children="ik zoek naar films"
                             clickHandler={handleMovieButton}
-                            name={!endpoint.includes("tv") ? "active-filter-button" : "inactive-filter-button"}
+                            name={isMovie ? "active-filter-button" : "inactive-filter-button"}
                         />
                         <Button
                             type="radio"
                             id="search-filter-series"
                             children="ik zoek naar series"
                             clickHandler={handleSeriesButton}
-                            name={endpoint.includes("tv") ? "active-filter-button" : "inactive-filter-button"}
+                            name={!isMovie ? "active-filter-button" : "inactive-filter-button"}
                         />
                     </div>
                     <div className="search-menu rating">
@@ -269,7 +291,7 @@ function Search() {
                     </div>
                     <div className="search-menu genres">
                         <p>Genres:</p>
-                        {!series && <section>
+                        {isMovie && <section>
                             <Button
                                 buttonType="button"
                                 children="Actie"
@@ -385,7 +407,7 @@ function Search() {
                                 clickHandler={() => setMovieGenres(37)}
                             />
                         </section>}
-                        {series && <section>
+                        {!isMovie && <section>
                             <Button
                                 buttonType="button"
                                 children="Actie & Avontuur"
