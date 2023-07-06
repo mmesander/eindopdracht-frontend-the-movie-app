@@ -46,9 +46,12 @@
 .signin-inner-container p {
     font-weight: bold;
     margin-bottom: 10px;
-    color: var(--main-theme-color-red);
     min-height: 21px;
     font-size: 15px;
+}
+
+.signin-inner-container .input-error-message {
+    color: var(--main-theme-color-red);
 }
 
 .signin-inner-container button {
