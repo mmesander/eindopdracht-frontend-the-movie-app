@@ -1,9 +1,9 @@
 .button-set-page-section button {
     padding: 5px;
-    color: white;
-    background-color: #750000;
+    color: var(--main-theme-color-white);
+    background-color: var(--main-theme-color-red);
     border-radius: 4px;
-    border: 2px solid black;
+    border: 2px solid var(--main-theme-color-black);
 }
 
 .button-set-page-section button + button {
@@ -15,6 +15,6 @@ button:hover {
 }
 
 .button-set-page-section button:disabled {
-    background-color: grey;
+    background-color: var(--main-theme-color-grey);
     cursor: not-allowed;
 }

@@ -21,10 +21,11 @@ code {
 
 :root {
   --main-theme-color-red: #750000;
-  --main-theme-color-lightblue: #4EECF6;
   --main-theme-color-gold: #FFD700;
   --main-theme-color-creme: #FDF5E6;
   --main-theme-color-white: white;
+  --main-theme-color-black: black;
+  --main-theme-color-grey: grey;
   --main-button-color-green: #98FF98;
   --main-button-color-red: #FFC0CB;
   --main-bg-color: #282828;
