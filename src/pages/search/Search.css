@@ -22,7 +22,7 @@
 .search-menu {
     display: flex;
     flex-direction: column;
-    background-color: rgba(117, 0, 0, 40%);
+    background-color: var(--menu-bg-color);
     width: 100%;
     flex-basis: auto;
     max-width: 250px;
@@ -30,14 +30,21 @@
     padding: 20px 15px;
 }
 
-.search-menu p,
 .search-menu h2 {
-    color: white;
+    color: var(--main-theme-color-gold);
+}
+
+.search-menu p {
+    color: var(--main-theme-color-white);
     font-weight: bold;
 }
 
 .search-specific {
     margin-bottom: 10px;
+}
+
+.search-specific h2 {
+    padding-bottom: 5px;
 }
 
 #search-specific-field {
@@ -51,7 +58,7 @@
 }
 
 #search-specific-field:focus {
-    outline: 1px solid #750000;
+    outline: 1px solid var(--main-theme-color-red);
 }
 
 #search-specific-button {
@@ -64,6 +71,10 @@
     font-weight: bold;
 }
 
+#search-specific-button:hover {
+    color: var(--main-theme-color-gold);
+}
+
 .search-filter-movies-series {
     gap: 10px;
 }
@@ -71,13 +82,13 @@
 .search-filter-movies-series button {
     padding: 4px;
     border-radius: 5px;
-    border: 1px solid transparent;
+    outline: 1px solid var(--menu-bg-color);
     font-weight: bold;
 }
 
 .search-filter-movies-series .active-filter-button {
-    background-color: #98FF98;
-    border: 2px solid #750000;
+    background-color: var(--button-color-green);
+    border: 1px solid var(--button-color-green);
 
 }
 

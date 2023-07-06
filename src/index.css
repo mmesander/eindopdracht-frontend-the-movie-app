@@ -30,6 +30,7 @@ code {
   --main-theme-color-green: #006400;
   --main-bg-color: #282828;
   --field-bg-color: rgba(171, 171, 171, 0.6);
+  --menu-bg-color: rgba(117, 0, 0, 40%);
   --button-color-green: #98FF98;
   --button-color-red: #FFC0CB;
   --button-disabled-color-red: rgba(117, 0, 0, 60%);

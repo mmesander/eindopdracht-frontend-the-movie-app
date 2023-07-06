@@ -69,6 +69,7 @@ function Search() {
             {!active && <section className="filter-search-container">
                 <div className="search-menu-container">
                     <div className="search-menu search-specific">
+                        <h2>Zoeken</h2>
                         <p>Zoek hier naar een specifieke film of serie</p>
                         <form onSubmit={clickHandler}>
                             <Input
