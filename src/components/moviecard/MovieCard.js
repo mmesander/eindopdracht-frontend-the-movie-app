@@ -55,8 +55,8 @@ function MovieCard({title, image, rating, id, name, tv}) {
                         {name.length < 40 && <h3>{name}</h3>}
                         {name.length > 40 && !name.length < 40 && <h4>{name}</h4>}
                     </div>}
-                    <div>
-                        <h4>Rating: {roundedRating}</h4>
+                    <div className="moviecard-rating">
+                        <h4>Rating: <span>{roundedRating}</span></h4>
                     </div>
                 </section>
                 <section className="icons-container">
