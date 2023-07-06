@@ -117,8 +117,22 @@
     border: 1px solid var(--main-theme-color-gold);
 }
 
+.filter-search-button {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--main-theme-color-white);
+    background-color: var(--main-bg-color);
+    border: 1px solid var(--main-bg-color);
+    padding: 5px;
+    border-radius: 14px;
+}
 
-/*Specific Search Styling*/
+.filter-search-button:hover {
+    color: var(--main-theme-color-gold);
+    border: 1px solid var(--main-theme-color-gold);
+}
+
+/*Specific Search Results Styling*/
 
 .specific-search-container {
     display: flex;
@@ -153,7 +167,7 @@
     text-decoration: underline;
 }
 
-/*Filter Search Styling*/
+/*Filter Search Results Styling*/
 
 .filter-search-container {
     display: flex;

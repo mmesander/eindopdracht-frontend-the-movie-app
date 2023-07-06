@@ -25,7 +25,7 @@ function Search() {
     const [searchResults, setSearchResults] = useState({});
 
     // Filter Search
-    const [endpoint, setEndpoint] = useState("https://api.themoviedb.org/3/discover/movie");
+    const [endpoint, setEndpoint] = useState("https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=en-US&page=1&sort_by=popularity.desc");
     const [minRating, setMinRating] = useState(0);
     const [maxRating, setMaxRating] = useState(10);
     const [series, setSeries] = useState(false);
@@ -33,6 +33,13 @@ function Search() {
         movieGenres: [],
         seriesGenres: [],
     });
+
+
+    let movieRatingString = ""
+
+
+    let seriesRatingString = ""
+
 
     // General
     const options = {
@@ -78,9 +85,10 @@ function Search() {
         setLoading(false);
     }
 
+
     // Filter Search
     function handleMovieButton() {
-        setEndpoint("https://api.themoviedb.org/3/discover/movie")
+        setEndpoint("https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=en-US&page=1&sort_by=popularity.desc")
         setSeries(false);
         setGenresList({
             ...genresList,
@@ -89,7 +97,7 @@ function Search() {
     }
 
     function handleSeriesButton() {
-        setEndpoint("https://api.themoviedb.org/3/discover/tv")
+        setEndpoint("https://api.themoviedb.org/3/discover/tv?include_adult=true&language=en-US&page=1&sort_by=popularity.desc")
         setSeries(true);
         setGenresList({
             ...genresList,
@@ -151,11 +159,43 @@ function Search() {
         }
     }
 
+    function handleFilterSearch() {
+        let createMovieGenreString = "";
+        let createSeriesGenreString = "";
+        const genresText = "&with_genres="
 
+        if (!series && endpoint && genresList.movieGenres) {
+
+            if (genresList.movieGenres.length === 1) {
+                createMovieGenreString = genresText + genresList.movieGenres[0];
+            } else {
+                const numbersToSTring = genresList.movieGenres.map((id) => id.toString());
+                const joinedNumbers = numbersToSTring.join('%2C');
+                createMovieGenreString = genresText + joinedNumbers;
+            }
+
+            console.log(`Endpoint: ${endpoint}`);
+            console.log(`Movie Genre String ${createMovieGenreString}`);
+
+        }
+        if (series && endpoint && genresList.seriesGenres) {
+            if (genresList.seriesGenres.length === 1) {
+                createSeriesGenreString = genresText + genresList.seriesGenres[0];
+            } else {
+                const numbersToString = genresList.seriesGenres.map((id) => id.toString());
+                const joinedNumbers = numbersToString.join('%2C');
+                createSeriesGenreString = genresText + joinedNumbers;
+            }
+
+            console.log(`Serie lijst: ${genresList.seriesGenres}`);
+            console.log(`Endpoint: ${endpoint}`);
+            console.log(`Serie Genre String ${createSeriesGenreString}`)
+        }
+    }
 
     return (
         <div className={active ? "page-outer-container" : "search-page-outer-container"}>
-            {genresList.movieGenres && console.log(genresList.movieGenres)}
+            {/*{genresList.movieGenres && console.log(genresList.movieGenres)}*/}
             {!active && <section className="filter-search-container">
                 <div className="search-menu-container">
                     <div className="search-menu search-specific">
@@ -186,17 +226,16 @@ function Search() {
                             id="search-filter-movies"
                             children="ik zoek naar films"
                             clickHandler={handleMovieButton}
-                            name={endpoint === "https://api.themoviedb.org/3/discover/movie" ? "active-filter-button" : "inactive-filter-button"}
+                            name={!endpoint.includes("tv") ? "active-filter-button" : "inactive-filter-button"}
                         />
                         <Button
                             type="radio"
                             id="search-filter-series"
                             children="ik zoek naar series"
                             clickHandler={handleSeriesButton}
-                            name={endpoint === "https://api.themoviedb.org/3/discover/tv" ? "active-filter-button" : "inactive-filter-button"}
+                            name={endpoint.includes("tv") ? "active-filter-button" : "inactive-filter-button"}
                         />
                     </div>
-                    {endpoint && console.log(endpoint)}
                     <div className="search-menu rating">
                         <p>Minimale Rating:</p>
                         <div>
@@ -436,6 +475,14 @@ function Search() {
                                 clickHandler={() => setSeriesGenres(37)}
                             />
                         </section>}
+                    </div>
+                    <div className="search-menu">
+                        <Button
+                            buttonType="button"
+                            name="filter-search-button"
+                            children="Zoeken"
+                            clickHandler={handleFilterSearch}
+                        />
                     </div>
                 </div>
                 <div className="filter-search-results-container"></div>
