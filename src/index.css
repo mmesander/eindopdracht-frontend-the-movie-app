@@ -5,7 +5,6 @@
 }
 
 body {
-  margin: 0;
   background-color: #282828;
   min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -18,4 +17,15 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+:root {
+  --main-theme-color-red: #750000;
+  --main-theme-color-lightblue: #4EECF6;
+  --main-theme-color-gold: #FFD700;
+  --main-theme-color-creme: #FDF5E6;
+  --main-theme-color-white: white;
+  --main-button-color-green: #98FF98;
+  --main-button-color-pink: #FFC0CB;
+  --main-bg-color: #282828;
 }
