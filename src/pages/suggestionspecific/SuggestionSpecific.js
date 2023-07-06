@@ -43,7 +43,7 @@ function SuggestionSpecific() {
     async function fetchSpecificMovies(endpoint, text) {
         setLoading(true);
         try {
-            const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${endpoint}`, options);
+            const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${endpoint}`, options);
             if (response.data) {
                 setError(false);
             }

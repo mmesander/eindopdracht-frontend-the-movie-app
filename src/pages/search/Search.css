@@ -16,13 +16,13 @@
     flex-basis: auto;
     flex-grow: 1;
     flex-shrink: 0;
-    gap: 1px;
+    gap: 2px;
 }
 
 .search-menu {
     display: flex;
     flex-direction: column;
-    background-color: rgba(117, 0, 0, 40%);
+    background-color: var(--menu-bg-color);
     width: 100%;
     flex-basis: auto;
     max-width: 250px;
@@ -30,14 +30,21 @@
     padding: 20px 15px;
 }
 
-.search-menu p,
 .search-menu h2 {
-    color: white;
+    color: var(--main-theme-color-gold);
+}
+
+.search-menu p {
+    color: var(--main-theme-color-white);
     font-weight: bold;
 }
 
 .search-specific {
     margin-bottom: 10px;
+}
+
+.search-specific h2 {
+    padding-bottom: 5px;
 }
 
 #search-specific-field {
@@ -51,7 +58,7 @@
 }
 
 #search-specific-field:focus {
-    outline: 1px solid #750000;
+    outline: 1px solid var(--main-theme-color-red);
 }
 
 #search-specific-button {
@@ -64,6 +71,10 @@
     font-weight: bold;
 }
 
+#search-specific-button:hover {
+    color: var(--main-theme-color-gold);
+}
+
 .search-filter-movies-series {
     gap: 10px;
 }
@@ -71,17 +82,57 @@
 .search-filter-movies-series button {
     padding: 4px;
     border-radius: 5px;
-    border: 1px solid transparent;
+    border: 1px solid var(--main-bg-color);
+    background-color: var(--main-bg-color);
+    color: var(--main-theme-color-white);
     font-weight: bold;
 }
 
 .search-filter-movies-series .active-filter-button {
-    background-color: #98FF98;
-    border: 2px solid #750000;
-
+    border: 1px solid var(--main-theme-color-gold);
+    color: var(--main-theme-color-gold);
 }
 
-/*Specific Search Styling*/
+.genres {
+    min-height: 425px;
+}
+
+.inactive-genre-button,
+.active-genre-button {
+    padding: 6px 12px;
+    border-radius: 14px;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 5px 5px 1px 0;
+    background-color: var(--main-bg-color);
+}
+
+.inactive-genre-button {
+    color: var(--main-theme-color-white);
+    border: 1px solid var(--main-bg-color);
+}
+
+.active-genre-button {
+    color: var(--main-theme-color-gold);
+    border: 1px solid var(--main-theme-color-gold);
+}
+
+.filter-search-button {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--main-theme-color-white);
+    background-color: var(--main-bg-color);
+    border: 1px solid var(--main-bg-color);
+    padding: 5px;
+    border-radius: 14px;
+}
+
+.filter-search-button:hover {
+    color: var(--main-theme-color-gold);
+    border: 1px solid var(--main-theme-color-gold);
+}
+
+/*Specific Search Results Styling*/
 
 .specific-search-container {
     display: flex;
@@ -116,7 +167,7 @@
     text-decoration: underline;
 }
 
-/*Filter Search Styling*/
+/*Filter Search Results Styling*/
 
 .filter-search-container {
     display: flex;
