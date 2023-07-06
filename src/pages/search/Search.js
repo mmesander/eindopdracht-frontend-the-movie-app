@@ -181,6 +181,7 @@ function Search() {
                         </div>
                     </div>
                     <div className="search-menu genres">
+                        <p>Genres</p>
                         {!series && <section>
                             <Button
                                 buttonType="button"
@@ -190,9 +191,15 @@ function Search() {
                             />
                             <Button
                                 buttonType="button"
-                                children="testgenre"
-                                name={genresList.movieGenres.includes(18) ? "active-genre-button" : "inactive-genre-button"}
-                                clickHandler={() => setMovieGenres(18)}
+                                children="animatie"
+                                name={genresList.movieGenres.includes(16) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setMovieGenres(16)}
+                            />
+                            <Button
+                                buttonType="button"
+                                children="avontuur"
+                                name={genresList.movieGenres.includes(12) ? "active-genre-button" : "inactive-genre-button"}
+                                clickHandler={() => setMovieGenres(12)}
                             />
                         </section>}
                         {series && <section>

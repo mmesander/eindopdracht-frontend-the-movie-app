@@ -91,23 +91,22 @@
     border: 1px solid var(--button-color-green);
 }
 
-.inactive-genre-button {
-    padding: 8px 12px;
-    border-radius: 20px;
-    font-weight: bold;
-    margin-right: 5px;
-    color: var(--main-theme-color-white);
-    background-color: var(--main-bg-color);
-    border: 1px solid var(--main-bg-color);
-}
-
+.inactive-genre-button,
 .active-genre-button {
     padding: 8px 12px;
     border-radius: 20px;
     font-weight: bold;
-    margin-right: 5px;
-    color: var(--main-theme-color-gold);
+    margin: 5px 5px 1px 0;
     background-color: var(--main-bg-color);
+}
+
+.inactive-genre-button {
+    color: var(--main-theme-color-white);
+    border: 1px solid var(--main-bg-color);
+}
+
+.active-genre-button {
+    color: var(--main-theme-color-gold);
     border: 1px solid var(--main-theme-color-gold);
 }
 
