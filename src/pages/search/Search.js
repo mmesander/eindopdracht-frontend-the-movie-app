@@ -160,42 +160,48 @@ function Search() {
     }
 
     function handleFilterSearch() {
-        let createMovieGenreString = "";
-        let createSeriesGenreString = "";
-        const genresText = "&with_genres="
+        const genresText = "&with_genres=";
+        let movieGenreString = "";
+        let seriesGenreString = "";
+
+        const minRatingText = "&vote_average.gte=";
+        const maxRatingText = "&vote_average.lte=";
+        let movieRatingString = "";
+        let seriesRatingString = "";
 
         if (!series && endpoint && genresList.movieGenres) {
 
             if (genresList.movieGenres.length === 1) {
-                createMovieGenreString = genresText + genresList.movieGenres[0];
+                movieGenreString = genresText + genresList.movieGenres[0];
             } else {
                 const numbersToSTring = genresList.movieGenres.map((id) => id.toString());
                 const joinedNumbers = numbersToSTring.join('%2C');
-                createMovieGenreString = genresText + joinedNumbers;
+                movieGenreString = genresText + joinedNumbers;
             }
 
-            console.log(`Endpoint: ${endpoint}`);
-            console.log(`Movie Genre String ${createMovieGenreString}`);
+            movieRatingString = minRatingText + minRating + maxRatingText + maxRating;
+
+            console.log(endpoint + movieRatingString + movieGenreString)
 
         }
         if (series && endpoint && genresList.seriesGenres) {
             if (genresList.seriesGenres.length === 1) {
-                createSeriesGenreString = genresText + genresList.seriesGenres[0];
+                seriesGenreString = genresText + genresList.seriesGenres[0];
             } else {
                 const numbersToString = genresList.seriesGenres.map((id) => id.toString());
                 const joinedNumbers = numbersToString.join('%2C');
-                createSeriesGenreString = genresText + joinedNumbers;
+                seriesGenreString = genresText + joinedNumbers;
             }
 
-            console.log(`Serie lijst: ${genresList.seriesGenres}`);
-            console.log(`Endpoint: ${endpoint}`);
-            console.log(`Serie Genre String ${createSeriesGenreString}`)
+            seriesRatingString = minRatingText + minRating + maxRatingText + maxRating;
+
+
+            console.log(endpoint + seriesRatingString + seriesGenreString)
         }
     }
 
     return (
         <div className={active ? "page-outer-container" : "search-page-outer-container"}>
-            {/*{genresList.movieGenres && console.log(genresList.movieGenres)}*/}
             {!active && <section className="filter-search-container">
                 <div className="search-menu-container">
                     <div className="search-menu search-specific">
@@ -243,6 +249,7 @@ function Search() {
                                 className="rating-slider"
                                 axis="x"
                                 x={minRating}
+                                xstep={1}
                                 xmax={10}
                                 onChange={(value) => setMinRating(value.x)}
                             />
@@ -253,6 +260,7 @@ function Search() {
                             <InputSlider
                                 axis="x"
                                 x={maxRating}
+                                xstep={1}
                                 xmax={10}
                                 onChange={(value) => setMaxRating(value.x)}
                             />
