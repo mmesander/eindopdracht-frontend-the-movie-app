@@ -74,11 +74,19 @@ function Search() {
     function handleMovieButton() {
         setEndpoint("https://api.themoviedb.org/3/discover/movie")
         setSeries(false);
+        setGenresList({
+            ...genresList,
+            seriesGenres: [],
+        });
     }
 
     function handleSeriesButton() {
         setEndpoint("https://api.themoviedb.org/3/discover/tv")
         setSeries(true);
+        setGenresList({
+            ...genresList,
+            movieGenres: [],
+        });
     }
 
     function setMovieGenres(id) {
@@ -134,11 +142,6 @@ function Search() {
             })
         }
     }
-
-
-
-
-
 
     return (
         <div className={active ? "page-outer-container" : "search-page-outer-container"}>
