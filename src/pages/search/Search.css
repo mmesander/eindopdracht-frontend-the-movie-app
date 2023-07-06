@@ -82,13 +82,19 @@
 .search-filter-movies-series button {
     padding: 4px;
     border-radius: 5px;
-    outline: 1px solid var(--menu-bg-color);
+    border: 1px solid var(--main-bg-color);
+    background-color: var(--main-bg-color);
+    color: var(--main-theme-color-white);
     font-weight: bold;
 }
 
 .search-filter-movies-series .active-filter-button {
-    background-color: var(--button-color-green);
-    border: 1px solid var(--button-color-green);
+    border: 1px solid var(--main-theme-color-gold);
+    color: var(--main-theme-color-gold);
+}
+
+.genres {
+    min-height: 425px;
 }
 
 .inactive-genre-button,
