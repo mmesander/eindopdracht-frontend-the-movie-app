@@ -149,7 +149,7 @@ function SignUp() {
                         </button>
                         {regSuccess && <h4 className="success-message">Registratie is gelukt, je wordt teruggeleid naar de login pagina</h4>}
                     </form>
-                    <h3>Terug naar de <Link to="/login">login</Link> pagina</h3>
+                    <h3>Terug naar de <Link to="/login">login pagina</Link></h3>
                 </div>
             </div>
         </>

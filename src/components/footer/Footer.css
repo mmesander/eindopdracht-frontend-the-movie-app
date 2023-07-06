@@ -7,7 +7,11 @@
     flex-basis: 100vw;
     flex-grow: 0;
     flex-shrink: 0;
-    background-color: #750000;
-    color: white;
+    background-color: var(--main-theme-color-red);
+    color: var(--main-theme-color-white);
     margin-top: 50px;
+}
+
+.footer-outer-container span {
+    color: var(--main-theme-color-gold);
 }

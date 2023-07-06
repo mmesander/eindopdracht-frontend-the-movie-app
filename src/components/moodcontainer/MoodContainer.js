@@ -2,7 +2,7 @@
 import React from "react";
 
 // Styles
-import './MoodContainer.css'
+import './MoodContainer.css';
 
 function MoodContainer({mood, image, imageDescription, onClick}) {
     return (

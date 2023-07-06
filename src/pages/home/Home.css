@@ -10,21 +10,7 @@
 }
 
 .home-titles {
-    margin-top: 20px;
-    color: white;
+    margin-top: 40px;
+    color: var(--main-theme-color-white);
 }
 
-/*.moviecards-container {*/
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*}*/
-
-
-/*.title-container {*/
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*    text-align: left;*/
-/*    align-items: flex-end;*/
-/*    width: 100%;*/
-/*    margin-left: 50px;*/
-/*}*/

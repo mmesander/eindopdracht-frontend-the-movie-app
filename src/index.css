@@ -5,7 +5,6 @@
 }
 
 body {
-  margin: 0;
   background-color: #282828;
   min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -18,4 +17,24 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+:root {
+  --main-theme-color-red: #750000;
+  --main-theme-color-gold: #FFD700;
+  --main-theme-color-creme: #FDF5E6;
+  --main-theme-color-white: white;
+  --main-theme-color-black: black;
+  --main-theme-color-grey: grey;
+  --main-theme-color-lightgrey: #EFE7E7;
+  --main-theme-color-green: #006400;
+  --main-bg-color: #282828;
+  --field-bg-color: rgba(171, 171, 171, 0.6);
+  --button-color-green: #98FF98;
+  --button-color-red: #FFC0CB;
+  --button-disabled-color-red: rgba(117, 0, 0, 60%);
+  --icon-filter-color-gold: invert(70%) sepia(100%) saturate(701%) hue-rotate(0deg) brightness(104%) contrast(106%);
+  --icon-filter-color-blue: invert(33%) sepia(48%) saturate(3863%) hue-rotate(223deg) brightness(103%) contrast(90%);
+  --icon-filter-color-red: invert(48%) sepia(50%) saturate(7135%) hue-rotate(340deg) brightness(100%) contrast(94%);
+  --icon-filter-color-green: invert(50%) sepia(57%) saturate(1456%) hue-rotate(86deg) brightness(103%) contrast(103%);
 }

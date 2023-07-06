@@ -7,12 +7,14 @@
     height: 350px;
     min-height: 350px;
     max-width: 200px;
-    background-color: white;
+    background-color: var(--main-theme-color-white);
+    border-radius: 10px 10px 5px 5px;
 }
 
 .mood-outer-container img {
     height: 80%;
     margin-bottom: 5px;
+    border-radius: 5px 5px 0 0;
 }
 
 .mood-outer-container h4 {
@@ -20,14 +22,15 @@
 }
 
 .mood-button {
-    border: 2px solid #282828;
+    border: 3px solid var(--main-bg-color);
     margin: 5px 10px;
     font-size: 16px;
     text-align: left;
     font-weight: bolder;
+    border-radius: 10px 10px 5px 5px;
 }
 
 .mood-button:hover {
-    border: 2px solid #750000;
+    border: 3px solid var(--main-theme-color-red);
     cursor: pointer;
 }

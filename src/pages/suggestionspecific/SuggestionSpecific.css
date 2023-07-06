@@ -9,7 +9,7 @@
 }
 
 .suggestion-title {
-    color: white;
+    color: var(--main-theme-color-white);
     margin: 20px 30px 5px 30px;
     font-size: 40px
 }
@@ -17,7 +17,7 @@
 .button-to-overview {
     background-color: transparent;
     border: none;
-    color: white;
+    color: var(--main-theme-color-white);
     font-weight: bolder;
     font-size: 24px;
     margin: 20px 0 5px 0;
@@ -26,5 +26,5 @@
 
 .button-to-overview:hover {
     cursor: pointer;
-    color: #750000;
+    color: var(--main-theme-color-red);
 }
