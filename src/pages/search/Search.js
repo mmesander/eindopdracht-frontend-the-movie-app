@@ -17,6 +17,8 @@ function Search() {
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
 
+    const [endpoint, setEndpoint] = useState("nummer 1");
+
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
@@ -61,6 +63,7 @@ function Search() {
         setLoading(false);
     }
 
+
     return (
         <div className={active ? "page-outer-container" : "search-page-outer-container"}>
             {!active && <section className="filter-search-container">
@@ -83,12 +86,26 @@ function Search() {
                             />
                         </form>
                     </div>
-                    <div className="search-menu filter-search-header">
+                    <div className="search-menu">
                         <h2>Filters</h2>
                     </div>
                     <div className="search-menu search-filter-movies-series">
-
+                        <Button
+                            type="radio"
+                            id="search-filter-movies"
+                            children="ik zoek naar films"
+                            clickHandler={() => setEndpoint("nummer 1")}
+                            name={endpoint === "nummer 1" ? "active-filter-button" : "inactive-filter-button"}
+                        />
+                        <Button
+                            type="radio"
+                            id="search-filter-series"
+                            children="ik zoek naar series"
+                            clickHandler={() => setEndpoint("nummer 2")}
+                            name={endpoint === "nummer 2" ? "active-filter-button" : "inactive-filter-button"}
+                        />
                     </div>
+                    {endpoint && console.log(endpoint)}
                     <div className="search-menu rating"></div>
                     <div className="search-menu genres"></div>
                 </div>
