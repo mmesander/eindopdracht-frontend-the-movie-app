@@ -9,6 +9,7 @@ import MovieCard from "../../components/moviecard/MovieCard";
 
 // Styles
 import './Search.css';
+import InputSlider from "react-input-slider";
 
 function Search() {
     const [specificSearch, setSpecificSearch] = useState("");
@@ -18,6 +19,8 @@ function Search() {
     const [totalPages, setTotalPages] = useState(0);
 
     const [endpoint, setEndpoint] = useState("nummer 1");
+    const [minRating, setMinRating] = useState(0);
+    const [maxRating, setMaxRating] = useState(10);
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
@@ -107,7 +110,29 @@ function Search() {
                         />
                     </div>
                     {endpoint && console.log(endpoint)}
-                    <div className="search-menu rating"></div>
+                    <div className="search-menu rating">
+                        <p>Minimale Rating:</p>
+                        <div>
+                            <InputSlider
+                                classname="rating-slider"
+                                axis="x"
+                                x={minRating}
+                                xmax={10}
+                                onChange={(value) => setMinRating(value.x)}
+                            />
+                            <p id="rating-styling">{minRating}</p>
+                        </div>
+                        <p>Maximale Rating:</p>
+                        <div>
+                            <InputSlider
+                                axis="x"
+                                x={maxRating}
+                                xmax={10}
+                                onChange={(value) => setMaxRating(value.x)}
+                            />
+                            <p>{maxRating}</p>
+                        </div>
+                    </div>
                     <div className="search-menu genres"></div>
                 </div>
                 <div className="filter-search-results-container"></div>

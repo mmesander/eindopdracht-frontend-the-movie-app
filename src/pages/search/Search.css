@@ -89,7 +89,6 @@
 .search-filter-movies-series .active-filter-button {
     background-color: var(--button-color-green);
     border: 1px solid var(--button-color-green);
-
 }
 
 /*Specific Search Styling*/
