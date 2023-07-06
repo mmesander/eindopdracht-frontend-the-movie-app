@@ -14,7 +14,7 @@
 .signin-inner-container{
     display: flex;
     flex-direction: column;
-    background-color: rgba(171, 171, 171, 0.6);
+    background-color: var(--field-bg-color);
     flex-basis: 400px;
     width: 400px;
     border-radius: 10px;
@@ -25,12 +25,12 @@
 
 .signin-inner-container h1 {
     margin-bottom: 20px;
-    color: white;
+    color: var(--main-theme-color-white);
     font-size: 40px;
 }
 
 .signin-inner-container label {
-    color: white;
+    color: var(--main-theme-color-white);
     font-weight: bold;
     font-size: 20px;
 }
@@ -38,40 +38,47 @@
 .signin-inner-container input {
     width: 100%;
     border-radius: 5px;
-    padding: 8px 8px;
+    padding: 9px 8px;
     margin: 2px 0;
     border: 1px solid transparent;
 }
 
 .signin-inner-container p {
     font-weight: bold;
-    margin-bottom: 15px;
-    color: #750000;
+    margin-bottom: 10px;
+    color: var(--main-theme-color-red);
     min-height: 21px;
+    font-size: 15px;
 }
 
 .signin-inner-container button {
-    background-color: #750000;
+    background-color: var(--main-theme-color-red);
     width: 100%;
     padding: 12px;
-    margin-top: 10px;
+    margin-top: 1px;
     border-radius: 5px;
     border: 1px solid transparent;
     font-weight: bold;
-    color: white;
+    color: var(--main-theme-color-white);
 }
 
 .signin-inner-container button:hover {
     cursor: pointer;
-    color: black;
+    color: var(--main-theme-color-black);
 }
 
 .signin-inner-container input:focus {
-    outline: 1px solid #750000;
+    outline: 1px solid var(--main-theme-color-red);
+}
+
+.signin-inner-container button:disabled {
+    background-color: var(--button-disabled-color-red);
+    cursor: not-allowed;
+    color: var(--main-theme-color-white);
 }
 
 .signin-inner-container h3 {
-    color: white;
+    color: var(--main-theme-color-white);
     position: absolute;
     bottom: -25px;
     left: 5px;
@@ -79,15 +86,9 @@
 
 .signin-inner-container a,
 .signin-inner-container a:visited {
-    color: white;
+    color: var(--main-theme-color-white);
 }
 
 .signin-inner-container a:hover {
-    color: #4EECF6;
-}
-
-.signin-inner-container button:disabled {
-    background-color: rgba(117, 0, 0, 60%);
-    cursor: not-allowed;
-    color: white;
+    color: var(--main-theme-color-gold);
 }
