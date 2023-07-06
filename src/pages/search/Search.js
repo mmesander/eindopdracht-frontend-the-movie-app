@@ -12,12 +12,19 @@ import MovieCard from "../../components/moviecard/MovieCard";
 import './Search.css';
 
 function Search() {
-    const [specificSearch, setSpecificSearch] = useState("");
+    // General
     const [active, setActive] = useState(false);
-    const [search, setSearch] = useState({});
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
 
+
+    // Specific Search
+    const [specificSearch, setSpecificSearch] = useState("");
+    const [searchResults, setSearchResults] = useState({});
+
+    // Filter Search
     const [endpoint, setEndpoint] = useState("https://api.themoviedb.org/3/discover/movie");
     const [minRating, setMinRating] = useState(0);
     const [maxRating, setMaxRating] = useState(10);
@@ -27,9 +34,7 @@ function Search() {
         seriesGenres: [],
     });
 
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
-
+    // General
     const options = {
         method: 'GET',
         headers: {
@@ -44,6 +49,8 @@ function Search() {
         }
     }, [page]);
 
+
+    //Specific Search
     function clickHandler(e) {
         e.preventDefault();
         setPage(1);
@@ -60,7 +67,7 @@ function Search() {
                 setActive(true);
                 setError(false);
             }
-            setSearch(response.data.results);
+            setSearchResults(response.data.results);
             setTotalPages(response.data.total_pages);
 
         } catch (e) {
@@ -71,6 +78,7 @@ function Search() {
         setLoading(false);
     }
 
+    // Filter Search
     function handleMovieButton() {
         setEndpoint("https://api.themoviedb.org/3/discover/movie")
         setSeries(false);
@@ -142,6 +150,8 @@ function Search() {
             })
         }
     }
+
+
 
     return (
         <div className={active ? "page-outer-container" : "search-page-outer-container"}>
@@ -458,7 +468,7 @@ function Search() {
                     />
                 </div>
                 <div className="specific-search-results-container">
-                    {search && search.map((search) => {
+                    {searchResults && searchResults.map((search) => {
                         if (search.name && search.poster_path && search.vote_average) {
                             return <MovieCard
                                 key={search.id}
