@@ -91,7 +91,7 @@ function SignIn() {
                                 }
                             }}
                         />
-                        {loading ? <p>Aan het laden.. een moment geduld alstublieft</p> : <p>{errorMessage}</p>}
+                        {loading ? <p>Aan het laden.. een moment geduld alstublieft</p> : <p className="input-error-message">{errorMessage}</p>}
                         <button
                             type="submit"
                             disabled={!isValid}

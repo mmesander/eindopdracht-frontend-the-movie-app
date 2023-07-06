@@ -13,7 +13,7 @@ function InputHookForm({type, name, label, id, placeholder, errors, register, va
                     {...register(name, validationRules)}
                 />
             </label>
-            <p>{errors}</p>
+            <p className="input-error-message">{errors}</p>
         </>
     );
 }
