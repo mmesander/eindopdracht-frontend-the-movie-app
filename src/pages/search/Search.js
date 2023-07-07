@@ -84,32 +84,30 @@ function Search() {
     //     }
     // }
 
-    function newClickHandler() {
-        console.log(specificSearch)
-        if (specificSearch) {
-            const url = `/zoeken/specifiek/1?zoekopdracht=${encodeURIComponent(specificSearch)}`
-            navigate(`${url}`)
-        }
+    function newClickHandler(e) {
+        e.preventDefault();
+        const url = `/zoeken/specifiek/1?zoekopdracht=${encodeURIComponent(specificSearch)}`
+        navigate(`${url}`);
     }
 
-    // async function fetchSpecificSearch(specificSearch) {
-    //     setLoading(true);
-    //     try {
-    //         const response = await axios.get(`https://api.themoviedb.org/3/search/multi?query=${specificSearch}&include_adult=false&language=en-US&page=${page}`, options)
-    //         if (response.data) {
-    //             setActive(true);
-    //             setError(false);
-    //         }
-    //         setSearchResults(response.data.results);
-    //         setTotalPages(response.data.total_pages);
-    //
-    //     } catch (e) {
-    //         setError(true);
-    //         console.error(e)
-    //         setActive(false);
-    //     }
-    //     setLoading(false);
-    // }
+    async function fetchSpecificSearch(specificSearch) {
+        setLoading(true);
+        try {
+            const response = await axios.get(`https://api.themoviedb.org/3/search/multi?query=${specificSearch}&include_adult=false&language=en-US&page=${page}`, options)
+            if (response.data) {
+                setActive(true);
+                setError(false);
+            }
+            setSearchResults(response.data.results);
+            setTotalPages(response.data.total_pages);
+
+        } catch (e) {
+            setError(true);
+            console.error(e)
+            setActive(false);
+        }
+        setLoading(false);
+    }
 
 
     // Filter Search
