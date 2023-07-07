@@ -129,3 +129,22 @@
 .active-watched-button img {
     filter: var(--icon-filter-color-green);
 }
+
+.details-inner-container ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    max-width: 100%;
+    flex-wrap: wrap;
+}
+
+.details-inner-container li {
+    margin: 10px 10px 1px 0;
+    padding: 4px 8px;
+    border-radius: 14px;
+    /*font-weight: bold;*/
+    color: var(--main-theme-color-white);
+    background-color: var(--main-theme-color-red);
+    border: 1px solid var(--main-theme-color-red);
+
+}

@@ -51,8 +51,9 @@ function SerieDetails() {
                 if (response.data) {
                     setError(false);
                 }
+                setGenres(response.data.genres);
                 setDetails(response.data);
-                console.log(response.data)
+                console.log(response.data);
             } catch (e) {
                 setError(true);
                 console.error(e)
