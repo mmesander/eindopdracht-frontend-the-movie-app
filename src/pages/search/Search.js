@@ -331,7 +331,7 @@ function Search() {
                                 onChange={(value) => setMaxRating(value.x)}
                             />
                             <p>{maxRating}</p>
-                            {minRating > maxRating && <p className="rating-error">Minimale rating kan niet groter zijn dan maximale rating</p>}
+                            {minRating > maxRating && <h4 className="rating-error">Minimale rating kan niet groter zijn dan maximale rating</h4>}
                         </div>
                     </div>
                     <div className="search-menu genres">
