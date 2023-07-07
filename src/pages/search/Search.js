@@ -2,6 +2,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import InputSlider from "react-input-slider";
+import {useNavigate, useParams} from "react-router-dom";
 
 // Components
 import Input from "../../components/inputelements/Input";
@@ -13,8 +14,10 @@ import './Search.css';
 
 function Search() {
     // General
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+    const filterPageNumber = useParams().filterId
 
 
     // Specific Search
@@ -23,6 +26,7 @@ function Search() {
     const [active, setActive] = useState(false);
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
+
 
     // Filter Search
     const [isMovie, setIsMovie] = useState(true);
@@ -35,9 +39,10 @@ function Search() {
     const [seriesRatingString, setSeriesRatingString] = useState("");
     const [seriesGenreString, setSeriesGenreString] = useState("");
     const [sortText, setSortText] = useState("");
-    const [filterPage, setFilterPage] = useState(1);
+    const [filterPage, setFilterPage] = useState(parseInt(filterPageNumber) || 1);
     const [totalFilterPages, setTotalFilterPages] = useState(0);
     const [activeFilter, setActiveFilter] = useState(false);
+    const [linkString, setLinkString] = useState("");
     const [genresList, setGenresList] = useState({
         movieGenres: [],
         seriesGenres: [],
@@ -60,11 +65,11 @@ function Search() {
 
         if (filterPage >= 1 && !active && isMovie) {
             void fetchMoviesFilterSearch({endpoint, filterPage, sortText, movieRatingString, movieGenreString});
-            console.log(filterPage)
+            updateUrl();
         }
         if (filterPage >= 1 && !active && !isMovie) {
             void fetchSeriesFilterSearch({endpoint, filterPage, sortText, movieRatingString, movieGenreString});
-            console.log(filterPage)
+            updateUrl();
         }
     }, [page, filterPage]);
 
@@ -176,8 +181,8 @@ function Search() {
     }
 
     async function fetchMoviesFilterSearch({endpoint, filterPage, sortText, movieRatingString, movieGenreString}) {
+        setLinkString(endpoint + filterPage + sortText +movieRatingString + movieGenreString)
         try {
-
             const response = await axios.get(`${endpoint}+${filterPage}${sortText}${movieRatingString}${movieGenreString}`, options);
             setFilterSearchResults(response.data.results);
             setTotalFilterPages(response.data.total_pages);
@@ -188,8 +193,8 @@ function Search() {
     }
 
     async function fetchSeriesFilterSearch({endpoint, filterPage, sortText, seriesRatingString, seriesGenreString}) {
+        setLinkString(endpoint + filterPage + sortText + seriesRatingString + seriesGenreString)
         try {
-
             const response = await axios.get(`${endpoint}+${filterPage}${sortText}${seriesRatingString}${seriesGenreString}`, options);
             setFilterSearchResults(response.data.results);
             setTotalFilterPages(response.data.total_pages);
@@ -248,6 +253,11 @@ function Search() {
                 });
             }
         }
+    }
+
+    function updateUrl() {
+        const newUrl = `/zoeken/filter/${filterPage}`
+        navigate(newUrl, {replace: true});
     }
 
     return (

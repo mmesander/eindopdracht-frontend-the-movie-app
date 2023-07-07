@@ -32,7 +32,8 @@ function App() {
             {isAuth && <NavBar/>}
             <Routes>
                 <Route path="/" element={<Home/>}/>
-                <Route path="/zoeken" element={<Search/>}/>
+                <Route path="/zoeken/filter/:filterId" element={<Search/>}/>
+                {/*<Route path="/zoeken/specifiek/searchId" element={<Search/>}/>*/}
                 <Route path="/suggestie" element={<Suggestion/>}/>
                 <Route path="/suggestie/:moodId/:pageId" element={<SuggestionSpecific/>}/>
                 <Route path="/lijsten" element={<Lists/>}/>
