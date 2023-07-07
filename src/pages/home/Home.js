@@ -85,7 +85,6 @@ function Home() {
         setSeriesPage(1);
     }
 
-
     return (
         <>
             <div className="page-outer-container">
