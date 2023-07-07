@@ -27,7 +27,7 @@ function Search() {
 
 
     // Filter Search
-    const [activeFilter, setActiveFilter] = useState(false);
+    const [filtersActive, setFiltersActive] = useState(false);
     const [filterSearchResults, setFilterSearchResults] = useState({});
     const [isMovie, setIsMovie] = useState(true);
     const [endpoint, setEndpoint] = useState('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=');
@@ -62,7 +62,7 @@ function Search() {
                 movieRatingString,
                 movieGenreString
             });
-            setActiveFilter(true);
+            setFiltersActive(true);
             updateUrl();
         }
 
@@ -74,7 +74,7 @@ function Search() {
                 movieRatingString,
                 movieGenreString
             });
-            setActiveFilter(true);
+            setFiltersActive(true);
             updateUrl();
         }
     }, [page]);
@@ -92,7 +92,7 @@ function Search() {
     function handleMovieButton() {
         setEndpoint('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=')
         setIsMovie(true);
-        setActiveFilter(false);
+        setFiltersActive(false);
         setPage(1);
         setGenresList({
             ...genresList,
@@ -103,7 +103,7 @@ function Search() {
     function handleSeriesButton() {
         setEndpoint('https://api.themoviedb.org/3/discover/tv?include_adult=false&language=en-US&page=')
         setIsMovie(false);
-        setActiveFilter(false);
+        setFiltersActive(false);
         setPage(1);
         setGenresList({
             ...genresList,
@@ -189,7 +189,7 @@ function Search() {
 
     function handleFilterSearch() {
         setSortText("&sort_by=popularity.desc");
-        setActiveFilter(true);
+        setFiltersActive(true);
         const genresText = "&with_genres=";
         const minRatingText = "&vote_average.gte=";
         const maxRatingText = "&vote_average.lte=";
@@ -535,6 +535,14 @@ function Search() {
                     <div className="search-menu">
                         <Button
                             buttonType="button"
+                            name="filter-reset-button"
+                            children="reset alle filters"
+                            clickHandler={}
+                        />
+                    </div>
+                    <div className="search-menu">
+                        <Button
+                            buttonType="button"
                             name="filter-search-button"
                             children="Zoeken"
                             clickHandler={handleFilterSearch}
@@ -548,7 +556,7 @@ function Search() {
                             <h3 className="no-results-filter">Er zijn geen resultaten gevonden!</h3>}
                         {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
                     </div>
-                    {activeFilter && (filterSearchResults.length > 1) && <div className="button-set-page-section">
+                    {filtersActive && (filterSearchResults.length > 1) && <div className="button-set-page-section">
                         <Button
                             buttonType="button"
                             children="Vorige"
@@ -563,7 +571,7 @@ function Search() {
                         />
                     </div>}
                     <div className="filter-search-results-inner-container">
-                        {Object.keys(filterSearchResults).length > 0 && isMovie && activeFilter && filterSearchResults.map((movie) => {
+                        {Object.keys(filterSearchResults).length > 0 && isMovie && filtersActive && filterSearchResults.map((movie) => {
                             return <MovieCard
                                 key={movie.id}
                                 title={movie.title}
@@ -573,7 +581,7 @@ function Search() {
                                 tv={false}
                             />
                         })}
-                        {Object.keys(filterSearchResults).length > 0 && !isMovie && activeFilter && filterSearchResults.map((series) => {
+                        {Object.keys(filterSearchResults).length > 0 && !isMovie && filtersActive && filterSearchResults.map((series) => {
                             return <MovieCard
                                 key={series.id}
                                 title={series.name}
