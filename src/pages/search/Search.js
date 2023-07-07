@@ -47,7 +47,6 @@ function Search() {
         seriesGenres: [],
     });
 
-
     // General
     const options = {
         method: 'GET',
@@ -58,55 +57,25 @@ function Search() {
     };
 
     useEffect(() => {
-        if (page >= 1 && active) {
-            void fetchSpecificSearch(specificSearch);
-        }
-
-        if (filterPage >= 1 && !active && isMovie) {
+        if (filterPage >= 1 && isMovie) {
             void fetchMoviesFilterSearch({endpoint, filterPage, sortText, movieRatingString, movieGenreString});
             setActiveFilter(true);
             updateUrl();
         }
-        if (filterPage >= 1 && !active && !isMovie) {
+        if (filterPage >= 1 && !isMovie) {
             void fetchSeriesFilterSearch({endpoint, filterPage, sortText, movieRatingString, movieGenreString});
             setActiveFilter(true);
             updateUrl();
         }
-    }, [page, filterPage]);
+    }, [filterPage]);
+
 
 
     //Specific Search
-    // function clickHandler(e) {
-    //     e.preventDefault();
-    //     setPage(1);
-    //     if (specificSearch) {
-    //         void fetchSpecificSearch(specificSearch);
-    //     }
-    // }
-
     function newClickHandler(e) {
         e.preventDefault();
         const url = `/zoeken/specifiek/1?zoekopdracht=${encodeURIComponent(specificSearch)}`
         navigate(`${url}`);
-    }
-
-    async function fetchSpecificSearch(specificSearch) {
-        setLoading(true);
-        try {
-            const response = await axios.get(`https://api.themoviedb.org/3/search/multi?query=${specificSearch}&include_adult=false&language=en-US&page=${page}`, options)
-            if (response.data) {
-                setActive(true);
-                setError(false);
-            }
-            setSearchResults(response.data.results);
-            setTotalPages(response.data.total_pages);
-
-        } catch (e) {
-            setError(true);
-            console.error(e)
-            setActive(false);
-        }
-        setLoading(false);
     }
 
 
@@ -209,7 +178,6 @@ function Search() {
         }
     }
 
-
     function handleFilterSearch() {
         setSortText("&sort_by=popularity.desc");
         setActiveFilter(true);
@@ -266,8 +234,8 @@ function Search() {
     }
 
     return (
-        <div className={active ? "page-outer-container" : "search-page-outer-container"}>
-            {!active && <section className="filter-search-container">
+        <div className="search-page-outer-container">
+            <section className="filter-search-container">
                 <div className="search-menu-container">
                     <div className="search-menu search-specific">
                         <h2>Zoeken</h2>
@@ -602,58 +570,7 @@ function Search() {
                         })}
                     </div>
                 </div>
-            </section>}
-            {active && <section className="specific-search-container">
-                <button
-                    className="button-to-overview"
-                    type="button"
-                    onClick={() => setActive(false)}
-                >
-                    Terug naar overzicht
-                </button>
-                <h2 className="suggestion-title">{`Dit zijn de zoekresultaten voor ${specificSearch}`}</h2>
-                <div className="loading-error-section">
-                    {loading && <h3 className="loading-message">Loading... </h3>}
-                    {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
-                </div>
-                <div className="button-set-page-section">
-                    <Button
-                        buttonType="button"
-                        children="Vorige"
-                        clickHandler={() => setPage(page - 1)}
-                        disabled={page === 1}
-                    />
-                    <Button
-                        buttonType="button"
-                        children="Volgende"
-                        clickHandler={() => setPage(page + 1)}
-                        disabled={page === totalPages}
-                    />
-                </div>
-                {/*<div className="specific-search-results-container">*/}
-                {/*    {searchResults && searchResults.map((search) => {*/}
-                {/*        if (search.name && search.poster_path && search.vote_average) {*/}
-                {/*            return <MovieCard*/}
-                {/*                key={search.id}*/}
-                {/*                name={search.name}*/}
-                {/*                image={search.poster_path}*/}
-                {/*                rating={search.vote_average}*/}
-                {/*                id={search.id}*/}
-                {/*                tv={true}*/}
-                {/*            />*/}
-                {/*        } else if (search.title && search.poster_path && search.vote_average) {*/}
-                {/*            return <MovieCard*/}
-                {/*                key={search.id}*/}
-                {/*                title={search.title}*/}
-                {/*                image={search.poster_path}*/}
-                {/*                rating={search.vote_average}*/}
-                {/*                id={search.id}*/}
-                {/*                tv={false}*/}
-                {/*            />*/}
-                {/*        }*/}
-                {/*    })}*/}
-                {/*</div>*/}
-            </section>}
+            </section>
         </div>
     )
 }
