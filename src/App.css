@@ -43,12 +43,12 @@
 }
 
 .loading-error-section .loading-message {
-    color: white;
+    color: var(--main-theme-color-white);
     font-style: normal;
 }
 
 .loading-error-section .error-message {
-    color: red;
+    color: var(--main-error-color-red);
     font-style: normal;
 }
 
