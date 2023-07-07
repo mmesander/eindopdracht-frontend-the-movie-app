@@ -589,10 +589,10 @@ function Search() {
                 </div>
                 <div className="filter-search-results-outer-container">
                     <div className="loading-error-section">
-                        {loading && <h3 className="loading-message">Loading... </h3>}
+                        {loading && <h3 className="loading-message">Laden... </h3>}
                         {filterSearchResults.length === 0 &&
                             <h3 className="no-results-filter">Er zijn geen resultaten gevonden!</h3>}
-                        {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
+                        {error && <h3 className="error-message">Foutmelding: Er kan geen data opgehaald worden!</h3>}
                     </div>
                     {filtersActive && (filterSearchResults.length > 1) && <div className="button-set-page-section">
                         <Button
