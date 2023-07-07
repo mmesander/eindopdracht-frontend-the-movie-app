@@ -71,13 +71,18 @@ function Search() {
                 endpoint,
                 page,
                 sortText,
-                movieRatingString,
-                movieGenreString
+                seriesRatingString,
+                seriesGenreString
             });
             setFiltersActive(true);
             updateUrl();
         }
     }, [page]);
+
+    function updateUrl() {
+        const newUrl = `/zoeken/filter/${page}`
+        navigate(newUrl, {replace: true});
+    }
 
 
     //Specific Search
@@ -241,11 +246,6 @@ function Search() {
                 });
             }
         }
-    }
-
-    function updateUrl() {
-        const newUrl = `/zoeken/filter/${page}`
-        navigate(newUrl, {replace: true});
     }
 
     return (
@@ -537,7 +537,7 @@ function Search() {
                             buttonType="button"
                             name="filter-reset-button"
                             children="reset alle filters"
-                            clickHandler={}
+                            clickHandler={handleFilterReset}
                         />
                     </div>
                     <div className="search-menu">
