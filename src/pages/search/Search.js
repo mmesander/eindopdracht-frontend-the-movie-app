@@ -30,7 +30,7 @@ function Search() {
 
     // Filter Search
     const [isMovie, setIsMovie] = useState(true);
-    const [endpoint, setEndpoint] = useState('https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=en-US&page=');
+    const [endpoint, setEndpoint] = useState('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=');
     const [minRating, setMinRating] = useState(0);
     const [maxRating, setMaxRating] = useState(10);
     const [filterSearchResults, setFilterSearchResults] = useState({});
@@ -42,7 +42,6 @@ function Search() {
     const [filterPage, setFilterPage] = useState(parseInt(filterPageNumber) || 1);
     const [totalFilterPages, setTotalFilterPages] = useState(0);
     const [activeFilter, setActiveFilter] = useState(false);
-    const [linkString, setLinkString] = useState("");
     const [genresList, setGenresList] = useState({
         movieGenres: [],
         seriesGenres: [],
@@ -65,10 +64,12 @@ function Search() {
 
         if (filterPage >= 1 && !active && isMovie) {
             void fetchMoviesFilterSearch({endpoint, filterPage, sortText, movieRatingString, movieGenreString});
+            setActiveFilter(true);
             updateUrl();
         }
         if (filterPage >= 1 && !active && !isMovie) {
             void fetchSeriesFilterSearch({endpoint, filterPage, sortText, movieRatingString, movieGenreString});
+            setActiveFilter(true);
             updateUrl();
         }
     }, [page, filterPage]);
@@ -105,7 +106,7 @@ function Search() {
 
     // Filter Search
     function handleMovieButton() {
-        setEndpoint('https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=en-US&page=')
+        setEndpoint('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=')
         setIsMovie(true);
         setActiveFilter(false);
         setFilterPage(1);
@@ -116,7 +117,7 @@ function Search() {
     }
 
     function handleSeriesButton() {
-        setEndpoint('https://api.themoviedb.org/3/discover/tv?include_adult=true&language=en-US&page=')
+        setEndpoint('https://api.themoviedb.org/3/discover/tv?include_adult=false&language=en-US&page=')
         setIsMovie(false);
         setActiveFilter(false);
         setFilterPage(1);
@@ -181,7 +182,6 @@ function Search() {
     }
 
     async function fetchMoviesFilterSearch({endpoint, filterPage, sortText, movieRatingString, movieGenreString}) {
-        setLinkString(endpoint + filterPage + sortText +movieRatingString + movieGenreString)
         try {
             const response = await axios.get(`${endpoint}+${filterPage}${sortText}${movieRatingString}${movieGenreString}`, options);
             setFilterSearchResults(response.data.results);
@@ -193,7 +193,6 @@ function Search() {
     }
 
     async function fetchSeriesFilterSearch({endpoint, filterPage, sortText, seriesRatingString, seriesGenreString}) {
-        setLinkString(endpoint + filterPage + sortText + seriesRatingString + seriesGenreString)
         try {
             const response = await axios.get(`${endpoint}+${filterPage}${sortText}${seriesRatingString}${seriesGenreString}`, options);
             setFilterSearchResults(response.data.results);
