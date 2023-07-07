@@ -116,6 +116,16 @@ function Search() {
         });
     }
 
+    function handleFilterReset() {
+        setMinRating(0);
+        setMaxRating(10);
+        setGenresList({
+            ...genresList,
+            movieGenres: [],
+            seriesGenres: [],
+        })
+    }
+
     function setMovieGenres(id) {
         const checkGenreID = genresList.movieGenres.find((genre) => {
             return id === genre;
