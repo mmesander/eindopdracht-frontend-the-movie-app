@@ -1,5 +1,5 @@
 // Functions
-import React, {createContext, useEffect, useState} from "react";
+import React, {createContext, useState} from "react";
 
 export const ListsContext = createContext(null);
 
@@ -12,15 +12,6 @@ function ListsContextProvider({children}) {
         watchlistSeries: [],
         watchedSeries: [],
     });
-
-    useEffect(() => {
-        if (!localStorage.getItem("movies")) {
-            localStorage.setItem('movies', JSON.stringify(listItem))
-        }
-        if (!localStorage.getItem("series")) {
-            localStorage.setItem('series', JSON.stringify(listItem))
-        }
-    }, []);
 
     const data = {
         listItem: listItem,
