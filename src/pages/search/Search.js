@@ -284,18 +284,26 @@ function Search() {
                     <div className="search-menu">
                         <h2>Filters</h2>
                     </div>
+                    <div className="search-menu">
+                        <Button
+                            buttonType="button"
+                            name="filter-reset-button"
+                            children="Reset alle filters"
+                            clickHandler={handleFilterReset}
+                        />
+                    </div>
                     <div className="search-menu search-filter-movies-series">
                         <Button
                             type="radio"
                             id="search-filter-movies"
-                            children="ik zoek naar films"
+                            children="Ik zoek naar films"
                             clickHandler={handleMovieButton}
                             name={isMovie ? "active-filter-button" : "inactive-filter-button"}
                         />
                         <Button
                             type="radio"
                             id="search-filter-series"
-                            children="ik zoek naar series"
+                            children="Ik zoek naar series"
                             clickHandler={handleSeriesButton}
                             name={!isMovie ? "active-filter-button" : "inactive-filter-button"}
                         />
@@ -541,14 +549,6 @@ function Search() {
                                 clickHandler={() => setSeriesGenres(37)}
                             />
                         </section>}
-                    </div>
-                    <div className="search-menu">
-                        <Button
-                            buttonType="button"
-                            name="filter-reset-button"
-                            children="reset alle filters"
-                            clickHandler={handleFilterReset}
-                        />
                     </div>
                     <div className="search-menu">
                         <Button

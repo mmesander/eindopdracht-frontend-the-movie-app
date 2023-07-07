@@ -79,13 +79,18 @@
     gap: 10px;
 }
 
-.search-filter-movies-series button {
-    padding: 4px;
-    border-radius: 5px;
+.search-filter-movies-series button,
+.filter-reset-button {
+    padding: 5px;
+    border-radius: 14px;
     border: 1px solid var(--main-bg-color);
     background-color: var(--main-bg-color);
     color: var(--main-theme-color-white);
     font-weight: bold;
+}
+
+.search-filter-movies-series button:hover {
+    color: var(--main-theme-color-gold);
 }
 
 .search-filter-movies-series .active-filter-button {
@@ -117,6 +122,7 @@
     border: 1px solid var(--main-theme-color-gold);
 }
 
+
 .filter-search-button {
     font-size: 22px;
     font-weight: bold;
@@ -127,6 +133,7 @@
     border-radius: 14px;
 }
 
+.filter-reset-button:hover,
 .filter-search-button:hover {
     color: var(--main-theme-color-gold);
     border: 1px solid var(--main-theme-color-gold);
