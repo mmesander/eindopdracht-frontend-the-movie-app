@@ -7,6 +7,9 @@ import axios from "axios";
 import Button from "../../components/button/Button";
 import MovieCard from "../../components/moviecard/MovieCard";
 
+// Styles
+import './SearchSpecific.css';
+
 function SearchSpecific() {
     const navigate = useNavigate();
     const location = useLocation();
@@ -51,7 +54,6 @@ function SearchSpecific() {
             }
             setSearchResults(response.data.results);
             setTotalPages(response.data.total_pages);
-            console.log(response.data)
         } catch (e) {
             setError(true);
             console.error(e)
@@ -68,7 +70,7 @@ function SearchSpecific() {
             >
                 Terug naar overzicht
             </button>
-            <h2 className="suggestion-title">{`Dit zijn de resultaten voor ${search}`}</h2>
+            <h2 className="specific-search-title">{`Dit zijn de resultaten voor ${search}`}</h2>
             <div className="button-set-page-section">
                 <Button
                     buttonType="button"
@@ -82,6 +84,29 @@ function SearchSpecific() {
                     clickHandler={() => setPage(page + 1)}
                     disabled={page === totalPages}
                 />
+            </div>
+            <div className="search-specific-inner-container">
+                {Object.keys(searchResults).length > 0 && searchResults.map((search) => {
+                    if (search.name && search.poster_path && search.vote_average) {
+                        return <MovieCard
+                            key={search.id}
+                            name={search.name}
+                            image={search.poster_path}
+                            rating={search.vote_average}
+                            id={search.id}
+                            tv={true}
+                        />
+                    } else if (search.title && search.poster_path && search.vote_average) {
+                        return <MovieCard
+                            key={search.id}
+                            title={search.title}
+                            image={search.poster_path}
+                            rating={search.vote_average}
+                            id={search.id}
+                            tv={false}
+                        />
+                    }
+                })}
             </div>
         </div>
     )

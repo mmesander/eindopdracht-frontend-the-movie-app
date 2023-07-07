@@ -1,0 +1,14 @@
+.specific-search-title {
+    color: var(--main-theme-color-white);
+    margin: 20px 30px 5px 30px;
+    font-size: 40px
+}
+.search-specific-inner-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    max-width: 1000px;
+    height: auto;
+    flex-wrap: wrap;
+    margin-inline: 30px
+}

@@ -630,29 +630,29 @@ function Search() {
                         disabled={page === totalPages}
                     />
                 </div>
-                <div className="specific-search-results-container">
-                    {searchResults && searchResults.map((search) => {
-                        if (search.name && search.poster_path && search.vote_average) {
-                            return <MovieCard
-                                key={search.id}
-                                name={search.name}
-                                image={search.poster_path}
-                                rating={search.vote_average}
-                                id={search.id}
-                                tv={true}
-                            />
-                        } else if (search.title && search.poster_path && search.vote_average) {
-                            return <MovieCard
-                                key={search.id}
-                                title={search.title}
-                                image={search.poster_path}
-                                rating={search.vote_average}
-                                id={search.id}
-                                tv={false}
-                            />
-                        }
-                    })}
-                </div>
+                {/*<div className="specific-search-results-container">*/}
+                {/*    {searchResults && searchResults.map((search) => {*/}
+                {/*        if (search.name && search.poster_path && search.vote_average) {*/}
+                {/*            return <MovieCard*/}
+                {/*                key={search.id}*/}
+                {/*                name={search.name}*/}
+                {/*                image={search.poster_path}*/}
+                {/*                rating={search.vote_average}*/}
+                {/*                id={search.id}*/}
+                {/*                tv={true}*/}
+                {/*            />*/}
+                {/*        } else if (search.title && search.poster_path && search.vote_average) {*/}
+                {/*            return <MovieCard*/}
+                {/*                key={search.id}*/}
+                {/*                title={search.title}*/}
+                {/*                image={search.poster_path}*/}
+                {/*                rating={search.vote_average}*/}
+                {/*                id={search.id}*/}
+                {/*                tv={false}*/}
+                {/*            />*/}
+                {/*        }*/}
+                {/*    })}*/}
+                {/*</div>*/}
             </section>}
         </div>
     )
