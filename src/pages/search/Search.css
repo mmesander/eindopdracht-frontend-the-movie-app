@@ -177,15 +177,24 @@
     flex-basis: 100vw;
 }
 
-.filter-search-results-container {
+.filter-search-results-outer-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     max-width: 80%;
+    max-height: 100%;
+    margin-inline: 30px;
+    border: 3px solid green;
+    width: 80%;
+}
+
+.filter-search-results-inner-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    max-width: 1000px;
     height: auto;
     flex-wrap: wrap;
-    margin-inline: 30px;
-    background-color: green;
 }
 

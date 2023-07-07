@@ -13,9 +13,6 @@ import './Search.css';
 
 function Search() {
     // General
-    const [active, setActive] = useState(false);
-    const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(0);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
@@ -23,9 +20,12 @@ function Search() {
     // Specific Search
     const [specificSearch, setSpecificSearch] = useState("");
     const [searchResults, setSearchResults] = useState({});
+    const [active, setActive] = useState(false);
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
 
     // Filter Search
-    const [isMovie, setIsMovie] = useState(false);
+    const [isMovie, setIsMovie] = useState(true);
     const [endpoint, setEndpoint] = useState('https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=en-US&page=');
     const [minRating, setMinRating] = useState(0);
     const [maxRating, setMaxRating] = useState(10);
@@ -35,6 +35,8 @@ function Search() {
     const [seriesRatingString, setSeriesRatingString] = useState("");
     const [seriesGenreString, setSeriesGenreString] = useState("");
     const [sortText, setSortText] = useState("");
+    const [filterPage, setFilterPage] = useState(1);
+    const [totalFilterPages, setTotalFilterPages] = useState(0);
     const [genresList, setGenresList] = useState({
         movieGenres: [],
         seriesGenres: [],
@@ -54,7 +56,16 @@ function Search() {
         if (page >= 1 && active) {
             void fetchSpecificSearch(specificSearch);
         }
-    }, [page]);
+
+        if (filterPage >= 1 && !active && isMovie) {
+            void fetchMoviesFilterSearch({endpoint, filterPage, sortText, movieRatingString, movieGenreString});
+            console.log(filterPage)
+        }
+        if (filterPage >= 1 && !active && !isMovie) {
+            void fetchSeriesFilterSearch({endpoint, filterPage, sortText, movieRatingString, movieGenreString});
+            console.log(filterPage)
+        }
+    }, [page, filterPage]);
 
 
     //Specific Search
@@ -90,6 +101,7 @@ function Search() {
     function handleMovieButton() {
         setEndpoint('https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=en-US&page=')
         setIsMovie(true);
+        setFilterPage(1);
         setGenresList({
             ...genresList,
             seriesGenres: [],
@@ -99,6 +111,7 @@ function Search() {
     function handleSeriesButton() {
         setEndpoint('https://api.themoviedb.org/3/discover/tv?include_adult=true&language=en-US&page=')
         setIsMovie(false);
+        setFilterPage(1);
         setGenresList({
             ...genresList,
             movieGenres: [],
@@ -159,28 +172,29 @@ function Search() {
         }
     }
 
-    async function fetchMoviesFilterSearch({endpoint, page, sortText, movieRatingString, movieGenreString}) {
+    async function fetchMoviesFilterSearch({endpoint, filterPage, sortText, movieRatingString, movieGenreString}) {
         try {
 
-            const response = await axios.get(`${endpoint}+${page}${sortText}${movieRatingString}${movieGenreString}`, options);
-            setFilterSearchResults(response.data)
+            const response = await axios.get(`${endpoint}+${filterPage}${sortText}${movieRatingString}${movieGenreString}`, options);
+            setFilterSearchResults(response.data.results);
+            setTotalFilterPages(response.data.total_pages);
             console.log(response.data)
         } catch (e) {
             console.error(e)
         }
     }
 
-    async function fetchSeriesFilterSearch({endpoint, page, sortText, seriesRatingString, seriesGenreString}) {
+    async function fetchSeriesFilterSearch({endpoint, filterPage, sortText, seriesRatingString, seriesGenreString}) {
         try {
 
-            const response = await axios.get(`${endpoint}+${page}${sortText}${seriesRatingString}${seriesGenreString}`, options);
-            setFilterSearchResults(response.data)
+            const response = await axios.get(`${endpoint}+${filterPage}${sortText}${seriesRatingString}${seriesGenreString}`, options);
+            setFilterSearchResults(response.data.results)
+            setTotalFilterPages(response.data.total_pages);
             console.log(response.data)
         } catch (e) {
             console.error(e)
         }
     }
-
 
 
     function handleFilterSearch() {
@@ -189,7 +203,7 @@ function Search() {
         const minRatingText = "&vote_average.gte=";
         const maxRatingText = "&vote_average.lte=";
 
-        if (isMovie && endpoint && genresList.movieGenres.length > 0 ) {
+        if (isMovie && endpoint && genresList.movieGenres.length > 0) {
             if (genresList.movieGenres.length === 1) {
                 setMovieGenreString(genresText + genresList.movieGenres[0]);
             } else {
@@ -201,7 +215,7 @@ function Search() {
             setMovieRatingString(minRatingText + minRating + maxRatingText + maxRating);
 
             if (Object.keys(movieRatingString).length > 0 && Object.keys(movieGenreString).length > 0 && Object.keys(sortText).length > 0) {
-                void fetchMoviesFilterSearch({endpoint, page, sortText, movieRatingString, movieGenreString});
+                void fetchMoviesFilterSearch({endpoint, filterPage, sortText, movieRatingString, movieGenreString});
             }
         }
 
@@ -217,7 +231,7 @@ function Search() {
             setSeriesRatingString(minRatingText + minRating + maxRatingText + maxRating);
 
             if (Object.keys(seriesRatingString).length > 0 && Object.keys(seriesGenreString).length > 0 && Object.keys(sortText).length > 0) {
-                void fetchSeriesFilterSearch({endpoint, page, sortText, seriesRatingString, seriesGenreString});
+                void fetchSeriesFilterSearch({endpoint, filterPage, sortText, seriesRatingString, seriesGenreString});
             }
         }
     }
@@ -515,7 +529,48 @@ function Search() {
                         />
                     </div>
                 </div>
-                <div className="filter-search-results-container"></div>
+                <div className="filter-search-results-outer-container">
+                    <div className="loading-error-section">
+                        {loading && <h3 className="loading-message">Loading... </h3>}
+                        {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
+                    </div>
+                    {totalFilterPages > 1 && <div className="button-set-page-section">
+                        <Button
+                            buttonType="button"
+                            children="Vorige"
+                            clickHandler={() => setFilterPage(filterPage - 1)}
+                            disabled={filterPage === 1}
+                        />
+                        <Button
+                            buttonType="button"
+                            children="Volgende"
+                            clickHandler={() => setFilterPage(filterPage + 1)}
+                            disabled={filterPage === totalFilterPages}
+                        />
+                    </div>}
+                    <div className="filter-search-results-inner-container">
+                        {Object.keys(filterSearchResults).length > 0 && isMovie && filterSearchResults.map((movie) => {
+                            return <MovieCard
+                                key={movie.id}
+                                title={movie.title}
+                                image={movie.poster_path}
+                                rating={movie.vote_average}
+                                id={movie.id}
+                                tv={false}
+                            />
+                        })}
+                        {Object.keys(filterSearchResults).length > 0 && !isMovie && filterSearchResults.map((series) => {
+                            return <MovieCard
+                                key={series.id}
+                                title={series.name}
+                                image={series.poster_path}
+                                rating={series.vote_average}
+                                id={series.id}
+                                tv={true}
+                            />
+                        })}
+                    </div>
+                </div>
             </section>}
             {active && <section className="specific-search-container">
                 <button
