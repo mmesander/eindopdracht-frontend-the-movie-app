@@ -70,7 +70,12 @@ function SearchSpecific() {
             >
                 Terug naar overzicht
             </button>
-            <h2 className="specific-search-title">{`Dit zijn de resultaten voor ${search}`}</h2>
+            {Object.keys(searchResults).length > 0 && <h2 className="specific-search-title">{`Dit zijn de resultaten voor ${search}`}</h2>}
+            {Object.keys(searchResults).length === 0 && <h2 className="specific-search-title">{`Er zijn geen resultaten gevonden voor ${search}`}</h2>}
+            <div className="loading-error-section">
+                {loading && <h3 className="loading-message">Loading... </h3>}
+                {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
+            </div>
             <div className="button-set-page-section">
                 <Button
                     buttonType="button"
