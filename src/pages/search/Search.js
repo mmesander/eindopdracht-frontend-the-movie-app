@@ -331,6 +331,7 @@ function Search() {
                                 onChange={(value) => setMaxRating(value.x)}
                             />
                             <p>{maxRating}</p>
+                            {minRating > maxRating && <p className="rating-error">Minimale rating kan niet groter zijn dan maximale rating</p>}
                         </div>
                     </div>
                     <div className="search-menu genres">
@@ -556,6 +557,7 @@ function Search() {
                             name="filter-search-button"
                             children="Zoeken"
                             clickHandler={handleFilterSearch}
+                            disabled={minRating > maxRating}
                         />
                     </div>
                 </div>
