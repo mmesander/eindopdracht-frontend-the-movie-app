@@ -2,6 +2,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import InputSlider from "react-input-slider";
+import {useNavigate, useParams} from "react-router-dom";
 
 // Components
 import Input from "../../components/inputelements/Input";
@@ -13,23 +14,25 @@ import './Search.css';
 
 function Search() {
     // General
-    const [active, setActive] = useState(false);
-    const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(0);
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+    const pageNumber = useParams().filterId
+    const [page, setPage] = useState(parseInt(pageNumber) || 1);
+    const [totalPages, setTotalPages] = useState(0);
 
 
     // Specific Search
     const [specificSearch, setSpecificSearch] = useState("");
-    const [searchResults, setSearchResults] = useState({});
+
 
     // Filter Search
-    const [isMovie, setIsMovie] = useState(false);
-    const [endpoint, setEndpoint] = useState('https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=en-US&page=');
+    const [filtersActive, setFiltersActive] = useState(false);
+    const [filterSearchResults, setFilterSearchResults] = useState({});
+    const [isMovie, setIsMovie] = useState(true);
+    const [endpoint, setEndpoint] = useState('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=');
     const [minRating, setMinRating] = useState(0);
     const [maxRating, setMaxRating] = useState(10);
-    const [filterSearchResults, setFilterSearchResults] = useState({});
     const [movieRatingString, setMovieRatingString] = useState("");
     const [movieGenreString, setMovieGenreString] = useState("");
     const [seriesRatingString, setSeriesRatingString] = useState("");
@@ -39,7 +42,6 @@ function Search() {
         movieGenres: [],
         seriesGenres: [],
     });
-
 
     // General
     const options = {
@@ -51,45 +53,65 @@ function Search() {
     };
 
     useEffect(() => {
-        if (page >= 1 && active) {
-            void fetchSpecificSearch(specificSearch);
+
+        if (page >= 1 && isMovie) {
+            void fetchMoviesFilterSearch({
+                endpoint,
+                page,
+                sortText,
+                movieRatingString,
+                movieGenreString
+            });
+            setFiltersActive(true);
+            updateUrl();
+        }
+
+        if (page >= 1 && !isMovie) {
+            void fetchSeriesFilterSearch({
+                endpoint,
+                page,
+                sortText,
+                seriesRatingString,
+                seriesGenreString
+            });
+            setFiltersActive(true);
+            updateUrl();
         }
     }, [page]);
 
-
-    //Specific Search
-    function clickHandler(e) {
-        e.preventDefault();
-        setPage(1);
-        if (specificSearch) {
-            void fetchSpecificSearch(specificSearch);
+    function updateUrl() {
+        if (isMovie) {
+            const newUrl = `/zoeken/filter/${page}`
+            navigate(newUrl, {replace: true});
+        }
+        if (!isMovie) {
+            const newUrl = `/zoeken/filter/${page}`
+            navigate(newUrl, {replace: true});
         }
     }
 
-    async function fetchSpecificSearch(specificSearch) {
-        setLoading(true);
-        try {
-            const response = await axios.get(`https://api.themoviedb.org/3/search/multi?query=${specificSearch}&include_adult=false&language=en-US&page=${page}`, options)
-            if (response.data) {
-                setActive(true);
-                setError(false);
-            }
-            setSearchResults(response.data.results);
-            setTotalPages(response.data.total_pages);
+    // Note to self:
+    // Het is dus de bedoeling dat hij de filters onthoudt wanneer je het onderstaande pad volgt:
+    // Klikken op Moviecard, zodat je naar movieDetails wordt gestuurd
+    // Indien je op terug klikt kom je netjes terug op dezelfde pagina
+    // Maar die moet dan gerefresht worden met de endpoint, pagina, etc.
+    // Dit moet werken voor zowel de films als de series (dus die if if chain)
 
-        } catch (e) {
-            setError(true);
-            console.error(e)
-            setActive(false);
-        }
-        setLoading(false);
+
+    //Specific Search
+    function newClickHandler(e) {
+        e.preventDefault();
+        const url = `/zoeken/specifiek/1?zoekopdracht=${encodeURIComponent(specificSearch)}`
+        navigate(`${url}`);
     }
 
 
     // Filter Search
     function handleMovieButton() {
-        setEndpoint('https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=en-US&page=')
+        setEndpoint('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=');
         setIsMovie(true);
+        setFiltersActive(false);
+        setPage(1);
         setGenresList({
             ...genresList,
             seriesGenres: [],
@@ -97,12 +119,25 @@ function Search() {
     }
 
     function handleSeriesButton() {
-        setEndpoint('https://api.themoviedb.org/3/discover/tv?include_adult=true&language=en-US&page=')
+        setEndpoint('https://api.themoviedb.org/3/discover/tv?include_adult=false&language=en-US&page=');
         setIsMovie(false);
+        setFiltersActive(false);
+        setPage(1);
         setGenresList({
             ...genresList,
             movieGenres: [],
         });
+    }
+
+    function handleFilterReset() {
+        setMinRating(0);
+        setMaxRating(10);
+        setFiltersActive(false);
+        setGenresList({
+            ...genresList,
+            movieGenres: [],
+            seriesGenres: [],
+        })
     }
 
     function setMovieGenres(id) {
@@ -161,10 +196,10 @@ function Search() {
 
     async function fetchMoviesFilterSearch({endpoint, page, sortText, movieRatingString, movieGenreString}) {
         try {
-
             const response = await axios.get(`${endpoint}+${page}${sortText}${movieRatingString}${movieGenreString}`, options);
-            setFilterSearchResults(response.data)
-            console.log(response.data)
+            setFilterSearchResults(response.data.results);
+            setTotalPages(response.data.total_pages);
+            console.log(response.data);
         } catch (e) {
             console.error(e)
         }
@@ -172,41 +207,50 @@ function Search() {
 
     async function fetchSeriesFilterSearch({endpoint, page, sortText, seriesRatingString, seriesGenreString}) {
         try {
-
             const response = await axios.get(`${endpoint}+${page}${sortText}${seriesRatingString}${seriesGenreString}`, options);
-            setFilterSearchResults(response.data)
-            console.log(response.data)
+            setFilterSearchResults(response.data.results);
+            setTotalPages(response.data.total_pages);
+            console.log(response.data);
         } catch (e) {
             console.error(e)
         }
     }
 
-
-
     function handleFilterSearch() {
-        setSortText("&sort_by=popularity.desc")
+        setSortText("&sort_by=popularity.desc");
+        setFiltersActive(true);
         const genresText = "&with_genres=";
         const minRatingText = "&vote_average.gte=";
         const maxRatingText = "&vote_average.lte=";
 
-        if (isMovie && endpoint && genresList.movieGenres.length > 0 ) {
-            if (genresList.movieGenres.length === 1) {
+        if (isMovie && endpoint) {
+            if (genresList.movieGenres.length === 0) {
+                setMovieGenreString("");
+            } else if (genresList.movieGenres.length === 1) {
                 setMovieGenreString(genresText + genresList.movieGenres[0]);
             } else {
-                const numbersToSTring = genresList.movieGenres.map((id) => id.toString());
-                const joinedNumbers = numbersToSTring.join('%2C');
+                const numbersToString = genresList.movieGenres.map((id) => id.toString());
+                const joinedNumbers = numbersToString.join('%2C');
                 setMovieGenreString(genresText + joinedNumbers);
             }
 
             setMovieRatingString(minRatingText + minRating + maxRatingText + maxRating);
 
             if (Object.keys(movieRatingString).length > 0 && Object.keys(movieGenreString).length > 0 && Object.keys(sortText).length > 0) {
-                void fetchMoviesFilterSearch({endpoint, page, sortText, movieRatingString, movieGenreString});
+                void fetchMoviesFilterSearch({
+                    endpoint,
+                    page,
+                    sortText,
+                    movieRatingString,
+                    movieGenreString
+                });
             }
         }
 
-        if (!isMovie && endpoint && genresList.seriesGenres) {
-            if (genresList.seriesGenres.length === 1) {
+        if (!isMovie && endpoint) {
+            if (genresList.seriesGenres.length === 0) {
+                setSeriesGenreString("");
+            } else if (genresList.seriesGenres.length === 1) {
                 setSeriesGenreString(genresText + genresList.seriesGenres[0]);
             } else {
                 const numbersToString = genresList.seriesGenres.map((id) => id.toString());
@@ -217,19 +261,25 @@ function Search() {
             setSeriesRatingString(minRatingText + minRating + maxRatingText + maxRating);
 
             if (Object.keys(seriesRatingString).length > 0 && Object.keys(seriesGenreString).length > 0 && Object.keys(sortText).length > 0) {
-                void fetchSeriesFilterSearch({endpoint, page, sortText, seriesRatingString, seriesGenreString});
+                void fetchSeriesFilterSearch({
+                    endpoint,
+                    page,
+                    sortText,
+                    seriesRatingString,
+                    seriesGenreString
+                });
             }
         }
     }
 
     return (
-        <div className={active ? "page-outer-container" : "search-page-outer-container"}>
-            {!active && <section className="filter-search-container">
+        <div className="search-page-outer-container">
+            <section className="filter-search-container">
                 <div className="search-menu-container">
                     <div className="search-menu search-specific">
                         <h2>Zoeken</h2>
                         <p>Zoek hier naar een specifieke film of serie</p>
-                        <form onSubmit={clickHandler}>
+                        <form onSubmit={newClickHandler}>
                             <Input
                                 type="text"
                                 id="search-specific-field"
@@ -248,18 +298,26 @@ function Search() {
                     <div className="search-menu">
                         <h2>Filters</h2>
                     </div>
+                    <div className="search-menu">
+                        <Button
+                            buttonType="button"
+                            name="filter-reset-button"
+                            children="Reset alle filters"
+                            clickHandler={handleFilterReset}
+                        />
+                    </div>
                     <div className="search-menu search-filter-movies-series">
                         <Button
                             type="radio"
                             id="search-filter-movies"
-                            children="ik zoek naar films"
+                            children="Ik zoek naar films"
                             clickHandler={handleMovieButton}
                             name={isMovie ? "active-filter-button" : "inactive-filter-button"}
                         />
                         <Button
                             type="radio"
                             id="search-filter-series"
-                            children="ik zoek naar series"
+                            children="Ik zoek naar series"
                             clickHandler={handleSeriesButton}
                             name={!isMovie ? "active-filter-button" : "inactive-filter-button"}
                         />
@@ -287,6 +345,7 @@ function Search() {
                                 onChange={(value) => setMaxRating(value.x)}
                             />
                             <p>{maxRating}</p>
+                            {minRating > maxRating && <h4 className="rating-error">Minimale rating kan niet groter zijn dan maximale rating</h4>}
                         </div>
                     </div>
                     <div className="search-menu genres">
@@ -512,62 +571,55 @@ function Search() {
                             name="filter-search-button"
                             children="Zoeken"
                             clickHandler={handleFilterSearch}
+                            disabled={minRating > maxRating}
                         />
                     </div>
                 </div>
-                <div className="filter-search-results-container"></div>
-            </section>}
-            {active && <section className="specific-search-container">
-                <button
-                    className="button-to-overview"
-                    type="button"
-                    onClick={() => setActive(false)}
-                >
-                    Terug naar overzicht
-                </button>
-                <h2 className="suggestion-title">{`Dit zijn de zoekresultaten voor ${specificSearch}`}</h2>
-                <div className="loading-error-section">
-                    {loading && <h3 className="loading-message">Loading... </h3>}
-                    {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
-                </div>
-                <div className="button-set-page-section">
-                    <Button
-                        buttonType="button"
-                        children="Vorige"
-                        clickHandler={() => setPage(page - 1)}
-                        disabled={page === 1}
-                    />
-                    <Button
-                        buttonType="button"
-                        children="Volgende"
-                        clickHandler={() => setPage(page + 1)}
-                        disabled={page === totalPages}
-                    />
-                </div>
-                <div className="specific-search-results-container">
-                    {searchResults && searchResults.map((search) => {
-                        if (search.name && search.poster_path && search.vote_average) {
+                <div className="filter-search-results-outer-container">
+                    <div className="loading-error-section">
+                        {loading && <h3 className="loading-message">Loading... </h3>}
+                        {filterSearchResults.length === 0 &&
+                            <h3 className="no-results-filter">Er zijn geen resultaten gevonden!</h3>}
+                        {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
+                    </div>
+                    {filtersActive && (filterSearchResults.length > 1) && <div className="button-set-page-section">
+                        <Button
+                            buttonType="button"
+                            children="Vorige"
+                            clickHandler={() => setPage(page - 1)}
+                            disabled={page === 1}
+                        />
+                        <Button
+                            buttonType="button"
+                            children="Volgende"
+                            clickHandler={() => setPage(page + 1)}
+                            disabled={page === totalPages}
+                        />
+                    </div>}
+                    <div className="filter-search-results-inner-container">
+                        {Object.keys(filterSearchResults).length > 0 && isMovie && filtersActive && filterSearchResults.map((movie) => {
                             return <MovieCard
-                                key={search.id}
-                                name={search.name}
-                                image={search.poster_path}
-                                rating={search.vote_average}
-                                id={search.id}
-                                tv={true}
-                            />
-                        } else if (search.title && search.poster_path && search.vote_average) {
-                            return <MovieCard
-                                key={search.id}
-                                title={search.title}
-                                image={search.poster_path}
-                                rating={search.vote_average}
-                                id={search.id}
+                                key={movie.id}
+                                title={movie.title}
+                                image={movie.poster_path}
+                                rating={movie.vote_average}
+                                id={movie.id}
                                 tv={false}
                             />
-                        }
-                    })}
+                        })}
+                        {Object.keys(filterSearchResults).length > 0 && !isMovie && filtersActive && filterSearchResults.map((series) => {
+                            return <MovieCard
+                                key={series.id}
+                                title={series.name}
+                                image={series.poster_path}
+                                rating={series.vote_average}
+                                id={series.id}
+                                tv={true}
+                            />
+                        })}
+                    </div>
                 </div>
-            </section>}
+            </section>
         </div>
     )
 }
