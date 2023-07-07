@@ -195,25 +195,37 @@ function Search() {
     }
 
     async function fetchMoviesFilterSearch({endpoint, page, sortText, movieRatingString, movieGenreString}) {
+        setLoading(true);
         try {
             const response = await axios.get(`${endpoint}+${page}${sortText}${movieRatingString}${movieGenreString}`, options);
+            if (response.data) {
+                setError(false);
+            }
             setFilterSearchResults(response.data.results);
             setTotalPages(response.data.total_pages);
             console.log(response.data);
         } catch (e) {
+            setError(true);
             console.error(e)
         }
+        setLoading(false);
     }
 
     async function fetchSeriesFilterSearch({endpoint, page, sortText, seriesRatingString, seriesGenreString}) {
+        setLoading(true);
         try {
             const response = await axios.get(`${endpoint}+${page}${sortText}${seriesRatingString}${seriesGenreString}`, options);
+            if (response.data) {
+                setError(false);
+            }
             setFilterSearchResults(response.data.results);
             setTotalPages(response.data.total_pages);
             console.log(response.data);
         } catch (e) {
+            setError(true);
             console.error(e)
         }
+        setLoading(false);
     }
 
     function handleFilterSearch() {
@@ -597,25 +609,26 @@ function Search() {
                         />
                     </div>}
                     <div className="filter-search-results-inner-container">
-                        {Object.keys(filterSearchResults).length > 0 && isMovie && filtersActive && filterSearchResults.map((movie) => {
-                            return <MovieCard
-                                key={movie.id}
-                                title={movie.title}
-                                image={movie.poster_path}
-                                rating={movie.vote_average}
-                                id={movie.id}
-                                tv={false}
-                            />
-                        })}
-                        {Object.keys(filterSearchResults).length > 0 && !isMovie && filtersActive && filterSearchResults.map((series) => {
-                            return <MovieCard
-                                key={series.id}
-                                title={series.name}
-                                image={series.poster_path}
-                                rating={series.vote_average}
-                                id={series.id}
-                                tv={true}
-                            />
+                        {Object.keys(filterSearchResults).length > 0 && filtersActive && filterSearchResults.map((search) => {
+                            if (!isMovie && search.name && search.poster_path && search.vote_average) {
+                                return <MovieCard
+                                    key={search.id}
+                                    name={search.name}
+                                    image={search.poster_path}
+                                    rating={search.vote_average}
+                                    id={search.id}
+                                    tv={true}
+                                />
+                            } else if (isMovie && search.title && search.poster_path && search.vote_average) {
+                                return <MovieCard
+                                    key={search.id}
+                                    title={search.title}
+                                    image={search.poster_path}
+                                    rating={search.vote_average}
+                                    id={search.id}
+                                    tv={false}
+                                />
+                            }
                         })}
                     </div>
                 </div>
