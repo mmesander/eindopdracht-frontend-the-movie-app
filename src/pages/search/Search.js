@@ -37,6 +37,7 @@ function Search() {
     const [sortText, setSortText] = useState("");
     const [filterPage, setFilterPage] = useState(1);
     const [totalFilterPages, setTotalFilterPages] = useState(0);
+    const [activeFilter, setActiveFilter] = useState(false);
     const [genresList, setGenresList] = useState({
         movieGenres: [],
         seriesGenres: [],
@@ -101,6 +102,7 @@ function Search() {
     function handleMovieButton() {
         setEndpoint('https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=en-US&page=')
         setIsMovie(true);
+        setActiveFilter(false);
         setFilterPage(1);
         setGenresList({
             ...genresList,
@@ -111,6 +113,7 @@ function Search() {
     function handleSeriesButton() {
         setEndpoint('https://api.themoviedb.org/3/discover/tv?include_adult=true&language=en-US&page=')
         setIsMovie(false);
+        setActiveFilter(false);
         setFilterPage(1);
         setGenresList({
             ...genresList,
@@ -178,7 +181,7 @@ function Search() {
             const response = await axios.get(`${endpoint}+${filterPage}${sortText}${movieRatingString}${movieGenreString}`, options);
             setFilterSearchResults(response.data.results);
             setTotalFilterPages(response.data.total_pages);
-            console.log(response.data)
+            console.log(response.data);
         } catch (e) {
             console.error(e)
         }
@@ -188,9 +191,9 @@ function Search() {
         try {
 
             const response = await axios.get(`${endpoint}+${filterPage}${sortText}${seriesRatingString}${seriesGenreString}`, options);
-            setFilterSearchResults(response.data.results)
+            setFilterSearchResults(response.data.results);
             setTotalFilterPages(response.data.total_pages);
-            console.log(response.data)
+            console.log(response.data);
         } catch (e) {
             console.error(e)
         }
@@ -198,17 +201,20 @@ function Search() {
 
 
     function handleFilterSearch() {
-        setSortText("&sort_by=popularity.desc")
+        setSortText("&sort_by=popularity.desc");
+        setActiveFilter(true);
         const genresText = "&with_genres=";
         const minRatingText = "&vote_average.gte=";
         const maxRatingText = "&vote_average.lte=";
 
-        if (isMovie && endpoint && genresList.movieGenres.length > 0) {
-            if (genresList.movieGenres.length === 1) {
+        if (isMovie && endpoint) {
+            if (genresList.movieGenres.length === 0) {
+                setMovieGenreString("");
+            } else if (genresList.movieGenres.length === 1) {
                 setMovieGenreString(genresText + genresList.movieGenres[0]);
             } else {
-                const numbersToSTring = genresList.movieGenres.map((id) => id.toString());
-                const joinedNumbers = numbersToSTring.join('%2C');
+                const numbersToString = genresList.movieGenres.map((id) => id.toString());
+                const joinedNumbers = numbersToString.join('%2C');
                 setMovieGenreString(genresText + joinedNumbers);
             }
 
@@ -219,8 +225,10 @@ function Search() {
             }
         }
 
-        if (!isMovie && endpoint && genresList.seriesGenres) {
-            if (genresList.seriesGenres.length === 1) {
+        if (!isMovie && endpoint) {
+            if (genresList.seriesGenres.length === 0) {
+                setSeriesGenreString("");
+            } else if (genresList.seriesGenres.length === 1) {
                 setSeriesGenreString(genresText + genresList.seriesGenres[0]);
             } else {
                 const numbersToString = genresList.seriesGenres.map((id) => id.toString());
@@ -231,7 +239,13 @@ function Search() {
             setSeriesRatingString(minRatingText + minRating + maxRatingText + maxRating);
 
             if (Object.keys(seriesRatingString).length > 0 && Object.keys(seriesGenreString).length > 0 && Object.keys(sortText).length > 0) {
-                void fetchSeriesFilterSearch({endpoint, filterPage, sortText, seriesRatingString, seriesGenreString});
+                void fetchSeriesFilterSearch({
+                    endpoint,
+                    filterPage,
+                    sortText,
+                    seriesRatingString,
+                    seriesGenreString
+                });
             }
         }
     }
@@ -532,9 +546,11 @@ function Search() {
                 <div className="filter-search-results-outer-container">
                     <div className="loading-error-section">
                         {loading && <h3 className="loading-message">Loading... </h3>}
+                        {filterSearchResults.length === 0 &&
+                            <h3 className="no-results-filter">Er zijn geen resultaten gevonden!</h3>}
                         {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
                     </div>
-                    {totalFilterPages > 1 && <div className="button-set-page-section">
+                    {activeFilter && (filterSearchResults.length > 1) && <div className="button-set-page-section">
                         <Button
                             buttonType="button"
                             children="Vorige"
@@ -549,7 +565,7 @@ function Search() {
                         />
                     </div>}
                     <div className="filter-search-results-inner-container">
-                        {Object.keys(filterSearchResults).length > 0 && isMovie && filterSearchResults.map((movie) => {
+                        {Object.keys(filterSearchResults).length > 0 && isMovie && activeFilter && filterSearchResults.map((movie) => {
                             return <MovieCard
                                 key={movie.id}
                                 title={movie.title}
@@ -559,7 +575,7 @@ function Search() {
                                 tv={false}
                             />
                         })}
-                        {Object.keys(filterSearchResults).length > 0 && !isMovie && filterSearchResults.map((series) => {
+                        {Object.keys(filterSearchResults).length > 0 && !isMovie && activeFilter && filterSearchResults.map((series) => {
                             return <MovieCard
                                 key={series.id}
                                 title={series.name}
