@@ -80,9 +80,22 @@ function Search() {
     }, [page]);
 
     function updateUrl() {
-        const newUrl = `/zoeken/filter/${page}`
-        navigate(newUrl, {replace: true});
+        if (isMovie) {
+            const newUrl = `/zoeken/filter/${page}`
+            navigate(newUrl, {replace: true});
+        }
+        if (!isMovie) {
+            const newUrl = `/zoeken/filter/${page}`
+            navigate(newUrl, {replace: true});
+        }
     }
+
+    // Note to self:
+    // Het is dus de bedoeling dat hij de filters onthoudt wanneer je het onderstaande pad volgt:
+    // Klikken op Moviecard, zodat je naar movieDetails wordt gestuurd
+    // Indien je op terug klikt kom je netjes terug op dezelfde pagina
+    // Maar die moet dan gerefresht worden met de endpoint, pagina, etc.
+    // Dit moet werken voor zowel de films als de series (dus die if if chain)
 
 
     //Specific Search
@@ -95,7 +108,7 @@ function Search() {
 
     // Filter Search
     function handleMovieButton() {
-        setEndpoint('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=')
+        setEndpoint('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=');
         setIsMovie(true);
         setFiltersActive(false);
         setPage(1);
@@ -106,7 +119,7 @@ function Search() {
     }
 
     function handleSeriesButton() {
-        setEndpoint('https://api.themoviedb.org/3/discover/tv?include_adult=false&language=en-US&page=')
+        setEndpoint('https://api.themoviedb.org/3/discover/tv?include_adult=false&language=en-US&page=');
         setIsMovie(false);
         setFiltersActive(false);
         setPage(1);
@@ -119,6 +132,7 @@ function Search() {
     function handleFilterReset() {
         setMinRating(0);
         setMaxRating(10);
+        setFiltersActive(false);
         setGenresList({
             ...genresList,
             movieGenres: [],
