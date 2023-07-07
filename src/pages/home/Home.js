@@ -7,10 +7,21 @@ import MovieCard from "../../components/moviecard/MovieCard";
 
 // Styles
 import './Home.css';
+import Button from "../../components/button/Button";
 
 function Home() {
     const moviesEndpoint = 'https://api.themoviedb.org/3/trending/movie/day';
-    const seriesEndpoint = 'https://api.themoviedb.org/3/trending/tv/day'
+    const seriesEndpoint = 'https://api.themoviedb.org/3/trending/tv/day';
+
+    const [movies, setMovies] = useState({});
+    const [series, setSeries] = useState({});
+    const [moreMovies, setMoreMovies] = useState(false);
+    const [moreSeries, setMoreSeries] = useState(false);
+
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+
+
 
     const options = {
         method: 'GET',
@@ -20,21 +31,15 @@ function Home() {
         }
     };
 
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
-
-    const [movies, setMovies] = useState({});
-    const [series, setSeries] = useState({});
-
     useEffect(() => {
         async function fetchMovies() {
             setLoading(true);
             try {
-                const moviesResponse = await axios.get(`${moviesEndpoint}`, options);
-                if (moviesResponse.data) {
+                const response = await axios.get(`${moviesEndpoint}`, options);
+                if (response.data) {
                     setError(false);
                 }
-                setMovies(moviesResponse.data.results);
+                setMovies(response.data.results);
             } catch (e) {
                 setError(true);
                 console.error(e);
@@ -45,11 +50,11 @@ function Home() {
         async function fetchSeries() {
             setLoading(true);
             try {
-                const seriesResponse = await axios.get(`${seriesEndpoint}`, options);
-                if (seriesResponse.data) {
+                const response = await axios.get(`${seriesEndpoint}`, options);
+                if (response.data) {
                     setError(false);
                 }
-                setSeries(seriesResponse.data.results);
+                setSeries(response.data.results);
             } catch (e) {
                 setError(true);
                 console.error(e);
@@ -65,6 +70,7 @@ function Home() {
             void fetchSeries()
         }
     }, []);
+
 
     return (
         <>
@@ -89,6 +95,12 @@ function Home() {
                         />
                     })}
                 </div>
+                <Button
+                    buttonType="button"
+                    children={moreMovies ? "Laat minder resultaten zien" : "Laat meer resultaten zien"}
+                    name="home-results-button"
+                    clickHandler={() => setMoreMovies(!moreMovies)}
+                />
                 <h1 className="home-titles">Trending Series</h1>
                 <div className="home-inner-container">
                     {loading && <h2>Loading... </h2>}
@@ -105,6 +117,12 @@ function Home() {
                         />
                     })}
                 </div>
+                <Button
+                    buttonType="button"
+                    children={moreMovies ? "Laat minder resultaten zien" : "Laat meer resultaten zien"}
+                    name="home-results-button"
+                    clickHandler={() => setMoreSeries(!moreSeries)}
+                />
             </div>
         </>
     )
