@@ -27,6 +27,7 @@ function MovieDetails() {
     const {listItem, setListItem} = useContext(ListsContext);
 
     const [details, setDetails] = useState({});
+    const [genres, setGenres] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
@@ -51,6 +52,7 @@ function MovieDetails() {
                     setError(false);
                 }
                 setDetails(response.data);
+                setGenres(response.data.genres);
                 console.log(response.data)
             } catch (e) {
                 setError(true);
@@ -188,6 +190,11 @@ function MovieDetails() {
                                         <img src={watchedIcon} alt="watched-icon"/>
                                     </button>
                                 </div>
+                                {genres.length > 0 && <ul>
+                                    {genres.map((genre) => {
+                                        return <li>{genre.name}</li>
+                                    })}
+                                </ul>}
                                 <h3>Omschrijving:</h3>
                                 <p>{details.overview}</p>
                             </section>

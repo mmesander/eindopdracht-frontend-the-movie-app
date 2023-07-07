@@ -27,6 +27,7 @@ function SerieDetails() {
     const {listItem, setListItem} = useContext(ListsContext);
 
     const [details, setDetails] = useState({});
+    const [genres, setGenres] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
@@ -50,8 +51,9 @@ function SerieDetails() {
                 if (response.data) {
                     setError(false);
                 }
+                setGenres(response.data.genres);
                 setDetails(response.data);
-                console.log(response.data)
+                console.log(response.data);
             } catch (e) {
                 setError(true);
                 console.error(e)
@@ -187,6 +189,11 @@ function SerieDetails() {
                                         <img src={watchedIcon} alt="watched-icon"/>
                                     </button>
                                 </div>
+                                {genres.length > 0 && <ul>
+                                    {genres.map((genre) => {
+                                        return <li>{genre.name}</li>
+                                    })}
+                                </ul>}
                                 <h3>Omschrijving:</h3>
                                 <p>{details.overview}</p>
                             </section>
