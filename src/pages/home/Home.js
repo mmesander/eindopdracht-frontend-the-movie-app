@@ -83,7 +83,18 @@ function Home() {
                 <div className="home-inner-container">
                     {loading && <h2>Loading... </h2>}
                     {error && <h2>Error: Could not fetch data!</h2>}
-                    {Object.keys(movies).length > 0 && movies.slice(0, 5).map((movie) => {
+                    {!moreMovies && Object.keys(movies).length > 0 && movies.slice(0, 5).map((movie) => {
+                        return <MovieCard
+                            key={movie.id}
+                            title={movie.title}
+                            image={movie.poster_path}
+                            rating={movie.vote_average}
+                            id={movie.id}
+                            name={movie.name}
+                            tv={false}
+                        />
+                    })}
+                    {moreMovies && Object.keys(movies).length > 0 && movies.map((movie) => {
                         return <MovieCard
                             key={movie.id}
                             title={movie.title}
@@ -106,7 +117,17 @@ function Home() {
                     {loading && <h2>Loading... </h2>}
                     {error && <h2>Error: Could not fetch data!</h2>}
                     {Object.keys(series).length > 0 && console.log(series)}
-                    {Object.keys(series).length > 0 && series.slice(0, 5).map((tv) => {
+                    {!moreSeries && Object.keys(series).length > 0 && series.slice(0, 5).map((tv) => {
+                        return <MovieCard
+                            key={tv.id}
+                            title={tv.name}
+                            image={tv.poster_path}
+                            rating={tv.vote_average}
+                            id={tv.id}
+                            tv={true}
+                        />
+                    })}
+                    {moreSeries && Object.keys(series).length > 0 && series.map((tv) => {
                         return <MovieCard
                             key={tv.id}
                             title={tv.name}
