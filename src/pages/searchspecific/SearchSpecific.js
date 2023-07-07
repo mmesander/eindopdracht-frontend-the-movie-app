@@ -68,7 +68,7 @@ function SearchSpecific() {
                 type="button"
                 onClick={() => navigate(-1)}
             >
-                Terug naar overzicht
+                Terug naar de zoekpagina
             </button>
             {Object.keys(searchResults).length > 0 && <h2 className="specific-search-title">{`Dit zijn de resultaten voor ${search}`}</h2>}
             {Object.keys(searchResults).length === 0 && <h2 className="specific-search-title">{`Er zijn geen resultaten gevonden voor ${search}`}</h2>}

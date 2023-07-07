@@ -57,11 +57,13 @@ function Search() {
     };
 
     useEffect(() => {
+
         if (filterPage >= 1 && isMovie) {
             void fetchMoviesFilterSearch({endpoint, filterPage, sortText, movieRatingString, movieGenreString});
             setActiveFilter(true);
             updateUrl();
         }
+
         if (filterPage >= 1 && !isMovie) {
             void fetchSeriesFilterSearch({endpoint, filterPage, sortText, movieRatingString, movieGenreString});
             setActiveFilter(true);
