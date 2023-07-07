@@ -17,31 +17,27 @@ function Search() {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
-    const filterPageNumber = useParams().filterId
+    const pageNumber = useParams().filterId
+    const [page, setPage] = useState(parseInt(pageNumber) || 1);
+    const [totalPages, setTotalPages] = useState(0);
 
 
     // Specific Search
     const [specificSearch, setSpecificSearch] = useState("");
-    const [searchResults, setSearchResults] = useState({});
-    const [active, setActive] = useState(false);
-    const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(0);
 
 
     // Filter Search
+    const [activeFilter, setActiveFilter] = useState(false);
+    const [filterSearchResults, setFilterSearchResults] = useState({});
     const [isMovie, setIsMovie] = useState(true);
     const [endpoint, setEndpoint] = useState('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=');
     const [minRating, setMinRating] = useState(0);
     const [maxRating, setMaxRating] = useState(10);
-    const [filterSearchResults, setFilterSearchResults] = useState({});
     const [movieRatingString, setMovieRatingString] = useState("");
     const [movieGenreString, setMovieGenreString] = useState("");
     const [seriesRatingString, setSeriesRatingString] = useState("");
     const [seriesGenreString, setSeriesGenreString] = useState("");
     const [sortText, setSortText] = useState("");
-    const [filterPage, setFilterPage] = useState(parseInt(filterPageNumber) || 1);
-    const [totalFilterPages, setTotalFilterPages] = useState(0);
-    const [activeFilter, setActiveFilter] = useState(false);
     const [genresList, setGenresList] = useState({
         movieGenres: [],
         seriesGenres: [],
@@ -58,19 +54,30 @@ function Search() {
 
     useEffect(() => {
 
-        if (filterPage >= 1 && isMovie) {
-            void fetchMoviesFilterSearch({endpoint, filterPage, sortText, movieRatingString, movieGenreString});
+        if (page >= 1 && isMovie) {
+            void fetchMoviesFilterSearch({
+                endpoint,
+                page,
+                sortText,
+                movieRatingString,
+                movieGenreString
+            });
             setActiveFilter(true);
             updateUrl();
         }
 
-        if (filterPage >= 1 && !isMovie) {
-            void fetchSeriesFilterSearch({endpoint, filterPage, sortText, movieRatingString, movieGenreString});
+        if (page >= 1 && !isMovie) {
+            void fetchSeriesFilterSearch({
+                endpoint,
+                page,
+                sortText,
+                movieRatingString,
+                movieGenreString
+            });
             setActiveFilter(true);
             updateUrl();
         }
-    }, [filterPage]);
-
+    }, [page]);
 
 
     //Specific Search
@@ -86,7 +93,7 @@ function Search() {
         setEndpoint('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=')
         setIsMovie(true);
         setActiveFilter(false);
-        setFilterPage(1);
+        setPage(1);
         setGenresList({
             ...genresList,
             seriesGenres: [],
@@ -97,7 +104,7 @@ function Search() {
         setEndpoint('https://api.themoviedb.org/3/discover/tv?include_adult=false&language=en-US&page=')
         setIsMovie(false);
         setActiveFilter(false);
-        setFilterPage(1);
+        setPage(1);
         setGenresList({
             ...genresList,
             movieGenres: [],
@@ -158,22 +165,22 @@ function Search() {
         }
     }
 
-    async function fetchMoviesFilterSearch({endpoint, filterPage, sortText, movieRatingString, movieGenreString}) {
+    async function fetchMoviesFilterSearch({endpoint, page, sortText, movieRatingString, movieGenreString}) {
         try {
-            const response = await axios.get(`${endpoint}+${filterPage}${sortText}${movieRatingString}${movieGenreString}`, options);
+            const response = await axios.get(`${endpoint}+${page}${sortText}${movieRatingString}${movieGenreString}`, options);
             setFilterSearchResults(response.data.results);
-            setTotalFilterPages(response.data.total_pages);
+            setTotalPages(response.data.total_pages);
             console.log(response.data);
         } catch (e) {
             console.error(e)
         }
     }
 
-    async function fetchSeriesFilterSearch({endpoint, filterPage, sortText, seriesRatingString, seriesGenreString}) {
+    async function fetchSeriesFilterSearch({endpoint, page, sortText, seriesRatingString, seriesGenreString}) {
         try {
-            const response = await axios.get(`${endpoint}+${filterPage}${sortText}${seriesRatingString}${seriesGenreString}`, options);
+            const response = await axios.get(`${endpoint}+${page}${sortText}${seriesRatingString}${seriesGenreString}`, options);
             setFilterSearchResults(response.data.results);
-            setTotalFilterPages(response.data.total_pages);
+            setTotalPages(response.data.total_pages);
             console.log(response.data);
         } catch (e) {
             console.error(e)
@@ -201,7 +208,13 @@ function Search() {
             setMovieRatingString(minRatingText + minRating + maxRatingText + maxRating);
 
             if (Object.keys(movieRatingString).length > 0 && Object.keys(movieGenreString).length > 0 && Object.keys(sortText).length > 0) {
-                void fetchMoviesFilterSearch({endpoint, filterPage, sortText, movieRatingString, movieGenreString});
+                void fetchMoviesFilterSearch({
+                    endpoint,
+                    page,
+                    sortText,
+                    movieRatingString,
+                    movieGenreString
+                });
             }
         }
 
@@ -221,7 +234,7 @@ function Search() {
             if (Object.keys(seriesRatingString).length > 0 && Object.keys(seriesGenreString).length > 0 && Object.keys(sortText).length > 0) {
                 void fetchSeriesFilterSearch({
                     endpoint,
-                    filterPage,
+                    page,
                     sortText,
                     seriesRatingString,
                     seriesGenreString
@@ -231,7 +244,7 @@ function Search() {
     }
 
     function updateUrl() {
-        const newUrl = `/zoeken/filter/${filterPage}`
+        const newUrl = `/zoeken/filter/${page}`
         navigate(newUrl, {replace: true});
     }
 
@@ -539,14 +552,14 @@ function Search() {
                         <Button
                             buttonType="button"
                             children="Vorige"
-                            clickHandler={() => setFilterPage(filterPage - 1)}
-                            disabled={filterPage === 1}
+                            clickHandler={() => setPage(page - 1)}
+                            disabled={page === 1}
                         />
                         <Button
                             buttonType="button"
                             children="Volgende"
-                            clickHandler={() => setFilterPage(filterPage + 1)}
-                            disabled={filterPage === totalFilterPages}
+                            clickHandler={() => setPage(page + 1)}
+                            disabled={page === totalPages}
                         />
                     </div>}
                     <div className="filter-search-results-inner-container">
