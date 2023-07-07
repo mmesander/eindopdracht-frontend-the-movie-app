@@ -90,8 +90,8 @@ function Home() {
             <div className="page-outer-container">
                 <h1 className="home-titles">Trending Movies</h1>
                 <div className="loading-error-section">
-                    {loading && <h3 className="loading-message">Loading... </h3>}
-                    {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
+                    {loading && <h3 className="loading-message">Laden... </h3>}
+                    {error && <h3 className="error-message">Foutmelding: Er kan geen data opgehaald worden!</h3>}
                 </div>
                 {moreMovies && <div className="button-set-page-section">
                     <Button
@@ -139,8 +139,8 @@ function Home() {
                 />
                 <h1 className="home-titles">Trending Series</h1>
                 <div className="loading-error-section">
-                    {loading && <h3 className="loading-message">Loading... </h3>}
-                    {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
+                    {loading && <h3 className="loading-message">Laden... </h3>}
+                    {error && <h3 className="error-message">Foutmelding: Er kan geen data opgehaald worden!</h3>}
                 </div>
                 {moreSeries && <div className="button-set-page-section">
                     <Button
