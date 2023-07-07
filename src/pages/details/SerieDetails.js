@@ -150,8 +150,8 @@ function SerieDetails() {
         <>
             <div className="page-outer-container">
                 <div className="loading-error-section">
-                    {loading && <h3 className="loading-message">Loading... </h3>}
-                    {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
+                    {loading && <h3 className="loading-message">Laden... </h3>}
+                    {error && <h3 className="error-message">Foutmelding: Er kan geen data opgehaald worden!</h3>}
                 </div>
                 {Object.keys(details).length > 0 &&
                     <div className="details-inner-container">

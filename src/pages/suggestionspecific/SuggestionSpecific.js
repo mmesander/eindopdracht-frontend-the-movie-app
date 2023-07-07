@@ -76,8 +76,8 @@ function SuggestionSpecific() {
             </button>
             <h2 className="suggestion-title">{`Je hebt gekozen om ${title}`}</h2>
             <div className="loading-error-section">
-                {loading && <h3 className="loading-message">Loading... </h3>}
-                {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
+                {loading && <h3 className="loading-message">Laden... </h3>}
+                {error && <h3 className="error-message">Foutmelding: Er kan geen data opgehaald worden!</h3>}
             </div>
             <div className="button-set-page-section">
                 <Button
