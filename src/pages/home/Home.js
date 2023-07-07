@@ -10,18 +10,18 @@ import './Home.css';
 import Button from "../../components/button/Button";
 
 function Home() {
-    const moviesEndpoint = 'https://api.themoviedb.org/3/trending/movie/day';
-    const seriesEndpoint = 'https://api.themoviedb.org/3/trending/tv/day';
-
     const [movies, setMovies] = useState({});
-    const [series, setSeries] = useState({});
     const [moreMovies, setMoreMovies] = useState(false);
+    const [moviePage, setMoviePage] = useState(1);
+    const [totalMoviePages, setTotalMoviePages] = useState(0);
+
+    const [series, setSeries] = useState({});
     const [moreSeries, setMoreSeries] = useState(false);
+    const [seriesPage, setSeriesPage] = useState(1);
+    const [totalSeriesPages, setTotalSeriesPages] = useState(0);
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
-
-
 
     const options = {
         method: 'GET',
@@ -35,11 +35,13 @@ function Home() {
         async function fetchMovies() {
             setLoading(true);
             try {
-                const response = await axios.get(`${moviesEndpoint}`, options);
+                const response = await axios.get(`https://api.themoviedb.org/3/trending/movie/day?page=${moviePage}`, options);
                 if (response.data) {
                     setError(false);
                 }
                 setMovies(response.data.results);
+                setTotalMoviePages(response.data.total_pages)
+                console.log(response.data)
             } catch (e) {
                 setError(true);
                 console.error(e);
@@ -50,11 +52,13 @@ function Home() {
         async function fetchSeries() {
             setLoading(true);
             try {
-                const response = await axios.get(`${seriesEndpoint}`, options);
+                const response = await axios.get(`https://api.themoviedb.org/3/trending/tv/day?page=${seriesPage}`, options);
                 if (response.data) {
                     setError(false);
                 }
                 setSeries(response.data.results);
+                setTotalSeriesPages(response.data.total_pages)
+
             } catch (e) {
                 setError(true);
                 console.error(e);
@@ -69,20 +73,32 @@ function Home() {
         if (series) {
             void fetchSeries()
         }
-    }, []);
+    }, [moviePage, seriesPage]);
 
 
     return (
         <>
             <div className="page-outer-container">
-                <div className="loading-section">
-                    {loading && <h2>Loading... </h2>}
-                    {error && <h2>Error: Could not fetch data!</h2>}
-                </div>
                 <h1 className="home-titles">Trending Movies</h1>
+                <div className="loading-error-section">
+                    {loading && <h3 className="loading-message">Loading... </h3>}
+                    {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
+                </div>
+                <div className="button-set-page-section">
+                    <Button
+                        buttonType="button"
+                        children="Vorige"
+                        clickHandler={() => setMoviePage(moviePage - 1)}
+                        disabled={moviePage === 1}
+                    />
+                    <Button
+                        buttonType="button"
+                        children="Volgende"
+                        clickHandler={() => setMoviePage(moviePage + 1)}
+                        disabled={moviePage === totalMoviePages}
+                    />
+                </div>
                 <div className="home-inner-container">
-                    {loading && <h2>Loading... </h2>}
-                    {error && <h2>Error: Could not fetch data!</h2>}
                     {!moreMovies && Object.keys(movies).length > 0 && movies.slice(0, 5).map((movie) => {
                         return <MovieCard
                             key={movie.id}
@@ -113,10 +129,25 @@ function Home() {
                     clickHandler={() => setMoreMovies(!moreMovies)}
                 />
                 <h1 className="home-titles">Trending Series</h1>
+                <div className="loading-error-section">
+                    {loading && <h3 className="loading-message">Loading... </h3>}
+                    {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
+                </div>
+                <div className="button-set-page-section">
+                    <Button
+                        buttonType="button"
+                        children="Vorige"
+                        clickHandler={() => setSeriesPage(seriesPage - 1)}
+                        disabled={seriesPage === 1}
+                    />
+                    <Button
+                        buttonType="button"
+                        children="Volgende"
+                        clickHandler={() => setSeriesPage(seriesPage + 1)}
+                        disabled={seriesPage === totalSeriesPages}
+                    />
+                </div>
                 <div className="home-inner-container">
-                    {loading && <h2>Loading... </h2>}
-                    {error && <h2>Error: Could not fetch data!</h2>}
-                    {Object.keys(series).length > 0 && console.log(series)}
                     {!moreSeries && Object.keys(series).length > 0 && series.slice(0, 5).map((tv) => {
                         return <MovieCard
                             key={tv.id}
