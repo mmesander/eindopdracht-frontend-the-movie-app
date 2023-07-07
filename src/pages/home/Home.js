@@ -98,7 +98,7 @@ function Home() {
                 <Button
                     buttonType="button"
                     children={moreMovies ? "Laat minder resultaten zien" : "Laat meer resultaten zien"}
-                    name="home-results-button"
+                    name={moreMovies ? "active-home-results-button" : "inactive-home-results-button"}
                     clickHandler={() => setMoreMovies(!moreMovies)}
                 />
                 <h1 className="home-titles">Trending Series</h1>
@@ -119,8 +119,8 @@ function Home() {
                 </div>
                 <Button
                     buttonType="button"
-                    children={moreMovies ? "Laat minder resultaten zien" : "Laat meer resultaten zien"}
-                    name="home-results-button"
+                    children={moreSeries ? "Laat minder resultaten zien" : "Laat meer resultaten zien"}
+                    name={moreSeries ? "active-home-results-button" : "inactive-home-results-button"}
                     clickHandler={() => setMoreSeries(!moreSeries)}
                 />
             </div>
