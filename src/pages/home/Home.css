@@ -1,7 +1,7 @@
 .home-inner-container {
     display: flex;
     flex-direction: row;
-    max-width: 1200px;
+    max-width: 1000px;
     justify-content: center;
     height: auto;
     flex-wrap: wrap;
