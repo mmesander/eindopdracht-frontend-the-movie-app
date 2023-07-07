@@ -14,3 +14,23 @@
     color: var(--main-theme-color-white);
 }
 
+.inactive-home-results-button,
+.active-home-results-button {
+    margin-top: 10px;
+    padding: 8px 14px;
+    border-radius: 14px;
+    font-weight: bold;
+    background-color: var(--main-theme-color-red);
+    color: var(--main-theme-color-white);
+    border: 1px solid var(--main-theme-color-red);
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.inactive-home-results-button:hover {
+    color: var(--main-theme-color-gold);
+}
+
+.active-home-results-button {
+    color: var(--main-theme-color-gold);
+}
