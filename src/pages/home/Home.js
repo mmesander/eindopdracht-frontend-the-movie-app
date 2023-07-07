@@ -75,6 +75,16 @@ function Home() {
         }
     }, [moviePage, seriesPage]);
 
+    function handleClickMovies() {
+        setMoreMovies(!moreMovies);
+        setMoviePage(1);
+    }
+
+    function handleClickSeries() {
+        setMoreSeries(!moreSeries);
+        setSeriesPage(1);
+    }
+
 
     return (
         <>
@@ -84,7 +94,7 @@ function Home() {
                     {loading && <h3 className="loading-message">Loading... </h3>}
                     {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
                 </div>
-                <div className="button-set-page-section">
+                {moreMovies && <div className="button-set-page-section">
                     <Button
                         buttonType="button"
                         children="Vorige"
@@ -97,7 +107,7 @@ function Home() {
                         clickHandler={() => setMoviePage(moviePage + 1)}
                         disabled={moviePage === totalMoviePages}
                     />
-                </div>
+                </div>}
                 <div className="home-inner-container">
                     {!moreMovies && Object.keys(movies).length > 0 && movies.slice(0, 5).map((movie) => {
                         return <MovieCard
@@ -126,14 +136,14 @@ function Home() {
                     buttonType="button"
                     children={moreMovies ? "Laat minder resultaten zien" : "Laat meer resultaten zien"}
                     name={moreMovies ? "active-home-results-button" : "inactive-home-results-button"}
-                    clickHandler={() => setMoreMovies(!moreMovies)}
+                    clickHandler={handleClickMovies}
                 />
                 <h1 className="home-titles">Trending Series</h1>
                 <div className="loading-error-section">
                     {loading && <h3 className="loading-message">Loading... </h3>}
                     {error && <h3 className="error-message">Error: Could not fetch data!</h3>}
                 </div>
-                <div className="button-set-page-section">
+                {moreSeries && <div className="button-set-page-section">
                     <Button
                         buttonType="button"
                         children="Vorige"
@@ -146,7 +156,7 @@ function Home() {
                         clickHandler={() => setSeriesPage(seriesPage + 1)}
                         disabled={seriesPage === totalSeriesPages}
                     />
-                </div>
+                </div>}
                 <div className="home-inner-container">
                     {!moreSeries && Object.keys(series).length > 0 && series.slice(0, 5).map((tv) => {
                         return <MovieCard
@@ -173,7 +183,7 @@ function Home() {
                     buttonType="button"
                     children={moreSeries ? "Laat minder resultaten zien" : "Laat meer resultaten zien"}
                     name={moreSeries ? "active-home-results-button" : "inactive-home-results-button"}
-                    clickHandler={() => setMoreSeries(!moreSeries)}
+                    clickHandler={handleClickSeries}
                 />
             </div>
         </>

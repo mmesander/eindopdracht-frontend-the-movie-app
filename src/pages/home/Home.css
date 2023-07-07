@@ -17,7 +17,7 @@
 .inactive-home-results-button,
 .active-home-results-button {
     margin-top: 10px;
-    padding: 10px 14px;
+    padding: 8px 14px;
     border-radius: 14px;
     font-weight: bold;
     background-color: var(--main-theme-color-red);
