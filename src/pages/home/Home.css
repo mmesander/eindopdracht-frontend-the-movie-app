@@ -22,7 +22,7 @@
     font-weight: bold;
     background-color: var(--main-theme-color-red);
     color: var(--main-theme-color-white);
-    border: 1px solid var(--main-theme-color-red);
+    border: 2px solid var(--main-theme-color-black);
     font-size: 16px;
     margin-bottom: 10px;
 }
