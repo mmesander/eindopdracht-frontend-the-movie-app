@@ -76,32 +76,40 @@ function Search() {
 
 
     //Specific Search
-    function clickHandler(e) {
-        e.preventDefault();
-        setPage(1);
+    // function clickHandler(e) {
+    //     e.preventDefault();
+    //     setPage(1);
+    //     if (specificSearch) {
+    //         void fetchSpecificSearch(specificSearch);
+    //     }
+    // }
+
+    function newClickHandler() {
+        console.log(specificSearch)
         if (specificSearch) {
-            void fetchSpecificSearch(specificSearch);
+            const url = `/zoeken/specifiek/1?zoekopdracht=${encodeURIComponent(specificSearch)}`
+            navigate(`${url}`)
         }
     }
 
-    async function fetchSpecificSearch(specificSearch) {
-        setLoading(true);
-        try {
-            const response = await axios.get(`https://api.themoviedb.org/3/search/multi?query=${specificSearch}&include_adult=false&language=en-US&page=${page}`, options)
-            if (response.data) {
-                setActive(true);
-                setError(false);
-            }
-            setSearchResults(response.data.results);
-            setTotalPages(response.data.total_pages);
-
-        } catch (e) {
-            setError(true);
-            console.error(e)
-            setActive(false);
-        }
-        setLoading(false);
-    }
+    // async function fetchSpecificSearch(specificSearch) {
+    //     setLoading(true);
+    //     try {
+    //         const response = await axios.get(`https://api.themoviedb.org/3/search/multi?query=${specificSearch}&include_adult=false&language=en-US&page=${page}`, options)
+    //         if (response.data) {
+    //             setActive(true);
+    //             setError(false);
+    //         }
+    //         setSearchResults(response.data.results);
+    //         setTotalPages(response.data.total_pages);
+    //
+    //     } catch (e) {
+    //         setError(true);
+    //         console.error(e)
+    //         setActive(false);
+    //     }
+    //     setLoading(false);
+    // }
 
 
     // Filter Search
@@ -266,7 +274,7 @@ function Search() {
                     <div className="search-menu search-specific">
                         <h2>Zoeken</h2>
                         <p>Zoek hier naar een specifieke film of serie</p>
-                        <form onSubmit={clickHandler}>
+                        <form onSubmit={newClickHandler}>
                             <Input
                                 type="text"
                                 id="search-specific-field"

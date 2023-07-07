@@ -12,6 +12,7 @@ import Footer from "./components/footer/Footer";
 // Pages
 import Home from "./pages/home/Home";
 import Search from "./pages/search/Search";
+import SearchSpecific from "./pages/searchspecific/SearchSpecific";
 import Suggestion from "./pages/suggestion/Suggestion";
 import SuggestionSpecific from "./pages/suggestionspecific/SuggestionSpecific";
 import Lists from "./pages/lists/Lists";
@@ -33,7 +34,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/zoeken/filter/:filterId" element={<Search/>}/>
-                {/*<Route path="/zoeken/specifiek/searchId" element={<Search/>}/>*/}
+                <Route path="/zoeken/specifiek/:searchId" element={<SearchSpecific/>}/>
                 <Route path="/suggestie" element={<Suggestion/>}/>
                 <Route path="/suggestie/:moodId/:pageId" element={<SuggestionSpecific/>}/>
                 <Route path="/lijsten" element={<Lists/>}/>
