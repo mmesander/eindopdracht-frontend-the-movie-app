@@ -39,6 +39,7 @@ function SignIn() {
         } catch (e) {
             setError(true);
             console.error(e);
+            console.log(error);
             setErrorMessage("Onjuiste gebruikersnaam en wachtwoord combinatie");
         }
         setLoading(false);
