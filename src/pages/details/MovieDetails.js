@@ -53,7 +53,6 @@ function MovieDetails() {
                 }
                 setDetails(response.data);
                 setGenres(response.data.genres);
-                console.log(response.data)
             } catch (e) {
                 setError(true);
                 console.error(e)
