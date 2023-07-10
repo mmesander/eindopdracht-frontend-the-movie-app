@@ -190,7 +190,7 @@ function SerieDetails() {
                                 </div>
                                 {genres.length > 0 && <ul>
                                     {genres.map((genre) => {
-                                        return <li>{genre.name}</li>
+                                        return <li key={genre.id}>{genre.name}</li>
                                     })}
                                 </ul>}
                                 <h3>Omschrijving:</h3>
