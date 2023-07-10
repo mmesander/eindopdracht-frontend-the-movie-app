@@ -8,7 +8,7 @@
     max-width: 175px;
     justify-content: space-between;
     background-color: var(--main-theme-color-white);
-    border-radius: 10px 10px 5px 5px;
+    border-radius: 10px 10px 7px 7px;
 }
 
 .movie-card-header-section {
@@ -32,7 +32,7 @@
     margin: 5px 10px;
     border: 3px solid var(--main-bg-color);
     text-align: left;
-    border-radius: 10px 10px 5px 5px;
+    border-radius: 10px 10px 7px 7px;
 }
 
 .movie-card-container-button h3,
