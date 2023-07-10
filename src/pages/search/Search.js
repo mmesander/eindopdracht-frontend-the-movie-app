@@ -90,14 +90,6 @@ function Search() {
         }
     }
 
-    // Note to self:
-    // Het is dus de bedoeling dat hij de filters onthoudt wanneer je het onderstaande pad volgt:
-    // Klikken op Moviecard, zodat je naar movieDetails wordt gestuurd
-    // Indien je op terug klikt kom je netjes terug op dezelfde pagina
-    // Maar die moet dan gerefresht worden met de endpoint, pagina, etc.
-    // Dit moet werken voor zowel de films als de series (dus die if if chain)
-
-
     //Specific Search
     function newClickHandler(e) {
         e.preventDefault();
