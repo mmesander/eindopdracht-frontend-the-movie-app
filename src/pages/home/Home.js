@@ -40,7 +40,7 @@ function Home() {
                     setError(false);
                 }
                 setMovies(response.data.results);
-                setTotalMoviePages(response.data.total_pages)
+                setTotalMoviePages(response.data.total_pages);
             } catch (e) {
                 setError(true);
                 console.error(e);
@@ -56,7 +56,7 @@ function Home() {
                     setError(false);
                 }
                 setSeries(response.data.results);
-                setTotalSeriesPages(response.data.total_pages)
+                setTotalSeriesPages(response.data.total_pages);
 
             } catch (e) {
                 setError(true);
