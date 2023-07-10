@@ -2,7 +2,7 @@
 import React from "react";
 
 // Styles
-import './Footer.css'
+import './Footer.css';
 
 function Footer() {
     return (
