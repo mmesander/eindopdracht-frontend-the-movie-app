@@ -1,4 +1,4 @@
-.moviecard-container {
+.movie-card-container {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -11,36 +11,36 @@
     border-radius: 10px 10px 5px 5px;
 }
 
-.moviecard-header-section {
+.movie-card-header-section {
     display: flex;
     flex-direction: column;
     flex-basis: 100%;
     justify-content: space-between;
 }
 
-.moviecard-header-section img {
+.movie-card-header-section img {
     width: 100%;
     border-radius: 5px 5px 0 0;
 }
 
-.moviecard-rating span {
+.movie-card-rating span {
     color: var(--main-theme-color-red);
     font-weight: bold;
 }
 
-.moviecard-container-button {
+.movie-card-container-button {
     margin: 5px 10px;
     border: 3px solid var(--main-bg-color);
     text-align: left;
     border-radius: 10px 10px 5px 5px;
 }
 
-.moviecard-container-button h3,
-.moviecard-container-button h4 {
+.movie-card-container-button h3,
+.movie-card-container-button h4 {
     margin: 5px;
 }
 
-.moviecard-container-button:hover {
+.movie-card-container-button:hover {
     border: 3px solid var(--main-theme-color-red);
     cursor: pointer;
 }
