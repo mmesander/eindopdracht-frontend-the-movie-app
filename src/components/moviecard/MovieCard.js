@@ -39,7 +39,7 @@ function MovieCard({title, image, rating, id, name, tv}) {
 
     return (
         <button
-            type="radio"
+            type="button"
             className="moviecard-container-button"
             onClick={clickHandler}
         >
