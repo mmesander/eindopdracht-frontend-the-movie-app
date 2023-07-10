@@ -14,7 +14,7 @@ import formatDate from "../../helpers/formatDate";
 import roundRating from "../../helpers/roundRating";
 
 // Styles
-import './Details.css'
+import './Details.css';
 
 // Assets
 import favoriteIcon from "../../assets/icons/heart-straight-fill.svg";
@@ -47,7 +47,7 @@ function MovieDetails() {
         async function fetchMovieDetails(id) {
             try {
                 setLoading(true);
-                const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}`, options)
+                const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}`, options);
                 if (response.data) {
                     setError(false);
                 }
