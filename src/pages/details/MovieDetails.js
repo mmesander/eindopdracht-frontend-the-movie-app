@@ -62,7 +62,7 @@ function MovieDetails() {
 
         void fetchMovieDetails(movieId);
 
-    }, [])
+    }, []);
 
     function setFavorite() {
         const checkMovieID = listItem.favoriteMovies.find((movie) => {
