@@ -8,7 +8,7 @@ function MoodContainer({mood, image, imageDescription, onClick}) {
     return (
         <>
             <button
-                type="radio"
+                type="button"
                 className="mood-button"
                 onClick={onClick}
             >
