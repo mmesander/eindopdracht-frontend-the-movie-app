@@ -17,5 +17,4 @@ function InputHookForm({type, name, label, id, placeholder, errors, register, va
         </>
     );
 }
-
 export default InputHookForm;
