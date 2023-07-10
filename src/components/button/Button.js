@@ -2,7 +2,7 @@
 import React from "react";
 
 // Styles
-import './Button.css'
+import './Button.css';
 
 function Button({buttonType, name, clickHandler, children, disabled, id}){
     return (
