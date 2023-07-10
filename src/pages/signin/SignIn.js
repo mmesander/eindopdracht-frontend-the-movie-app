@@ -1,6 +1,6 @@
 // Functions
 import React, {useContext, useState} from "react";
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import axios from "axios";
 import {useForm} from "react-hook-form";
 
@@ -15,7 +15,7 @@ import './SignIn.css';
 
 function SignIn() {
     const {login} = useContext(AuthContext);
-    const {handleSubmit, register, formState: {errors, isValid}} = useForm({mode:"onChange"});
+    const {handleSubmit, register, formState: {errors, isValid}} = useForm({mode: "onChange"});
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
@@ -31,14 +31,13 @@ function SignIn() {
             });
             login(response.data.accessToken);
 
-            if(response.data.accessToken) {
+            if (response.data.accessToken) {
                 setError(false);
             }
 
 
         } catch (e) {
             setError(true);
-            console.log(error);
             console.error(e);
             setErrorMessage("Onjuiste gebruikersnaam en wachtwoord combinatie");
         }
@@ -91,7 +90,8 @@ function SignIn() {
                                 }
                             }}
                         />
-                        {loading ? <p>Aan het laden.. een moment geduld alstublieft</p> : <p className="input-error-message">{errorMessage}</p>}
+                        {loading ? <p>Aan het laden.. een moment geduld alstublieft</p> :
+                            <p className="input-error-message">{errorMessage}</p>}
                         <button
                             type="submit"
                             disabled={!isValid}
