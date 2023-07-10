@@ -4,10 +4,10 @@ import axios from "axios";
 
 // Components
 import MovieCard from "../../components/moviecard/MovieCard";
+import Button from "../../components/button/Button";
 
 // Styles
 import './Home.css';
-import Button from "../../components/button/Button";
 
 function Home() {
     const [movies, setMovies] = useState({});
@@ -40,8 +40,7 @@ function Home() {
                     setError(false);
                 }
                 setMovies(response.data.results);
-                setTotalMoviePages(response.data.total_pages)
-                console.log(response.data)
+                setTotalMoviePages(response.data.total_pages);
             } catch (e) {
                 setError(true);
                 console.error(e);
@@ -57,7 +56,7 @@ function Home() {
                     setError(false);
                 }
                 setSeries(response.data.results);
-                setTotalSeriesPages(response.data.total_pages)
+                setTotalSeriesPages(response.data.total_pages);
 
             } catch (e) {
                 setError(true);

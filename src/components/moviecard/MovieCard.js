@@ -39,12 +39,12 @@ function MovieCard({title, image, rating, id, name, tv}) {
 
     return (
         <button
-            type="radio"
-            className="moviecard-container-button"
+            type="button"
+            className="movie-card-container-button"
             onClick={clickHandler}
         >
-            <div className="moviecard-container">
-                <section className="moviecard-header-section">
+            <div className="movie-card-container">
+                <section className="movie-card-header-section">
                     {title && !name && <div>
                         <img src={`https://image.tmdb.org/t/p/w500${image}`} alt={title}/>
                         {title.length < 40 && <h3>{title}</h3>}

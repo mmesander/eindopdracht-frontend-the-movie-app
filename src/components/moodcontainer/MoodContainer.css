@@ -5,10 +5,8 @@
     flex-shrink: 0;
     width: 200px;
     height: 350px;
-    min-height: 350px;
-    max-width: 200px;
     background-color: var(--main-theme-color-white);
-    border-radius: 10px 10px 5px 5px;
+    border-radius: 10px 10px 7px 7px;
 }
 
 .mood-outer-container img {
@@ -27,7 +25,7 @@
     font-size: 16px;
     text-align: left;
     font-weight: bolder;
-    border-radius: 10px 10px 5px 5px;
+    border-radius: 10px 10px 7px 7px;
 }
 
 .mood-button:hover {

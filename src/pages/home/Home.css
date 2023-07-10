@@ -23,7 +23,7 @@
     background-color: var(--main-theme-color-red);
     color: var(--main-theme-color-white);
     border: 2px solid var(--main-theme-color-black);
-    font-size: 16px;
+    font-size: 14px;
     margin-bottom: 10px;
 }
 

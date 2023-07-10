@@ -1,21 +1,21 @@
-// Styles
-import './index.css';
-
 // Functions
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter as Router} from "react-router-dom";
 
-// Pages
-import App from './App';
-
 // Context
 import AuthContextProvider from "./context/AuthContext";
 import ListsContextProvider from "./context/ListsContext";
 
+// Pages
+import App from './App';
+
+// Styles
+import './index.css';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    // <React.StrictMode>
+    <React.StrictMode>
         <Router>
             <AuthContextProvider>
                 <ListsContextProvider>
@@ -23,5 +23,5 @@ root.render(
                 </ListsContextProvider>
             </AuthContextProvider>
         </Router>
-    // </React.StrictMode>
+    </React.StrictMode>
 );

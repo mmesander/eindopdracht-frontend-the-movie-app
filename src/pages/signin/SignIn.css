@@ -1,4 +1,4 @@
-.signin-outer-container {
+.sign-in-outer-container {
     background-image: url("../../assets/images/background.jpg");
     background-size: cover;
     background-position: center;
@@ -11,7 +11,7 @@
     align-items: center;
 }
 
-.signin-inner-container{
+.sign-in-inner-container{
     display: flex;
     flex-direction: column;
     background-color: var(--field-bg-color);
@@ -23,19 +23,19 @@
     position: relative;
 }
 
-.signin-inner-container h1 {
+.sign-in-inner-container h1 {
     margin-bottom: 20px;
     color: var(--main-theme-color-white);
     font-size: 40px;
 }
 
-.signin-inner-container label {
+.sign-in-inner-container label {
     color: var(--main-theme-color-white);
     font-weight: bold;
     font-size: 20px;
 }
 
-.signin-inner-container input {
+.sign-in-inner-container input {
     width: 100%;
     border-radius: 5px;
     padding: 9px 8px;
@@ -43,18 +43,18 @@
     border: 1px solid transparent;
 }
 
-.signin-inner-container p {
+.sign-in-inner-container p {
     font-weight: bold;
     margin-bottom: 10px;
     min-height: 21px;
     font-size: 15px;
 }
 
-.signin-inner-container .input-error-message {
+.sign-in-inner-container .input-error-message {
     color: var(--main-theme-color-red);
 }
 
-.signin-inner-container button {
+.sign-in-inner-container button {
     background-color: var(--main-theme-color-red);
     width: 100%;
     padding: 12px;
@@ -65,33 +65,33 @@
     color: var(--main-theme-color-white);
 }
 
-.signin-inner-container button:hover {
+.sign-in-inner-container button:hover {
     cursor: pointer;
     color: var(--main-theme-color-black);
 }
 
-.signin-inner-container input:focus {
+.sign-in-inner-container input:focus {
     outline: 1px solid var(--main-theme-color-red);
 }
 
-.signin-inner-container button:disabled {
+.sign-in-inner-container button:disabled {
     background-color: var(--button-disabled-color-red);
     cursor: not-allowed;
     color: var(--main-theme-color-white);
 }
 
-.signin-inner-container h3 {
+.sign-in-inner-container h3 {
     color: var(--main-theme-color-white);
     position: absolute;
     bottom: -25px;
     left: 5px;
 }
 
-.signin-inner-container a,
-.signin-inner-container a:visited {
+.sign-in-inner-container a,
+.sign-in-inner-container a:visited {
     color: var(--main-theme-color-white);
 }
 
-.signin-inner-container a:hover {
+.sign-in-inner-container a:hover {
     color: var(--main-theme-color-gold);
 }

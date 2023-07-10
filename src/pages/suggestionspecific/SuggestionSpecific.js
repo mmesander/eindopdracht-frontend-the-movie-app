@@ -43,7 +43,7 @@ function SuggestionSpecific() {
     async function fetchSpecificMovies(endpoint, text) {
         setLoading(true);
         try {
-            const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?include_adult=true&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${endpoint}`, options);
+            const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&with_genres=${endpoint}`, options);
             if (response.data) {
                 setError(false);
             }
@@ -95,12 +95,13 @@ function SuggestionSpecific() {
             </div>
             <div className="suggestion-inner-container">
                 {Object.keys(movies).length > 0 && movies.map((movie) => {
-                    return <MovieCard key={movie.id}
-                                      title={movie.title}
-                                      image={movie.poster_path}
-                                      rating={movie.vote_average}
-                                      id={movie.id}
-                                      tv={false}/>
+                    return <MovieCard
+                        key={movie.id}
+                        title={movie.title}
+                        image={movie.poster_path}
+                        rating={movie.vote_average}
+                        id={movie.id}
+                        tv={false}/>
                 })}
             </div>
         </div>

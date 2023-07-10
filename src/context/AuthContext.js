@@ -3,6 +3,8 @@ import React, {createContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
+
+// Helpers
 import checkTokenValidity from "../helpers/checkTokenValidity";
 
 export const AuthContext = createContext(null);
@@ -39,9 +41,7 @@ function AuthContextProvider({children}) {
     }
 
     function logout() {
-        localStorage.removeItem('token');
-        // localStorage.clear();
-        // Deze gaat gebruikt worden indien items aan de lijst worden toegevoegd!
+        localStorage.clear();
         setAuth({
             ...auth,
             isAuth: false,

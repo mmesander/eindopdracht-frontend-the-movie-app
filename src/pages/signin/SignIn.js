@@ -1,6 +1,6 @@
 // Functions
 import React, {useContext, useState} from "react";
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import axios from "axios";
 import {useForm} from "react-hook-form";
 
@@ -15,7 +15,7 @@ import './SignIn.css';
 
 function SignIn() {
     const {login} = useContext(AuthContext);
-    const {handleSubmit, register, formState: {errors, isValid}} = useForm({mode:"onChange"});
+    const {handleSubmit, register, formState: {errors, isValid}} = useForm({mode: "onChange"});
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
@@ -31,15 +31,15 @@ function SignIn() {
             });
             login(response.data.accessToken);
 
-            if(response.data.accessToken) {
+            if (response.data.accessToken) {
                 setError(false);
             }
 
 
         } catch (e) {
             setError(true);
-            console.log(error);
             console.error(e);
+            console.log(error);
             setErrorMessage("Onjuiste gebruikersnaam en wachtwoord combinatie");
         }
         setLoading(false);
@@ -47,10 +47,10 @@ function SignIn() {
 
     return (
         <>
-            <div className="signin-outer-container">
-                <div className="signin-inner-container">
+            <div className="sign-in-outer-container">
+                <div className="sign-in-inner-container">
                     <h1>Inloggen</h1>
-                    <form id="signin-form" onSubmit={handleSubmit(handleLogin)}>
+                    <form id="sign-in-form" onSubmit={handleSubmit(handleLogin)}>
                         <InputHookForm
                             type="text"
                             name="username"
@@ -91,7 +91,8 @@ function SignIn() {
                                 }
                             }}
                         />
-                        {loading ? <p>Aan het laden.. een moment geduld alstublieft</p> : <p className="input-error-message">{errorMessage}</p>}
+                        {loading ? <p>Aan het laden.. een moment geduld alstublieft</p> :
+                            <p className="input-error-message">{errorMessage}</p>}
                         <button
                             type="submit"
                             disabled={!isValid}

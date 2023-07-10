@@ -3,7 +3,7 @@
     flex-direction: row;
     min-width: 900px;
     max-width: 1000px;
-    height: 700px;
+    height: 725px;
 }
 
 .details-image-container {
@@ -142,7 +142,6 @@
     margin: 10px 10px 1px 0;
     padding: 4px 8px;
     border-radius: 14px;
-    /*font-weight: bold;*/
     color: var(--main-theme-color-white);
     background-color: var(--main-theme-color-red);
     border: 1px solid var(--main-theme-color-red);

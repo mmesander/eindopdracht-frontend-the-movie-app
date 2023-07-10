@@ -14,7 +14,7 @@ import formatDate from "../../helpers/formatDate";
 import roundRating from "../../helpers/roundRating";
 
 // Styles
-import './Details.css'
+import './Details.css';
 
 // Assets
 import favoriteIcon from "../../assets/icons/heart-straight-fill.svg";
@@ -47,23 +47,22 @@ function MovieDetails() {
         async function fetchMovieDetails(id) {
             try {
                 setLoading(true);
-                const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}`, options)
+                const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}`, options);
                 if (response.data) {
                     setError(false);
                 }
                 setDetails(response.data);
                 setGenres(response.data.genres);
-                console.log(response.data)
             } catch (e) {
                 setError(true);
-                console.error(e)
+                console.error(e);
             }
             setLoading(false);
         }
 
         void fetchMovieDetails(movieId);
 
-    }, [])
+    }, []);
 
     function setFavorite() {
         const checkMovieID = listItem.favoriteMovies.find((movie) => {
@@ -192,7 +191,7 @@ function MovieDetails() {
                                 </div>
                                 {genres.length > 0 && <ul>
                                     {genres.map((genre) => {
-                                        return <li>{genre.name}</li>
+                                        return <li key={genre.id}>{genre.name}</li>
                                     })}
                                 </ul>}
                                 <h3>Omschrijving:</h3>

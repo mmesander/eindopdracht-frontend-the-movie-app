@@ -90,14 +90,6 @@ function Search() {
         }
     }
 
-    // Note to self:
-    // Het is dus de bedoeling dat hij de filters onthoudt wanneer je het onderstaande pad volgt:
-    // Klikken op Moviecard, zodat je naar movieDetails wordt gestuurd
-    // Indien je op terug klikt kom je netjes terug op dezelfde pagina
-    // Maar die moet dan gerefresht worden met de endpoint, pagina, etc.
-    // Dit moet werken voor zowel de films als de series (dus die if if chain)
-
-
     //Specific Search
     function newClickHandler(e) {
         e.preventDefault();
@@ -203,10 +195,9 @@ function Search() {
             }
             setFilterSearchResults(response.data.results);
             setTotalPages(response.data.total_pages);
-            console.log(response.data);
         } catch (e) {
             setError(true);
-            console.error(e)
+            console.error(e);
         }
         setLoading(false);
     }
@@ -223,7 +214,7 @@ function Search() {
             console.log(response.data);
         } catch (e) {
             setError(true);
-            console.error(e)
+            console.error(e);
         }
         setLoading(false);
     }
@@ -357,7 +348,9 @@ function Search() {
                                 onChange={(value) => setMaxRating(value.x)}
                             />
                             <p>{maxRating}</p>
-                            {minRating > maxRating && <h4 className="rating-error">Minimale rating kan niet groter zijn dan maximale rating</h4>}
+                            {minRating > maxRating &&
+                                <h4 className="rating-error">Minimale rating kan niet groter zijn dan maximale
+                                    rating</h4>}
                         </div>
                     </div>
                     <div className="search-menu genres">
