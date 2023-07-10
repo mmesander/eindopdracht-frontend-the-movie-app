@@ -195,10 +195,9 @@ function Search() {
             }
             setFilterSearchResults(response.data.results);
             setTotalPages(response.data.total_pages);
-            console.log(response.data);
         } catch (e) {
             setError(true);
-            console.error(e)
+            console.error(e);
         }
         setLoading(false);
     }
@@ -215,7 +214,7 @@ function Search() {
             console.log(response.data);
         } catch (e) {
             setError(true);
-            console.error(e)
+            console.error(e);
         }
         setLoading(false);
     }
@@ -349,7 +348,9 @@ function Search() {
                                 onChange={(value) => setMaxRating(value.x)}
                             />
                             <p>{maxRating}</p>
-                            {minRating > maxRating && <h4 className="rating-error">Minimale rating kan niet groter zijn dan maximale rating</h4>}
+                            {minRating > maxRating &&
+                                <h4 className="rating-error">Minimale rating kan niet groter zijn dan maximale
+                                    rating</h4>}
                         </div>
                     </div>
                     <div className="search-menu genres">
