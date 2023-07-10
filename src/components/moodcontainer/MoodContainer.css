@@ -5,8 +5,6 @@
     flex-shrink: 0;
     width: 200px;
     height: 350px;
-    min-height: 350px;
-    max-width: 200px;
     background-color: var(--main-theme-color-white);
     border-radius: 10px 10px 5px 5px;
 }
