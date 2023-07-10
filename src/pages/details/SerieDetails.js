@@ -14,7 +14,7 @@ import formatDate from "../../helpers/formatDate";
 import roundRating from "../../helpers/roundRating";
 
 // Styles
-import './Details.css'
+import './Details.css';
 
 // Assets
 import favoriteIcon from "../../assets/icons/heart-straight-fill.svg";
@@ -47,13 +47,12 @@ function SerieDetails() {
         async function fetchSerieDetails(id) {
             try {
                 setLoading(true);
-                const response = await axios.get(`https://api.themoviedb.org/3/tv/${id}`, options)
+                const response = await axios.get(`https://api.themoviedb.org/3/tv/${id}`, options);
                 if (response.data) {
                     setError(false);
                 }
                 setGenres(response.data.genres);
                 setDetails(response.data);
-                console.log(response.data);
             } catch (e) {
                 setError(true);
                 console.error(e)
