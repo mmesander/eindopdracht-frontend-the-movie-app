@@ -46,10 +46,10 @@ function SignIn() {
 
     return (
         <>
-            <div className="signin-outer-container">
-                <div className="signin-inner-container">
+            <div className="sign-in-outer-container">
+                <div className="sign-in-inner-container">
                     <h1>Inloggen</h1>
-                    <form id="signin-form" onSubmit={handleSubmit(handleLogin)}>
+                    <form id="sign-in-form" onSubmit={handleSubmit(handleLogin)}>
                         <InputHookForm
                             type="text"
                             name="username"
