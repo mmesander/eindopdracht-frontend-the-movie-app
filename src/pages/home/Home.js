@@ -41,7 +41,6 @@ function Home() {
                 }
                 setMovies(response.data.results);
                 setTotalMoviePages(response.data.total_pages)
-                console.log(response.data)
             } catch (e) {
                 setError(true);
                 console.error(e);
