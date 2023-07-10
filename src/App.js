@@ -24,7 +24,6 @@ import SerieDetails from "./pages/details/SerieDetails";
 // Styles
 import './App.css';
 
-
 function App() {
     const {isAuth} = useContext(AuthContext);
 
