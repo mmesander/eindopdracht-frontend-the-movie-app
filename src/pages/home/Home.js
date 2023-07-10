@@ -4,10 +4,10 @@ import axios from "axios";
 
 // Components
 import MovieCard from "../../components/moviecard/MovieCard";
+import Button from "../../components/button/Button";
 
 // Styles
 import './Home.css';
-import Button from "../../components/button/Button";
 
 function Home() {
     const [movies, setMovies] = useState({});
