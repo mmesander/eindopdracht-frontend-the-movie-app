@@ -27,7 +27,7 @@ function SignUp() {
 
             return () => clearTimeout(timer);
         }
-    }, [regSuccess, navigate])
+    }, [regSuccess, navigate]);
 
     async function handleRegister(data) {
         setLoading(true);
@@ -53,9 +53,9 @@ function SignUp() {
             setError(true);
             console.log(error);
             if (e.response.data.message.includes("email")) {
-                setErrorMessage("Registratie mislukt! Het emailadres is al in gebruik!")
+                setErrorMessage("Registratie mislukt! Het emailadres is al in gebruik!");
             } else if (e.response.data.message.includes("username")) {
-                setErrorMessage("Registratie mislukt! De gebruikersnaam is al in gebruik!")
+                setErrorMessage("Registratie mislukt! De gebruikersnaam is al in gebruik!");
             } else {
                 setErrorMessage("Registratie mislukt!");
             }
