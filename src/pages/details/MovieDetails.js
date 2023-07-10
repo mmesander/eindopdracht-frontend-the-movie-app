@@ -55,7 +55,7 @@ function MovieDetails() {
                 setGenres(response.data.genres);
             } catch (e) {
                 setError(true);
-                console.error(e)
+                console.error(e);
             }
             setLoading(false);
         }

@@ -55,7 +55,7 @@ function SerieDetails() {
                 setDetails(response.data);
             } catch (e) {
                 setError(true);
-                console.error(e)
+                console.error(e);
             }
             setLoading(false);
         }
