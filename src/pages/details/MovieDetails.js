@@ -165,7 +165,6 @@ function MovieDetails() {
 
                                 <p className="details-release-date">{formatDate(details.release_date)}</p>
                                 <h4 className="details-tagline">{details.tagline}</h4>
-                                <h2>Rating: <span>{roundRating(details.vote_average)}</span></h2>
                                 <div className="details-icons-container">
                                     <button
                                         type="button"
@@ -189,6 +188,7 @@ function MovieDetails() {
                                         <img src={watchedIcon} alt="watched-icon"/>
                                     </button>
                                 </div>
+                                <h2>Rating: <span>{roundRating(details.vote_average)}</span></h2>
                                 {genres.length > 0 && <ul>
                                     {genres.map((genre) => {
                                         return <li key={genre.id}>{genre.name}</li>
