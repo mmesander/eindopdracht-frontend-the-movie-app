@@ -124,8 +124,8 @@ function SignUp() {
                                     message: 'Wachtwoord moet minimaal 6 tekens bevatten'
                                 },
                                 pattern: {
-                                    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/,
-                                    message: 'Wachtwoord moet minimaal een hoofdletter bevatten, een kleine letter en een getal'
+                                    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{6,}$/,
+                                    message: 'Wachtwoord moet minimaal een hoofdletter, een kleine letter, een getal en een speciaal teken bevatten'
                                 }
                             }}
                         />
