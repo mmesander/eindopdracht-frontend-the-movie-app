@@ -34,15 +34,14 @@ function Search() {
     const [minRating, setMinRating] = useState(0);
     const [maxRating, setMaxRating] = useState(10);
     const [movieRatingString, setMovieRatingString] = useState("");
+    const [movieGenreString, setMovieGenreString] = useState("");
     const [seriesRatingString, setSeriesRatingString] = useState("");
+    const [seriesGenreString, setSeriesGenreString] = useState("");
     const [sortText, setSortText] = useState("");
     const [genresList, setGenresList] = useState({
         movieGenres: [],
         seriesGenres: [],
     });
-
-    let movieGenreString = "";
-    let seriesGenreString = "";
 
     // General
     const options = {
@@ -229,13 +228,13 @@ function Search() {
 
         if (isMovie && endpoint) {
             if (genresList.movieGenres.length === 0) {
-                movieGenreString = "";
+                setMovieGenreString("");
             } else if (genresList.movieGenres.length === 1) {
-                movieGenreString = genresText + genresList.movieGenres[0];
+                setMovieGenreString(genresText + genresList.movieGenres[0]);
             } else {
                 const numbersToString = genresList.movieGenres.map((id) => id.toString());
                 const joinedNumbers = numbersToString.join('%2C');
-                movieGenreString = genresText + joinedNumbers;
+                setMovieGenreString(genresText + joinedNumbers);
             }
 
             setMovieRatingString(minRatingText + minRating + maxRatingText + maxRating);
@@ -253,13 +252,13 @@ function Search() {
 
         if (!isMovie && endpoint) {
             if (genresList.seriesGenres.length === 0) {
-                seriesGenreString = "";
+                setSeriesGenreString("");
             } else if (genresList.seriesGenres.length === 1) {
-                seriesGenreString = genresText + genresList.seriesGenres[0];
+                setSeriesGenreString(genresText + genresList.seriesGenres[0]);
             } else {
                 const numbersToString = genresList.seriesGenres.map((id) => id.toString());
                 const joinedNumbers = numbersToString.join('%2C');
-                seriesGenreString = genresText + joinedNumbers;
+                setSeriesGenreString(genresText + joinedNumbers);
             }
 
             setSeriesRatingString(minRatingText + minRating + maxRatingText + maxRating);
