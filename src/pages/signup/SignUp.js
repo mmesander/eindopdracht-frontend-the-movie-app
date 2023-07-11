@@ -97,7 +97,7 @@ function SignUp() {
                                 required: 'Dit veld is verplicht',
                                 pattern: {
                                     value: /^[a-zA-Z0-9_]+$/,
-                                    message: 'Gebruikersnaam mag alleen letters cijfers en underscores bevatten'
+                                    message: 'Gebruikersnaam mag alleen letters, cijfers en underscores bevatten'
                                 },
                                 minLength: {
                                     value: 6,
