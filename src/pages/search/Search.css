@@ -8,6 +8,13 @@
     padding-block: 40px;
 }
 
+.filter-search-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-basis: 100vw;
+}
+
 /*Menu Styling*/
 
 .search-menu-container {
@@ -17,6 +24,7 @@
     flex-grow: 1;
     flex-shrink: 0;
     gap: 2px;
+    margin-top: 75px;
 }
 
 .search-menu {
@@ -159,14 +167,6 @@
 }
 
 /*Filter Search Results Styling*/
-
-.filter-search-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-basis: 100vw;
-}
 
 .filter-search-results-outer-container {
     display: flex;
