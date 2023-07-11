@@ -43,6 +43,46 @@ function Search() {
         seriesGenres: [],
     });
 
+    const movieGenresID = [
+        {name: "Actie", id: 28},
+        {name: "Animatie", id: 16},
+        {name: "Avontuur", id: 12},
+        {name: "Documentaire", id: 99},
+        {name: "Drama", id: 18},
+        {name: "Familie", id: 10751},
+        {name: "Fantasie", id: 14},
+        {name: "Historisch", id: 36},
+        {name: "Horror", id: 27},
+        {name: "Komedie", id: 35},
+        {name: "Misdaad", id: 80},
+        {name: "Muziek", id: 10402},
+        {name: "Mysterie", id: 9648},
+        {name: "Oorlog", id: 10752},
+        {name: "Romantiek", id: 10749},
+        {name: "Sciencefiction", id: 878},
+        {name: "TV Film", id: 10770},
+        {name: "Thriller", id: 53},
+        {name: "Western", id: 37}
+    ];
+    const seriesGenreID = [
+        {name: "Actie & Avontuur", id: 10759},
+        {name: "Animatie", id: 16},
+        {name: "Documentaire", id: 99},
+        {name: "Drama", id: 18},
+        {name: "Familie", id: 10751},
+        {name: "Kids", id: 10762},
+        {name: "Komedie", id: 35},
+        {name: "Misdaad", id: 80},
+        {name: "Mysterie", id: 9648},
+        {name: "News", id: 10763},
+        {name: "Reality", id: 10764},
+        {name: "Sci-Fi & Fantasy", id: 10765},
+        {name: "Soap", id: 10766},
+        {name: "Talk", id: 10767},
+        {name: "War & Politics", id: 10768},
+        {name: "Western", id: 37}
+    ];
+
     // General
     const options = {
         method: 'GET',
