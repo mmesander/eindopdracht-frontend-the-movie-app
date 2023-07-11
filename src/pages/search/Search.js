@@ -389,7 +389,7 @@ function Search() {
                             />
                             <p>{maxRating}</p>
                             {minRating > maxRating &&
-                                <h4 className="rating-error">Minimale rating kan niet groter zijn dan maximale
+                                <h4 className="rating-error">Maximale rating kan niet kleiner zijn dan minimale rating
                                     rating</h4>}
                         </div>
                     </div>
