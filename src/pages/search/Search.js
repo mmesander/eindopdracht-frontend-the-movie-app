@@ -228,7 +228,6 @@ function Search() {
         const [genreString, ratingString] = createFilterStrings(isMovie, genresList, minRating, maxRating);
         try {
             const response = await axios.get(`${endpoint}+${page}${sortText}${ratingString}${genreString}`, options);
-            console.log(response.data)
             if (response.data) {
                 setError(false);
             }
