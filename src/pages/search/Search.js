@@ -9,6 +9,10 @@ import Input from "../../components/inputelements/Input";
 import Button from "../../components/button/Button";
 import MovieCard from "../../components/moviecard/MovieCard";
 
+// Helpers
+import createFilterStrings from "../../helpers/createFilterStrings";
+import createGenreArray from "../../helpers/createGenreArray";
+
 // Styles
 import './Search.css';
 
