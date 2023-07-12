@@ -226,7 +226,7 @@ function Search() {
         }
     }
 
-    async function fetchMoviesFilterSearch({endpoint, page, sortText, movieRatingString, movieGenreString}) {
+    async function fetchMoviesFilterSearch(endpoint, page, sortText, movieRatingString, movieGenreString) {
         setLoading(true);
         try {
             const response = await axios.get(`${endpoint}+${page}${sortText}${movieRatingString}${movieGenreString}`, options);
@@ -242,7 +242,7 @@ function Search() {
         setLoading(false);
     }
 
-    async function fetchSeriesFilterSearch({endpoint, page, sortText, seriesRatingString, seriesGenreString}) {
+    async function fetchSeriesFilterSearch(endpoint, page, sortText, seriesRatingString, seriesGenreString) {
         setLoading(true);
         try {
             const response = await axios.get(`${endpoint}+${page}${sortText}${seriesRatingString}${seriesGenreString}`, options);
@@ -251,7 +251,6 @@ function Search() {
             }
             setFilterSearchResults(response.data.results);
             setTotalPages(response.data.total_pages);
-            console.log(response.data);
         } catch (e) {
             setError(true);
             console.error(e);
