@@ -15,6 +15,7 @@ import './MovieCard.css';
 import favoriteIcon from '../../assets/icons/heart-straight-fill.svg';
 import watchlistIcon from '../../assets/icons/eye-fill.svg';
 import watchedIcon from '../../assets/icons/check-fat-fill.svg';
+import noImage from '../../assets/images/no-image.png'
 
 function MovieCard({title, image, rating, id, name, tv}) {
     const navigate = useNavigate();
@@ -46,7 +47,8 @@ function MovieCard({title, image, rating, id, name, tv}) {
             <div className="movie-card-container">
                 <section className="movie-card-header-section">
                     {title && !name && <div>
-                        <img src={`https://image.tmdb.org/t/p/w500${image}`} alt={title}/>
+                        {image && <img src={`https://image.tmdb.org/t/p/w500${image}`} alt={title}/>}
+                        {!image && <img src={noImage} alt="geen foto beschikbaar"/>}
                         {title.length < 40 && <h3>{title}</h3>}
                         {title.length > 40 && !title.length < 40 && <h4>{title}</h4>}
                     </div>}
@@ -55,7 +57,7 @@ function MovieCard({title, image, rating, id, name, tv}) {
                         {name.length < 40 && <h3>{name}</h3>}
                         {name.length > 40 && !name.length < 40 && <h4>{name}</h4>}
                     </div>}
-                    <div className="moviecard-rating">
+                    <div className="movie-card-rating">
                         <h4>Rating: <span>{roundedRating}</span></h4>
                     </div>
                 </section>
