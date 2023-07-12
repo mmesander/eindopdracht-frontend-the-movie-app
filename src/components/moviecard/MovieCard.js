@@ -15,7 +15,7 @@ import './MovieCard.css';
 import favoriteIcon from '../../assets/icons/heart-straight-fill.svg';
 import watchlistIcon from '../../assets/icons/eye-fill.svg';
 import watchedIcon from '../../assets/icons/check-fat-fill.svg';
-import noImage from '../../assets/images/no-image.png'
+import noImage from '../../assets/images/no-image.png';
 
 function MovieCard({title, image, rating, id, name, tv}) {
     const navigate = useNavigate();
