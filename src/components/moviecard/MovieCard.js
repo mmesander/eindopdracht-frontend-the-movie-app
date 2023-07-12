@@ -50,7 +50,9 @@ function MovieCard({title, image, rating, id, name, tv}) {
                         {image && <img src={`https://image.tmdb.org/t/p/w500${image}`} alt={title}/>}
                         {!image && <img src={noImage} alt="geen foto beschikbaar"/>}
                         {title.length < 40 && <h3>{title}</h3>}
-                        {title.length > 40 && !title.length < 40 && <h4>{title}</h4>}
+                        {title.length > 40 && title.length < 60 && <h4>{title}</h4>}
+                        {title.length > 60 && <h3>{title.slice(0, 40)}...</h3>}
+
                     </div>}
                     {name && !title && <div>
                         <img src={`https://image.tmdb.org/t/p/w500${image}`} alt={name}/>
