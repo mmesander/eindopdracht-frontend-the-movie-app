@@ -402,7 +402,7 @@ function Search() {
             setFiltersActive(true);
             updateUrl();
         }
-    }, [page]);
+    }, [page, sortText]);
 
     function updateUrl() {
         const newUrl = `/zoeken/filter/${page}`
@@ -453,6 +453,11 @@ function Search() {
             movieGenres: [],
             seriesGenres: [],
         })
+    }
+
+    function handleSortButton(text) {
+        setPage(1);
+        setSortText(text);
     }
 
     function setMovieGenres(id) {
@@ -514,6 +519,7 @@ function Search() {
         const [genreString, ratingString] = createFilterStrings(isMovie, genresList, minRating, maxRating);
         try {
             const response = await axios.get(`${endpoint}+${page}${sortText}${ratingString}${genreString}`, options);
+            console.log(response.data)
             if (response.data) {
                 setError(false);
             }
@@ -528,11 +534,10 @@ function Search() {
 
     function handleFilterSearch() {
         // als je niet van plan bent dit nog door de gebruiker te kunnen laten aanpassen, kan deze state setter hier weg!
-        setSortText("&sort_by=popularity.desc");
         setFiltersActive(true);
         setPage(1);
 
-        void fetchFilterSearch(endpoint, page, "&sort_by=popularity.desc");
+        void fetchFilterSearch(endpoint, page, sortText);
     }
 
     return (
@@ -557,6 +562,36 @@ function Search() {
                                 id="search-specific-button"
                             />
                         </form>
+                    </div>
+                    <div className="search-menu">
+                        <h2>Sorteren</h2>
+                    </div>
+                    <div className="search-menu search-filter-movies-series">
+                        <p>Sorteer op:</p>
+                        <Button
+                            buttonType="button"
+                            name="inactive-filter-button"
+                            children="Populariteit aflopend"
+                            clickHandler={() => handleSortButton("&sort_by=popularity.desc")}
+                        />
+                        <Button
+                            buttonType="button"
+                            name="inactive-filter-button"
+                            children="Populariteit oplopend"
+                            clickHandler={() => handleSortButton("&sort_by=popularity.asc")}
+                        />
+                        <Button
+                            buttonType="button"
+                            name="inactive-filter-button"
+                            children="Rating aflopend"
+                            clickHandler={() => handleSortButton("&sort_by=vote_average.desc")}
+                        />
+                        <Button
+                            buttonType="button"
+                            name="inactive-filter-button"
+                            children="Rating oplopend"
+                            clickHandler={() => handleSortButton("&sort_by=vote_average.asc")}
+                        />
                     </div>
                     <div className="search-menu">
                         <h2>Filters</h2>
@@ -618,6 +653,7 @@ function Search() {
                         {isMovie && <section>
                             {movieGenresID && movieGenresID.map((genre) => {
                                 return <Button
+                                    key={genre.id}
                                     buttonType="button"
                                     children={genre.name}
                                     name={genresList.movieGenres.includes(genre.id) ? "active-genre-button" : "inactive-genre-button"}
@@ -628,6 +664,7 @@ function Search() {
                         {!isMovie && <section>
                             {seriesGenresID && seriesGenresID.map((genre) => {
                                 return <Button
+                                    key={genre.id}
                                     buttonType="button"
                                     children={genre.name}
                                     name={genresList.seriesGenres.includes(genre.id) ? "active-genre-button" : "inactive-genre-button"}
@@ -669,7 +706,7 @@ function Search() {
                     </div>}
                     <div className="filter-search-results-inner-container">
                         {Object.keys(filterSearchResults).length > 0 && filtersActive && filterSearchResults.map((search) => {
-                            if (!isMovie && search.name && search.poster_path && search.vote_average) {
+                            if (!isMovie && search.name) {
                                 return <MovieCard
                                     key={search.id}
                                     name={search.name}
@@ -678,7 +715,7 @@ function Search() {
                                     id={search.id}
                                     tv={true}
                                 />
-                            } else if (isMovie && search.title && search.poster_path && search.vote_average) {
+                            } else if (isMovie && search.title) {
                                 return <MovieCard
                                     key={search.id}
                                     title={search.title}
