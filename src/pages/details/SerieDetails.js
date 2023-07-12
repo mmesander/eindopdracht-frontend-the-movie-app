@@ -20,6 +20,7 @@ import './Details.css';
 import favoriteIcon from "../../assets/icons/heart-straight-fill.svg";
 import watchlistIcon from "../../assets/icons/eye-fill.svg";
 import watchedIcon from "../../assets/icons/check-fat-fill.svg";
+import noImage from "../../assets/images/no-image.png";
 
 function SerieDetails() {
     const navigate = useNavigate();
@@ -155,14 +156,16 @@ function SerieDetails() {
                 {Object.keys(details).length > 0 &&
                     <div className="details-inner-container">
                         <section className="details-image-container">
-                            <img src={`https://image.tmdb.org/t/p/w500${details.poster_path}`}
-                                 alt={details.name}/>
+                            {details.poster_path && <img src={`https://image.tmdb.org/t/p/w500${details.poster_path}`}
+                                                         alt={details.name}/>}
+                            {!details.poster_path && <img src={noImage} alt="Geen foto beschikbaar"/>}
                         </section>
                         <article className="details-information">
                             <section>
                                 <h1>{details.name}</h1>
 
-                                <p className="details-release-date">{formatDate(details.first_air_date)}</p>
+                                {details.first_air_date && <p className="details-release-date">{formatDate(details.first_air_date)}</p>}
+                                {!details.first_air_date && <p className="details-release-date">(Geen datum beschikbaar)</p>}
                                 <h4 className="details-tagline">{details.tagline}</h4>
                                 <div className="details-icons-container">
                                     <button

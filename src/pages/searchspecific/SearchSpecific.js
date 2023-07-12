@@ -92,7 +92,7 @@ function SearchSpecific() {
             </div>
             <div className="search-specific-inner-container">
                 {Object.keys(searchResults).length > 0 && searchResults.map((search) => {
-                    if (search.name && search.poster_path && search.vote_average) {
+                    if (search.name) {
                         return <MovieCard
                             key={search.id}
                             name={search.name}
@@ -101,7 +101,7 @@ function SearchSpecific() {
                             id={search.id}
                             tv={true}
                         />
-                    } else if (search.title && search.poster_path && search.vote_average) {
+                    } else if (search.title) {
                         return <MovieCard
                             key={search.id}
                             title={search.title}
