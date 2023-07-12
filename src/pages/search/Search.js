@@ -383,6 +383,17 @@ function Search() {
         {name: "Western", id: 37}
     ];
 
+    const sortTextData = [
+        {name: "Populariteit - aflopend", string: "&sort_by=popularity.desc"},
+        {name: "Populariteit - oplopend", string: "&sort_by=popularity.asc"},
+        {name: "Beoordeling - aflopend", string: "&sort_by=vote_average.desc"},
+        {name: "Beoordeling - oplopend", string: "&sort_by=vote_average.asc"},
+        {name: "Verschijningsdatum - aflopend", string: "&sort_by=primary_release_date.desc"},
+        {name: "Verschijningsdatum - oplopend", string: "&sort_by=primary_release_date.asc"},
+        {name: "Titel - A-Z", string: "&sort_by=original_title.desc"},
+        {name: "Titel - Z-A", string: "&sort_by=original_title.asc"},
+    ]
+
     // General
     const options = {
         method: 'GET',
@@ -533,7 +544,6 @@ function Search() {
     }
 
     function handleFilterSearch() {
-        // als je niet van plan bent dit nog door de gebruiker te kunnen laten aanpassen, kan deze state setter hier weg!
         setFiltersActive(true);
         setPage(1);
 
@@ -568,30 +578,15 @@ function Search() {
                     </div>
                     <div className="search-menu search-filter-movies-series">
                         <p>Sorteer op:</p>
-                        <Button
-                            buttonType="button"
-                            name="inactive-filter-button"
-                            children="Populariteit aflopend"
-                            clickHandler={() => handleSortButton("&sort_by=popularity.desc")}
-                        />
-                        <Button
-                            buttonType="button"
-                            name="inactive-filter-button"
-                            children="Populariteit oplopend"
-                            clickHandler={() => handleSortButton("&sort_by=popularity.asc")}
-                        />
-                        <Button
-                            buttonType="button"
-                            name="inactive-filter-button"
-                            children="Rating aflopend"
-                            clickHandler={() => handleSortButton("&sort_by=vote_average.desc")}
-                        />
-                        <Button
-                            buttonType="button"
-                            name="inactive-filter-button"
-                            children="Rating oplopend"
-                            clickHandler={() => handleSortButton("&sort_by=vote_average.asc")}
-                        />
+                        {sortTextData && sortTextData.map((text) => {
+                            return <Button
+                                key={text.string}
+                                buttonType="button"
+                                children={text.name}
+                                name={sortText.includes(text.string) ? "active-filter-button" : "inactive-filter-button"}
+                                clickHandler={() => handleSortButton(text.string)}
+                            />
+                        })}
                     </div>
                     <div className="search-menu">
                         <h2>Filters</h2>
