@@ -384,14 +384,14 @@ function Search() {
     ];
 
     const sortTextData = [
-        {name: "Populariteit - aflopend", string: "&sort_by=popularity.desc"},
-        {name: "Populariteit - oplopend", string: "&sort_by=popularity.asc"},
-        {name: "Beoordeling - aflopend", string: "&sort_by=vote_average.desc"},
-        {name: "Beoordeling - oplopend", string: "&sort_by=vote_average.asc"},
-        {name: "Verschijningsdatum - aflopend", string: "&sort_by=primary_release_date.desc"},
-        {name: "Verschijningsdatum - oplopend", string: "&sort_by=primary_release_date.asc"},
-        {name: "Titel - A-Z", string: "&sort_by=original_title.desc"},
-        {name: "Titel - Z-A", string: "&sort_by=original_title.asc"},
+        {name: "Populariteit - Aflopend", string: "&sort_by=popularity.desc"},
+        {name: "Populariteit - Oplopend", string: "&sort_by=popularity.asc"},
+        {name: "Beoordeling - Aflopend", string: "&sort_by=vote_average.desc"},
+        {name: "Beoordeling - Oplopend", string: "&sort_by=vote_average.asc"},
+        {name: "Verschijningsdatum - Aflopend", string: "&sort_by=primary_release_date.desc"},
+        {name: "Verschijningsdatum - Oplopend", string: "&sort_by=primary_release_date.asc"},
+        {name: "Titel (A-Z)", string: "&sort_by=original_title.desc"},
+        {name: "Titel (Z-A)", string: "&sort_by=original_title.asc"},
     ]
 
     // General
