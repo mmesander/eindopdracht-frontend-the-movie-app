@@ -9,22 +9,325 @@ import Input from "../../components/inputelements/Input";
 import Button from "../../components/button/Button";
 import MovieCard from "../../components/moviecard/MovieCard";
 
+// Helpers
+import createFilterStrings from "../../helpers/createFilterStrings";
+
 // Styles
 import './Search.css';
+
+// function Search() {
+//     // General
+//     const navigate = useNavigate();
+//     const [loading, setLoading] = useState(false);
+//     const [error, setError] = useState(false);
+//     const pageNumber = useParams().filterId
+//     const [page, setPage] = useState(parseInt(pageNumber) || 1);
+//     const [totalPages, setTotalPages] = useState(0);
+//
+//
+//     // Specific Search
+//     const [specificSearch, setSpecificSearch] = useState("");
+//
+//
+//     // Filter Search
+//     const [filtersActive, setFiltersActive] = useState(false);
+//     const [filterSearchResults, setFilterSearchResults] = useState({});
+//     const [isMovie, setIsMovie] = useState(true);
+//     const [endpoint, setEndpoint] = useState('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=');
+//     const [minRating, setMinRating] = useState(0);
+//     const [maxRating, setMaxRating] = useState(10);
+//     const [movieRatingString, setMovieRatingString] = useState("");
+//     const [movieGenreString, setMovieGenreString] = useState("");
+//     const [seriesRatingString, setSeriesRatingString] = useState("");
+//     const [seriesGenreString, setSeriesGenreString] = useState("");
+//     const [sortText, setSortText] = useState("");
+//     const [genresList, setGenresList] = useState({
+//         movieGenres: [],
+//         seriesGenres: [],
+//     });
+//
+//     const movieGenresID = [
+//         {name: "Actie", id: 28},
+//         {name: "Animatie", id: 16},
+//         {name: "Avontuur", id: 12},
+//         {name: "Documentaire", id: 99},
+//         {name: "Drama", id: 18},
+//         {name: "Familie", id: 10751},
+//         {name: "Fantasie", id: 14},
+//         {name: "Historisch", id: 36},
+//         {name: "Horror", id: 27},
+//         {name: "Komedie", id: 35},
+//         {name: "Misdaad", id: 80},
+//         {name: "Muziek", id: 10402},
+//         {name: "Mysterie", id: 9648},
+//         {name: "Oorlog", id: 10752},
+//         {name: "Romantiek", id: 10749},
+//         {name: "Sciencefiction", id: 878},
+//         {name: "TV Film", id: 10770},
+//         {name: "Thriller", id: 53},
+//         {name: "Western", id: 37}
+//     ];
+//     const seriesGenresID = [
+//         {name: "Actie & Avontuur", id: 10759},
+//         {name: "Animatie", id: 16},
+//         {name: "Documentaire", id: 99},
+//         {name: "Drama", id: 18},
+//         {name: "Familie", id: 10751},
+//         {name: "Kids", id: 10762},
+//         {name: "Komedie", id: 35},
+//         {name: "Misdaad", id: 80},
+//         {name: "Mysterie", id: 9648},
+//         {name: "News", id: 10763},
+//         {name: "Reality", id: 10764},
+//         {name: "Sci-Fi & Fantasy", id: 10765},
+//         {name: "Soap", id: 10766},
+//         {name: "Talk", id: 10767},
+//         {name: "War & Politics", id: 10768},
+//         {name: "Western", id: 37}
+//     ];
+//
+//     // General
+//     const options = {
+//         method: 'GET',
+//         headers: {
+//             accept: 'application/json',
+//             Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
+//         }
+//     };
+//
+//     useEffect(() => {
+//
+//         if (page >= 1 && isMovie) {
+//             void fetchMoviesFilterSearch({
+//                 endpoint,
+//                 page,
+//                 sortText,
+//                 movieRatingString,
+//                 movieGenreString
+//             });
+//             setFiltersActive(true);
+//             updateUrl();
+//         }
+//
+//         if (page >= 1 && !isMovie) {
+//             void fetchSeriesFilterSearch({
+//                 endpoint,
+//                 page,
+//                 sortText,
+//                 seriesRatingString,
+//                 seriesGenreString
+//             });
+//             setFiltersActive(true);
+//             updateUrl();
+//         }
+//     }, [page]);
+//
+//     function updateUrl() {
+//         if (isMovie) {
+//             const newUrl = `/zoeken/filter/${page}`
+//             navigate(newUrl, {replace: true});
+//         }
+//         if (!isMovie) {
+//             const newUrl = `/zoeken/filter/${page}`
+//             navigate(newUrl, {replace: true});
+//         }
+//     }
+//
+//     //Specific Search
+//     function newClickHandler(e) {
+//         e.preventDefault();
+//         const url = `/zoeken/specifiek/1?zoekopdracht=${encodeURIComponent(specificSearch)}`
+//         navigate(`${url}`);
+//     }
+//
+//
+//     // Filter Search
+//     function handleMovieButton() {
+//         setEndpoint('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=');
+//         setIsMovie(true);
+//         setFiltersActive(false);
+//         setPage(1);
+//         setGenresList({
+//             ...genresList,
+//             seriesGenres: [],
+//         });
+//     }
+//
+//     function handleSeriesButton() {
+//         setEndpoint('https://api.themoviedb.org/3/discover/tv?include_adult=false&language=en-US&page=');
+//         setIsMovie(false);
+//         setFiltersActive(false);
+//         setPage(1);
+//         setGenresList({
+//             ...genresList,
+//             movieGenres: [],
+//         });
+//     }
+//
+//     function handleFilterReset() {
+//         setMinRating(0);
+//         setMaxRating(10);
+//         setFiltersActive(false);
+//         setGenresList({
+//             ...genresList,
+//             movieGenres: [],
+//             seriesGenres: [],
+//         })
+//     }
+//
+//     function setMovieGenres(id) {
+//         const checkGenreID = genresList.movieGenres.find((genre) => {
+//             return id === genre;
+//         });
+//
+//         if (checkGenreID) {
+//             const movieGenresArray = [...genresList.movieGenres];
+//             const indexNumberOf = movieGenresArray.indexOf(id);
+//
+//             movieGenresArray.splice(indexNumberOf, 1);
+//
+//             setGenresList({
+//                 ...genresList,
+//                 movieGenres: movieGenresArray,
+//             });
+//         } else {
+//             const movieGenresArray = [...genresList.movieGenres];
+//
+//             movieGenresArray.push(id);
+//
+//             setGenresList({
+//                 ...genresList,
+//                 movieGenres: movieGenresArray,
+//             })
+//         }
+//     }
+//
+//     function setSeriesGenres(id) {
+//         const checkGenreID = genresList.seriesGenres.find((genre) => {
+//             return id === genre;
+//         });
+//
+//         if (checkGenreID) {
+//             const seriesGenresArray = [...genresList.seriesGenres];
+//             const indexNumberOf = seriesGenresArray.indexOf(id);
+//
+//             seriesGenresArray.splice(indexNumberOf, 1);
+//
+//             setGenresList({
+//                 ...genresList,
+//                 seriesGenres: seriesGenresArray,
+//             });
+//         } else {
+//             const seriesGenresArray = [...genresList.seriesGenres];
+//
+//             seriesGenresArray.push(id);
+//
+//             setGenresList({
+//                 ...genresList,
+//                 seriesGenres: seriesGenresArray,
+//             })
+//         }
+//     }
+//
+//     async function fetchMoviesFilterSearch(endpoint, page, sortText, movieRatingString, movieGenreString) {
+//         setLoading(true);
+//         try {
+//             const response = await axios.get(`${endpoint}+${page}${sortText}${movieRatingString}${movieGenreString}`, options);
+//             if (response.data) {
+//                 setError(false);
+//             }
+//             setFilterSearchResults(response.data.results);
+//             setTotalPages(response.data.total_pages);
+//         } catch (e) {
+//             setError(true);
+//             console.error(e);
+//         }
+//         setLoading(false);
+//     }
+//
+//     async function fetchSeriesFilterSearch(endpoint, page, sortText, seriesRatingString, seriesGenreString) {
+//         setLoading(true);
+//         try {
+//             const response = await axios.get(`${endpoint}+${page}${sortText}${seriesRatingString}${seriesGenreString}`, options);
+//             if (response.data) {
+//                 setError(false);
+//             }
+//             setFilterSearchResults(response.data.results);
+//             setTotalPages(response.data.total_pages);
+//         } catch (e) {
+//             setError(true);
+//             console.error(e);
+//         }
+//         setLoading(false);
+//     }
+//
+//     function handleFilterSearch() {
+//         setSortText("&sort_by=popularity.desc");
+//         setFiltersActive(true);
+//         const genresText = "&with_genres=";
+//         const minRatingText = "&vote_average.gte=";
+//         const maxRatingText = "&vote_average.lte=";
+//
+//         if (isMovie && endpoint) {
+//             if (genresList.movieGenres.length === 0) {
+//                 setMovieGenreString("");
+//             } else if (genresList.movieGenres.length === 1) {
+//                 setMovieGenreString(genresText + genresList.movieGenres[0]);
+//             } else {
+//                 const numbersToString = genresList.movieGenres.map((id) => id.toString());
+//                 const joinedNumbers = numbersToString.join('%2C');
+//                 setMovieGenreString(genresText + joinedNumbers);
+//             }
+//
+//             setMovieRatingString(minRatingText + minRating + maxRatingText + maxRating);
+//
+//             if (Object.keys(movieRatingString).length > 0 && Object.keys(movieGenreString).length > 0 && Object.keys(sortText).length > 0) {
+//                 void fetchMoviesFilterSearch({
+//                     endpoint,
+//                     page,
+//                     sortText,
+//                     movieRatingString,
+//                     movieGenreString
+//                 });
+//             }
+//         }
+//
+//         if (!isMovie && endpoint) {
+//             if (genresList.seriesGenres.length === 0) {
+//                 setSeriesGenreString("");
+//             } else if (genresList.seriesGenres.length === 1) {
+//                 setSeriesGenreString(genresText + genresList.seriesGenres[0]);
+//             } else {
+//                 const numbersToString = genresList.seriesGenres.map((id) => id.toString());
+//                 const joinedNumbers = numbersToString.join('%2C');
+//                 setSeriesGenreString(genresText + joinedNumbers);
+//             }
+//
+//             setSeriesRatingString(minRatingText + minRating + maxRatingText + maxRating);
+//
+//             if (Object.keys(seriesRatingString).length > 0 && Object.keys(seriesGenreString).length > 0 && Object.keys(sortText).length > 0) {
+//                 void fetchSeriesFilterSearch({
+//                     endpoint,
+//                     page,
+//                     sortText,
+//                     seriesRatingString,
+//                     seriesGenreString
+//                 });
+//             }
+//         }
+//     }
 
 function Search() {
     // General
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
-    const pageNumber = useParams().filterId
+    const pageNumber = useParams().filterId;
     const [page, setPage] = useState(parseInt(pageNumber) || 1);
     const [totalPages, setTotalPages] = useState(0);
 
-
     // Specific Search
     const [specificSearch, setSpecificSearch] = useState("");
-
 
     // Filter Search
     const [filtersActive, setFiltersActive] = useState(false);
@@ -33,11 +336,7 @@ function Search() {
     const [endpoint, setEndpoint] = useState('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=');
     const [minRating, setMinRating] = useState(0);
     const [maxRating, setMaxRating] = useState(10);
-    const [movieRatingString, setMovieRatingString] = useState("");
-    const [movieGenreString, setMovieGenreString] = useState("");
-    const [seriesRatingString, setSeriesRatingString] = useState("");
-    const [seriesGenreString, setSeriesGenreString] = useState("");
-    const [sortText, setSortText] = useState("");
+    const [sortText, setSortText] = useState("&sort_by=popularity.desc");
     const [genresList, setGenresList] = useState({
         movieGenres: [],
         seriesGenres: [],
@@ -64,6 +363,7 @@ function Search() {
         {name: "Thriller", id: 53},
         {name: "Western", id: 37}
     ];
+
     const seriesGenresID = [
         {name: "Actie & Avontuur", id: 10759},
         {name: "Animatie", id: 16},
@@ -93,41 +393,20 @@ function Search() {
     };
 
     useEffect(() => {
-
-        if (page >= 1 && isMovie) {
-            void fetchMoviesFilterSearch({
+        if (page >= 1) {
+            void fetchFilterSearch(
                 endpoint,
                 page,
                 sortText,
-                movieRatingString,
-                movieGenreString
-            });
-            setFiltersActive(true);
-            updateUrl();
-        }
-
-        if (page >= 1 && !isMovie) {
-            void fetchSeriesFilterSearch({
-                endpoint,
-                page,
-                sortText,
-                seriesRatingString,
-                seriesGenreString
-            });
+            );
             setFiltersActive(true);
             updateUrl();
         }
     }, [page]);
 
     function updateUrl() {
-        if (isMovie) {
-            const newUrl = `/zoeken/filter/${page}`
-            navigate(newUrl, {replace: true});
-        }
-        if (!isMovie) {
-            const newUrl = `/zoeken/filter/${page}`
-            navigate(newUrl, {replace: true});
-        }
+        const newUrl = `/zoeken/filter/${page}`
+        navigate(newUrl, {replace: true});
     }
 
     //Specific Search
@@ -144,6 +423,8 @@ function Search() {
         setIsMovie(true);
         setFiltersActive(false);
         setPage(1);
+        setMinRating(0);
+        setMaxRating(10);
         setGenresList({
             ...genresList,
             seriesGenres: [],
@@ -154,6 +435,8 @@ function Search() {
         setEndpoint('https://api.themoviedb.org/3/discover/tv?include_adult=false&language=en-US&page=');
         setIsMovie(false);
         setFiltersActive(false);
+        setMinRating(0);
+        setMaxRating(10);
         setPage(1);
         setGenresList({
             ...genresList,
@@ -226,32 +509,16 @@ function Search() {
         }
     }
 
-    async function fetchMoviesFilterSearch({endpoint, page, sortText, movieRatingString, movieGenreString}) {
+    async function fetchFilterSearch(endpoint, page, sortText) {
         setLoading(true);
+        const [genreString, ratingString] = createFilterStrings(isMovie, genresList, minRating, maxRating);
         try {
-            const response = await axios.get(`${endpoint}+${page}${sortText}${movieRatingString}${movieGenreString}`, options);
+            const response = await axios.get(`${endpoint}+${page}${sortText}${ratingString}${genreString}`, options);
             if (response.data) {
                 setError(false);
             }
             setFilterSearchResults(response.data.results);
             setTotalPages(response.data.total_pages);
-        } catch (e) {
-            setError(true);
-            console.error(e);
-        }
-        setLoading(false);
-    }
-
-    async function fetchSeriesFilterSearch({endpoint, page, sortText, seriesRatingString, seriesGenreString}) {
-        setLoading(true);
-        try {
-            const response = await axios.get(`${endpoint}+${page}${sortText}${seriesRatingString}${seriesGenreString}`, options);
-            if (response.data) {
-                setError(false);
-            }
-            setFilterSearchResults(response.data.results);
-            setTotalPages(response.data.total_pages);
-            console.log(response.data);
         } catch (e) {
             setError(true);
             console.error(e);
@@ -260,59 +527,12 @@ function Search() {
     }
 
     function handleFilterSearch() {
+        // als je niet van plan bent dit nog door de gebruiker te kunnen laten aanpassen, kan deze state setter hier weg!
         setSortText("&sort_by=popularity.desc");
         setFiltersActive(true);
-        const genresText = "&with_genres=";
-        const minRatingText = "&vote_average.gte=";
-        const maxRatingText = "&vote_average.lte=";
+        setPage(1);
 
-        if (isMovie && endpoint) {
-            if (genresList.movieGenres.length === 0) {
-                setMovieGenreString("");
-            } else if (genresList.movieGenres.length === 1) {
-                setMovieGenreString(genresText + genresList.movieGenres[0]);
-            } else {
-                const numbersToString = genresList.movieGenres.map((id) => id.toString());
-                const joinedNumbers = numbersToString.join('%2C');
-                setMovieGenreString(genresText + joinedNumbers);
-            }
-
-            setMovieRatingString(minRatingText + minRating + maxRatingText + maxRating);
-
-            if (Object.keys(movieRatingString).length > 0 && Object.keys(movieGenreString).length > 0 && Object.keys(sortText).length > 0) {
-                void fetchMoviesFilterSearch({
-                    endpoint,
-                    page,
-                    sortText,
-                    movieRatingString,
-                    movieGenreString
-                });
-            }
-        }
-
-        if (!isMovie && endpoint) {
-            if (genresList.seriesGenres.length === 0) {
-                setSeriesGenreString("");
-            } else if (genresList.seriesGenres.length === 1) {
-                setSeriesGenreString(genresText + genresList.seriesGenres[0]);
-            } else {
-                const numbersToString = genresList.seriesGenres.map((id) => id.toString());
-                const joinedNumbers = numbersToString.join('%2C');
-                setSeriesGenreString(genresText + joinedNumbers);
-            }
-
-            setSeriesRatingString(minRatingText + minRating + maxRatingText + maxRating);
-
-            if (Object.keys(seriesRatingString).length > 0 && Object.keys(seriesGenreString).length > 0 && Object.keys(sortText).length > 0) {
-                void fetchSeriesFilterSearch({
-                    endpoint,
-                    page,
-                    sortText,
-                    seriesRatingString,
-                    seriesGenreString
-                });
-            }
-        }
+        void fetchFilterSearch(endpoint, page, "&sort_by=popularity.desc");
     }
 
     return (
