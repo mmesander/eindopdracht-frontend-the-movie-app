@@ -1,5 +1,3 @@
-import React from "react";
-
 function createGenreArray(id, genresList) {
     const isIdPresent = genresList.find((genre) => {
         return id === genre;
