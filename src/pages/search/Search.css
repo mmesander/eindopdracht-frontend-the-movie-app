@@ -192,7 +192,13 @@
     font-style: italic;
 }
 
-.rating-slider {
-    accent-color: var(--main-theme-color-gold);
-    width: 95%;
+.rating-inner-container {
+    display: flex;
+    flex-direction: row;
+    margin: 3px 0 15px 0;
+    align-items: center;
+}
+
+.rating-inner-container p {
+    margin-left: 20px;
 }

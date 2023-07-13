@@ -1,6 +1,7 @@
 // Functions
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import InputSlider from "react-input-slider";
 import {useNavigate, useParams} from "react-router-dom";
 
 // Components
@@ -278,36 +279,65 @@ function Search() {
                             name={!isMovie ? "active-filter-button" : "inactive-filter-button"}
                         />
                     </div>
-                    <div className="search-menu">
+                    <div className="search-menu rating-outer-container">
                         <p>Minimale Rating:</p>
-                        <div className="rating-container">
-                            <input
-                                type="range"
-                                onChange={(e) => setMinRating(e.target.value)}
-                                min={0}
-                                max={10}
-                                step={1}
-                                value={minRating}
+                        <div className="rating-inner-container">
+                            <InputSlider
                                 className="rating-slider"
+                                axis="x"
+                                x={minRating}
+                                xstep={1}
+                                xmax={10}
+                                onChange={(value) => setMinRating(value.x)}
+                                styles={{
+                                    track: {
+                                        backgroundColor: '#282828'
+                                    },
+                                    active: {
+                                        backgroundColor: '#FFD700'
+                                    },
+                                    thumb: {
+                                        width: 20,
+                                        height: 20,
+                                        backgroundColor: '#FFD700'
+                                    },
+                                    disabled: {
+                                        opacity: 0.5
+                                    }
+                                }}
                             />
-                            <p>{minRating}</p>
+                            <p id="rating-styling">{minRating}</p>
                         </div>
                         <p>Maximale Rating:</p>
-                        <div className="rating-container">
-                            <input
-                                type="range"
-                                onChange={(e) => setMaxRating(e.target.value)}
-                                min={0}
-                                max={10}
-                                step={1}
-                                value={maxRating}
-                                className="rating-slider"
+                        <div className="rating-inner-container">
+                            <InputSlider
+                                axis="x"
+                                x={maxRating}
+                                xstep={1}
+                                xmax={10}
+                                onChange={(value) => setMaxRating(value.x)}
+                                styles={{
+                                    track: {
+                                        backgroundColor: '#282828'
+                                    },
+                                    active: {
+                                        backgroundColor: '#FFD700'
+                                    },
+                                    thumb: {
+                                        width: 20,
+                                        height: 20,
+                                        backgroundColor: '#FFD700'
+                                    },
+                                    disabled: {
+                                        opacity: 0.5
+                                    }
+                                }}
                             />
                             <p>{maxRating}</p>
-                            {minRating > maxRating &&
-                                <h4 className="rating-error">Maximale rating kan niet kleiner zijn dan minimale rating
-                                    rating</h4>}
                         </div>
+                        {minRating > maxRating &&
+                            <h4 className="rating-error">Maximale rating kan niet kleiner zijn dan minimale rating
+                                rating</h4>}
                     </div>
                     <div className="search-menu genres">
                         <p>Genres:</p>
