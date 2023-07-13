@@ -11,6 +11,7 @@ import MovieCard from "../../components/moviecard/MovieCard";
 
 // Helpers
 import createFilterStrings from "../../helpers/createFilterStrings";
+import createGenreArray from "../../helpers/createGenreArray";
 
 // Styles
 import './Search.css';
@@ -170,58 +171,77 @@ function Search() {
     }
 
     function setMovieGenres(id) {
-        const checkGenreID = genresList.movieGenres.find((genre) => {
-            return id === genre;
+        const movieGenresArray = createGenreArray(id, genresList.movieGenres);
+
+        setGenresList({
+            ...genresList,
+            movieGenres: movieGenresArray,
         });
-
-        if (checkGenreID) {
-            const movieGenresArray = [...genresList.movieGenres];
-            const indexNumberOf = movieGenresArray.indexOf(id);
-
-            movieGenresArray.splice(indexNumberOf, 1);
-
-            setGenresList({
-                ...genresList,
-                movieGenres: movieGenresArray,
-            });
-        } else {
-            const movieGenresArray = [...genresList.movieGenres];
-
-            movieGenresArray.push(id);
-
-            setGenresList({
-                ...genresList,
-                movieGenres: movieGenresArray,
-            })
-        }
     }
 
     function setSeriesGenres(id) {
-        const checkGenreID = genresList.seriesGenres.find((genre) => {
-            return id === genre;
+        const serieGenresArray = createGenreArray(id, genresList.seriesGenres);
+
+        setGenresList({
+            ...genresList,
+            seriesGenres: serieGenresArray,
         });
-
-        if (checkGenreID) {
-            const seriesGenresArray = [...genresList.seriesGenres];
-            const indexNumberOf = seriesGenresArray.indexOf(id);
-
-            seriesGenresArray.splice(indexNumberOf, 1);
-
-            setGenresList({
-                ...genresList,
-                seriesGenres: seriesGenresArray,
-            });
-        } else {
-            const seriesGenresArray = [...genresList.seriesGenres];
-
-            seriesGenresArray.push(id);
-
-            setGenresList({
-                ...genresList,
-                seriesGenres: seriesGenresArray,
-            })
-        }
     }
+
+
+    // function setMovieGenres(id) {
+    //     const checkGenreID = genresList.movieGenres.find((genre) => {
+    //         return id === genre;
+    //     });
+    //
+    //     if (checkGenreID) {
+    //         const movieGenresArray = [...genresList.movieGenres];
+    //         const indexNumberOf = movieGenresArray.indexOf(id);
+    //
+    //         movieGenresArray.splice(indexNumberOf, 1);
+    //
+    //         setGenresList({
+    //             ...genresList,
+    //             movieGenres: movieGenresArray,
+    //         });
+    //     } else {
+    //         const movieGenresArray = [...genresList.movieGenres];
+    //
+    //         movieGenresArray.push(id);
+    //
+    //         setGenresList({
+    //             ...genresList,
+    //             movieGenres: movieGenresArray,
+    //         })
+    //     }
+    // }
+
+    // function setSeriesGenres(id) {
+    //     const checkGenreID = genresList.seriesGenres.find((genre) => {
+    //         return id === genre;
+    //     });
+    //
+    //     if (checkGenreID) {
+    //         const seriesGenresArray = [...genresList.seriesGenres];
+    //         const indexNumberOf = seriesGenresArray.indexOf(id);
+    //
+    //         seriesGenresArray.splice(indexNumberOf, 1);
+    //
+    //         setGenresList({
+    //             ...genresList,
+    //             seriesGenres: seriesGenresArray,
+    //         });
+    //     } else {
+    //         const seriesGenresArray = [...genresList.seriesGenres];
+    //
+    //         seriesGenresArray.push(id);
+    //
+    //         setGenresList({
+    //             ...genresList,
+    //             seriesGenres: seriesGenresArray,
+    //         })
+    //     }
+    // }
 
     async function fetchFilterSearch(endpoint, page, sortText) {
         setLoading(true);
