@@ -115,7 +115,7 @@ function Home() {
                             rating={movie.vote_average}
                             id={movie.id}
                             name={movie.name}
-                            tv={false}
+                            isMovie={true}
                         />
                     })}
                     {moreMovies && Object.keys(movies).length > 0 && movies.map((movie) => {
@@ -126,7 +126,7 @@ function Home() {
                             rating={movie.vote_average}
                             id={movie.id}
                             name={movie.name}
-                            tv={false}
+                            isMovie={true}
                         />
                     })}
                 </div>
@@ -163,7 +163,7 @@ function Home() {
                             image={tv.poster_path}
                             rating={tv.vote_average}
                             id={tv.id}
-                            tv={true}
+                            isMovie={false}
                         />
                     })}
                     {moreSeries && Object.keys(series).length > 0 && series.map((tv) => {
@@ -173,7 +173,7 @@ function Home() {
                             image={tv.poster_path}
                             rating={tv.vote_average}
                             id={tv.id}
-                            tv={true}
+                            isMovie={false}
                         />
                     })}
                 </div>
@@ -185,7 +185,7 @@ function Home() {
                 />
             </div>
         </>
-    )
+    );
 }
 
 export default Home;
