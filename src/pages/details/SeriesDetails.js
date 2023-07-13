@@ -112,7 +112,7 @@ function SeriesDetails() {
                                 <h1>{details.name}</h1>
 
                                 {details.first_air_date && <p className="details-release-date">{formatDate(details.first_air_date)}</p>}
-                                {!details.first_air_date && <p className="details-release-date">(Geen datum beschikbaar)</p>}
+                                {!details.first_air_date && <p className="details-release-date">(No date available)</p>}
                                 <h4 className="details-tagline">{details.tagline}</h4>
                                 <div className="details-icons-container">
                                     <button

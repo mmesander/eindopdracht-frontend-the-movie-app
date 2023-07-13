@@ -112,7 +112,7 @@ function MovieDetails() {
                                 <h1>{details.title}</h1>
 
                                 {details.release_date && <p className="details-release-date">{formatDate(details.release_date)}</p>}
-                                {!details.release_date && <p className="details-release-date">(Geen datum beschikbaar)</p>}
+                                {!details.release_date && <p className="details-release-date">(No date available)</p>}
                                 <h4 className="details-tagline">{details.tagline}</h4>
                                 <div className="details-icons-container">
                                     <button
