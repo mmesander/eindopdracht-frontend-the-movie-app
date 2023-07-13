@@ -180,7 +180,7 @@ function Lists() {
                         image={favorite.poster_path}
                         rating={favorite.vote_average}
                         id={favorite.id}
-                        tv={false}
+                        isMovie={true}
                     />
                 })}
 
@@ -191,7 +191,7 @@ function Lists() {
                         image={favorite.poster_path}
                         rating={favorite.vote_average}
                         id={favorite.id}
-                        tv={true}
+                        isMovie={false}
                     />
                 })}
 
@@ -209,7 +209,7 @@ function Lists() {
                         image={watchlist.poster_path}
                         rating={watchlist.vote_average}
                         id={watchlist.id}
-                        tv={false}
+                        isMovie={true}
                     />
                 })}
 
@@ -220,7 +220,7 @@ function Lists() {
                         image={watchlist.poster_path}
                         rating={watchlist.vote_average}
                         id={watchlist.id}
-                        tv={true}
+                        isMovie={false}
                     />
                 })}
 
@@ -238,7 +238,7 @@ function Lists() {
                         image={watched.poster_path}
                         rating={watched.vote_average}
                         id={watched.id}
-                        tv={false}
+                        isMovie={true}
                     />
                 })}
 
@@ -249,7 +249,7 @@ function Lists() {
                         image={watched.poster_path}
                         rating={watched.vote_average}
                         id={watched.id}
-                        tv={true}
+                        isMovie={false}
                     />
                 })}
 
@@ -259,7 +259,7 @@ function Lists() {
                 {error && <h3 className="error-message">Foutmelding: Er kan geen data opgehaald worden</h3>}
             </div>
         </div>
-    )
+    );
 }
 
 export default Lists;
