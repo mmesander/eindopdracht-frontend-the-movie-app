@@ -103,39 +103,44 @@ function MovieDetails() {
                 {Object.keys(details).length > 0 &&
                     <div className="details-inner-container">
                         <section className="details-image-container">
-                            {details.poster_path && <img src={`https://image.tmdb.org/t/p/w500${details.poster_path}`}
-                                 alt={details.title}/>}
-                            {!details.poster_path && <img src={noImage} alt="Geen foto beschikbaar"/>}
+                            {details.poster_path && <img
+                                src={`https://image.tmdb.org/t/p/w500${details.poster_path}`}
+                                alt={details.title}
+                            />}
+                            {!details.poster_path && <img
+                                src={noImage}
+                                alt="Geen foto beschikbaar"
+                            />}
                         </section>
                         <article className="details-information">
                             <section>
                                 <h1>{details.title}</h1>
-
-                                {details.release_date && <p className="details-release-date">{formatDate(details.release_date)}</p>}
-                                {!details.release_date && <p className="details-release-date">(No date available)</p>}
+                                {details.release_date && <p className="details-release-date">
+                                    {formatDate(details.release_date)}
+                                </p>}
+                                {!details.release_date && <p className="details-release-date">
+                                    (No date available)
+                                </p>}
                                 <h4 className="details-tagline">{details.tagline}</h4>
                                 <div className="details-icons-container">
-                                    <button
-                                        type="button"
-                                        className={favoriteActive ? "active-favorite-button" : "inactive-favorite-button"}
-                                        onClick={() => setFavorite(movieId)}
-                                    >
-                                        <img src={favoriteIcon} alt="favorite-icon"/>
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className={watchlistActive ? "active-watchlist-button" : "inactive-watchlist-button"}
-                                        onClick={() => setWatchlist(movieId)}
-                                    >
-                                        <img src={watchlistIcon} alt="watchlist-icon"/>
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className={watchedActive ? "active-watched-button" : "inactive-watched-button"}
-                                        onClick={() => setWatched(movieId)}
-                                    >
-                                        <img src={watchedIcon} alt="watched-icon"/>
-                                    </button>
+                                    <Button
+                                        buttonType="button"
+                                        name={favoriteActive ? "active-favorite-button" : "inactive-favorite-button"}
+                                        children={<img src={favoriteIcon} alt="favorite-icon"/>}
+                                        clickHandler={() => setFavorite(movieId)}
+                                    />
+                                    <Button
+                                        buttonType="button"
+                                        name={watchlistActive ? "active-watchlist-button" : "inactive-watchlist-button"}
+                                        children={<img src={watchlistIcon} alt="watchlist-icon"/>}
+                                        clickHandler={() => setWatchlist(movieId)}
+                                    />
+                                    <Button
+                                        buttonType="button"
+                                        name={watchedActive ? "active-watched-button" : "inactive-watched-button"}
+                                        children={<img src={watchedIcon} alt="watched-icon"/>}
+                                        clickHandler={() => setWatched(movieId)}
+                                    />
                                 </div>
                                 <h2>Rating: <span>{roundRating(details.vote_average)}</span></h2>
                                 {genres.length > 0 && <ul>
@@ -157,7 +162,7 @@ function MovieDetails() {
                 }
             </div>
         </>
-    )
+    );
 }
 
 export default MovieDetails;
