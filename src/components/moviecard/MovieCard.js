@@ -17,7 +17,7 @@ import watchlistIcon from '../../assets/icons/eye-fill.svg';
 import watchedIcon from '../../assets/icons/check-fat-fill.svg';
 import noImage from '../../assets/images/no-image.png';
 
-function MovieCard({title, image, rating, id, name, tv}) {
+function MovieCard({title, image, rating, id, name, isMovie}) {
     const navigate = useNavigate();
     const {listItem} = useContext(ListsContext);
     const roundedRating = roundRating(rating);
@@ -31,9 +31,9 @@ function MovieCard({title, image, rating, id, name, tv}) {
     const watchedSeriesActive = listItem.watchedSeries.includes(JSON.stringify(id));
 
     function clickHandler() {
-        if (id && !tv) {
+        if (id && isMovie) {
             navigate(`/film-details/${id}`);
-        } else if (id && tv) {
+        } else if (id && !isMovie) {
             navigate(`/serie-details/${id}`);
         }
     }
@@ -79,7 +79,7 @@ function MovieCard({title, image, rating, id, name, tv}) {
                 </section>
             </div>
         </button>
-    )
+    );
 }
 
 export default MovieCard;
