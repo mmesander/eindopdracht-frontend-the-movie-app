@@ -72,7 +72,25 @@ function MovieDetails() {
         setListItem({
             ...listItem,
             favoriteMovies: favoritesArray,
-        })
+        });
+    }
+
+    function setWatchlist(id) {
+        const watchlistArray = createListsArray(id, listItem.watchlistMovies);
+
+        setListItem({
+            ...listItem,
+            watchlistMovies: watchlistArray,
+        });
+    }
+
+    function setWatched(id) {
+        const watchedArray = createListsArray(id, listItem.watchedMovies);
+
+        setListItem({
+            ...listItem,
+            watchedMovies: watchedArray,
+        });
     }
 
     // function setFavorite() {
@@ -103,59 +121,59 @@ function MovieDetails() {
     //     }
     // }
 
-    function setWatchlist() {
-        const checkMovieID = listItem.watchlistMovies.find((movie) => {
-            return movieId === movie;
-        });
+    // function setWatchlist() {
+    //     const checkMovieID = listItem.watchlistMovies.find((movie) => {
+    //         return movieId === movie;
+    //     });
+    //
+    //     if (checkMovieID) {
+    //         const watchlistArray = [...listItem.watchlistMovies];
+    //         const indexNumberOf = watchlistArray.indexOf(movieId);
+    //
+    //         watchlistArray.splice(indexNumberOf, 1);
+    //
+    //         setListItem({
+    //             ...listItem,
+    //             watchlistMovies: watchlistArray,
+    //         });
+    //     } else {
+    //         const watchlistArray = [...listItem.watchlistMovies];
+    //
+    //         watchlistArray.push(movieId);
+    //
+    //         setListItem({
+    //             ...listItem,
+    //             watchlistMovies: watchlistArray,
+    //         });
+    //     }
+    // }
 
-        if (checkMovieID) {
-            const watchlistArray = [...listItem.watchlistMovies];
-            const indexNumberOf = watchlistArray.indexOf(movieId);
-
-            watchlistArray.splice(indexNumberOf, 1);
-
-            setListItem({
-                ...listItem,
-                watchlistMovies: watchlistArray,
-            });
-        } else {
-            const watchlistArray = [...listItem.watchlistMovies];
-
-            watchlistArray.push(movieId);
-
-            setListItem({
-                ...listItem,
-                watchlistMovies: watchlistArray,
-            });
-        }
-    }
-
-    function setWatched() {
-        const checkMovieID = listItem.watchedMovies.find((movie) => {
-            return movieId === movie;
-        });
-
-        if (checkMovieID) {
-            const watchedArray = [...listItem.watchedMovies];
-            const indexNumberOf = watchedArray.indexOf(movieId);
-
-            watchedArray.splice(indexNumberOf, 1);
-
-            setListItem({
-                ...listItem,
-                watchedMovies: watchedArray,
-            });
-        } else {
-            const watchedArray = [...listItem.watchedMovies];
-
-            watchedArray.push(movieId);
-
-            setListItem({
-                ...listItem,
-                watchedMovies: watchedArray,
-            });
-        }
-    }
+    // function setWatched() {
+    //     const checkMovieID = listItem.watchedMovies.find((movie) => {
+    //         return movieId === movie;
+    //     });
+    //
+    //     if (checkMovieID) {
+    //         const watchedArray = [...listItem.watchedMovies];
+    //         const indexNumberOf = watchedArray.indexOf(movieId);
+    //
+    //         watchedArray.splice(indexNumberOf, 1);
+    //
+    //         setListItem({
+    //             ...listItem,
+    //             watchedMovies: watchedArray,
+    //         });
+    //     } else {
+    //         const watchedArray = [...listItem.watchedMovies];
+    //
+    //         watchedArray.push(movieId);
+    //
+    //         setListItem({
+    //             ...listItem,
+    //             watchedMovies: watchedArray,
+    //         });
+    //     }
+    // }
 
     return (
         <>
@@ -189,14 +207,14 @@ function MovieDetails() {
                                     <button
                                         type="button"
                                         className={watchlistActive ? "active-watchlist-button" : "inactive-watchlist-button"}
-                                        onClick={setWatchlist}
+                                        onClick={() => setWatchlist(movieId)}
                                     >
                                         <img src={watchlistIcon} alt="watchlist-icon"/>
                                     </button>
                                     <button
                                         type="button"
                                         className={watchedActive ? "active-watched-button" : "inactive-watched-button"}
-                                        onClick={setWatched}
+                                        onClick={() => setWatched(movieId)}
                                     >
                                         <img src={watchedIcon} alt="watched-icon"/>
                                     </button>
