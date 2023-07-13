@@ -20,7 +20,7 @@ function Suggestion() {
     const navigate = useNavigate();
 
     function clickHandler(endpoint, text, link) {
-        const url = `/suggestie/${link}/1?endpoint=${encodeURIComponent(endpoint)}&$link=${encodeURIComponent(link)}&text=${encodeURIComponent(text)}`
+        const url = `/suggestie/${link}/1?endpoint=${encodeURIComponent(endpoint)}&$link=${encodeURIComponent(link)}&text=${encodeURIComponent(text)}`;
         navigate(`${url}`);
     }
 
@@ -70,7 +70,7 @@ function Suggestion() {
                 </div>
             </div>
         </>
-    )
+    );
 }
 
 export default Suggestion;
