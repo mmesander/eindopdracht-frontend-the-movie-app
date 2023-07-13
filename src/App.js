@@ -19,7 +19,7 @@ import Lists from "./pages/lists/Lists";
 import SignIn from "./pages/signin/SignIn";
 import SignUp from "./pages/signup/SignUp";
 import MovieDetails from "./pages/details/MovieDetails";
-import SerieDetails from "./pages/details/SerieDetails";
+import SeriesDetails from "./pages/details/SeriesDetails";
 
 // Styles
 import './App.css';
@@ -40,7 +40,7 @@ function App() {
                 <Route path="/login" element={<SignIn/>}/>
                 <Route path="/registratie" element={<SignUp/>}/>
                 <Route path="/film-details/:movieId" element={<MovieDetails/>}></Route>
-                <Route path="/serie-details/:serieId" element={<SerieDetails/>}></Route>
+                <Route path="/serie-details/:seriesId" element={<SeriesDetails/>}></Route>
             </Routes>
             {isAuth && <Footer/>}
         </>

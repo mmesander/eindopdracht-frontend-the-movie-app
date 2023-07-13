@@ -12,6 +12,7 @@ import Button from "../../components/button/Button";
 // Helpers
 import formatDate from "../../helpers/formatDate";
 import roundRating from "../../helpers/roundRating";
+import createListsArray from "../../helpers/createListsArray";
 
 // Styles
 import './Details.css';
@@ -65,86 +66,31 @@ function MovieDetails() {
 
     }, []);
 
-    function setFavorite() {
-        const checkMovieID = listItem.favoriteMovies.find((movie) => {
-            return movieId === movie;
+    function setFavorite(id) {
+        const favoritesArray = createListsArray(id, listItem.favoriteMovies);
+
+        setListItem({
+            ...listItem,
+            favoriteMovies: favoritesArray,
         });
-
-        if (checkMovieID) {
-            const favoritesArray = [...listItem.favoriteMovies];
-            const indexNumberOf = favoritesArray.indexOf(movieId);
-
-            favoritesArray.splice(indexNumberOf, 1);
-
-            setListItem({
-                ...listItem,
-                favoriteMovies: favoritesArray,
-            });
-
-        } else {
-            const favoritesArray = [...listItem.favoriteMovies];
-
-            favoritesArray.push(movieId);
-
-            setListItem({
-                ...listItem,
-                favoriteMovies: favoritesArray,
-            });
-        }
     }
 
-    function setWatchlist() {
-        const checkMovieID = listItem.watchlistMovies.find((movie) => {
-            return movieId === movie;
+    function setWatchlist(id) {
+        const watchlistArray = createListsArray(id, listItem.watchlistMovies);
+
+        setListItem({
+            ...listItem,
+            watchlistMovies: watchlistArray,
         });
-
-        if (checkMovieID) {
-            const watchlistArray = [...listItem.watchlistMovies];
-            const indexNumberOf = watchlistArray.indexOf(movieId);
-
-            watchlistArray.splice(indexNumberOf, 1);
-
-            setListItem({
-                ...listItem,
-                watchlistMovies: watchlistArray,
-            });
-        } else {
-            const watchlistArray = [...listItem.watchlistMovies];
-
-            watchlistArray.push(movieId);
-
-            setListItem({
-                ...listItem,
-                watchlistMovies: watchlistArray,
-            });
-        }
     }
 
-    function setWatched() {
-        const checkMovieID = listItem.watchedMovies.find((movie) => {
-            return movieId === movie;
+    function setWatched(id) {
+        const watchedArray = createListsArray(id, listItem.watchedMovies);
+
+        setListItem({
+            ...listItem,
+            watchedMovies: watchedArray,
         });
-
-        if (checkMovieID) {
-            const watchedArray = [...listItem.watchedMovies];
-            const indexNumberOf = watchedArray.indexOf(movieId);
-
-            watchedArray.splice(indexNumberOf, 1);
-
-            setListItem({
-                ...listItem,
-                watchedMovies: watchedArray,
-            });
-        } else {
-            const watchedArray = [...listItem.watchedMovies];
-
-            watchedArray.push(movieId);
-
-            setListItem({
-                ...listItem,
-                watchedMovies: watchedArray,
-            });
-        }
     }
 
     return (
@@ -166,27 +112,27 @@ function MovieDetails() {
                                 <h1>{details.title}</h1>
 
                                 {details.release_date && <p className="details-release-date">{formatDate(details.release_date)}</p>}
-                                {!details.release_date && <p className="details-release-date">(Geen datum beschikbaar)</p>}
+                                {!details.release_date && <p className="details-release-date">(No date available)</p>}
                                 <h4 className="details-tagline">{details.tagline}</h4>
                                 <div className="details-icons-container">
                                     <button
                                         type="button"
                                         className={favoriteActive ? "active-favorite-button" : "inactive-favorite-button"}
-                                        onClick={setFavorite}
+                                        onClick={() => setFavorite(movieId)}
                                     >
                                         <img src={favoriteIcon} alt="favorite-icon"/>
                                     </button>
                                     <button
                                         type="button"
                                         className={watchlistActive ? "active-watchlist-button" : "inactive-watchlist-button"}
-                                        onClick={setWatchlist}
+                                        onClick={() => setWatchlist(movieId)}
                                     >
                                         <img src={watchlistIcon} alt="watchlist-icon"/>
                                     </button>
                                     <button
                                         type="button"
                                         className={watchedActive ? "active-watched-button" : "inactive-watched-button"}
-                                        onClick={setWatched}
+                                        onClick={() => setWatched(movieId)}
                                     >
                                         <img src={watchedIcon} alt="watched-icon"/>
                                     </button>

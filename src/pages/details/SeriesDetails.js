@@ -12,6 +12,7 @@ import Button from "../../components/button/Button";
 // Helpers
 import formatDate from "../../helpers/formatDate";
 import roundRating from "../../helpers/roundRating";
+import createListsArray from "../../helpers/createListsArray";
 
 // Styles
 import './Details.css';
@@ -22,9 +23,9 @@ import watchlistIcon from "../../assets/icons/eye-fill.svg";
 import watchedIcon from "../../assets/icons/check-fat-fill.svg";
 import noImage from "../../assets/images/no-image.png";
 
-function SerieDetails() {
+function SeriesDetails() {
     const navigate = useNavigate();
-    const {serieId} = useParams();
+    const {seriesId} = useParams();
     const {listItem, setListItem} = useContext(ListsContext);
 
     const [details, setDetails] = useState({});
@@ -32,9 +33,9 @@ function SerieDetails() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
-    const favoriteActive = listItem.favoriteSeries.includes(serieId);
-    const watchlistActive = listItem.watchlistSeries.includes(serieId);
-    const watchedActive = listItem.watchedSeries.includes(serieId);
+    const favoriteActive = listItem.favoriteSeries.includes(seriesId);
+    const watchlistActive = listItem.watchlistSeries.includes(seriesId);
+    const watchedActive = listItem.watchedSeries.includes(seriesId);
 
     const options = {
         method: 'GET',
@@ -45,7 +46,7 @@ function SerieDetails() {
     };
 
     useEffect(() => {
-        async function fetchSerieDetails(id) {
+        async function fetchSeriesDetails(id) {
             try {
                 setLoading(true);
                 const response = await axios.get(`https://api.themoviedb.org/3/tv/${id}`, options);
@@ -61,89 +62,35 @@ function SerieDetails() {
             setLoading(false);
         }
 
-        void fetchSerieDetails(serieId);
+        void fetchSeriesDetails(seriesId);
 
     }, [])
 
-    function setFavorite() {
-        const checkSerieID = listItem.favoriteSeries.find((serie) => {
-            return serieId === serie;
+    function setFavorite(id) {
+        const favoritesArray = createListsArray(id, listItem.favoriteSeries);
+
+        setListItem({
+            ...listItem,
+            favoriteSeries: favoritesArray,
         });
-
-        if (checkSerieID) {
-            const favoritesArray = [...listItem.favoriteSeries];
-            const indexNumberOf = favoritesArray.indexOf(serieId);
-
-            favoritesArray.splice(indexNumberOf, 1);
-
-            setListItem({
-                ...listItem,
-                favoriteSeries: favoritesArray,
-            });
-        } else {
-            const favoritesArray = [...listItem.favoriteSeries];
-
-            favoritesArray.push(serieId);
-
-            setListItem({
-                ...listItem,
-                favoriteSeries: favoritesArray,
-            });
-        }
     }
 
-    function setWatchlist() {
-        const checkSerieID = listItem.watchlistSeries.find((serie) => {
-            return serieId === serie;
+    function setWatchlist(id) {
+        const watchlistArray = createListsArray(id, listItem.watchlistSeries);
+
+        setListItem({
+            ...listItem,
+            watchlistSeries: watchlistArray,
         });
-
-        if (checkSerieID) {
-            const watchlistArray = [...listItem.watchlistSeries];
-            const indexNumberOf = watchlistArray.indexOf(serieId);
-
-            watchlistArray.splice(indexNumberOf, 1);
-
-            setListItem({
-                ...listItem,
-                watchlistSeries: watchlistArray,
-            });
-        } else {
-            const watchlistArray = [...listItem.watchlistSeries];
-
-            watchlistArray.push(serieId);
-
-            setListItem({
-                ...listItem,
-                watchlistSeries: watchlistArray,
-            });
-        }
     }
 
-    function setWatched() {
-        const checkSerieID = listItem.watchedSeries.find((serie) => {
-            return serieId === serie;
+    function setWatched(id) {
+        const watchedArray = createListsArray(id, listItem.watchedSeries);
+
+        setListItem({
+            ...listItem,
+            watchedSeries: watchedArray,
         });
-
-        if (checkSerieID) {
-            const watchedArray = [...listItem.watchedSeries];
-            const indexNumberOf = watchedArray.indexOf(serieId);
-
-            watchedArray.splice(indexNumberOf, 1);
-
-            setListItem({
-                ...listItem,
-                watchedSeries: watchedArray,
-            });
-        } else {
-            const watchedArray = [...listItem.watchedSeries];
-
-            watchedArray.push(serieId);
-
-            setListItem({
-                ...listItem,
-                watchedSeries: watchedArray,
-            });
-        }
     }
 
     return (
@@ -165,27 +112,27 @@ function SerieDetails() {
                                 <h1>{details.name}</h1>
 
                                 {details.first_air_date && <p className="details-release-date">{formatDate(details.first_air_date)}</p>}
-                                {!details.first_air_date && <p className="details-release-date">(Geen datum beschikbaar)</p>}
+                                {!details.first_air_date && <p className="details-release-date">(No date available)</p>}
                                 <h4 className="details-tagline">{details.tagline}</h4>
                                 <div className="details-icons-container">
                                     <button
                                         type="button"
                                         className={favoriteActive ? "active-favorite-button" : "inactive-favorite-button"}
-                                        onClick={setFavorite}
+                                        onClick={() => setFavorite(seriesId)}
                                     >
                                         <img src={favoriteIcon} alt="favorite-icon"/>
                                     </button>
                                     <button
                                         type="button"
                                         className={watchlistActive ? "active-watchlist-button" : "inactive-watchlist-button"}
-                                        onClick={setWatchlist}
+                                        onClick={() => setWatchlist(seriesId)}
                                     >
                                         <img src={watchlistIcon} alt="watchlist-icon"/>
                                     </button>
                                     <button
                                         type="button"
                                         className={watchedActive ? "active-watched-button" : "inactive-watched-button"}
-                                        onClick={setWatched}
+                                        onClick={() => setWatched(seriesId)}
                                     >
                                         <img src={watchedIcon} alt="watched-icon"/>
                                     </button>
@@ -213,4 +160,4 @@ function SerieDetails() {
     )
 }
 
-export default SerieDetails;
+export default SeriesDetails;
