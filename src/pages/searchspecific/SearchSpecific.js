@@ -70,8 +70,10 @@ function SearchSpecific() {
             >
                 Terug naar de zoekpagina
             </button>
-            {Object.keys(searchResults).length > 0 && <h2 className="specific-search-title">{`Dit zijn de resultaten voor ${search}`}</h2>}
-            {Object.keys(searchResults).length === 0 && <h2 className="specific-search-title">{`Er zijn geen resultaten gevonden voor ${search}`}</h2>}
+            {Object.keys(searchResults).length > 0 &&
+                <h2 className="specific-search-title">{`Dit zijn de resultaten voor ${search}`}</h2>}
+            {Object.keys(searchResults).length === 0 &&
+                <h2 className="specific-search-title">{`Er zijn geen resultaten gevonden voor ${search}`}</h2>}
             <div className="loading-error-section">
                 {loading && <h3 className="loading-message">Laden... </h3>}
                 {error && <h3 className="error-message">Foutmelding: Er kan geen data opgehaald worden!</h3>}
@@ -99,7 +101,7 @@ function SearchSpecific() {
                             image={search.poster_path}
                             rating={search.vote_average}
                             id={search.id}
-                            tv={true}
+                            isMovie={false}
                         />
                     } else if (search.title) {
                         return <MovieCard
@@ -108,13 +110,13 @@ function SearchSpecific() {
                             image={search.poster_path}
                             rating={search.vote_average}
                             id={search.id}
-                            tv={false}
+                            isMovie={true}
                         />
                     }
                 })}
             </div>
         </div>
-    )
+    );
 }
 
 export default SearchSpecific;

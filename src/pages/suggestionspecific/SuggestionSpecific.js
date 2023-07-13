@@ -36,7 +36,7 @@ function SuggestionSpecific() {
     }, [page]);
 
     function updateUrl() {
-        const newUrl = `/suggestie/${link}/${page}?endpoint=${endpoint}&text=${text}`
+        const newUrl = `/suggestie/${link}/${page}?endpoint=${endpoint}&text=${text}`;
         navigate(newUrl, {replace: true});
     }
 
@@ -101,11 +101,11 @@ function SuggestionSpecific() {
                         image={movie.poster_path}
                         rating={movie.vote_average}
                         id={movie.id}
-                        tv={false}/>
+                        isMovie={true}/>
                 })}
             </div>
         </div>
-    )
+    );
 }
 
 export default SuggestionSpecific;
