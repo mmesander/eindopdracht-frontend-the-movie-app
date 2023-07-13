@@ -12,6 +12,7 @@ import Button from "../../components/button/Button";
 // Helpers
 import formatDate from "../../helpers/formatDate";
 import roundRating from "../../helpers/roundRating";
+import createListsArray from "../../helpers/createListsArray";
 
 // Styles
 import './Details.css';
@@ -65,86 +66,114 @@ function SerieDetails() {
 
     }, [])
 
-    function setFavorite() {
-        const checkSerieID = listItem.favoriteSeries.find((serie) => {
-            return serieId === serie;
+    function setFavorite(id) {
+        const favoritesArray = createListsArray(id, listItem.favoriteSeries);
+
+        setListItem({
+            ...listItem,
+            favoriteSeries: favoritesArray,
         });
-
-        if (checkSerieID) {
-            const favoritesArray = [...listItem.favoriteSeries];
-            const indexNumberOf = favoritesArray.indexOf(serieId);
-
-            favoritesArray.splice(indexNumberOf, 1);
-
-            setListItem({
-                ...listItem,
-                favoriteSeries: favoritesArray,
-            });
-        } else {
-            const favoritesArray = [...listItem.favoriteSeries];
-
-            favoritesArray.push(serieId);
-
-            setListItem({
-                ...listItem,
-                favoriteSeries: favoritesArray,
-            });
-        }
     }
 
-    function setWatchlist() {
-        const checkSerieID = listItem.watchlistSeries.find((serie) => {
-            return serieId === serie;
+    function setWatchlist(id) {
+        const watchlistArray = createListsArray(id, listItem.watchlistSeries);
+
+        setListItem({
+            ...listItem,
+            watchlistSeries: watchlistArray,
         });
-
-        if (checkSerieID) {
-            const watchlistArray = [...listItem.watchlistSeries];
-            const indexNumberOf = watchlistArray.indexOf(serieId);
-
-            watchlistArray.splice(indexNumberOf, 1);
-
-            setListItem({
-                ...listItem,
-                watchlistSeries: watchlistArray,
-            });
-        } else {
-            const watchlistArray = [...listItem.watchlistSeries];
-
-            watchlistArray.push(serieId);
-
-            setListItem({
-                ...listItem,
-                watchlistSeries: watchlistArray,
-            });
-        }
     }
 
-    function setWatched() {
-        const checkSerieID = listItem.watchedSeries.find((serie) => {
-            return serieId === serie;
+    function setWatched(id) {
+        const watchedArray = createListsArray(id, listItem.watchedSeries);
+
+        setListItem({
+            ...listItem,
+            watchedSeries: watchedArray,
         });
-
-        if (checkSerieID) {
-            const watchedArray = [...listItem.watchedSeries];
-            const indexNumberOf = watchedArray.indexOf(serieId);
-
-            watchedArray.splice(indexNumberOf, 1);
-
-            setListItem({
-                ...listItem,
-                watchedSeries: watchedArray,
-            });
-        } else {
-            const watchedArray = [...listItem.watchedSeries];
-
-            watchedArray.push(serieId);
-
-            setListItem({
-                ...listItem,
-                watchedSeries: watchedArray,
-            });
-        }
     }
+
+
+    // function setFavorite() {
+    //     const checkSerieID = listItem.favoriteSeries.find((serie) => {
+    //         return serieId === serie;
+    //     });
+    //
+    //     if (checkSerieID) {
+    //         const favoritesArray = [...listItem.favoriteSeries];
+    //         const indexNumberOf = favoritesArray.indexOf(serieId);
+    //
+    //         favoritesArray.splice(indexNumberOf, 1);
+    //
+    //         setListItem({
+    //             ...listItem,
+    //             favoriteSeries: favoritesArray,
+    //         });
+    //     } else {
+    //         const favoritesArray = [...listItem.favoriteSeries];
+    //
+    //         favoritesArray.push(serieId);
+    //
+    //         setListItem({
+    //             ...listItem,
+    //             favoriteSeries: favoritesArray,
+    //         });
+    //     }
+    // }
+    //
+    // function setWatchlist() {
+    //     const checkSerieID = listItem.watchlistSeries.find((serie) => {
+    //         return serieId === serie;
+    //     });
+    //
+    //     if (checkSerieID) {
+    //         const watchlistArray = [...listItem.watchlistSeries];
+    //         const indexNumberOf = watchlistArray.indexOf(serieId);
+    //
+    //         watchlistArray.splice(indexNumberOf, 1);
+    //
+    //         setListItem({
+    //             ...listItem,
+    //             watchlistSeries: watchlistArray,
+    //         });
+    //     } else {
+    //         const watchlistArray = [...listItem.watchlistSeries];
+    //
+    //         watchlistArray.push(serieId);
+    //
+    //         setListItem({
+    //             ...listItem,
+    //             watchlistSeries: watchlistArray,
+    //         });
+    //     }
+    // }
+    //
+    // function setWatched() {
+    //     const checkSerieID = listItem.watchedSeries.find((serie) => {
+    //         return serieId === serie;
+    //     });
+    //
+    //     if (checkSerieID) {
+    //         const watchedArray = [...listItem.watchedSeries];
+    //         const indexNumberOf = watchedArray.indexOf(serieId);
+    //
+    //         watchedArray.splice(indexNumberOf, 1);
+    //
+    //         setListItem({
+    //             ...listItem,
+    //             watchedSeries: watchedArray,
+    //         });
+    //     } else {
+    //         const watchedArray = [...listItem.watchedSeries];
+    //
+    //         watchedArray.push(serieId);
+    //
+    //         setListItem({
+    //             ...listItem,
+    //             watchedSeries: watchedArray,
+    //         });
+    //     }
+    // }
 
     return (
         <>
@@ -171,21 +200,21 @@ function SerieDetails() {
                                     <button
                                         type="button"
                                         className={favoriteActive ? "active-favorite-button" : "inactive-favorite-button"}
-                                        onClick={setFavorite}
+                                        onClick={() => setFavorite(serieId)}
                                     >
                                         <img src={favoriteIcon} alt="favorite-icon"/>
                                     </button>
                                     <button
                                         type="button"
                                         className={watchlistActive ? "active-watchlist-button" : "inactive-watchlist-button"}
-                                        onClick={setWatchlist}
+                                        onClick={() => setWatchlist(serieId)}
                                     >
                                         <img src={watchlistIcon} alt="watchlist-icon"/>
                                     </button>
                                     <button
                                         type="button"
                                         className={watchedActive ? "active-watched-button" : "inactive-watched-button"}
-                                        onClick={setWatched}
+                                        onClick={() => setWatched(serieId)}
                                     >
                                         <img src={watchedIcon} alt="watched-icon"/>
                                     </button>
