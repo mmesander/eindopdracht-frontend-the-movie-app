@@ -8,7 +8,8 @@ function createGenreArray(id, genresList) {
 
     if (isIdPresent) {
         const indexNumberOf = genresArray.indexOf(id);
-        return genresArray.splice(indexNumberOf, 1);
+        genresArray.splice(indexNumberOf, 1)
+        return genresArray
     } else {
         genresArray.push(id);
         return genresArray;
