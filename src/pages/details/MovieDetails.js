@@ -12,6 +12,7 @@ import Button from "../../components/button/Button";
 // Helpers
 import formatDate from "../../helpers/formatDate";
 import roundRating from "../../helpers/roundRating";
+import createListsArray from "../../helpers/createListsArray";
 
 // Styles
 import './Details.css';
@@ -65,33 +66,42 @@ function MovieDetails() {
 
     }, []);
 
-    function setFavorite() {
-        const checkMovieID = listItem.favoriteMovies.find((movie) => {
-            return movieId === movie;
-        });
+    function setFavorite(movieId) {
+        const favoritesArray = createListsArray(movieId, listItem.favoriteMovies);
 
-        if (checkMovieID) {
-            const favoritesArray = [...listItem.favoriteMovies];
-            const indexNumberOf = favoritesArray.indexOf(movieId);
-
-            favoritesArray.splice(indexNumberOf, 1);
-
-            setListItem({
-                ...listItem,
-                favoriteMovies: favoritesArray,
-            });
-
-        } else {
-            const favoritesArray = [...listItem.favoriteMovies];
-
-            favoritesArray.push(movieId);
-
-            setListItem({
-                ...listItem,
-                favoriteMovies: favoritesArray,
-            });
-        }
+        setListItem({
+            ...listItem,
+            favoriteMovies: favoritesArray,
+        })
     }
+
+    // function setFavorite() {
+    //     const checkMovieID = listItem.favoriteMovies.find((movie) => {
+    //         return movieId === movie;
+    //     });
+    //
+    //     if (checkMovieID) {
+    //         const favoritesArray = [...listItem.favoriteMovies];
+    //         const indexNumberOf = favoritesArray.indexOf(movieId);
+    //
+    //         favoritesArray.splice(indexNumberOf, 1);
+    //
+    //         setListItem({
+    //             ...listItem,
+    //             favoriteMovies: favoritesArray,
+    //         });
+    //
+    //     } else {
+    //         const favoritesArray = [...listItem.favoriteMovies];
+    //
+    //         favoritesArray.push(movieId);
+    //
+    //         setListItem({
+    //             ...listItem,
+    //             favoriteMovies: favoritesArray,
+    //         });
+    //     }
+    // }
 
     function setWatchlist() {
         const checkMovieID = listItem.watchlistMovies.find((movie) => {
