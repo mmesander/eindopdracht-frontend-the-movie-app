@@ -93,7 +93,6 @@ function Search() {
         {name: "Titel (Z-A)", string: "&sort_by=original_title.asc"},
     ]
 
-    // General
     const options = {
         method: 'GET',
         headers: {
@@ -102,6 +101,8 @@ function Search() {
         }
     };
 
+
+    // General
     useEffect(() => {
         if (page >= 1) {
             void fetchFilterSearch(
@@ -119,8 +120,9 @@ function Search() {
         navigate(newUrl, {replace: true});
     }
 
+
     //Specific Search
-    function newClickHandler(e) {
+    function handleSpecificSearch(e) {
         e.preventDefault();
         const url = `/zoeken/specifiek/1?zoekopdracht=${encodeURIComponent(specificSearch)}`
         navigate(`${url}`);
@@ -188,61 +190,6 @@ function Search() {
         });
     }
 
-
-    // function setMovieGenres(id) {
-    //     const checkGenreID = genresList.movieGenres.find((genre) => {
-    //         return id === genre;
-    //     });
-    //
-    //     if (checkGenreID) {
-    //         const movieGenresArray = [...genresList.movieGenres];
-    //         const indexNumberOf = movieGenresArray.indexOf(id);
-    //
-    //         movieGenresArray.splice(indexNumberOf, 1);
-    //
-    //         setGenresList({
-    //             ...genresList,
-    //             movieGenres: movieGenresArray,
-    //         });
-    //     } else {
-    //         const movieGenresArray = [...genresList.movieGenres];
-    //
-    //         movieGenresArray.push(id);
-    //
-    //         setGenresList({
-    //             ...genresList,
-    //             movieGenres: movieGenresArray,
-    //         })
-    //     }
-    // }
-
-    // function setSeriesGenres(id) {
-    //     const checkGenreID = genresList.seriesGenres.find((genre) => {
-    //         return id === genre;
-    //     });
-    //
-    //     if (checkGenreID) {
-    //         const seriesGenresArray = [...genresList.seriesGenres];
-    //         const indexNumberOf = seriesGenresArray.indexOf(id);
-    //
-    //         seriesGenresArray.splice(indexNumberOf, 1);
-    //
-    //         setGenresList({
-    //             ...genresList,
-    //             seriesGenres: seriesGenresArray,
-    //         });
-    //     } else {
-    //         const seriesGenresArray = [...genresList.seriesGenres];
-    //
-    //         seriesGenresArray.push(id);
-    //
-    //         setGenresList({
-    //             ...genresList,
-    //             seriesGenres: seriesGenresArray,
-    //         })
-    //     }
-    // }
-
     async function fetchFilterSearch(endpoint, page, sortText) {
         setLoading(true);
         const [genreString, ratingString] = createFilterStrings(isMovie, genresList, minRating, maxRating);
@@ -274,7 +221,7 @@ function Search() {
                     <div className="search-menu search-specific">
                         <h2>Zoeken</h2>
                         <p>Zoek hier naar een specifieke film of serie</p>
-                        <form onSubmit={newClickHandler}>
+                        <form onSubmit={handleSpecificSearch}>
                             <Input
                                 type="text"
                                 id="search-specific-field"
@@ -425,7 +372,7 @@ function Search() {
                                     image={search.poster_path}
                                     rating={search.vote_average}
                                     id={search.id}
-                                    tv={true}
+                                    isMovie={false}
                                 />
                             } else if (isMovie && search.title) {
                                 return <MovieCard
@@ -434,7 +381,7 @@ function Search() {
                                     image={search.poster_path}
                                     rating={search.vote_average}
                                     id={search.id}
-                                    tv={false}
+                                    isMovie={true}
                                 />
                             }
                         })}
@@ -442,7 +389,7 @@ function Search() {
                 </div>
             </section>
         </div>
-    )
+    );
 }
 
 export default Search;
