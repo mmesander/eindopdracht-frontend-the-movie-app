@@ -89,8 +89,6 @@ function Search() {
         {name: "Beoordeling - Oplopend", string: "&sort_by=vote_average.asc"},
         {name: "Verschijningsdatum - Aflopend", string: "&sort_by=primary_release_date.desc"},
         {name: "Verschijningsdatum - Oplopend", string: "&sort_by=primary_release_date.asc"},
-        {name: "Titel (A-Z)", string: "&sort_by=original_title.desc"},
-        {name: "Titel (Z-A)", string: "&sort_by=original_title.asc"},
     ]
 
     const sortTextDataSeries = [
@@ -125,7 +123,7 @@ function Search() {
     }, [page, sortText]);
 
     function updateUrl() {
-        const newUrl = `/zoeken/filter/${page}`
+        const newUrl = `/zoeken/filter/${page}`;
         navigate(newUrl, {replace: true});
     }
 
