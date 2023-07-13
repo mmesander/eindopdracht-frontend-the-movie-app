@@ -82,15 +82,22 @@ function Search() {
         {name: "Western", id: 37}
     ];
 
-    const sortTextData = [
+    const sortTextDataMovies = [
         {name: "Populariteit - Aflopend", string: "&sort_by=popularity.desc"},
         {name: "Populariteit - Oplopend", string: "&sort_by=popularity.asc"},
         {name: "Beoordeling - Aflopend", string: "&sort_by=vote_average.desc"},
         {name: "Beoordeling - Oplopend", string: "&sort_by=vote_average.asc"},
         {name: "Verschijningsdatum - Aflopend", string: "&sort_by=primary_release_date.desc"},
         {name: "Verschijningsdatum - Oplopend", string: "&sort_by=primary_release_date.asc"},
-        {name: "Titel (A-Z)", string: "&sort_by=original_title.desc"},
-        {name: "Titel (Z-A)", string: "&sort_by=original_title.asc"},
+    ]
+
+    const sortTextDataSeries = [
+        {name: "Populariteit - Aflopend", string: "&sort_by=popularity.desc"},
+        {name: "Populariteit - Oplopend", string: "&sort_by=popularity.asc"},
+        {name: "Beoordeling - Aflopend", string: "&sort_by=vote_average.desc"},
+        {name: "Beoordeling - Oplopend", string: "&sort_by=vote_average.asc"},
+        {name: "Verschijningsdatum - Aflopend", string: "&sort_by=first_air_date.desc"},
+        {name: "Verschijningsdatum - Oplopend", string: "&sort_by=first_air_date.asc"},
     ]
 
     const options = {
@@ -116,7 +123,7 @@ function Search() {
     }, [page, sortText]);
 
     function updateUrl() {
-        const newUrl = `/zoeken/filter/${page}`
+        const newUrl = `/zoeken/filter/${page}`;
         navigate(newUrl, {replace: true});
     }
 
@@ -242,7 +249,16 @@ function Search() {
                     </div>
                     <div className="search-menu search-filter-movies-series">
                         <p>Sorteer op:</p>
-                        {sortTextData && sortTextData.map((text) => {
+                        {isMovie && sortTextDataMovies.map((text) => {
+                            return <Button
+                                key={text.string}
+                                buttonType="button"
+                                children={text.name}
+                                name={sortText.includes(text.string) ? "active-filter-button" : "inactive-filter-button"}
+                                clickHandler={() => handleSortButton(text.string)}
+                            />
+                        })}
+                        {!isMovie && sortTextDataSeries.map((text) => {
                             return <Button
                                 key={text.string}
                                 buttonType="button"

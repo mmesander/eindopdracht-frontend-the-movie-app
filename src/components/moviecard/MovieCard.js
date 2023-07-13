@@ -55,7 +55,8 @@ function MovieCard({title, image, rating, id, name, isMovie}) {
 
                     </div>}
                     {name && !title && <div>
-                        <img src={`https://image.tmdb.org/t/p/w500${image}`} alt={name}/>
+                        {image && <img src={`https://image.tmdb.org/t/p/w500${image}`} alt={name}/>}
+                        {!image && <img src={noImage} alt="geen foto beschikbaar"/>}
                         {name.length < 40 && <h3>{name}</h3>}
                         {name.length > 40 && !name.length < 40 && <h4>{name}</h4>}
                     </div>}
