@@ -23,9 +23,9 @@ import watchlistIcon from "../../assets/icons/eye-fill.svg";
 import watchedIcon from "../../assets/icons/check-fat-fill.svg";
 import noImage from "../../assets/images/no-image.png";
 
-function SerieDetails() {
+function SeriesDetails() {
     const navigate = useNavigate();
-    const {serieId} = useParams();
+    const {seriesId} = useParams();
     const {listItem, setListItem} = useContext(ListsContext);
 
     const [details, setDetails] = useState({});
@@ -33,9 +33,9 @@ function SerieDetails() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
-    const favoriteActive = listItem.favoriteSeries.includes(serieId);
-    const watchlistActive = listItem.watchlistSeries.includes(serieId);
-    const watchedActive = listItem.watchedSeries.includes(serieId);
+    const favoriteActive = listItem.favoriteSeries.includes(seriesId);
+    const watchlistActive = listItem.watchlistSeries.includes(seriesId);
+    const watchedActive = listItem.watchedSeries.includes(seriesId);
 
     const options = {
         method: 'GET',
@@ -46,7 +46,7 @@ function SerieDetails() {
     };
 
     useEffect(() => {
-        async function fetchSerieDetails(id) {
+        async function fetchSeriesDetails(id) {
             try {
                 setLoading(true);
                 const response = await axios.get(`https://api.themoviedb.org/3/tv/${id}`, options);
@@ -62,7 +62,7 @@ function SerieDetails() {
             setLoading(false);
         }
 
-        void fetchSerieDetails(serieId);
+        void fetchSeriesDetails(seriesId);
 
     }, [])
 
@@ -118,21 +118,21 @@ function SerieDetails() {
                                     <button
                                         type="button"
                                         className={favoriteActive ? "active-favorite-button" : "inactive-favorite-button"}
-                                        onClick={() => setFavorite(serieId)}
+                                        onClick={() => setFavorite(seriesId)}
                                     >
                                         <img src={favoriteIcon} alt="favorite-icon"/>
                                     </button>
                                     <button
                                         type="button"
                                         className={watchlistActive ? "active-watchlist-button" : "inactive-watchlist-button"}
-                                        onClick={() => setWatchlist(serieId)}
+                                        onClick={() => setWatchlist(seriesId)}
                                     >
                                         <img src={watchlistIcon} alt="watchlist-icon"/>
                                     </button>
                                     <button
                                         type="button"
                                         className={watchedActive ? "active-watched-button" : "inactive-watched-button"}
-                                        onClick={() => setWatched(serieId)}
+                                        onClick={() => setWatched(seriesId)}
                                     >
                                         <img src={watchedIcon} alt="watched-icon"/>
                                     </button>
@@ -160,4 +160,4 @@ function SerieDetails() {
     )
 }
 
-export default SerieDetails;
+export default SeriesDetails;
