@@ -66,8 +66,8 @@ function MovieDetails() {
 
     }, []);
 
-    function setFavorite(movieId) {
-        const favoritesArray = createListsArray(movieId, listItem.favoriteMovies);
+    function setFavorite(id) {
+        const favoritesArray = createListsArray(id, listItem.favoriteMovies);
 
         setListItem({
             ...listItem,
@@ -182,7 +182,7 @@ function MovieDetails() {
                                     <button
                                         type="button"
                                         className={favoriteActive ? "active-favorite-button" : "inactive-favorite-button"}
-                                        onClick={setFavorite}
+                                        onClick={() => setFavorite(movieId)}
                                     >
                                         <img src={favoriteIcon} alt="favorite-icon"/>
                                     </button>
