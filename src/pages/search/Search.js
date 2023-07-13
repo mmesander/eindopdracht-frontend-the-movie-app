@@ -279,9 +279,9 @@ function Search() {
                             name={!isMovie ? "active-filter-button" : "inactive-filter-button"}
                         />
                     </div>
-                    <div className="search-menu rating">
+                    <div className="search-menu rating-outer-container">
                         <p>Minimale Rating:</p>
-                        <div>
+                        <div className="rating-inner-container">
                             <InputSlider
                                 className="rating-slider"
                                 axis="x"
@@ -289,23 +289,55 @@ function Search() {
                                 xstep={1}
                                 xmax={10}
                                 onChange={(value) => setMinRating(value.x)}
+                                styles={{
+                                    track: {
+                                        backgroundColor: '#282828'
+                                    },
+                                    active: {
+                                        backgroundColor: '#FFD700'
+                                    },
+                                    thumb: {
+                                        width: 20,
+                                        height: 20,
+                                        backgroundColor: '#FFD700'
+                                    },
+                                    disabled: {
+                                        opacity: 0.5
+                                    }
+                                }}
                             />
                             <p id="rating-styling">{minRating}</p>
                         </div>
                         <p>Maximale Rating:</p>
-                        <div>
+                        <div className="rating-inner-container">
                             <InputSlider
                                 axis="x"
                                 x={maxRating}
                                 xstep={1}
                                 xmax={10}
                                 onChange={(value) => setMaxRating(value.x)}
+                                styles={{
+                                    track: {
+                                        backgroundColor: '#282828'
+                                    },
+                                    active: {
+                                        backgroundColor: '#FFD700'
+                                    },
+                                    thumb: {
+                                        width: 20,
+                                        height: 20,
+                                        backgroundColor: '#FFD700'
+                                    },
+                                    disabled: {
+                                        opacity: 0.5
+                                    }
+                                }}
                             />
                             <p>{maxRating}</p>
-                            {minRating > maxRating &&
-                                <h4 className="rating-error">Maximale rating kan niet kleiner zijn dan minimale rating
-                                    rating</h4>}
                         </div>
+                        {minRating > maxRating &&
+                            <h4 className="rating-error">Maximale rating kan niet kleiner zijn dan minimale rating
+                                rating</h4>}
                     </div>
                     <div className="search-menu genres">
                         <p>Genres:</p>
