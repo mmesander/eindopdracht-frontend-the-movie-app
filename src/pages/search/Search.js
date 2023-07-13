@@ -1,7 +1,6 @@
 // Functions
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import InputSlider from "react-input-slider";
 import {useNavigate, useParams} from "react-router-dom";
 
 // Components
@@ -279,27 +278,30 @@ function Search() {
                             name={!isMovie ? "active-filter-button" : "inactive-filter-button"}
                         />
                     </div>
-                    <div className="search-menu rating">
+                    <div className="search-menu">
                         <p>Minimale Rating:</p>
-                        <div>
-                            <InputSlider
+                        <div className="rating-container">
+                            <input
+                                type="range"
+                                onChange={(e) => setMinRating(e.target.value)}
+                                min={0}
+                                max={10}
+                                step={1}
+                                value={minRating}
                                 className="rating-slider"
-                                axis="x"
-                                x={minRating}
-                                xstep={1}
-                                xmax={10}
-                                onChange={(value) => setMinRating(value.x)}
                             />
-                            <p id="rating-styling">{minRating}</p>
+                            <p>{minRating}</p>
                         </div>
                         <p>Maximale Rating:</p>
-                        <div>
-                            <InputSlider
-                                axis="x"
-                                x={maxRating}
-                                xstep={1}
-                                xmax={10}
-                                onChange={(value) => setMaxRating(value.x)}
+                        <div className="rating-container">
+                            <input
+                                type="range"
+                                onChange={(e) => setMaxRating(e.target.value)}
+                                min={0}
+                                max={10}
+                                step={1}
+                                value={maxRating}
+                                className="rating-slider"
                             />
                             <p>{maxRating}</p>
                             {minRating > maxRating &&

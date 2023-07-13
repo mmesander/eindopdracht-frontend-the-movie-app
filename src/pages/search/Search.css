@@ -192,3 +192,7 @@
     font-style: italic;
 }
 
+.rating-slider {
+    accent-color: var(--main-theme-color-gold);
+    width: 95%;
+}
