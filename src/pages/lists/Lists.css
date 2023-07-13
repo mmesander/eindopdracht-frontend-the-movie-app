@@ -18,3 +18,7 @@
     margin-top: 30px;
     color: var(--main-theme-color-white);
 }
+
+.lists-section-container .error-message {
+    color: var(--main-error-color-red);
+}
