@@ -157,3 +157,63 @@ je favorieten lijst, je watchlist of je al gezien lijst. Onwijs veel plezier met
 - Zodra je op registreren hebt geklikt, krijg je een melding als het gelukt is;
 - Je wordt dan vanzelf na 3 seconden naar de login pagina geleid;
 - Voer hier je **gebruikersnaam** (dus niet je email) en je **wachtwoord** in en klik op inloggen!
+
+## De app gebruiken
+
+**Het leukste is natuurlijk zelf uitvinden wat je allemaal met de app kan! Wil je toch graag weten wat je kan, dan kan 
+je hier een kijkje nemen voor de functionaliteiten:**
+- De Homepage (Home):
+  - Op de homepage zie je de top 5 trending films en trending series;
+  - Elke film of serie is klikbaar en leidt je naar een pagina met film-details of serie-details.
+  - Indien je meer trending films of series wilt zien kan je klikken op *'laat meer resultaten zien'*;
+  - Zodra je op meer trending films klikt komen bovenaan de pagina knoppen met volgende en vorige te staan;
+  Hiermee kan je naar de volgende en vorige pagina met resultaten navigeren;
+  - Indien je minder trending films of series wilt zien, klik dan op *'laat minder resultaten zien'*;
+  - Slechts 1 menu kan uitgeklapt zijn, of de series, of de films.
+
+
+- De Zoekpagina (Zoeken):
+  - Op de zoekpagina kan je kiezen tussen een specifieke zoekopdracht of een filter zoekopdracht;
+  - Voor een specifieke zoekopdracht kan je in de balk onder *'Zoeken'* een zoekopdracht typen;
+  - Vervolgens kan je op *'Zoek'* klikken of op enter drukken;
+  - Naast een specifieke zoekopdracht kan je ook een gefilterde zoekopdracht uitvoeren;
+  - Onder *'Filters'* kan je als eerste kiezen tussen films en series;
+  - Daarna kan je een minimale rating invoeren en een maximale rating;
+  - **Let op:** de maximale rating kan niet kleiner zijn dan de minimale rating;
+  - Vervolgens kan je diverse genres selecteren;
+  - Tot slot druk je onderin op de knop *'Zoeken'* om de gefilterde resultaten te verkrijgen;
+  - Zodra je de resultaten binnen hebt, is het mogelijk om deze te sorteren op de volgende opties:
+    - Populariteit - Aflopend
+    - Populariteit - Oplopend
+    - Beoordeling - Aflopend
+    - Beoordeling - Oplopend
+    - Verschijningsdatum - Aflopend
+    - Verschijningsdatum - Oplopend
+
+
+- De Suggestiepagina (Suggestie):
+  - Op de suggestiepagina kan je aangeven waar je zin in hebt:
+    - Van de bank te rollen van het lachen;
+    - Op het puntje van je stoel te zitten;
+    - Je af en toe te moeten verstoppen achter een dekentje;
+    - Om in een andere wereld te belanden;
+    - Om met een doos tissues op de bank te zitten;
+  - Wanneer je een keuze hebt gemaakt, gaat de applicatie een aantal suggesties doen aan de hand van de door jou ingevulde stemming.
+
+
+- De Lijstenpagina (Lijsten):
+  - Wanneer je voor het eerst op de pagina komt, dan zal je zien dat al jouw lijsten nog leeg zijn;
+  - Weet je nog dat elke film en serie klikbaar is?
+  - Wanneer je op een film of serie klikt, dan kom je op de film-details of serie-details pagina;
+  - Op deze pagina zie je boven de rating drie icoontjes staan;
+  - Deze icoontjes staan alle drie voor een lijst, wanneer je met je muis over het icoontje gaat, zie je welk icoontje
+  voor welke lijst staat:
+    - De favorieten lijst - het hartje
+    - De watchlist - het oog
+    - De al gezien lijst - het vinkje
+  - Wanneer je op een specifiek icoontje klikt, wordt die specifieke film toegevoegd aan de lijst.
+
+### Nawoord
+
+**De versie van de applicatie is 1.0. De applicatie is in ontwikkeling en zal doorontwikkeld blijven worden. 
+Mis je specifieke functionaliteiten of zitten er fouten in de applicatie, neem dan [contact](https://www.linkedin.com/in/mark-mesander/) op!**
