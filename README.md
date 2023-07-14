@@ -140,3 +140,20 @@ je favorieten lijst, je watchlist of je al gezien lijst. Onwijs veel plezier met
    - Dat doe je door het onderstaande command in de terminal te typen en op enter te drukken;
     ### `npm start`
    
+## Registreren en Inloggen
+
+**We zijn er bijna! Voordat je met de app aan de slag kan moet je eerst registreren en inloggen**
+- Klik in de applicatie als eerste op de link *'registreer je nu'*.
+- Voer een email adres in:
+  - Zorg dat dit een geldig email adres is wat niet al in gebruik is in de app;
+- Voer een gebruikersnaam in:
+  - Gebruik minimaal 6 tekens;
+  - Gebruik alleen letters, cijfers en underscores (voor de leken onder ons: _ );
+- Voer een wachtwoord in:
+  - Gebruik minimaal 6 tekens
+  - Gebruik minimaal een hoofdletter, een kleine letter, een getal en een speciaal teken;
+- Voer nogmaals hetzelfde wachtwoord in;
+- **Pas zodra aan al deze genoemde voorwaarden is voldaan, is de knop registreren pas klikbaar**
+- Zodra je op registreren hebt geklikt, krijg je een melding als het gelukt is;
+- Je wordt dan vanzelf na 3 seconden naar de login pagina geleid;
+- Voer hier je **gebruikersnaam** (dus niet je email) en je **wachtwoord** in en klik op inloggen!
