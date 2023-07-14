@@ -7,9 +7,9 @@ function formatDate(date) {
     const parts = date.split("-");
     const day = parseInt(parts[2]);
     const month = months[parseInt(parts[1]) - 1];
-    const year = parseInt(parts[0])
+    const year = parseInt(parts[0]);
 
-    return `(${day} ${month} ${year})`
+    return `(${day} ${month} ${year})`;
 }
 
 export default formatDate;
