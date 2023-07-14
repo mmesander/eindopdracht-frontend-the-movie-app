@@ -58,6 +58,7 @@ function MovieCard({title, image, rating, id, name, isMovie}) {
                         {!image && <img src={noImage} alt="geen foto beschikbaar"/>}
                         {name.length < 40 && <h3>{name}</h3>}
                         {name.length > 40 && !name.length < 40 && <h4>{name}</h4>}
+                        {name.length > 60 && <h3>{name.slice(0, 40)}...</h3>}
                     </div>}
                     <div className="movie-card-rating">
                         <h4>Rating: <span>{roundedRating}</span></h4>
