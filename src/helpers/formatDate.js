@@ -1,5 +1,3 @@
-import React from "react";
-
 function formatDate(date) {
     const months = [
         "januari", "februari", "maart", "april", "mei", "juni",
