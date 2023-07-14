@@ -78,12 +78,14 @@ function Home() {
         setMoreMovies(!moreMovies);
         setMoreSeries(false);
         setMoviePage(1);
+        setSeriesPage(1);
     }
 
     function handleClickSeries() {
         setMoreSeries(!moreSeries);
         setMoreMovies(false);
         setSeriesPage(1);
+        setMoviePage(1);
     }
 
     return (
