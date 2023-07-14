@@ -12,6 +12,11 @@
     margin-top: 50px;
 }
 
-.footer-outer-container span {
+.footer-outer-container a,
+.footer-outer-container a:visited {
+    color: var(--main-theme-color-white);
+}
+
+.footer-outer-container a:hover {
     color: var(--main-theme-color-gold);
 }
