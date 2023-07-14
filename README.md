@@ -28,7 +28,7 @@ je favorieten lijst, je watchlist of je al gezien lijst. Onwijs veel plezier met
   - Je hebt een IDE nodig om de applicatie te kunnen draaien.
   - Webstorm is optimaal voor het runnen van de applicatie.
   - Klik [hier](https://www.jetbrains.com/webstorm/download/?source=google&medium=cpc&campaign=9641686272&term=webstorm&content=523833970973&gad=1&gclid=CjwKCAjw5MOlBhBTEiwAAJ8e1kzh-6XpOJo2tqvGM1ou0kabBmp27O0dyb19BKdaoOgjO5JxQiV7TBoCogAQAvD_BwE#section=windows) om de laatste versie van Webstorm te downloaden.
-  - **!Let op:** Webstorm is geen gratis IDE. Je kan een tijdelijke proefversie van 30 dagen downloaden.
+  - **Let op:** Webstorm is geen gratis IDE. Je kan een tijdelijke proefversie van 30 dagen downloaden.
 
 
 - **Node JS**
@@ -39,19 +39,17 @@ je favorieten lijst, je watchlist of je al gezien lijst. Onwijs veel plezier met
 - **GIT**
   - Je hebt GIT nodig om de applicatie te kunnen clonen
   - Klik [hier](https://git-scm.com/downloads) om de laatste versie van GIT te downloaden.
-  - **!Let op:** niet te verwarren met GitHub. Tenzij je een developer bent, heb je dat niet nodig!
+  - **Let op:** niet te verwarren met GitHub. Zolang je geen developer bent, heb je dat niet nodig!
 
 
 - **API Key**
-  - Indien je een docent van Novi bent, dan zit de API key in de projectmap in het textdocument API_KEY
+  - Indien je een docent van Novi bent, dan zit de API key in de projectmap in het text document API_KEY
   - Heb je geen bevoegdheid om mij minimaal een 8 te geven? Dan kan je de onderstaande stappen volgen:
     - Klik [hier](https://www.themoviedb.org/signup) om een account aan te maken bij The Movie Database;
     - Zodra je bent ingelogd ga je naar settings en daar klik je op API;
     - Volg de stappen op de website om een API key aan te maken.
 
 ## Installatie Stappenplan
-
-
 
 1. Installeer google Chrome;
 
@@ -61,25 +59,25 @@ je favorieten lijst, je watchlist of je al gezien lijst. Onwijs veel plezier met
    - Monokai Pro Theme;
    - Rainbow Brackets;
    - Om deze plugins te installeren ga je naar File => Settings => Plugins;
-   - Typ in de zoekbalk de bovenstaande plugins en herstart je IDE.
+   - Typ in de zoekbalk de genoemde plugins en herstart je IDE.
    - Gelukt? Top! Dan ziet je IDE er net zo vrolijk uit als tijdens de ontwikkeling van deze app!
 
 
 3. Installeer Node.js:
-   - Wanneer je Node.js hebt geinstalleerd is het tijd om te testen of Node.js correct is geinstalleerd;
+   - Wanneer je Node.js hebt geïnstalleerd is het tijd om te testen of Node.js correct is geïnstalleerd;
    - Als eerste is het raadzaam om eerst je IDE opnieuw op te starten;
    - Vervolgens open je de terminal en typ je het volgende commando: `node-v` en druk daarna op enter;
    - Als Node.js aanwezig is zul je een versienummer te zien krijgen, zoals bijv: `v20.4.0`
-   - Vervolgens moet gecheckt worden of NPM correct mee geinstalleerd is:
+   - Vervolgens moet gecheckt worden of NPM correct mee geïnstalleerd is:
    - Dit doe je door het volgende command in de terminal te typen: `npm -v` en druk daarna op enter;
-   - Als npm correct geinstalleerd is dan zal je opnieuw een versienummer te zien krijgen, zoals bijv: `9.7.2`
+   - Als npm correct geïnstalleerd is dan zal je opnieuw een versienummer te zien krijgen, zoals bijv: `9.7.2`
    - Indien je de foutmelding `npm: command not found` krijgt, installeer Node.js dan opnieuw.
 
 
 4. Installeer Git:
-   - Wanneer je Git hebt geinstalleerd, gaan we testen of Git correct is geinstalleerd:
+   - Wanneer je Git hebt geïnstalleerd, gaan we testen of Git correct is geïnstalleerd:
    - Als eerste is het raadzaam om eerst je IDE opnieuw op te starten;
-   - Vervolgens open je de terminal en typ je het volgende commande: `git help` en druk daarna op enter;
+   - Vervolgens open je de terminal en typ je het volgende commando: `git help` en druk daarna op enter;
    - Wanneer je een opsomming krijgt van Git-commando's, dan is de installatie geslaagd;
    - Indien je een rode foutmelding krijgt, probeer dan eerst je computer opnieuw op te starten;
    - Krijg je hierna nog steeds een foutmelding te zien, probeer Git dan opnieuw te installeren.
@@ -97,15 +95,15 @@ je favorieten lijst, je watchlist of je al gezien lijst. Onwijs veel plezier met
 
 
 6. Dependencies installeren:
-   - Je hebt NPM natuurlijk niet voor niets geinstalleerd met Node.js, het is tijd om NPM te gaan gebruiken:
+   - Je hebt NPM natuurlijk niet voor niets geïnstalleerd met Node.js, het is tijd om NPM te gaan gebruiken:
    - Als eerste gaan we de dependencies van de applicatie installeren;
-   - **!Let op:** Dit kan even duren als je een langzame computer hebt;
+   - **Let op:** Dit kan even duren als je een langzame computer hebt;
    - Typ het volgende commando in je terminal en druk daarna op enter:
     ### `npm install`
 
 7. De Api Key in het project zetten:
    - Als het goed is heb je een API Key (gekregen als docent, of zelf [aangevraagd](https://www.themoviedb.org/signup));
-   - Dan gaan we deze nu  in het project zetten;
+   - Dan gaan we deze nu in het project zetten;
    - Als eerste Klik je in je IDE links op de project map;
    - Vervolgens zie je het Project met bovenin een map > eindopdracht-frontend-the-movie-app;
    - Klik op het > zodat deze map uitklapt, dit is overigens de hoofdmap;
@@ -119,8 +117,8 @@ je favorieten lijst, je watchlist of je al gezien lijst. Onwijs veel plezier met
      - package-lock.json
      - README.md
    - Dan is het nu belangrijk dat je de volgende stappen **exact** opvolgt:
-   - Klik met de rechter muisknop op de hoofdmap (eindopdracht-frontend-the-movie-app);
-   - Selecteer New => File, en noem die file .env;
+   - Klik met de rechtermuisknop op de hoofdmap (eindopdracht-frontend-the-movie-app);
+   - Selecteer New → File, en noem die file .env;
    - Als het goed is zie je de volgende mappen en bestanden:
        - node_modules
        - public
@@ -132,7 +130,7 @@ je favorieten lijst, je watchlist of je al gezien lijst. Onwijs veel plezier met
        - package-lock.json
        - README.md
    - Open vervolgens het .env bestand en plak hier de **Volledige API Key** in;
-   - Dus inclusief het REACT_APP_API_KEY gedeelte;
+   - Dus inclusief het 'REACT_APP_API_KEY' gedeelte;
    - Als laatste gaan moet er eenmalig een build gemaakt worden;
    - Dit doe je door het volgende commando in de terminal te typen en op enter te drukken:
    ### `npm run build`
