@@ -5,6 +5,9 @@ import axios from "axios";
 // Context
 import {ListsContext} from "../../context/ListsContext";
 
+// Helpers
+import fetchListsData from "../../helpers/fetchListsData";
+
 // Components
 import MovieCard from "../../components/moviecard/MovieCard";
 
@@ -35,139 +38,65 @@ function Lists() {
 
     useEffect(() => {
         listItem.favoriteMovies.map((favorite) => {
-            async function fetchFavoriteMovies() {
-                setLoading(true);
-                try {
-                    const response = await axios.get(`https://api.themoviedb.org/3/movie/${favorite}`, options);
-                    if (response.data) {
-                        setError(false);
-                    }
-                    setFavoriteMoviesArray((addFavorites) => [
-                        ...addFavorites,
-                        response.data,
-                    ]);
-                } catch (e) {
-                    setError(true);
-                    console.error(e);
-                }
-                setLoading(false);
-            }
-
-            void fetchFavoriteMovies();
+            void fetchListsData(
+                `https://api.themoviedb.org/3/movie/${favorite}`,
+                options,
+                setLoading,
+                setError,
+                setFavoriteMoviesArray
+            );
         });
 
         listItem.watchlistMovies.map((watchlist) => {
-            async function fetchWatchlistMovies() {
-                setLoading(true);
-                try {
-                    const response = await axios.get(`https://api.themoviedb.org/3/movie/${watchlist}`, options);
-                    if (response.data) {
-                        setError(false);
-                    }
-                    setWatchlistMoviesArray((addWatchlist) => [
-                        ...addWatchlist,
-                        response.data,
-                    ]);
-                } catch (e) {
-                    setError(true);
-                    console.error(e);
-                }
-                setLoading(false);
-            }
-
-            void fetchWatchlistMovies();
+            void fetchListsData(
+                `https://api.themoviedb.org/3/movie/${watchlist}`,
+                options,
+                setLoading,
+                setError,
+                setWatchlistMoviesArray
+            );
         });
 
         listItem.watchedMovies.map((watched) => {
-            async function fetchWatchedMovies() {
-                setLoading(true);
-                try {
-                    const response = await axios.get(`https://api.themoviedb.org/3/movie/${watched}`, options);
-                    if (response.data) {
-                        setError(false);
-                    }
-                    setWatchedMoviesArray((addWatched) => [
-                        ...addWatched,
-                        response.data,
-                    ]);
-                } catch (e) {
-                    setError(true);
-                    console.error(e);
-                }
-                setLoading(false);
-            }
-
-            void fetchWatchedMovies();
+            void fetchListsData(
+                `https://api.themoviedb.org/3/movie/${watched}`,
+                options,
+                setLoading,
+                setError,
+                setWatchedMoviesArray
+            );
         });
 
         listItem.favoriteSeries.map((favorite) => {
-            async function fetchFavoriteSeries() {
-                setLoading(true);
-                try {
-                    const response = await axios.get(`https://api.themoviedb.org/3/tv/${favorite}`, options);
-                    if (response.data) {
-                        setError(false);
-                    }
-                    setFavoriteSeriesArray((addFavorites) => [
-                        ...addFavorites,
-                        response.data,
-                    ]);
-                } catch (e) {
-                    setError(true);
-                    console.error(e);
-                }
-                setLoading(false);
-            }
-
-            void fetchFavoriteSeries();
+            void fetchListsData(
+                `https://api.themoviedb.org/3/tv/${favorite}`,
+                options,
+                setLoading,
+                setError,
+                setFavoriteSeriesArray
+            );
         });
 
         listItem.watchlistSeries.map((watchlist) => {
-            async function fetchWatchlistSeries() {
-                setLoading(true);
-                try {
-                    const response = await axios.get(`https://api.themoviedb.org/3/tv/${watchlist}`, options);
-                    if (response.data) {
-                        setError(false);
-                    }
-                    setWatchlistSeriesArray((addWatchlist) => [
-                        ...addWatchlist,
-                        response.data,
-                    ]);
-                } catch (e) {
-                    setError(true);
-                    console.error(e);
-                }
-                setLoading(false);
-            }
-
-            void fetchWatchlistSeries();
+            void fetchListsData(
+                `https://api.themoviedb.org/3/tv/${watchlist}`,
+                options,
+                setLoading,
+                setError,
+                setWatchlistSeriesArray
+            );
         });
 
         listItem.watchedSeries.map((watched) => {
-            async function fetchWatchedSeries() {
-                setLoading(true);
-                try {
-                    const response = await axios.get(`https://api.themoviedb.org/3/tv/${watched}`, options);
-                    if (response.data) {
-                        setError(false);
-                    }
-                    setWatchedSeriesArray((addWatched) => [
-                        ...addWatched,
-                        response.data,
-                    ]);
-                } catch (e) {
-                    setError(true);
-                    console.error(e);
-                }
-                setLoading(false);
-            }
-
-            void fetchWatchedSeries();
+            void fetchListsData(
+                `https://api.themoviedb.org/3/tv/${watched}`,
+                options,
+                setLoading,
+                setError,
+                setWatchedSeriesArray
+            );
         });
-
     }, [listItem]);
-
 
     return (
         <div className="page-outer-container">
