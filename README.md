@@ -29,7 +29,6 @@ je favorieten lijst, je watchlist of je al gezien lijst. Onwijs veel plezier met
   - Webstorm is optimaal voor het runnen van de applicatie.
   - Klik [hier](https://www.jetbrains.com/webstorm/download/?source=google&medium=cpc&campaign=9641686272&term=webstorm&content=523833970973&gad=1&gclid=CjwKCAjw5MOlBhBTEiwAAJ8e1kzh-6XpOJo2tqvGM1ou0kabBmp27O0dyb19BKdaoOgjO5JxQiV7TBoCogAQAvD_BwE#section=windows) om de laatste versie van Webstorm te downloaden.
   - **!Let op:** Webstorm is geen gratis IDE. Je kan een tijdelijke proefversie van 30 dagen downloaden.
-  
 
 
 - **Node JS**
@@ -40,6 +39,7 @@ je favorieten lijst, je watchlist of je al gezien lijst. Onwijs veel plezier met
 - **GIT**
   - Je hebt GIT nodig om de applicatie te kunnen clonen
   - Klik [hier](https://git-scm.com/downloads) om de laatste versie van GIT te downloaden.
+  - **!Let op:** niet te verwarren met GitHub. Tenzij je een developer bent, heb je dat niet nodig!
 
 
 - **API Key**
@@ -54,103 +54,91 @@ je favorieten lijst, je watchlist of je al gezien lijst. Onwijs veel plezier met
 
 
 1. Installeer google Chrome;
+
+
 2. Installeer Webstorm of jouw IDE naar keuze;
-3. Installeer Node.js;
-4. Wanneer je Node.js hebt geinstalleerd is het tijd om je IDE op te starten en te testen of Node.js correct is geinstalleerd:
-   - Dit doe je door het volgende command in de terminal te typen: `node-v`
+   - Optioneel: Webstorm instellen. Indien je (vaker) gebruik wilt maken van Webstorm, zijn deze twee plugins top:
+   - Monokai Pro Theme;
+   - Rainbow Brackets;
+   - Om deze plugins te installeren ga je naar File => Settings => Plugins;
+   - Typ in de zoekbalk de bovenstaande plugins en herstart je IDE.
+   - Gelukt? Top! Dan ziet je IDE er net zo vrolijk uit als tijdens de ontwikkeling van deze app!
+
+
+3. Installeer Node.js:
+   - Wanneer je Node.js hebt geinstalleerd is het tijd om te testen of Node.js correct is geinstalleerd;
+   - Als eerste is het raadzaam om eerst je IDE opnieuw op te starten;
+   - Vervolgens open je de terminal en typ je het volgende commando: `node-v` en druk daarna op enter;
    - Als Node.js aanwezig is zul je een versienummer te zien krijgen, zoals bijv: `v20.4.0`
-5. Vervolgens moet gecheckt worden of NPM correct mee geinstalleerd is:
-   - Dit doe je door het volgende command in de terminal te typen: `npm -v`
+   - Vervolgens moet gecheckt worden of NPM correct mee geinstalleerd is:
+   - Dit doe je door het volgende command in de terminal te typen: `npm -v` en druk daarna op enter;
    - Als npm correct geinstalleerd is dan zal je opnieuw een versienummer te zien krijgen, zoals bijv: `9.7.2`
    - Indien je de foutmelding `npm: command not found` krijgt, installeer Node.js dan opnieuw.
-6. Optioneel: Webstorm instellen. Tijdens het programmeren is gebruik gemaakt van twee plugins. Om deze te installeren: 
-Klik op File en dan op Settings. Klik vervolgens op plugins en download de onderstaande plugins.
-   - Monokai Pro Theme
-   - Rainbow Brackets
+
+
+4. Installeer Git:
+   - Wanneer je Git hebt geinstalleerd, gaan we testen of Git correct is geinstalleerd:
+   - Als eerste is het raadzaam om eerst je IDE opnieuw op te starten;
+   - Vervolgens open je de terminal en typ je het volgende commande: `git help` en druk daarna op enter;
+   - Wanneer je een opsomming krijgt van Git-commando's, dan is de installatie geslaagd;
+   - Indien je een rode foutmelding krijgt, probeer dan eerst je computer opnieuw op te starten;
+   - Krijg je hierna nog steeds een foutmelding te zien, probeer Git dan opnieuw te installeren.
+
+    
+    
+5. De applicatie binnenhalen:
+   - Ga als eerste naar [deze](https://github.com/mmesander/eindopdracht-frontend-the-movie-app.git) directory;
+   - Klik op de groene button met `<> Code`;
+   - Zorg dat het 'menu' op **HTTPS** staat en kopieer de link die daaronder staat;
+   - Optioneel: Als je een SSH key hebt dan kan je de SSH link gebruiken;
+   - Klik vervolgens in je IDE op File => New => Project from version control...;
+   - Plak de link die je op github hebt gekopieerd in het vak met URL;
+   - Als het goed is heb je nu de applicatie geopend op je IDE.
+
+
+6. Dependencies installeren:
+   - Je hebt NPM natuurlijk niet voor niets geinstalleerd met Node.js, het is tijd om NPM te gaan gebruiken:
+   - Als eerste gaan we de dependencies van de applicatie installeren;
+   - **!Let op:** Dit kan even duren als je een langzame computer hebt;
+   - Typ het volgende commando in je terminal en druk daarna op enter:
+    ### `npm install`
+
+7. De Api Key in het project zetten:
+   - Als het goed is heb je een API Key (gekregen als docent, of zelf [aangevraagd](https://www.themoviedb.org/signup));
+   - Dan gaan we deze nu  in het project zetten;
+   - Als eerste Klik je in je IDE links op de project map;
+   - Vervolgens zie je het Project met bovenin een map > eindopdracht-frontend-the-movie-app;
+   - Klik op het > zodat deze map uitklapt, dit is overigens de hoofdmap;
+   - Als het goed is zie je de volgende mappen en bestanden:
+     - node_modules
+     - public
+     - src
+     - .env.dist
+     - .gitignore
+     - package.json
+     - package-lock.json
+     - README.md
+   - Dan is het nu belangrijk dat je de volgende stappen **exact** opvolgt:
+   - Klik met de rechter muisknop op de hoofdmap (eindopdracht-frontend-the-movie-app);
+   - Selecteer New => File, en noem die file .env;
+   - Als het goed is zie je de volgende mappen en bestanden:
+       - node_modules
+       - public
+       - src
+       - .env
+       - .env.dist
+       - .gitignore
+       - package.json
+       - package-lock.json
+       - README.md
+   - Open vervolgens het .env bestand en plak hier de **Volledige API Key** in;
+   - Dus inclusief het REACT_APP_API_KEY gedeelte;
+   - Als laatste gaan moet er eenmalig een build gemaakt worden;
+   - Dit doe je door het volgende commando in de terminal te typen en op enter te drukken:
+   ### `npm run build`
+
+8. De applicatie starten
+   - Als je alle stappen netjes hebt doorlopen, is het nu tijd om de applicatie op te starten;
+   - Dat doe je door het onderstaande command in de terminal te typen en op enter te drukken;
+    ### `npm start`
    
-   Gelukt? Top! Nu zie je IDE er net zo vrolijk uit als tijdens het ontwikkelen van deze applicatie.
-7. Dan gaan we nu als eerste de applicatie binnenhalen:
-   - Ga als eerste naar [deze](https://github.com/mmesander/eindopdracht-frontend-the-movie-app.git) directory
-   - Klik op de groene button met `<> Code`
-   - Klik op File => New => Project from version control...
-
-
-
-
-
-### `hai`
-
-
-
-
-
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
