@@ -20,7 +20,7 @@ je favorieten lijst, je watchlist of je al gezien lijst. Onwijs veel plezier met
 ## Benodigdheden
 
 - **Google Chrome**
-  - Chrome is optimaal voor het runnnen van de applicatie. 
+  - Het is ten zeerste aan te raden om Chrome te installeren. Deze applicatie is ontwikkeld met Google Chrome als browser. 
   - Klik [hier](https://www.google.com/intl/nl/chrome/) om de laatste versie van Chrome te downloaden.
   
 
@@ -28,18 +28,24 @@ je favorieten lijst, je watchlist of je al gezien lijst. Onwijs veel plezier met
   - Je hebt een IDE nodig om de applicatie te kunnen draaien.
   - Webstorm is optimaal voor het runnen van de applicatie.
   - Klik [hier](https://www.jetbrains.com/webstorm/download/?source=google&medium=cpc&campaign=9641686272&term=webstorm&content=523833970973&gad=1&gclid=CjwKCAjw5MOlBhBTEiwAAJ8e1kzh-6XpOJo2tqvGM1ou0kabBmp27O0dyb19BKdaoOgjO5JxQiV7TBoCogAQAvD_BwE#section=windows) om de laatste versie van Webstorm te downloaden.
+  - **!Let op:** Webstorm is geen gratis IDE. Je kan een tijdelijke proefversie van 30 dagen downloaden.
   
 
 
 - **Node JS**
   - Je hebt Node.js nodig om commando's in de terminal te kunnen uitvoeren.
-  - Klik [hier](https://nodejs.org/en/download/current) om de laatste versie van node.js te installeren.
+  - Klik [hier](https://nodejs.org/en/download/current) om de laatste versie van node.js te downloaden.
+
+
+- **GIT**
+  - Je hebt GIT nodig om de applicatie te kunnen clonen
+  - Klik [hier](https://git-scm.com/downloads) om de laatste versie van GIT te downloaden.
 
 
 - **API Key**
   - Indien je een docent van Novi bent, dan zit de API key in de projectmap in het textdocument API_KEY
   - Heb je geen bevoegdheid om mij minimaal een 8 te geven? Dan kan je de onderstaande stappen volgen:
-    - Klik [hier](https://www.themoviedb.org/signup) om een account aan te maken bij THe Movie Database;
+    - Klik [hier](https://www.themoviedb.org/signup) om een account aan te maken bij The Movie Database;
     - Zodra je bent ingelogd ga je naar settings en daar klik je op API;
     - Volg de stappen op de website om een API key aan te maken.
 
@@ -47,32 +53,32 @@ je favorieten lijst, je watchlist of je al gezien lijst. Onwijs veel plezier met
 
 
 
-1.  Als eerste is het ten zeerste aan te raden om [Chrome](https://www.google.com/intl/nl/chrome/) te installeren. Deze 
-    applicatie is ontwikkeld met google Chrome als browser. Indien de applicatie op een andere browser wordt uitgevoerd,
-    kunnen fouten optreden.
- 
-
-3. Indien je al een IDE hebt kan je deze stap overslaan. Heb 
-    je nog geen IDE dan is [Webstorm](https://www.jetbrains.com/webstorm/download/?source=google&medium=cpc&campaign=9641686272&term=webstorm&content=523833970973&gad=1&gclid=CjwKCAjw5MOlBhBTEiwAAJ8e1kzh-6XpOJo2tqvGM1ou0kabBmp27O0dyb19BKdaoOgjO5JxQiV7TBoCogAQAvD_BwE#section=windows)
-    een uitstekende keuze. Let op! Webstorm is geen gratis IDE. Je kan een tijdelijke proefversie van 30 dagen downloaden.
-    Installeer Webstorm of jouw IDE naar keuze op je computer!
-
-
-3. Je hebt Node.js nodig om commando's in de terminal te kunnen draaien. Installeer Node.js op je computer.
-
-
-4. Wanneer je NODE.js hebt geinstalleerd, is het tijd om je IDE op te starten en te testen of Node 
-
-
-
-
-
-
-
+1. Installeer google Chrome;
+2. Installeer Webstorm of jouw IDE naar keuze;
+3. Installeer Node.js;
+4. Wanneer je Node.js hebt geinstalleerd is het tijd om je IDE op te starten en te testen of Node.js correct is geinstalleerd:
+   - Dit doe je door het volgende command in de terminal te typen: `node-v`
+   - Als Node.js aanwezig is zul je een versienummer te zien krijgen, zoals bijv: `v20.4.0`
+5. Vervolgens moet gecheckt worden of NPM correct mee geinstalleerd is:
+   - Dit doe je door het volgende command in de terminal te typen: `npm -v`
+   - Als npm correct geinstalleerd is dan zal je opnieuw een versienummer te zien krijgen, zoals bijv: `9.7.2`
+   - Indien je de foutmelding `npm: command not found` krijgt, installeer Node.js dan opnieuw.
+6. Optioneel: Webstorm instellen. Tijdens het programmeren is gebruik gemaakt van twee plugins. Om deze te installeren: 
+Klik op File en dan op Settings. Klik vervolgens op plugins en download de onderstaande plugins.
+   - Monokai Pro Theme
+   - Rainbow Brackets
+   
+   Gelukt? Top! Nu zie je IDE er net zo vrolijk uit als tijdens het ontwikkelen van deze applicatie.
+7. Dan gaan we nu als eerste de applicatie binnenhalen:
+   - Ga als eerste naar [deze](https://github.com/mmesander/eindopdracht-frontend-the-movie-app.git) directory
+   - Klik op de groene button met `<> Code`
+   - Klik op File => New => Project from version control...
 
 
 
 
+
+### `hai`
 
 
 
