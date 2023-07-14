@@ -1,6 +1,5 @@
 // Functions
 import React, {useContext, useEffect, useState} from "react";
-import axios from "axios";
 
 // Context
 import {ListsContext} from "../../context/ListsContext";
