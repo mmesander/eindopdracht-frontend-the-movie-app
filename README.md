@@ -1,8 +1,86 @@
 # Installatiehandleiding The Movie App
 
+![screenshot](src/assets/images/screenshot.png)
+
+## Inleiding
+
+Van harte welkom bij The Movie App. Deze applicatie is ontwikkeld om jou te helpen met het inventariseren van jouw film 
+of serie keuze. De applicatie laat je trending films en series zien, je kan zoeken naar specifieke titels, of je kan 
+een gefilterde zoekopdracht doen naar films, series aan de hand van rating, populariteit en genres. Daarnaast kan je de 
+applicatie een suggestie laten doen als je zelf even geen inspiratie hebt. Tot slot kan je films en series toevoegen in 
+je favorieten lijst, je watchlist of je al gezien lijst. Onwijs veel plezier met het ontdekken van The Movie App!
+
+## Inhoudsopgave
+
+- Benodigdheden
+- Installatie Stappenplan
+- Registreren en Inloggen
+- De app gebruiken
+
+## Benodigdheden
+
+- **Google Chrome**
+  - Chrome is optimaal voor het runnnen van de applicatie. 
+  - Klik [hier](https://www.google.com/intl/nl/chrome/) om de laatste versie van Chrome te downloaden.
+  
+
+- **IDE (naar keuze)**
+  - Je hebt een IDE nodig om de applicatie te kunnen draaien.
+  - Webstorm is optimaal voor het runnen van de applicatie.
+  - Klik [hier](https://www.jetbrains.com/webstorm/download/?source=google&medium=cpc&campaign=9641686272&term=webstorm&content=523833970973&gad=1&gclid=CjwKCAjw5MOlBhBTEiwAAJ8e1kzh-6XpOJo2tqvGM1ou0kabBmp27O0dyb19BKdaoOgjO5JxQiV7TBoCogAQAvD_BwE#section=windows) om de laatste versie van Webstorm te downloaden.
+  
+
+
+- **Node JS**
+  - Je hebt Node.js nodig om commando's in de terminal te kunnen uitvoeren.
+  - Klik [hier](https://nodejs.org/en/download/current) om de laatste versie van node.js te installeren.
+
+
+- **API Key**
+  - Indien je een docent van Novi bent, dan zit de API key in de projectmap in het textdocument API_KEY
+  - Heb je geen bevoegdheid om mij minimaal een 8 te geven? Dan kan je de onderstaande stappen volgen:
+    - Klik [hier](https://www.themoviedb.org/signup) om een account aan te maken bij THe Movie Database;
+    - Zodra je bent ingelogd ga je naar settings en daar klik je op API;
+    - Volg de stappen op de website om een API key aan te maken.
+
+## Installatie Stappenplan
+
+
+
+1.  Als eerste is het ten zeerste aan te raden om [Chrome](https://www.google.com/intl/nl/chrome/) te installeren. Deze 
+    applicatie is ontwikkeld met google Chrome als browser. Indien de applicatie op een andere browser wordt uitgevoerd,
+    kunnen fouten optreden.
+ 
+
+3. Indien je al een IDE hebt kan je deze stap overslaan. Heb 
+    je nog geen IDE dan is [Webstorm](https://www.jetbrains.com/webstorm/download/?source=google&medium=cpc&campaign=9641686272&term=webstorm&content=523833970973&gad=1&gclid=CjwKCAjw5MOlBhBTEiwAAJ8e1kzh-6XpOJo2tqvGM1ou0kabBmp27O0dyb19BKdaoOgjO5JxQiV7TBoCogAQAvD_BwE#section=windows)
+    een uitstekende keuze. Let op! Webstorm is geen gratis IDE. Je kan een tijdelijke proefversie van 30 dagen downloaden.
+    Installeer Webstorm of jouw IDE naar keuze op je computer!
+
+
+3. Je hebt Node.js nodig om commando's in de terminal te kunnen draaien. Installeer Node.js op je computer.
+
+
+4. Wanneer je NODE.js hebt geinstalleerd, is het tijd om je IDE op te starten en te testen of Node 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 
 ## Available Scripts
 
