@@ -76,11 +76,13 @@ function Home() {
 
     function handleClickMovies() {
         setMoreMovies(!moreMovies);
+        setMoreSeries(false);
         setMoviePage(1);
     }
 
     function handleClickSeries() {
         setMoreSeries(!moreSeries);
+        setMoreMovies(false);
         setSeriesPage(1);
     }
 
