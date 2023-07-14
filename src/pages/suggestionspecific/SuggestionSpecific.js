@@ -28,17 +28,20 @@ function SuggestionSpecific() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
+    const options = {
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
+        }
+    };
+
     useEffect(() => {
         if (page >= 1) {
             void fetchSpecificMovies(endpoint, text);
             updateUrl();
         }
     }, [page]);
-
-    function updateUrl() {
-        const newUrl = `/suggestie/${link}/${page}?endpoint=${endpoint}&text=${text}`;
-        navigate(newUrl, {replace: true});
-    }
 
     async function fetchSpecificMovies(endpoint, text) {
         setLoading(true);
@@ -57,13 +60,10 @@ function SuggestionSpecific() {
         setLoading(false);
     }
 
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
-        }
-    };
+    function updateUrl() {
+        const newUrl = `/suggestie/${link}/${page}?endpoint=${endpoint}&text=${text}`;
+        navigate(newUrl, {replace: true});
+    }
 
     return (
         <div className="page-outer-container">
